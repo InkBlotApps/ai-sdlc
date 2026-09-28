@@ -1,0 +1,35 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Local credentials/config
+credentials.*
+secrets.*
+.local/
+.private/
+
+# Editor / OS artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python / notebook artifacts
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Build / dependency artifacts
+node_modules/
+dist/
+build/
