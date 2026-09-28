@@ -1,109 +1,272 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Governance is the system that makes organizational intent operable.">
-  <title>Roadmap &amp; Decisions · AI SDLC Governance</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body data-page="roadmap">
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
-      <span class="brand-mark">BC</span>
-      <span>
-        <strong>AI SDLC Governance</strong>
-        <small>working architecture</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
-      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
-    </div>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
-<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roadmap &amp; Decisions · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="roadmap"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
 <a class="nav-link" data-page="family" href="family.html">Product Family</a>
-<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
 <a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
-<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
-<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
-<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
-<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
-      </nav>
-      <div class="sidebar-note">
-        <span class="status-dot"></span>
-        Living design system
-      </div>
-    </aside>
-
-    <main class="content">
-      <div class="page-head">
-        <p class="eyebrow">Working plan</p>
-        <h1>Roadmap & Decisions</h1>
-      </div>
-      
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Current direction</p>
-    <h2>Build the contracts before multiplying the products</h2>
-    <p>The roadmap prioritizes shared semantics—identity, control, evidence, taxonomy, and product contracts—before deeper autonomous runtimes.</p>
-  </div>
-
-  <div class="roadmap">
-    <div><span>Phase 1</span><strong>Binder v0.1</strong><p>Product manifest, entity IDs, namespaces, evidence references, ownership semantics, compatibility.</p></div>
-    <div><span>Phase 2</span><strong>Batchbook / Batch / Swatch</strong><p>Minimum graph, canonical entities, ownership, classifications, profiles, decks, palettes.</p></div>
-    <div><span>Phase 3</span><strong>Snitch + Teardown</strong><p>Observation schema, topology, Genealogy, reconciliation, confidence, source precedence.</p></div>
-    <div><span>Phase 4</span><strong>Controls + Proof</strong><p>Control schema, profiles, exceptions, evidence basis, assurance, Stamps, CoA.</p></div>
-    <div><span>Phase 5</span><strong>Crosslink + lifecycle</strong><p>On-call, escalation, incident coordination, retirement, Reclaim, feedback loops.</p></div>
-  </div>
-</section>
-
-<section>
-  <div class="section-title"><p class="eyebrow">Decisions so far</p><h2>Working decisions</h2></div>
-  <div class="decision-list">
-    <div><b>Crosslink</b><span>Canonical incident/operational coordination product name.</span></div>
-    <div><b>Proof</b><span>Canonical evidence/provenance product name.</span></div>
-    <div><b>Batchbook / Batch / Swatch</b><span>Catalog / governed application / compact profile.</span></div>
-    <div><b>Taxonomy</b><span>Organizations map local vocabulary onto stable canonical concepts.</span></div>
-    <div><b>Compliance</b><span>Profiles and mappings, not separate product forks.</span></div>
-    <div><b>Deployment</b><span>D0–D2 first; autonomous and dedicated runtimes require justification.</span></div>
-    <div><b>Agents</b><span>Never the database, authorization layer, workflow engine, or source of truth.</span></div>
-  </div>
-</section>
-
-<section>
-  <div class="section-title"><p class="eyebrow">Open questions</p><h2>Questions worth keeping open</h2></div>
-  <div class="card-grid two">
-    <div class="card"><h3>Binder</h3><p>Standalone repo, package/SDK, CLI, schemas—or a combination?</p></div>
-    <div class="card"><h3>Batchbook storage</h3><p>What is the minimum graph model and persistence technology?</p></div>
-    <div class="card"><h3>Stencil</h3><p>Product, policy primitive, or control-scoping mechanism inside Binder/Basecoat?</p></div>
-    <div class="card"><h3>Notary / Witness</h3><p>Concept inside Proof or a separately deployable trust service?</p></div>
-    <div class="card"><h3>Reclaim</h3><p>Independent lifecycle product or durable workflow capability?</p></div>
-    <div class="card"><h3>Control promotion</h3><p>What evidence is required before a local practice becomes a shared control or architectural default?</p></div>
-  </div>
-</section>
-
-    </main>
-
-    
-  </div>
-
-  <dialog id="searchDialog">
-    <form method="dialog" class="search-panel">
-      <div class="search-head">
-        <strong>Search the architecture</strong>
-        <button value="close" aria-label="Close search">Close</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </form>
-  </dialog>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='roadmap-decisions-and-open-questions'>Roadmap, Decisions, and Open Questions</h1>
+<p>Current decisions, unresolved questions, near-term sequencing, iteration prompts, and areas intentionally left open.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='23-decision-log'>23. Decision Log</h1>
+<p>Use this table to capture decisions as the family evolves.</p>
+<div class='table-wrap'><table><thead><tr><th>Date</th><th>Decision</th><th>Rationale</th><th>Status</th></tr></thead><tbody>
+<tr><td>2026-09-26</td><td>Use <strong>Batchbook</strong> as the enterprise catalog, <strong>Batch</strong> as one governed application, and <strong>Swatch</strong> as its compact profile</td><td>Separates catalog, governed application, and profile semantics cleanly</td><td>Preferred</td></tr>
+<tr><td>2026-09-26</td><td>Use <strong>Deck</strong> for durable groupings and <strong>Palette</strong> for curated subsets</td><td>Preserves paint terminology while distinguishing grouping semantics</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Explore <strong>Binder</strong> as the target shared family substrate</td><td>Generalizes cross-product contracts that currently have roots in BaseCoat</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Treat compliance as profiles + mappings</td><td>Avoids framework-specific product sprawl</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Treat Snitch output as observations, not truth</td><td>Allows reconciliation from multiple systems</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Treat Batchbook as a graph-backed catalog, not a flat CMDB</td><td>Relationships are essential for impact, governance, and AI inventory</td><td>Preferred</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='24-open-questions'>24. Open Questions</h1>
+<h2 id='product-architecture'>Product architecture</h2>
+<ul>
+<li>- Should Binder be a repo, SDK, schema package, CLI, or combination?</li>
+<li>- Which artifacts remain in BaseCoat after Binder is extracted?</li>
+<li>- Should Stencil be a product or simply a Binder/BaseCoat primitive?</li>
+<li>- Should Formula be an independent supply-chain service or a Teardown output?</li>
+<li>- Is Proof independently deployed or an append-only service behind the family?</li>
+</ul>
+<h2 id='batchbook-batch-swatch'>Batchbook / Batch / Swatch</h2>
+<ul>
+<li>- What is the minimum entity model for v1?</li>
+<li>- Should Batch always mean one governed application, or can other governed entity types also become Batches?</li>
+<li>- What is the minimum Swatch profile required for every Batch?</li>
+<li>- Are Decks static/durable and Palettes dynamic/curated?</li>
+<li>- How are aliases and duplicate records reconciled?</li>
+</ul>
+<h2 id='snitch'>Snitch</h2>
+<ul>
+<li>- Which discovery sources are v1?</li>
+<li>- Should collectors be plugins?</li>
+<li>- How is confidence scored?</li>
+<li>- How are conflicting observations reconciled?</li>
+</ul>
+<h2 id='teardown'>Teardown</h2>
+<ul>
+<li>- Repo-only v1 or repo + SBOM + deployment?</li>
+<li>- Which AI assets are first-class?</li>
+<li>- Which graph format should be canonical?</li>
+<li>- How much architecture inference should be deterministic vs AI-assisted?</li>
+</ul>
+<h2 id='compliance'>Compliance</h2>
+<ul>
+<li>- How much of OSCAL should be adopted?</li>
+<li>- Which profiles should ship first?</li>
+<li>- What language should distinguish regulation, standard, framework, and internal policy?</li>
+<li>- How should inheritance and conflicting profile requirements work?</li>
+</ul>
+<h2 id='operations'>Operations</h2>
+<ul>
+<li>- Crosslink is the canonical product name; should <strong>Call Tree</strong> remain as a feature name?</li>
+<li>- Should Crosslink create bridges/channels or integrate only?</li>
+<li>- Should incident records live in Crosslink or Swatch?</li>
+</ul>
+<hr>
+<h1 id='25-proposed-near-term-sequence'>25. Proposed Near-Term Sequence</h1>
+<h2 id='phase-1-define-the-family-contract'>Phase 1 — Define the family contract</h2>
+<ul>
+<li>- Define product manifest</li>
+<li>- Define entity IDs</li>
+<li>- Define namespaces</li>
+<li>- Define evidence references</li>
+<li>- Define ownership semantics</li>
+<li>- Define version compatibility</li>
+</ul>
+<p><strong>Output:</strong> Binder v0.1 concept</p>
+<h2 id='phase-2-define-swatch'>Phase 2 — Define Swatch</h2>
+<ul>
+<li>- Minimum entity graph</li>
+<li>- Application</li>
+<li>- Repository</li>
+<li>- Service</li>
+<li>- Team</li>
+<li>- Deployment</li>
+<li>- Model</li>
+<li>- Agent</li>
+<li>- MCP server</li>
+<li>- Data classification</li>
+<li>- Compliance profile</li>
+</ul>
+<p><strong>Output:</strong> Swatch schema v0.1</p>
+<h2 id='phase-3-define-observation-and-graph-ingestion'>Phase 3 — Define observation and graph ingestion</h2>
+<ul>
+<li>- Snitch observation schema</li>
+<li>- Teardown graph schema</li>
+<li>- reconciliation rules</li>
+<li>- confidence / source precedence</li>
+</ul>
+<h2 id='phase-4-controls-and-evidence'>Phase 4 — Controls and evidence</h2>
+<ul>
+<li>- internal control schema</li>
+<li>- profile schema</li>
+<li>- exception schema</li>
+<li>- Proof evidence schema</li>
+<li>- Adhesion result mapping</li>
+</ul>
+<h2 id='phase-5-operations'>Phase 5 — Operations</h2>
+<ul>
+<li>- ownership</li>
+<li>- on-call</li>
+<li>- escalation</li>
+<li>- Crosslink / Call Tree</li>
+<li>- incident relationships</li>
+</ul>
+<hr>
+<h1 id='26-iteration-scratchpad'>26. Iteration Scratchpad</h1>
+<p>Use this section for ideas that are not yet decisions.</p>
+<h3 id='new-names'>New names</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='new-products-capabilities'>New products / capabilities</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='things-to-merge'>Things to merge</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='things-to-remove'>Things to remove</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='questions-raised-by-implementation'>Questions raised by implementation</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+</ul>
+<p>-</p>
+<hr>
+<h1 id='27-next-iteration-prompts'>27. Next Iteration Prompts</h1>
+<p>Useful prompts for continuing this notebook:</p>
+<ol>
+<li>1. <strong>“Define Swatch v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Produce the minimum entity model, IDs, Deck/Palette semantics, APIs, and example records.</li>
+</ul>
+<ol>
+<li>2. <strong>“Define Binder v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Extract the shared contract implied by BaseCoat, Adhesion, and Sheen.</li>
+</ul>
+<ol>
+<li>3. <strong>“Define Snitch v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Pick discovery sources, observation schema, confidence model, and reconciliation workflow.</li>
+</ul>
+<ol>
+<li>4. <strong>“Define Teardown v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Create the repo graph schema, AI-BOM model, and expected analysis outputs.</li>
+</ul>
+<ol>
+<li>5. <strong>“Create the control model.”</strong></li>
+</ol>
+<ul>
+<li>   - Define internal controls, framework mappings, profiles, exceptions, and evidence.</li>
+</ul>
+<ol>
+<li>6. <strong>“Map the family to ITAR/CMMC/HIPAA/PCI/SOC2.”</strong></li>
+</ol>
+<ul>
+<li>   - Show how classification, controls, evidence, and operations differ by regime.</li>
+</ul>
+<ol>
+<li>7. <strong>“Draw the full system architecture.”</strong></li>
+</ol>
+<ul>
+<li>   - APIs, event flows, graph storage, policy evaluation, evidence ingestion, and integrations.</li>
+</ul>
+<ol>
+<li>8. <strong>“Turn this into a product roadmap.”</strong></li>
+</ol>
+<ul>
+<li>   - MVP boundaries, sequencing, dependencies, and what should deliberately not be built.</li>
+</ul>
+<hr>
+<h1 id='49-deployment-decisions-to-iterate'>49. Deployment Decisions to Iterate</h1>
+<h2 id='candidate-decisions'>Candidate decisions</h2>
+<div class='table-wrap'><table><thead><tr><th>Decision</th><th>Current direction</th></tr></thead><tbody>
+<tr><td>Default governance distribution</td><td>Git-native artifacts</td></tr>
+<tr><td>Default reasoning extension</td><td>Skills/on-demand agents</td></tr>
+<tr><td>Default repo automation</td><td>CI/CD</td></tr>
+<tr><td>Default long-running orchestration</td><td>Durable/serverless workflows</td></tr>
+<tr><td>Default autonomous execution</td><td>Ephemeral containers</td></tr>
+<tr><td>Default model strategy</td><td>Managed model APIs with routing abstraction</td></tr>
+<tr><td>Local/private models</td><td>Policy- or economics-driven exception</td></tr>
+<tr><td>Persistent autonomous agents</td><td>Use sparingly</td></tr>
+<tr><td>Canonical state</td><td>Applications/datastores, never agent memory</td></tr>
+<tr><td>High-risk execution</td><td>Disposable sandbox + scoped identity</td></tr>
+<tr><td>Fast-changing behavior</td><td>Configuration/artifacts</td></tr>
+<tr><td>Slow-changing behavior</td><td>Infrastructure</td></tr>
+</tbody></table></div>
+<h2 id='open-questions-for-the-next-iteration'>Open questions for the next iteration</h2>
+<ul>
+<li>- Which deployment classes should Binder formally recognize?</li>
+<li>- Should every Swatch record declare an approved execution boundary?</li>
+<li>- Should BaseCoat controls be able to prohibit certain deployment classes?</li>
+<li>- Should Proof record model/runtime/deployment-class provenance for every AI-assisted action?</li>
+<li>- Should Snitch discover unmanaged local models and agent runtimes?</li>
+<li>- Should Teardown identify autonomous-agent execution paths inside a repository?</li>
+<li>- Should Adhesion include deployment-class-specific test suites?</li>
+<li>- Should Crosslink be permitted to invoke autonomous remediation, or only coordinate/approve it?</li>
+</ul>
+<hr>
+<h1 id='72-side-quest-follow-up-ideas'>72. Side Quest Follow-Up Ideas</h1>
+<p>Possible future iterations:</p>
+<ul>
+<li>- Build a timeline graphic from ancient governance → corporate governance → IT → cyber → AI.</li>
+<li>- Compare <strong>ISO 37000 / ISO 38500 / COBIT / NIST CSF / NIST AI RMF</strong> against the family model.</li>
+<li>- Formalize the <strong>Governance Gradient</strong> as a BaseCoat schema.</li>
+<li>- Formalize <strong>Authority → Policy → Control → Enforcement → Evidence → Assurance</strong> in Binder.</li>
+<li>- Add a governance-capacity model for choosing between documentation, automation, workflow, and architectural prevention.</li>
+<li>- Define independence requirements for validators and auditors.</li>
+<li>- Define a human-accountability model for autonomous agents.</li>
+</ul>
+<hr>
+<h1 id='basecoat-alignment-decisions'>BaseCoat Alignment Decisions</h1>
+<p>The following clarifications are now part of the working architecture:</p>
+<div class='table-wrap'><table><thead><tr><th>Decision</th><th>Working position</th></tr></thead><tbody>
+<tr><td>BaseCoat scope</td><td>Shared operating layer for governed GitHub Copilot work</td></tr>
+<tr><td>BaseCoat primitives</td><td>Agent, Skill, Instruction, Prompt</td></tr>
+<tr><td>BaseCoat operating model</td><td>Guardrails Plane + Visibility Plane</td></tr>
+<tr><td>Wider family architecture</td><td>Control Plane + Execution Plane</td></tr>
+<tr><td>Binder</td><td>Proposed extraction/generalization of shared contracts with roots in BaseCoat</td></tr>
+<tr><td>Family naming</td><td>Coatings/manufacturing metaphor is allowed at the family architecture level</td></tr>
+<tr><td>BaseCoat user vocabulary</td><td>Prefer GitHub / SDLC-native terms for day-to-day product interaction</td></tr>
+<tr><td>Proof relationship</td><td>Proof generalizes and correlates evidence; BaseCoat retains repository-native evidence</td></tr>
+<tr><td>Shearing Layers</td><td>Preserve BaseCoat&#x27;s Site / Structure / Skin / Services / Space Plan / Stuff vocabulary; use family pace layers as an interpretation</td></tr>
+</tbody></table></div>
+<h2 id='updated-near-term-implication'>Updated near-term implication</h2>
+<p>Before extracting Binder, document the existing cross-product contracts in BaseCoat and identify which ones truly belong at the family level.</p>
+<p>A safer sequence is:</p>
+<pre><code class="language-text">1. Inventory existing BaseCoat shared contracts
+2. Identify consumers in Sheen and Adhesion
+3. Define stable family interfaces
+4. Preserve backward compatibility
+5. Extract only the contracts with multiple durable owners
+6. Leave BaseCoat-specific GitHub/Copilot behavior in BaseCoat</code></pre>
+<p>This avoids creating Binder as an abstract platform before there is evidence that a contract is genuinely shared.</p></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

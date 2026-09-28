@@ -1,112 +1,1135 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Governance is the system that makes organizational intent operable.">
-  <title>Product Family · AI SDLC Governance</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body data-page="family">
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
-      <span class="brand-mark">BC</span>
-      <span>
-        <strong>AI SDLC Governance</strong>
-        <small>working architecture</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
-      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
-    </div>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
-<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product Family · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="family"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
 <a class="nav-link" data-page="family" href="family.html">Product Family</a>
-<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
 <a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
-<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
-<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
-<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
-<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
-      </nav>
-      <div class="sidebar-note">
-        <span class="status-dot"></span>
-        Living design system
-      </div>
-    </aside>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='product-family'>Product Family</h1>
+<p>The current and candidate product family, responsibilities, naming, and family architecture.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='2-current-and-candidate-product-family'>2. Current and Candidate Product Family</h1>
+<div class='table-wrap'><table><thead><tr><th>Product</th><th>Working role</th><th>Primary verb</th><th>Core primitive</th><th>Status</th></tr></thead><tbody>
+<tr><td><strong>Binder</strong></td><td>Shared family substrate / contracts</td><td>Connect</td><td>Manifest / schema / identity</td><td>Candidate</td></tr>
+<tr><td><strong>BaseCoat</strong></td><td>Shared operating layer for governed GitHub Copilot work</td><td>Govern</td><td>Agent / skill / instruction / prompt</td><td>Existing</td></tr>
+<tr><td><strong>Adhesion</strong></td><td>Testing, validation, evals</td><td>Verify</td><td>Test / assertion / evaluation</td><td>Existing</td></tr>
+<tr><td><strong>Sheen</strong></td><td>Design governance overlay for GitHub Copilot</td><td>Experience</td><td>Token / design rule / skill / agent</td><td>Existing</td></tr>
+<tr><td><strong>Batchbook</strong></td><td>Enterprise catalog of governed applications</td><td>Know</td><td>Entity / record</td><td>Preferred name</td></tr>
+<tr><td><strong>Snitch</strong></td><td>Discovery and intelligence</td><td>Discover</td><td>Observation</td><td>Existing idea</td></tr>
+<tr><td><strong>Teardown</strong></td><td>Repo/app reverse engineering</td><td>Understand</td><td>Component / relationship</td><td>Existing idea</td></tr>
+<tr><td><strong>Crosslink</strong></td><td>Incident coordination / call tree</td><td>Coordinate</td><td>Escalation / responder</td><td>Candidate rename</td></tr>
+<tr><td><strong>Proof</strong></td><td>Evidence, provenance, attestations</td><td>Prove</td><td>Evidence / attestation / stamp</td><td>Candidate</td></tr>
+<tr><td><strong>Stencil</strong></td><td>Policy targeting / scoping</td><td>Apply</td><td>Scope / selector</td><td>Candidate</td></tr>
+<tr><td><strong>Formula</strong></td><td>Approved composition / supply-chain recipe</td><td>Compose</td><td>Composition</td><td>Candidate</td></tr>
+<tr><td><strong>Blueprint</strong></td><td>Intended architecture</td><td>Architect</td><td>Architecture contract</td><td>Candidate</td></tr>
+<tr><td><strong>Seal</strong></td><td>Security posture / hardening</td><td>Protect</td><td>Security control set</td><td>Candidate</td></tr>
+<tr><td><strong>Reclaim</strong></td><td>Retirement / deprecation</td><td>Retire</td><td>Lifecycle action</td><td>Candidate</td></tr>
+</tbody></table></div>
+<h3 id='naming-direction'>Naming direction</h3>
+<p>The current family works well when names remain short, concrete, industrial, and related to coatings/materials rather than generic enterprise software terms.</p>
+<hr>
+<h1 id='3-naming-system-swatch-deck-palette'>3. Naming System: Swatch, Deck, Palette</h1>
+<h2 id='decision-candidate'>Decision candidate</h2>
+<p>Use <strong>Swatch</strong> as the application/service catalog product.</p>
+<p>Inside Swatch:</p>
+<ul>
+<li>- <strong>Swatch</strong> — an individual application, service, repo, or governed entity record.</li>
+<li>- <strong>Deck</strong> — a collection of swatches grouped by ownership, platform, business unit, compliance boundary, or another durable classification.</li>
+<li>- <strong>Palette</strong> — a curated or dynamic subset selected for a purpose.</li>
+</ul>
+<h3 id='examples'>Examples</h3>
+<pre><code class="language-text">Swatch
+  ├── Claims Portal
+  ├── Claims API
+  └── Claims AI Service
 
-    <main class="content">
-      <div class="page-head">
-        <p class="eyebrow">Products</p>
-        <h1>Product Family</h1>
-      </div>
-      
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Product architecture</p>
-    <h2>A family of specialized capabilities on shared contracts</h2>
-    <p>The products should remain independently useful, but share identity, policy, evidence, vocabulary, and lifecycle semantics through Binder.</p>
-  </div>
+Deck: Manufacturing Apps
+Deck: Customer-Facing Apps
+Deck: CUI Workloads
 
-  <div class="family-map">
-    <div class="family-layer"><span>Shared substrate</span><strong>Binder</strong><em>Connect</em></div>
-    <div class="family-row">
-      <div><strong>Basecoat</strong><span>Govern engineering</span></div>
-      <div><strong>Sheen</strong><span>Govern experience</span></div>
-      <div><strong>Adhesion</strong><span>Verify behavior & quality</span></div>
-    </div>
-    <div class="family-layer"><span>Enterprise catalog</span><strong>Batchbook</strong><em>Catalog</em></div>
-    <div class="family-row">
-      <div><strong>Snitch</strong><span>Discover</span></div>
-      <div><strong>Teardown</strong><span>Understand</span></div>
-      <div><strong>Crosslink</strong><span>Coordinate</span></div>
-      <div><strong>Proof</strong><span>Prove</span></div>
-    </div>
-  </div>
-</section>
+Palette: PCI Applications
+Palette: AI-enabled Applications
+Palette: Apps using Model X</code></pre>
+<p>Natural language:</p>
+<ul>
+<li>- “Add this application to Swatch.”</li>
+<li>- “Put it in the CUI Deck.”</li>
+<li>- “Show me the Production Deck.”</li>
+<li>- “Create a Palette of applications using this model.”</li>
+</ul>
+<hr>
+<h1 id='4-family-architecture'>4. Family Architecture</h1>
+<pre><code class="language-text">                         BINDER
+                 Shared Family Contract
+                           |
+       +-------------------+-------------------+
+       |                   |                   |
+    BaseCoat             Sheen             Adhesion
+    Engineering          Experience        Verification
+    Governance           Governance        Governance
+       |                   |                   |
+       +-------------------+-------------------+
+                           |
+                         Swatch
+                 Enterprise App Graph
+                           |
+            +--------------+--------------+
+            |              |              |
+         Snitch         Teardown         Crosslink
+        Discover        Understand      Coordinate
+            |              |              |
+            +--------------+--------------+
+                           |
+                         Proof
+                          Prove</code></pre>
+<h2 id='interpretation'>Interpretation</h2>
+<ul>
+<li>- <strong>Binder</strong> defines family-wide contracts.</li>
+<li>- <strong>Swatch</strong> becomes the shared application/service graph and canonical record.</li>
+<li>- <strong>Snitch</strong> feeds observations into Swatch.</li>
+<li>- <strong>Teardown</strong> explains the internal structure of repositories/apps and enriches Swatch.</li>
+<li>- <strong>BaseCoat</strong>, <strong>Sheen</strong>, and <strong>Adhesion</strong> apply specialized governance.</li>
+<li>- <strong>Crosslink</strong> resolves humans, escalation paths, and incident coordination.</li>
+<li>- <strong>Proof</strong> stores evidence and provenance.</li>
+</ul>
+<hr>
+<h1 id='5-shared-family-substrate-binder'>5. Shared Family Substrate — Binder</h1>
+<h2 id='purpose'>Purpose</h2>
+<p>Binder should own mechanics that every sibling needs, so BaseCoat does not become the de facto parent implementation.</p>
+<h3 id='candidate-binder-responsibilities'>Candidate Binder responsibilities</h3>
+<pre><code class="language-text">Binder
+ ├── family-manifest.schema.json
+ ├── product-manifest.schema.json
+ ├── guidance-lock.schema.json
+ ├── evidence.schema.json
+ ├── control.schema.json
+ ├── exception.schema.json
+ ├── entity-id.schema.json
+ ├── sync
+ ├── rollback
+ ├── ownership
+ ├── validation
+ └── schema versioning</code></pre>
+<h3 id='binder-should-answer'>Binder should answer</h3>
+<ul>
+<li>- What products belong to this family?</li>
+<li>- Which namespaces do they own?</li>
+<li>- How are artifacts identified?</li>
+<li>- How are schemas versioned?</li>
+<li>- How are products synchronized?</li>
+<li>- How are ownership conflicts prevented?</li>
+<li>- How are upgrades and rollbacks handled?</li>
+<li>- How is evidence referenced?</li>
+<li>- How are cross-product links represented?</li>
+</ul>
+<h3 id='open-question'>Open question</h3>
+<p>Should Binder be:</p>
+<ol>
+<li>1. a standalone repository,</li>
+<li>2. a package/SDK,</li>
+<li>3. a set of schemas and CLI tools,</li>
+<li>4. or all three?</li>
+</ol>
+<hr>
+<h1 id='6-basecoat-engineering-governance'>6. BaseCoat — Engineering Governance</h1>
+<h2 id='role'>Role</h2>
+<p>BaseCoat governs <strong>how engineering work is performed</strong>.</p>
+<p>It should remain responsible for:</p>
+<ul>
+<li>- shared development guidance</li>
+<li>- enterprise engineering controls</li>
+<li>- AI coding guidance</li>
+<li>- secure defaults</li>
+<li>- agent/instruction governance</li>
+<li>- policy intent</li>
+<li>- distribution of engineering guidance</li>
+<li>- versioned governance artifacts</li>
+<li>- mappings from internal controls to external frameworks</li>
+</ul>
+<h2 id='boundary'>Boundary</h2>
+<p>BaseCoat should <strong>not</strong> become the canonical database for:</p>
+<ul>
+<li>- application inventory</li>
+<li>- incident response</li>
+<li>- runtime telemetry</li>
+<li>- UX design tokens</li>
+<li>- test results</li>
+<li>- SBOMs</li>
+<li>- evidence records</li>
+<li>- ownership records</li>
+</ul>
+<p>It may orchestrate or query those domains through sibling products.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-text">BaseCoat asks:
+&quot;What controls apply to app:claims-portal?&quot;
 
-<section>
-  <div class="card-grid three">
-    <div class="card product"><span class="pill">Core</span><h3>Binder</h3><p>Family manifests, namespaces, schemas, identity, sync/rollback, version compatibility, evidence references, and ownership boundaries.</p></div>
-    <div class="card product"><span class="pill">Govern</span><h3>Basecoat</h3><p>Engineering policy, reusable instructions, AI-SDLC controls, secure defaults, guidance distribution, control mappings, and governance orchestration.</p></div>
-    <div class="card product"><span class="pill">Experience</span><h3>Sheen</h3><p>Design tokens, semantic tokens, themes, accessibility, interaction patterns, design guidance, and UI conformance.</p></div>
-    <div class="card product"><span class="pill">Verify</span><h3>Adhesion</h3><p>Tests and evaluations across functional, security, accessibility, performance, policy, architecture, model, prompt, and agent behavior.</p></div>
-    <div class="card product"><span class="pill">Catalog</span><h3>Batchbook</h3><p>Enterprise catalog of governed applications. Each Batch carries identity, graph, composition, controls, evidence, lifecycle, and ownership.</p></div>
-    <div class="card product"><span class="pill">Discover</span><h3>Snitch</h3><p>Collectors and observations. Finds unknown, unmanaged, changed, or contradictory assets without pretending discovery equals canonical truth.</p></div>
-    <div class="card product"><span class="pill">Understand</span><h3>Teardown</h3><p>Reverse-engineers repositories, applications, containers, SBOMs, IaC, AI components, topology, and Genealogy.</p></div>
-    <div class="card product"><span class="pill">Coordinate</span><h3>Crosslink</h3><p>Call trees, on-call, responders, escalation paths, acknowledgements, incident bridges, business owners, and vendor coordination.</p></div>
-    <div class="card product"><span class="pill">Prove</span><h3>Proof</h3><p>Evidence, provenance, Stamps, attestations, CoA generation, confidence, assurance, integrity, and evidence validity.</p></div>
-  </div>
-</section>
+Swatch provides:
+classification + ownership + profiles
 
-<section class="panel">
-  <p class="eyebrow">Product boundary rule</p>
-  <h2>Do not turn every concept into another product.</h2>
-  <p>Stencil, Formula, Blueprint, Reclaim, Stamp, CoA, Genealogy, Notary/Witness, and deployment classes may remain primitives or services unless independent runtime ownership creates real value.</p>
-</section>
+BaseCoat returns:
+effective engineering controls</code></pre>
+<hr>
+<h1 id='7-sheen-experience-governance'>7. Sheen — Experience Governance</h1>
+<h2 id='role'>Role</h2>
+<p>Sheen owns UI/UX governance and should remain independently useful.</p>
+<h3 id='likely-primitives'>Likely primitives</h3>
+<ul>
+<li>- design tokens</li>
+<li>- semantic tokens</li>
+<li>- themes</li>
+<li>- accessibility requirements</li>
+<li>- interaction patterns</li>
+<li>- UX conventions</li>
+<li>- component guidance</li>
+<li>- conformance tests</li>
+</ul>
+<h3 id='framework-adjacency'>Framework adjacency</h3>
+<ul>
+<li>- WCAG</li>
+<li>- Section 508</li>
+<li>- EN 301 549</li>
+<li>- ISO 9241</li>
+<li>- design token specifications</li>
+<li>- enterprise design systems</li>
+</ul>
+<h3 id='architectural-lesson'>Architectural lesson</h3>
+<p>Sheen is a good model for sibling products because it has a domain-specific primitive rather than merely being a set of BaseCoat instructions.</p>
+<hr>
+<h1 id='8-adhesion-validation-and-evaluation'>8. Adhesion — Validation and Evaluation</h1>
+<h2 id='role'>Role</h2>
+<p>Adhesion should be broader than unit/integration testing.</p>
+<h3 id='candidate-validation-domains'>Candidate validation domains</h3>
+<ul>
+<li>- unit tests</li>
+<li>- integration tests</li>
+<li>- contract tests</li>
+<li>- security tests</li>
+<li>- accessibility tests</li>
+<li>- performance tests</li>
+<li>- policy validation</li>
+<li>- architecture conformance</li>
+<li>- AI evaluations</li>
+<li>- prompt-injection tests</li>
+<li>- hallucination tests</li>
+<li>- model regression</li>
+<li>- agent/tool behavior</li>
+<li>- response safety</li>
+<li>- deterministic rules</li>
+</ul>
+<h3 id='core-primitive'>Core primitive</h3>
+<pre><code class="language-text">Evaluation
+ ├── subject
+ ├── assertion
+ ├── method
+ ├── expected result
+ ├── actual result
+ ├── evidence
+ └── timestamp</code></pre>
+<h3 id='framework-adjacency'>Framework adjacency</h3>
+<ul>
+<li>- OWASP ASVS</li>
+<li>- OWASP GenAI</li>
+<li>- NIST AI RMF</li>
+<li>- NIST SSDF</li>
+<li>- PCI DSS secure development requirements</li>
+</ul>
+<hr>
+<h1 id='9-swatch-enterprise-application-graph'>9. Swatch — Enterprise Application Graph</h1>
+<h2 id='role'>Role</h2>
+<p>Swatch should be more than a traditional CMDB.</p>
+<p>It should answer:</p>
+<blockquote>What do we have, who owns it, what is it connected to, what classifications apply, and what other entities depend on it?</blockquote>
+<h2 id='candidate-graph'>Candidate graph</h2>
+<pre><code class="language-text">Organization
+   |
+Portfolio
+   |
+Product
+   |
+Application
+   |
+System
+   |
+Component
+   |
+Repository
+   |
+Build
+   |
+Artifact
+   |
+Deployment</code></pre>
+<p>Relationships can extend to:</p>
+<pre><code class="language-text">Team
+Owner
+On-call team
+Cloud subscription
+Environment
+Database
+API
+Package
+Container
+Data source
+Model
+Model version
+Embedding model
+Vector store
+Prompt
+Agent
+Skill
+MCP server
+Tool
+Workflow
+Secret reference
+Certificate
+DNS name
+Cost center
+Business capability
+Data classification
+Compliance profile</code></pre>
+<h2 id='adjacent-products'>Adjacent products</h2>
+<ul>
+<li>- ServiceNow CMDB / CSDM</li>
+<li>- Backstage Software Catalog</li>
+<li>- Atlassian Compass</li>
+<li>- LeanIX</li>
+<li>- Ardoq</li>
+</ul>
+<h2 id='differentiator'>Differentiator</h2>
+<p>Traditional CMDB + software catalog + AI component graph + governance context.</p>
+<hr>
+<h1 id='10-snitch-discovery-and-intelligence'>10. Snitch — Discovery and Intelligence</h1>
+<h2 id='role'>Role</h2>
+<p>Snitch should answer:</p>
+<blockquote>What exists that Swatch does not know about, or what changed from the expected state?</blockquote>
+<h2 id='important-boundary'>Important boundary</h2>
+<p>Snitch produces <strong>observations</strong>, not canonical truth.</p>
+<h3 id='example-observation'>Example observation</h3>
+<pre><code class="language-yaml">source: github
+observed_at: 2026-09-26T13:00:00-04:00
+type: repository
 
-    </main>
+repository:
+  org: contoso
+  name: claims-ai
 
-    
-  </div>
+signals:
+  language: python
+  dockerfile: true
+  external_ai_endpoint: true
+  mcp_server: true
 
-  <dialog id="searchDialog">
-    <form method="dialog" class="search-panel">
-      <div class="search-head">
-        <strong>Search the architecture</strong>
-        <button value="close" aria-label="Close search">Close</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </form>
-  </dialog>
+confidence: 0.98</code></pre>
+<p>Swatch then reconciles observations from multiple sources.</p>
+<h3 id='candidate-sources'>Candidate sources</h3>
+<ul>
+<li>- GitHub</li>
+<li>- Azure</li>
+<li>- AWS</li>
+<li>- GCP</li>
+<li>- Kubernetes</li>
+<li>- container registries</li>
+<li>- DNS</li>
+<li>- Entra ID / IAM systems</li>
+<li>- ServiceNow</li>
+<li>- observability platforms</li>
+<li>- SaaS APIs</li>
+<li>- model endpoints</li>
+<li>- MCP registries</li>
+</ul>
+<hr>
+<h1 id='11-teardown-reverse-engineering-and-graph-generation'>11. Teardown — Reverse Engineering and Graph Generation</h1>
+<h2 id='role'>Role</h2>
+<p>Teardown should answer:</p>
+<blockquote>What is this thing actually made of?</blockquote>
+<p>It should accept more than repositories over time.</p>
+<h3 id='candidate-inputs'>Candidate inputs</h3>
+<ul>
+<li>- repository</li>
+<li>- application</li>
+<li>- container image</li>
+<li>- deployment</li>
+<li>- SBOM</li>
+<li>- architecture document</li>
+<li>- IaC package</li>
+</ul>
+<h3 id='candidate-output-graph'>Candidate output graph</h3>
+<pre><code class="language-text">Repository
+ |
+ +-- application
+ +-- service
+ +-- API
+ +-- Dockerfile
+ +-- Terraform
+ +-- package manifests
+ +-- CI/CD workflows
+ +-- databases
+ +-- model endpoints
+ +-- agents
+ +-- prompts
+ +-- MCP servers
+ +-- external APIs
+ +-- secrets references
+ +-- data flows</code></pre>
+<h3 id='standards-to-reuse'>Standards to reuse</h3>
+<ul>
+<li>- SPDX</li>
+<li>- CycloneDX</li>
+<li>- SLSA provenance</li>
+</ul>
+<h3 id='ai-specific-extension'>AI-specific extension</h3>
+<p>Teardown should recognize:</p>
+<ul>
+<li>- models</li>
+<li>- model providers</li>
+<li>- model versions</li>
+<li>- prompts</li>
+<li>- agents</li>
+<li>- skills</li>
+<li>- MCP servers</li>
+<li>- tools</li>
+<li>- vector stores</li>
+<li>- embedding models</li>
+<li>- RAG sources</li>
+<li>- guardrails</li>
+<li>- AI evaluations</li>
+</ul>
+<hr>
+<h1 id='12-crosslink-incident-coordination'>12. Crosslink — Incident Coordination</h1>
+<h2 id='role'>Role</h2>
+<p>Crosslink is the product name for the incident coordination capability that began as the <strong>Call Tree</strong> concept.</p>
+<p>It should answer:</p>
+<blockquote>Who needs to respond, how do we reach them, what role do they have, and how do we coordinate the incident?</blockquote>
+<h3 id='capabilities'>Capabilities</h3>
+<ul>
+<li>- on-call resolution</li>
+<li>- escalation policies</li>
+<li>- call trees</li>
+<li>- bridge creation</li>
+<li>- responder acknowledgment</li>
+<li>- incident roles</li>
+<li>- business owner notification</li>
+<li>- executive escalation</li>
+<li>- vendor escalation</li>
+<li>- recurring status updates</li>
+<li>- post-incident handoff</li>
+</ul>
+<h3 id='incident-roles'>Incident roles</h3>
+<pre><code class="language-text">Incident Commander
+Technical Lead
+Communications Lead
+Business Owner
+Security
+Vendor
+Executive Liaison</code></pre>
+<h3 id='workflow'>Workflow</h3>
+<pre><code class="language-text">Incident created
+      ↓
+Impacted services resolved in Swatch
+      ↓
+Owners and on-call teams resolved
+      ↓
+Crosslink creates coordination channel / bridge
+      ↓
+Responders notified
+      ↓
+Non-acknowledgements escalated
+      ↓
+Roles tracked
+      ↓
+Resolution
+      ↓
+Post-incident review</code></pre>
+<h3 id='adjacent-products'>Adjacent products</h3>
+<ul>
+<li>- PagerDuty</li>
+<li>- ServiceNow Major Incident Management</li>
+<li>- incident.io</li>
+<li>- Rootly</li>
+<li>- Jira Service Management</li>
+<li>- Microsoft Teams</li>
+<li>- Slack</li>
+</ul>
+<hr>
+<h1 id='13-proof-evidence-and-provenance'>13. Proof — Evidence and Provenance</h1>
+<h2 id='role'>Role</h2>
+<p>Proof stores evidence, provenance, attestations, and conformance artifacts. It should not independently declare compliance.</p>
+<h3 id='core-model'>Core model</h3>
+<pre><code class="language-text">Control
+   ↓
+Policy
+   ↓
+Implementation
+   ↓
+Test
+   ↓
+Result
+   ↓
+Evidence
+   ↓
+Approval</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">subject: app:claims-portal
+control: BC-SCM-004
+assertion: pass
 
-  <script src="app.js"></script>
-</body>
-</html>
+evidence:
+  source: github
+  workflow: build.yml
+  run: 987324
+  commit: 5d7841f
+
+produced_by: adhesion
+observed_at: 2026-09-26
+expires_at: 2026-10-26</code></pre>
+<h3 id='adjacent-products'>Adjacent products</h3>
+<ul>
+<li>- ServiceNow GRC / IRM</li>
+<li>- Archer</li>
+<li>- Vanta</li>
+<li>- Drata</li>
+<li>- AuditBoard</li>
+</ul>
+<h3 id='useful-standards'>Useful standards</h3>
+<ul>
+<li>- OSCAL</li>
+<li>- in-toto / provenance concepts</li>
+<li>- SLSA attestations</li>
+</ul>
+<hr>
+<h1 id='20-candidate-product-names-to-reserve'>20. Candidate Product Names to Reserve</h1>
+<h2 id='strong-candidates'>Strong candidates</h2>
+<ul>
+<li>- <strong>Binder</strong> — shared family contracts</li>
+<li>- <strong>Swatch</strong> — application catalog / graph</li>
+<li>- <strong>Deck</strong> — durable grouping within Swatch</li>
+<li>- <strong>Palette</strong> — curated/dynamic subset within Swatch</li>
+<li>- <strong>Stencil</strong> — policy targeting / scope</li>
+<li>- <strong>Formula</strong> — approved composition</li>
+<li>- <strong>Crosslink</strong> — incident coordination</li>
+<li>- <strong>Proof</strong> — evidence / provenance</li>
+<li>- <strong>Blueprint</strong> — intended architecture</li>
+<li>- <strong>Seal</strong> — security / hardening</li>
+<li>- <strong>Reclaim</strong> — retirement / lifecycle</li>
+<li>- <strong>Substrate</strong> — platform/environment</li>
+<li>- <strong>Batch</strong> — release/provenance unit</li>
+<li>- <strong>Cure</strong> — readiness/maturity</li>
+<li>- <strong>Mask</strong> — exclusions/scoping</li>
+<li>- <strong>Finish</strong> — release readiness</li>
+</ul>
+<h2 id='names-already-established'>Names already established</h2>
+<ul>
+<li>- BaseCoat</li>
+<li>- Adhesion</li>
+<li>- Sheen</li>
+<li>- Snitch</li>
+<li>- Teardown</li>
+</ul>
+<hr>
+<h1 id='21-potential-product-boundaries'>21. Potential Product Boundaries</h1>
+<h2 id='build-as-first-class-products'>Build as first-class products</h2>
+<p>Likely strong candidates:</p>
+<ol>
+<li>1. BaseCoat</li>
+<li>2. Adhesion</li>
+<li>3. Sheen</li>
+<li>4. Swatch</li>
+<li>5. Snitch</li>
+<li>6. Teardown</li>
+<li>7. Crosslink</li>
+<li>8. Proof</li>
+<li>9. Binder</li>
+</ol>
+<h2 id='consider-as-shared-services-concepts-before-making-products'>Consider as shared services / concepts before making products</h2>
+<ul>
+<li>- Stencil</li>
+<li>- Formula</li>
+<li>- Blueprint</li>
+<li>- Seal</li>
+<li>- Reclaim</li>
+<li>- Gauge</li>
+<li>- Cost / FinOps</li>
+<li>- runtime observability</li>
+</ul>
+<h3 id='reasoning'>Reasoning</h3>
+<p>Avoid product sprawl. Some concepts may be better expressed as:</p>
+<ul>
+<li>- Swatch entity types,</li>
+<li>- BaseCoat control domains,</li>
+<li>- Teardown outputs,</li>
+<li>- Binder primitives,</li>
+<li>- or integrations with existing products.</li>
+</ul>
+<hr>
+<h1 id='73-naming-update-crosslink'>73. Naming Update — Crosslink</h1>
+<p><strong>Decision:</strong> Use <strong>Crosslink</strong> as the product name for incident and operational coordination.</p>
+<h2 id='why-crosslink-fits'>Why Crosslink fits</h2>
+<p>In coatings and polymer chemistry, crosslinking connects polymer chains into a stronger network.</p>
+<p>That maps naturally to incident and operational coordination:</p>
+<pre><code class="language-text">Incident / Event
+      |
+   Crosslink
+      |
+  +---+-------------+-------------+
+  |                 |             |
+Owner           On-call       Security
+  |                 |             |
+Business        Technical       Vendor
+Owner           Responder       Support</code></pre>
+<p>Crosslink is responsible for connecting the <strong>right people, roles, teams, and escalation paths</strong> around a governed application.</p>
+<h3 id='product-role'>Product role</h3>
+<blockquote><strong>Crosslink — Coordinate</strong></blockquote>
+<p>Candidate capabilities:</p>
+<ul>
+<li>- call trees</li>
+<li>- on-call resolution</li>
+<li>- escalation paths</li>
+<li>- responder acknowledgement</li>
+<li>- bridge/channel coordination</li>
+<li>- incident roles</li>
+<li>- business-owner notification</li>
+<li>- vendor escalation</li>
+<li>- status communications</li>
+<li>- post-incident handoff</li>
+</ul>
+<h3 id='boundary'>Boundary</h3>
+<p>Crosslink coordinates response.</p>
+<p>It should not become the primary:</p>
+<ul>
+<li>- observability platform,</li>
+<li>- incident-detection engine,</li>
+<li>- application inventory,</li>
+<li>- or diagnostic system.</li>
+</ul>
+<p>Those capabilities should be supplied by integrations, Snitch, Teardown, and Swatch/Batch context.</p>
+<hr>
+<h1 id='74-rethinking-batch-a-governed-application-package'>74. Rethinking Batch — A Governed Application Package</h1>
+<p>A stronger interpretation of <strong>Batch</strong> is emerging.</p>
+<p>Instead of treating Batch only as an evidence store, a <strong>Batch can represent one complete governed application unit</strong>.</p>
+<p>A Batch brings together the material needed to understand, govern, validate, operate, and prove one application.</p>
+<pre><code class="language-text">Batch: Claims Processing
+│
+├── Identity / Manifest
+│
+├── Swatch
+│   ├── ownership
+│   ├── classification
+│   ├── business context
+│   ├── lifecycle
+│   └── profiles
+│
+├── Teardown Graph
+│   ├── repositories
+│   ├── services
+│   ├── APIs
+│   ├── packages
+│   ├── models
+│   ├── agents
+│   ├── MCP servers
+│   └── dependencies
+│
+├── Blueprint / Formula
+│   ├── intended architecture
+│   └── approved composition
+│
+├── BaseCoat
+│   ├── applicable controls
+│   ├── policy versions
+│   └── exceptions
+│
+├── Adhesion
+│   ├── tests
+│   ├── evaluations
+│   └── results
+│
+├── Sheen
+│   └── experience/design conformance
+│
+├── Crosslink
+│   ├── owners
+│   ├── responders
+│   └── escalation paths
+│
+└── Proof / Provenance
+    ├── builds
+    ├── SBOM
+    ├── attestations
+    ├── approvals
+    ├── deployments
+    └── history</code></pre>
+<p>This makes <strong>Batch</strong> analogous to a manufactured coating batch:</p>
+<ul>
+<li>- it has an identity,</li>
+<li>- a composition,</li>
+<li>- a specification,</li>
+<li>- inputs,</li>
+<li>- test results,</li>
+<li>- provenance,</li>
+<li>- disposition,</li>
+<li>- and history.</li>
+</ul>
+<p>The application is not just a record in a CMDB. It is a <strong>governed product instance with traceable composition and evidence</strong>.</p>
+<hr>
+<h1 id='75-what-is-a-catalog-of-batches'>75. What Is a Catalog of Batches?</h1>
+<p>In manufacturing, collections of batch records are commonly described using terms such as:</p>
+<ul>
+<li>- <strong>batch register</strong></li>
+<li>- <strong>batch log</strong></li>
+<li>- <strong>batch history</strong></li>
+<li>- <strong>batch record repository</strong></li>
+<li>- <strong>lot history / lot genealogy</strong></li>
+</ul>
+<p>For this product family, the strongest naming candidates are:</p>
+<div class='table-wrap'><table><thead><tr><th>Candidate</th><th>Meaning</th><th>Fit</th></tr></thead><tbody>
+<tr><td><strong>Batchbook</strong></td><td>A book/catalog containing batches</td><td>Strongest family/product name</td></tr>
+<tr><td><strong>Batch Register</strong></td><td>Formal register of batches</td><td>Precise, enterprise, less playful</td></tr>
+<tr><td><strong>Batch Log</strong></td><td>Chronological record</td><td>Better for history than catalog/navigation</td></tr>
+<tr><td><strong>Batch Library</strong></td><td>Collection of reusable/known batches</td><td>Familiar, but generic</td></tr>
+<tr><td><strong>Batch Deck</strong></td><td>A grouped collection</td><td>Fits Swatch/Deck vocabulary but less manufacturing-authentic</td></tr>
+<tr><td><strong>Lotbook</strong></td><td>Collection of lots</td><td>Strong traceability metaphor, less intuitive in software</td></tr>
+<tr><td><strong>Formula Book</strong></td><td>Traditional collection of formulations</td><td>Better for approved recipes than actual application instances</td></tr>
+</tbody></table></div>
+<h2 id='current-preferred-model'>Current preferred model</h2>
+<h3 id='batchbook'><strong>Batchbook</strong></h3>
+<p>The enterprise catalog / system of record.</p>
+<h3 id='batch'><strong>Batch</strong></h3>
+<p>One governed application.</p>
+<h3 id='swatch'><strong>Swatch</strong></h3>
+<p>The compact identity/profile/manifest view of that Batch.</p>
+<h3 id='deck'><strong>Deck</strong></h3>
+<p>A durable grouping of Batches.</p>
+<h3 id='palette'><strong>Palette</strong></h3>
+<p>A curated or dynamic selection of Batches.</p>
+<pre><code class="language-text">                    Batchbook
+                        |
+        +---------------+---------------+
+        |               |               |
+      Batch           Batch           Batch
+   Claims App       ERP Service      AI Portal
+        |
+        +-- Swatch
+        +-- Graph
+        +-- Formula
+        +-- Controls
+        +-- Tests
+        +-- Evidence
+        +-- Crosslink</code></pre>
+<p>This resolves an important naming issue:</p>
+<blockquote><strong>Swatch does not have to be the entire catalog.</strong></blockquote>
+<p>A Swatch can be the concise, recognizable representation of one Batch, while <strong>Batchbook</strong> is the larger enterprise catalog and graph.</p>
+<hr>
+<h1 id='76-batchbook-vocabulary'>76. Batchbook Vocabulary</h1>
+<p>A potential domain vocabulary:</p>
+<pre><code class="language-text">Batchbook
+    Enterprise catalog of governed applications
+
+Batch
+    One governed application/product instance
+
+Swatch
+    Human- and machine-readable application profile
+
+Deck
+    Durable organizational grouping
+
+Palette
+    Dynamic/curated selection
+
+Formula
+    Approved component/composition definition
+
+Blueprint
+    Intended architecture
+
+Teardown
+    Discovered architecture/composition graph
+
+Stamp
+    A signed/approved attestation or validation result
+
+Batch Record
+    Historical evidence package for a particular version/release
+
+Lot
+    Optional immutable artifact/build/deployment grouping</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-text">Batchbook
+  |
+  +-- Batch: claims-processing
+        |
+        +-- Swatch: claims-processing.yaml
+        |
+        +-- Blueprint: claims-v4
+        |
+        +-- Formula: python-api-ai-v3
+        |
+        +-- Teardown:
+        |      actual application graph
+        |
+        +-- BaseCoat:
+        |      142 applicable controls
+        |
+        +-- Adhesion:
+        |      latest evaluation results
+        |
+        +-- Crosslink:
+        |      claims-platform responders
+        |
+        +-- Batch Records:
+               release 2026.09.1
+               release 2026.09.2
+               release 2026.09.3</code></pre>
+<p>This distinction also prevents the word <strong>Batch</strong> from being overloaded as both the current application and every individual build.</p>
+<p>The <strong>Batch</strong> is the governed application.</p>
+<p>A <strong>Batch Record</strong> captures a point-in-time release/build/evidence state.</p>
+<hr>
+<h1 id='77-revised-family-map'>77. Revised Family Map</h1>
+<p>With the naming changes and the stronger Batch model:</p>
+<pre><code class="language-text">                         BINDER
+                 Shared Family Contract
+                           |
+       +-------------------+-------------------+
+       |                   |                   |
+    BaseCoat             Sheen             Adhesion
+     Govern             Experience           Verify
+       |                   |                   |
+       +-------------------+-------------------+
+                           |
+                       BATCHBOOK
+                  Enterprise Catalog
+                           |
+                         Batch
+              One Governed Application
+                           |
+          +----------------+----------------+
+          |                |                |
+        Swatch          Teardown        Crosslink
+        Profile         Understand      Coordinate
+          |                |                |
+          +----------------+----------------+
+                           |
+                         Snitch
+                        Discover
+                           |
+                       Observations</code></pre>
+<p>Each Batch can also contain or reference:</p>
+<pre><code class="language-text">Blueprint
+Formula
+Controls
+Exceptions
+Evaluations
+Evidence
+Attestations
+Deployment history
+Lifecycle state</code></pre>
+<h2 id='working-verbs'>Working verbs</h2>
+<ul>
+<li>- <strong>Binder — Connect</strong></li>
+<li>- <strong>BaseCoat — Govern</strong></li>
+<li>- <strong>Sheen — Experience</strong></li>
+<li>- <strong>Adhesion — Verify</strong></li>
+<li>- <strong>Batchbook — Catalog</strong></li>
+<li>- <strong>Batch — Represent</strong></li>
+<li>- <strong>Swatch — Identify</strong></li>
+<li>- <strong>Snitch — Discover</strong></li>
+<li>- <strong>Teardown — Understand</strong></li>
+<li>- <strong>Crosslink — Coordinate</strong></li>
+</ul>
+<hr>
+<h1 id='110-updated-family-vocabulary'>110. Updated Family Vocabulary</h1>
+<p>The current working vocabulary is:</p>
+<pre><code class="language-text">Binder      Connect the family
+BaseCoat    Govern engineering
+Sheen       Govern experience
+Adhesion    Verify behavior and quality
+
+Batchbook   Catalog governed applications
+Batch       One governed application
+Swatch      Identify/profile the Batch
+
+Snitch      Discover observations
+Teardown    Understand composition and Genealogy
+Crosslink   Coordinate people and incidents
+
+Proof       Preserve evidence and provenance
+Stamp       Assertion / attestation marker
+CoA         Point-in-time conformance summary
+Notary      Verify identity, signatures, integrity, and provenance
+Genealogy   Trace component lineage
+
+Blueprint   Intended architecture
+Formula     Approved composition
+Reclaim     Lifecycle / retirement</code></pre>
+<p>A compact lifecycle:</p>
+<pre><code class="language-text">Batchbook
+   ↓
+Batch
+   ↓
+Swatch
+   ↓
+BaseCoat
+   ↓
+Build
+   ↓
+Teardown / Genealogy
+   ↓
+Adhesion
+   ↓
+Proof
+   ↓
+Stamp
+   ↓
+CoA
+   ↓
+Deploy
+   ↓
+Crosslink / Operate
+   ↓
+Reclaim</code></pre>
+<hr>
+<h1 id='basecoat-alignment'>BaseCoat Alignment</h1>
+<h2 id='canonical-product-description'>Canonical product description</h2>
+<p>Within this family, <strong>BaseCoat</strong> should be described consistently with the public BaseCoat repository:</p>
+<blockquote><strong>BaseCoat is the shared operating layer for governed GitHub Copilot work.</strong></blockquote>
+<p>BaseCoat provides composable <strong>agents, skills, instructions, and prompts</strong> that route AI-assisted software work through intent, evidence, validation, approval boundaries, and repository-native workflows.</p>
+<p>This is narrower and more useful than describing BaseCoat as the entire enterprise governance control plane.</p>
+<p>The family-level architecture is broader:</p>
+<pre><code class="language-text">AI SDLC Governance Family
+│
+├── BaseCoat
+│   └── governed AI-assisted engineering
+├── Sheen
+│   └── experience governance
+├── Adhesion
+│   └── validation and evaluation
+├── Batchbook
+│   └── canonical application catalog
+├── Snitch / Teardown
+│   └── discovery, topology, Genealogy
+├── Crosslink
+│   └── operational coordination
+└── Proof
+    └── evidence and provenance</code></pre>
+<p>BaseCoat may contain workflows or agents that operate across these domains, but the durable domain model and system of record should remain with the sibling that owns that domain.</p>
+<p>Example:</p>
+<pre><code class="language-text">BaseCoat incident-response agent
+        ↓
+uses / invokes
+Crosslink capabilities
+
+BaseCoat application-inventory agent
+        ↓
+produces observations for
+Snitch / Teardown / Batchbook
+
+BaseCoat UX workflow
+        ↓
+uses
+Sheen contracts
+
+BaseCoat testing workflow
+        ↓
+invokes
+Adhesion evaluations</code></pre>
+<h2 id='four-basecoat-primitives'>Four BaseCoat primitives</h2>
+<p>The current BaseCoat model is intentionally built around four native primitives:</p>
+<div class='table-wrap'><table><thead><tr><th>Primitive</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Agent</strong></td><td>Who / how the work is performed</td></tr>
+<tr><td><strong>Skill</strong></td><td>Reusable knowledge and procedures</td></tr>
+<tr><td><strong>Instruction</strong></td><td>Ambient rules and standards</td></tr>
+<tr><td><strong>Prompt</strong></td><td>Structured invocation</td></tr>
+</tbody></table></div>
+<p>The <code>/basecoat</code> router sits above these primitives as the common entry point.</p>
+<p>These primitives are part of BaseCoat&#x27;s product contract and should not be replaced by family-level terminology.</p>
+<h2 id='guardrails-and-visibility'>Guardrails and Visibility</h2>
+<p>BaseCoat uses two complementary planes:</p>
+<pre><code class="language-text">Guardrails Plane
+agents · skills · instructions · prompts
+              +
+Visibility Plane
+issues · pull requests · workflows · milestones / projects</code></pre>
+<p>The intent is:</p>
+<blockquote>Guardrails without visibility create blind execution.</blockquote>
+<blockquote>Visibility without guardrails creates inconsistent execution.</blockquote>
+<p>This model is specific to BaseCoat and complements the broader family distinction between <strong>control plane</strong> and <strong>execution plane</strong>.</p>
+<pre><code class="language-text">Family architecture:
+Control plane ↔ Execution plane
+
+BaseCoat operating model:
+Guardrails plane ↔ Visibility plane</code></pre>
+<h2 id='binder-current-state-vs-target-state'>Binder: current state vs. target state</h2>
+<p><strong>Binder is a target family architecture, not yet the canonical shared implementation.</strong></p>
+<p>Today, BaseCoat already contains shared cross-product mechanics such as versioned ownership/lock semantics used by BaseCoat, Sheen, and Adhesion.</p>
+<p>The Binder idea should therefore be described as:</p>
+<blockquote><strong>A proposed extraction and generalization of cross-product contracts that currently have roots in BaseCoat.</strong></blockquote>
+<p>This gives Binder a practical migration path rather than treating it as a greenfield invention.</p>
+<pre><code class="language-text">Today
+BaseCoat-hosted shared contracts
+        ↓
+Generalize
+        ↓
+Binder
+shared family contracts independent of any sibling product</code></pre>
+<h2 id='product-language-boundary'>Product-language boundary</h2>
+<p>The broader family can continue to use coatings and manufacturing names such as <strong>Batch</strong>, <strong>Swatch</strong>, <strong>Proof</strong>, <strong>Stamp</strong>, and <strong>CoA</strong>.</p>
+<p>BaseCoat itself should continue to speak primarily in the native language of GitHub and software delivery:</p>
+<pre><code class="language-text">repository
+pull request
+issue
+workflow run
+job log
+agent
+skill
+instruction
+prompt
+release
+version drift</code></pre>
+<p>The family metaphor is product architecture.</p>
+<p>The product should still speak the language its users use.</p>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote>
+<hr>
+<h1 id='sheen-alignment'>Sheen Alignment</h1>
+<h2 id='canonical-product-description'>Canonical product description</h2>
+<p>Within the family, <strong>Sheen</strong> should be described as:</p>
+<blockquote><strong>A design governance overlay for GitHub Copilot that grounds design work in context, taste, standards, tokens, accessibility, brand, and structured design decisions.</strong></blockquote>
+<p>Sheen is the <strong>finish-coat sibling to BaseCoat</strong>:</p>
+<pre><code class="language-text">BaseCoat
+  governs the engineering surface
+
+Sheen
+  governs the design / experience surface</code></pre>
+<p>The products are designed to coexist. Their namespaces remain distinct so consumer repositories can adopt both without collisions.</p>
+<h2 id='what-sheen-actually-owns'>What Sheen actually owns</h2>
+<p>Sheen owns the design-governance domain rather than generic &quot;UI generation.&quot;</p>
+<p>Its current design surface includes six pillars:</p>
+<pre><code class="language-text">1. Tokens &amp; System
+2. Brand
+3. Usability
+4. Accessibility
+5. Information Architecture
+6. Governance</code></pre>
+<p>Its reusable assets include:</p>
+<pre><code class="language-text">design tokens
+skills
+agents
+instructions
+prompts
+templates
+validation rules
+design vocabulary
+sync / rollback tooling</code></pre>
+<p>Sheen treats design decisions as engineering artifacts:</p>
+<ul>
+<li>- structured,</li>
+<li>- reviewable,</li>
+<li>- traceable,</li>
+<li>- testable,</li>
+<li>- and distributable through repository-native workflows.</li>
+</ul>
+<h2 id='sheen-is-not'>Sheen is not</h2>
+<p>Sheen should not be described as:</p>
+<ul>
+<li>- a component library,</li>
+<li>- a Figma replacement,</li>
+<li>- an image-generation tool,</li>
+<li>- a documentation host,</li>
+<li>- a prescriptive design system,</li>
+<li>- or the engineering-governance layer.</li>
+</ul>
+<p>It produces <strong>design specifications, token schemas, governance artifacts, evaluations, and decision records</strong> that downstream tools and teams can consume.</p>
+<h2 id='token-model'>Token model</h2>
+<p>Sheen has a durable token-system role in the family.</p>
+<p>The token pipeline supports:</p>
+<pre><code class="language-text">core primitives
+      ↓
+semantic aliases
+      ↓
+themes
+      ↓
+consumer output</code></pre>
+<p>The current repository uses DTCG/W3C-style design tokens and explicitly separates:</p>
+<pre><code class="language-text">core/
+semantic/
+themes/</code></pre>
+<p>This gives Sheen a stronger domain primitive than the earlier generic phrase &quot;UX contract.&quot;</p>
+<p>A better family primitive is:</p>
+<blockquote><strong>Design token / experience rule / design decision</strong></blockquote>
+<h2 id='consumer-lifecycle'>Consumer lifecycle</h2>
+<p>Sheen has an explicit consumer lifecycle:</p>
+<pre><code class="language-text">Integrate
+   ↓
+Onboard
+   ↓
+Inventory
+   ↓
+Audit
+   ↓
+Use
+   ↓
+Upgrade</code></pre>
+<p>This is important because Sheen is not merely a source repository. It defines how consumers adopt, validate, synchronize, and evolve the design-governance assets.</p>
+<h2 id='relationship-to-basecoat'>Relationship to BaseCoat</h2>
+<p>BaseCoat and Sheen should remain siblings with explicit ownership:</p>
+<pre><code class="language-text">BaseCoat
+  engineering-SDLC governance
+
+Sheen
+  design / UX / brand / accessibility governance</code></pre>
+<p>BaseCoat may route or invoke design-related work.</p>
+<p>Sheen owns the durable design-governance contracts.</p>
+<h2 id='relationship-to-adhesion'>Relationship to Adhesion</h2>
+<p>Sheen defines design rules and expectations.</p>
+<p>Adhesion can independently evaluate them.</p>
+<p>Example:</p>
+<pre><code class="language-text">Sheen
+  defines:
+  semantic token roles
+  WCAG requirements
+  interaction expectations
+  design decisions
+
+        ↓
+
+Adhesion
+  evaluates:
+  contrast
+  accessibility behavior
+  UI conformance
+  regression
+  implementation evidence</code></pre>
+<p>This preserves the family separation between:</p>
+<blockquote><strong>define</strong> and <strong>verify</strong></blockquote>
+<h2 id='relationship-to-proof'>Relationship to Proof</h2>
+<p>Sheen produces useful evidence:</p>
+<pre><code class="language-text">token validation
+accessibility checks
+design decisions
+audit findings
+inventory results
+theme conformance</code></pre>
+<p>Proof can preserve and normalize those results across the wider family.</p>
+<p>Sheen remains the authoritative owner of the design-domain meaning.</p>
+<h2 id='product-native-vocabulary'>Product-native vocabulary</h2>
+<p>Like BaseCoat, Sheen should retain its own native language rather than exposing every family metaphor directly.</p>
+<p>Sheen-facing terminology should favor:</p>
+<pre><code class="language-text">token
+theme
+brand
+accessibility
+usability
+information architecture
+design decision
+audit
+inventory
+design context</code></pre>
+<p>The family can still connect those concepts to Batch, Proof, Stamp, and other canonical entities behind the scenes.</p>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

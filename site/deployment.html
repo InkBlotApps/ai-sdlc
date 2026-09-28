@@ -1,117 +1,1258 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Governance is the system that makes organizational intent operable.">
-  <title>Deployment · AI SDLC Governance</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body data-page="deployment">
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
-      <span class="brand-mark">BC</span>
-      <span>
-        <strong>AI SDLC Governance</strong>
-        <small>working architecture</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
-      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
-    </div>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
-<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deployment Architecture · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="deployment"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
 <a class="nav-link" data-page="family" href="family.html">Product Family</a>
-<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
 <a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
-<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
-<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
-<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
-<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
-      </nav>
-      <div class="sidebar-note">
-        <span class="status-dot"></span>
-        Living design system
-      </div>
-    </aside>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='deployment-architecture'>Deployment Architecture</h1>
+<p>Execution models for artifacts, skills, CI/CD, durable workflows, autonomous containers, hosted agents, local/private models, cost controls, and shearing layers.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='28-deployment-philosophy'>28. Deployment Philosophy</h1>
+<p>The family should deliberately support <strong>multiple execution models</strong> rather than forcing every capability into an always-on agent or application.</p>
+<p>The deployment question should be:</p>
+<blockquote>What is the <strong>least complex execution model</strong> that provides the required autonomy, isolation, state, latency, and scale?</blockquote>
+<p>The preferred progression is:</p>
+<pre><code class="language-text">Static artifact
+    ↓
+Instruction / policy
+    ↓
+Skill
+    ↓
+Prompt/custom agent definition
+    ↓
+Deterministic workflow
+    ↓
+Event-driven agent
+    ↓
+Ephemeral autonomous container
+    ↓
+Persistent hosted agent
+    ↓
+Dedicated/local model infrastructure</code></pre>
+<p>A capability should move down this stack only when there is a concrete reason.</p>
+<h2 id='primary-optimization-dimensions'>Primary optimization dimensions</h2>
+<p>Every deployment decision should explicitly consider:</p>
+<ul>
+<li>- <strong>Cost</strong></li>
+<li>  - fixed infrastructure cost</li>
+<li>  - marginal inference cost</li>
+<li>  - idle cost</li>
+<li>  - engineering/operations cost</li>
+</ul>
+<ul>
+<li>- <strong>Rate of change</strong></li>
+<li>  - governance changes</li>
+<li>  - prompt/skill changes</li>
+<li>  - code changes</li>
+<li>  - model changes</li>
+<li>  - infrastructure changes</li>
+</ul>
+<ul>
+<li>- <strong>Complexity</strong></li>
+<li>  - deployment complexity</li>
+<li>  - state management</li>
+<li>  - security boundaries</li>
+<li>  - troubleshooting</li>
+<li>  - scaling</li>
+<li>  - patching</li>
+</ul>
+<ul>
+<li>- <strong>Risk</strong></li>
+<li>  - privileges</li>
+<li>  - data classification</li>
+<li>  - destructive actions</li>
+<li>  - external connectivity</li>
+<li>  - autonomy level</li>
+</ul>
+<ul>
+<li>- <strong>Runtime need</strong></li>
+<li>  - interactive</li>
+<li>  - scheduled</li>
+<li>  - event driven</li>
+<li>  - long running</li>
+<li>  - human-in-the-loop</li>
+<li>  - batch</li>
+</ul>
+<ul>
+<li>- <strong>Isolation</strong></li>
+<li>  - shared model/session</li>
+<li>  - process isolation</li>
+<li>  - container isolation</li>
+<li>  - VM/sandbox isolation</li>
+<li>  - dedicated infrastructure</li>
+</ul>
+<hr>
+<h1 id='29-deployment-classes'>29. Deployment Classes</h1>
+<p>A useful family-wide abstraction is to define a small number of <strong>deployment classes</strong>.</p>
+<div class='table-wrap'><table><thead><tr><th>Class</th><th>Pattern</th><th>Fixed Cost</th><th>Marginal Cost</th><th>Change Velocity</th><th>Ops Complexity</th><th>Best For</th></tr></thead><tbody>
+<tr><td><strong>D0</strong></td><td>Markdown / schema / policy artifact</td><td>Very low</td><td>None</td><td>Very high</td><td>Very low</td><td>Rules, standards, schemas</td></tr>
+<tr><td><strong>D1</strong></td><td>Skill / prompt / custom agent definition</td><td>Very low</td><td>Inference only</td><td>Very high</td><td>Low</td><td>Assisted developer tasks</td></tr>
+<tr><td><strong>D2</strong></td><td>CI/CD or deterministic workflow</td><td>Low</td><td>Execution + optional inference</td><td>High</td><td>Low–Medium</td><td>Policy checks, repeatable automation</td></tr>
+<tr><td><strong>D3</strong></td><td>Serverless/event-driven agent workflow</td><td>Low</td><td>Invocation based</td><td>High</td><td>Medium</td><td>Events, durable workflows, HITL</td></tr>
+<tr><td><strong>D4</strong></td><td>Ephemeral containerized autonomous agent</td><td>Low idle</td><td>Compute + inference</td><td>Medium</td><td>Medium</td><td>Repo analysis, discovery, isolated autonomous work</td></tr>
+<tr><td><strong>D5</strong></td><td>Persistent managed/hosted agent</td><td>Medium</td><td>Compute + inference</td><td>Medium</td><td>Medium</td><td>Stateful interactive agents, long-running sessions</td></tr>
+<tr><td><strong>D6</strong></td><td>Dedicated agent/application service</td><td>Medium–High</td><td>Compute + inference</td><td>Medium</td><td>High</td><td>High throughput, private integration, predictable latency</td></tr>
+<tr><td><strong>D7</strong></td><td>Local/private LLM infrastructure</td><td>High fixed</td><td>Low/variable marginal</td><td>Low–Medium</td><td>High–Very High</td><td>Sovereignty, offline, sensitive data, high steady volume</td></tr>
+</tbody></table></div>
+<h3 id='design-principle'>Design principle</h3>
+<p><strong>D0–D2 should be the default.</strong></p>
+<p>D3–D7 require an explicit justification such as:</p>
+<ul>
+<li>- durable state</li>
+<li>- autonomous execution</li>
+<li>- private network access</li>
+<li>- isolation</li>
+<li>- long-running work</li>
+<li>- deterministic orchestration</li>
+<li>- high throughput</li>
+<li>- data-sovereignty/offline requirements</li>
+<li>- inference economics at sustained scale</li>
+</ul>
+<hr>
+<h1 id='30-the-graduation-model'>30. The Graduation Model</h1>
+<p>Avoid <strong>agentifying</strong> every feature.</p>
+<p>A capability should graduate only as its requirements increase.</p>
+<pre><code class="language-text">Can this be expressed as a rule or schema?
+          |
+         Yes
+          ↓
+          D0
 
-    <main class="content">
-      <div class="page-head">
-        <p class="eyebrow">Execution architecture</p>
-        <h1>Deployment</h1>
-      </div>
-      
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Deployment philosophy</p>
-    <h2>Use the least-complex execution model that works</h2>
-    <p>Do not deploy an autonomous service when a versioned artifact, skill, or workflow is enough. Capabilities should earn their way into more expensive and complex runtime models.</p>
-  </div>
+Does the model need reusable task-specific knowledge/tools?
+          |
+         Yes
+          ↓
+          D1 Skill
 
-  <div class="ladder">
-    <div><b>D0</b><span>Artifact / schema / policy</span></div>
-    <div><b>D1</b><span>Skill / prompt / agent definition</span></div>
-    <div><b>D2</b><span>CI/CD or deterministic workflow</span></div>
-    <div><b>D3</b><span>Serverless / durable agent workflow</span></div>
-    <div><b>D4</b><span>Ephemeral autonomous container</span></div>
-    <div><b>D5</b><span>Managed hosted agent</span></div>
-    <div><b>D6</b><span>Dedicated agent/application service</span></div>
-    <div><b>D7</b><span>Local/private LLM infrastructure</span></div>
-  </div>
-</section>
+Does execution need repeatability and deterministic steps?
+          |
+         Yes
+          ↓
+          D2 Workflow
 
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Shearing layers</p>
-    <h2>Fast layers learn. Slow layers remember.</h2>
-    <p>Different parts of the system should change at different rates. Successful experiments are promoted inward toward slower, more durable layers only after they prove useful.</p>
-  </div>
+Does it need events, timers, retries, state, or human approval?
+          |
+         Yes
+          ↓
+          D3 Durable workflow
 
-  <div class="pace-table">
-    <div><strong>Fast — Experiment</strong><span>prompts, local guidance, temporary agent instructions</span></div>
-    <div><strong>Fast–Adaptive — Learn</strong><span>skills, eval definitions, agent definitions, policy mappings</span></div>
-    <div><strong>Adaptive — Operationalize</strong><span>CI/CD, durable workflows, orchestration</span></div>
-    <div><strong>Moderate — Productize</strong><span>APIs, collectors, workers, app services</span></div>
-    <div><strong>Slow — Standardize</strong><span>Binder schemas, IDs, control/evidence models, taxonomy contracts</span></div>
-    <div><strong>Slowest — Anchor</strong><span>identity, network boundaries, durable stores, regulatory constraints</span></div>
-  </div>
+Does it need autonomous code execution or strong workload isolation?
+          |
+         Yes
+          ↓
+          D4 Ephemeral agent container
 
-  <div class="promotion">
-    <span>Experiment</span><b>→</b><span>Observe</span><b>→</b><span>Validate</span><b>→</b><span>Repeat</span><b>→</b><span>Promote</span><b>→</b><span>Standardize</span>
-  </div>
-</section>
+Does it need persistent conversational/session state or interactive service behavior?
+          |
+         Yes
+          ↓
+          D5 Hosted agent
 
-<section class="card-grid two">
-  <div class="card"><h3>Skills first</h3><p>Use skills when specialized knowledge and tools are needed but persistent state and autonomous runtime are not.</p></div>
-  <div class="card"><h3>CI/CD before services</h3><p>Repository governance naturally belongs where commit, actor, branch, build, artifact, and status are already known.</p></div>
-  <div class="card"><h3>Durable workflow for waiting</h3><p>Use workflow state for timers, approvals, retries, callbacks, escalation, and human-in-the-loop. Do not leave a container running for three days.</p></div>
-  <div class="card"><h3>Ephemeral autonomy</h3><p>Autonomous repository analysis belongs in disposable containers with scoped identity, explicit tools, network controls, resource limits, and complete evidence.</p></div>
-  <div class="card"><h3>Local models are an option</h3><p>Use private/local inference for sovereignty, offline operation, sensitive boundaries, specialized models, or measured economics—not because “local must be cheaper.”</p></div>
-  <div class="card"><h3>Separate control and execution</h3><p>Governance policy should remain independent of the workers, runtimes, clouds, and model providers that execute it.</p></div>
-</section>
+Does it need dedicated performance, networking, or scaling?
+          |
+         Yes
+          ↓
+          D6 Dedicated service
 
-    </main>
+Does policy/data sovereignty require the model itself to run locally?
+          |
+         Yes
+          ↓
+          D7 Local/private model</code></pre>
+<p>This creates a defensible architecture and prevents infrastructure from growing faster than the product value.</p>
+<hr>
+<h1 id='31-deployment-recommendation-by-family-product'>31. Deployment Recommendation by Family Product</h1>
+<div class='table-wrap'><table><thead><tr><th>Product</th><th>Preferred initial deployment</th><th>Why</th></tr></thead><tbody>
+<tr><td><strong>Binder</strong></td><td>D0 package + schemas + CLI</td><td>Should have almost no runtime dependency</td></tr>
+<tr><td><strong>BaseCoat</strong></td><td>D0/D1 + D2 validation</td><td>Governance changes frequently and should remain Git-versioned</td></tr>
+<tr><td><strong>Sheen</strong></td><td>D0/D1 + D2 conformance</td><td>Tokens/guidance are artifacts; tests run on demand</td></tr>
+<tr><td><strong>Adhesion</strong></td><td>D1/D2, with D3 for orchestration</td><td>Most evaluations can run in CI; complex suites may need durable execution</td></tr>
+<tr><td><strong>Swatch</strong></td><td>D3/D6 application/API</td><td>Canonical graph needs persistent storage and query APIs</td></tr>
+<tr><td><strong>Snitch</strong></td><td>D2/D3/D4 collectors</td><td>Mostly scheduled/event-driven discovery; isolate risky collectors</td></tr>
+<tr><td><strong>Teardown</strong></td><td>D4 ephemeral containers</td><td>Clone/analyze untrusted repos in disposable environments</td></tr>
+<tr><td><strong>Crosslink</strong></td><td>D3 durable workflow + thin app</td><td>Events, timers, escalation, acknowledgements, human-in-loop</td></tr>
+<tr><td><strong>Proof</strong></td><td>D3/D6 API + durable store</td><td>Evidence ingestion is event-driven; records must persist</td></tr>
+<tr><td><strong>Stencil</strong></td><td>D0/D2 library/policy evaluator</td><td>Prefer shared evaluation library rather than another service</td></tr>
+<tr><td><strong>Formula</strong></td><td>D0 record + D2 comparison</td><td>Composition is data; evaluation can run in pipelines</td></tr>
+<tr><td><strong>Blueprint</strong></td><td>D0 record + D1 design skill</td><td>Architecture intent changes more like documentation than runtime code</td></tr>
+<tr><td><strong>Seal</strong></td><td>Prefer integrations + D2 checks</td><td>Avoid rebuilding CNAPP/AppSec products</td></tr>
+<tr><td><strong>Reclaim</strong></td><td>D3 workflow</td><td>Retirement is long-running, approval-heavy workflow</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='32-recommended-execution-patterns'>32. Recommended Execution Patterns</h1>
+<h2 id='pattern-a-git-native-artifact'>Pattern A — Git-native artifact</h2>
+<p>Use for:</p>
+<ul>
+<li>- BaseCoat controls</li>
+<li>- Sheen tokens</li>
+<li>- Adhesion test definitions</li>
+<li>- Binder schemas</li>
+<li>- Blueprint architecture contracts</li>
+<li>- Formula definitions</li>
+<li>- compliance mappings</li>
+</ul>
+<pre><code class="language-text">Git
+ ↓
+PR
+ ↓
+Review
+ ↓
+Version
+ ↓
+Distribute</code></pre>
+<h3 id='advantages'>Advantages</h3>
+<ul>
+<li>- almost no idle cost</li>
+<li>- excellent auditability</li>
+<li>- easy rollback</li>
+<li>- high rate of change</li>
+<li>- familiar enterprise controls</li>
+<li>- code-owner approval</li>
+<li>- branches/tags/releases</li>
+</ul>
+<h3 id='rule'>Rule</h3>
+<p>If the capability can be represented as <strong>versioned data</strong>, prefer Git before introducing a runtime service.</p>
+<hr>
+<h1 id='33-pattern-b-skills-and-on-demand-agents'>33. Pattern B — Skills and On-Demand Agents</h1>
+<p>Use a <strong>skill</strong> when the work requires specialized knowledge, instructions, scripts, or references but does not need a continuously running service.</p>
+<p>Examples:</p>
+<pre><code class="language-text">BaseCoat skill:
+  Evaluate repository governance
 
-    
-  </div>
+Sheen skill:
+  Review a page for design-system conformance
 
-  <dialog id="searchDialog">
-    <form method="dialog" class="search-panel">
-      <div class="search-head">
-        <strong>Search the architecture</strong>
-        <button value="close" aria-label="Close search">Close</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </form>
-  </dialog>
+Adhesion skill:
+  Generate an evaluation plan
 
-  <script src="app.js"></script>
-</body>
-</html>
+Teardown skill:
+  Explain an already-generated graph</code></pre>
+<p>Benefits:</p>
+<ul>
+<li>- changes travel with source control</li>
+<li>- near-zero idle infrastructure</li>
+<li>- skills load only when relevant</li>
+<li>- behavior can evolve faster than application code</li>
+<li>- common logic can be shared across interactive agents and coding environments</li>
+</ul>
+<p>This is especially useful when a task requires <strong>reasoning but not persistent autonomous execution</strong>.</p>
+<h3 id='boundary'>Boundary</h3>
+<p>A skill should describe <strong>how to perform work</strong>.</p>
+<p>It should not become:</p>
+<ul>
+<li>- the durable system of record,</li>
+<li>- a long-running scheduler,</li>
+<li>- an unbounded autonomous worker,</li>
+<li>- or an excuse to hide deterministic logic inside prompts.</li>
+</ul>
+<hr>
+<h1 id='34-pattern-c-ci-cd-workflows-as-the-first-automation-runtime'>34. Pattern C — CI/CD Workflows as the First Automation Runtime</h1>
+<p>For repository-scoped governance, GitHub Actions or equivalent CI/CD should be the <strong>first runtime considered</strong>.</p>
+<p>Examples:</p>
+<pre><code class="language-text">Pull request
+   ↓
+BaseCoat validation
+   ↓
+Sheen conformance
+   ↓
+Adhesion tests
+   ↓
+Teardown delta
+   ↓
+Proof evidence</code></pre>
+<p>Best for:</p>
+<ul>
+<li>- policy validation</li>
+<li>- schema checking</li>
+<li>- SBOM creation</li>
+<li>- test/eval execution</li>
+<li>- security checks</li>
+<li>- conformance checks</li>
+<li>- drift checks</li>
+<li>- publishing evidence</li>
+<li>- synchronizing governed artifacts</li>
+</ul>
+<h3 id='why'>Why</h3>
+<p>The pipeline already knows:</p>
+<ul>
+<li>- repository</li>
+<li>- commit</li>
+<li>- actor</li>
+<li>- branch</li>
+<li>- build</li>
+<li>- artifact</li>
+<li>- status</li>
+</ul>
+<p>That produces excellent provenance without creating another orchestration platform.</p>
+<h3 id='hosted-vs-self-hosted-runners'>Hosted vs self-hosted runners</h3>
+<p>Prefer hosted runners for simplicity unless private network access, specialized hardware, data restrictions, or custom software require self-hosting.</p>
+<p>If self-hosting is required, favor <strong>ephemeral runners</strong> over persistent shared machines.</p>
+<hr>
+<h1 id='35-pattern-d-serverless-and-durable-workflows'>35. Pattern D — Serverless and Durable Workflows</h1>
+<p>Use a durable/event-driven workflow when a task requires:</p>
+<ul>
+<li>- retries</li>
+<li>- timers</li>
+<li>- callbacks</li>
+<li>- approvals</li>
+<li>- fan-out / fan-in</li>
+<li>- multiple agents</li>
+<li>- long-running state</li>
+<li>- human-in-the-loop</li>
+<li>- waiting on an external condition</li>
+</ul>
+<p>Strong candidates:</p>
+<h3 id='crosslink'>Crosslink</h3>
+<pre><code class="language-text">Incident
+ ↓
+Resolve affected apps in Swatch
+ ↓
+Resolve responders
+ ↓
+Notify
+ ↓
+Wait for acknowledgement
+ ↓
+Escalate
+ ↓
+Create bridge
+ ↓
+Periodic updates
+ ↓
+Close</code></pre>
+<h3 id='reclaim'>Reclaim</h3>
+<pre><code class="language-text">Retirement requested
+ ↓
+Find dependents
+ ↓
+Notify owners
+ ↓
+Wait for approval
+ ↓
+Remove traffic
+ ↓
+Archive evidence
+ ↓
+Delete resources
+ ↓
+Close</code></pre>
+<h3 id='compliance-remediation'>Compliance remediation</h3>
+<pre><code class="language-text">Violation
+ ↓
+Open remediation
+ ↓
+Assign owner
+ ↓
+Wait
+ ↓
+Retest
+ ↓
+Escalate if expired</code></pre>
+<p>This is preferable to keeping a container running while it waits.</p>
+<hr>
+<h1 id='36-pattern-e-ephemeral-autonomous-agent-containers'>36. Pattern E — Ephemeral Autonomous Agent Containers</h1>
+<p>Use autonomous containerized agents selectively.</p>
+<p>Good candidates:</p>
+<ul>
+<li>- <strong>Teardown</strong> repository analysis</li>
+<li>- deep dependency analysis</li>
+<li>- code transformation</li>
+<li>- security investigation</li>
+<li>- isolated build/reproduction</li>
+<li>- discovery against privileged systems</li>
+<li>- remediation proposal generation</li>
+<li>- large multi-step repository operations</li>
+</ul>
+<h3 id='architecture'>Architecture</h3>
+<pre><code class="language-text">Event / Queue
+     ↓
+Scheduler
+     ↓
+Disposable container
+     ↓
+Agent runtime
+     ↓
+Restricted tools
+     ↓
+Output artifact / observation / evidence
+     ↓
+Container destroyed</code></pre>
+<h3 id='benefits'>Benefits</h3>
+<ul>
+<li>- strong isolation</li>
+<li>- clean execution environment</li>
+<li>- explicit resource limits</li>
+<li>- easy versioning</li>
+<li>- disposable credentials</li>
+<li>- reproducibility</li>
+<li>- scale-to-zero potential</li>
+</ul>
+<h3 id='guardrails'>Guardrails</h3>
+<p>Each autonomous container should receive:</p>
+<ul>
+<li>- a scoped identity</li>
+<li>- explicit allowed tools</li>
+<li>- explicit network policy</li>
+<li>- CPU/memory/time limits</li>
+<li>- a task-specific workspace</li>
+<li>- no standing credentials</li>
+<li>- immutable base image</li>
+<li>- signed/versioned image</li>
+<li>- complete logs</li>
+<li>- external evidence persistence</li>
+<li>- output validation before downstream action</li>
+</ul>
+<h3 id='key-principle'>Key principle</h3>
+<p><strong>Autonomy belongs inside a bounded sandbox.</strong></p>
+<p>Do not give a general-purpose agent broad enterprise permissions and rely on the prompt as the security boundary.</p>
+<hr>
+<h1 id='37-pattern-f-managed-hosted-agents'>37. Pattern F — Managed Hosted Agents</h1>
+<p>Use managed hosted agents when the value comes from <strong>stateful interactive behavior</strong> rather than a one-shot job.</p>
+<p>Candidate situations:</p>
+<ul>
+<li>- multi-turn governance advisor</li>
+<li>- architecture assistant</li>
+<li>- interactive incident assistant</li>
+<li>- long-running investigation</li>
+<li>- agent that must maintain user/session files</li>
+<li>- agents exposed as APIs to applications</li>
+<li>- agents requiring managed identity and managed lifecycle</li>
+</ul>
+<p>A managed agent platform can remove the need to operate:</p>
+<ul>
+<li>- container scaling</li>
+<li>- endpoint hosting</li>
+<li>- session persistence</li>
+<li>- identity plumbing</li>
+<li>- basic observability</li>
+<li>- agent lifecycle</li>
+</ul>
+<h3 id='trade-off'>Trade-off</h3>
+<p>Managed hosting reduces infrastructure complexity but increases:</p>
+<ul>
+<li>- platform dependency</li>
+<li>- service cost</li>
+<li>- deployment/runtime coupling</li>
+<li>- possible constraints on networking/runtime behavior</li>
+</ul>
+<p>Use it when those trade-offs are justified by stateful agent behavior.</p>
+<hr>
+<h1 id='38-pattern-g-application-workflow-agent'>38. Pattern G — Application + Workflow + Agent</h1>
+<p>Some products should be normal applications with agents as <strong>components</strong>, not “agent applications.”</p>
+<p>Swatch is the clearest example.</p>
+<pre><code class="language-text">             Swatch Web/API
+                  |
+         +--------+---------+
+         |                  |
+     Graph Store          Queue
+                            |
+                   +--------+--------+
+                   |                 |
+                Snitch           Teardown
+               collectors        workers
+                   |                 |
+                   +--------+--------+
+                            |
+                          Proof</code></pre>
+<p>The user-facing app should own:</p>
+<ul>
+<li>- authentication</li>
+<li>- authorization</li>
+<li>- navigation</li>
+<li>- querying</li>
+<li>- canonical state</li>
+<li>- transaction boundaries</li>
+</ul>
+<p>Agents should own:</p>
+<ul>
+<li>- interpretation</li>
+<li>- enrichment</li>
+<li>- investigation</li>
+<li>- summarization</li>
+<li>- recommendations</li>
+<li>- bounded autonomous tasks</li>
+</ul>
+<h3 id='rule'>Rule</h3>
+<p><strong>Do not make the LLM the database, workflow engine, authorization layer, or source of truth.</strong></p>
+<hr>
+<h1 id='39-local-and-private-llms'>39. Local and Private LLMs</h1>
+<p>Local/private models should be a <strong>deployment option</strong>, not the default architecture.</p>
+<p>Good reasons to use them:</p>
+<ul>
+<li>- disconnected/offline environments</li>
+<li>- export-control or sovereignty constraints</li>
+<li>- highly sensitive data boundaries</li>
+<li>- predictable very-high sustained inference volume</li>
+<li>- low-latency local inference</li>
+<li>- specialized models</li>
+<li>- experimentation where external model calls are undesirable</li>
+</ul>
+<p>Weak reasons:</p>
+<ul>
+<li>- “local is cheaper”</li>
+<li>- avoiding API integration</li>
+<li>- assuming local automatically means secure</li>
+<li>- running a GPU continuously for an occasional task</li>
+</ul>
+<h2 id='two-useful-local-patterns'>Two useful local patterns</h2>
+<h3 id='developer-workstation-local-model'>Developer / workstation local model</h3>
+<p>Example runtimes:</p>
+<ul>
+<li>- Ollama-class local runtimes</li>
+<li>- developer workstation GPU</li>
+<li>- Dev Box / workstation sandbox</li>
+</ul>
+<p>Best for:</p>
+<ul>
+<li>- experimentation</li>
+<li>- low-volume private analysis</li>
+<li>- offline development</li>
+<li>- local evaluation</li>
+</ul>
+<h3 id='enterprise-private-inference-service'>Enterprise private inference service</h3>
+<p>Example:</p>
+<ul>
+<li>- vLLM-style OpenAI-compatible serving</li>
+<li>- GPU VM/cluster</li>
+<li>- internal endpoint behind enterprise identity/network controls</li>
+</ul>
+<p>Best for:</p>
+<ul>
+<li>- steady inference load</li>
+<li>- shared private models</li>
+<li>- controlled model versions</li>
+<li>- internal network-only inference</li>
+</ul>
+<h2 id='important-cost-model'>Important cost model</h2>
+<pre><code class="language-text">Hosted API:
+  low fixed cost
+  variable token cost
+  minimal model operations
+
+Local/private:
+  GPU fixed cost
+  utilization risk
+  model lifecycle ownership
+  patching
+  capacity planning
+  observability
+  security hardening</code></pre>
+<p>The break-even point should be measured, not assumed.</p>
+<hr>
+<h1 id='40-model-routing-and-cost-control'>40. Model Routing and Cost Control</h1>
+<p>The architecture should separate <strong>task orchestration</strong> from <strong>model selection</strong>.</p>
+<pre><code class="language-text">Task
+ ↓
+Risk / complexity classifier
+ ↓
++-------------------------------+
+| deterministic code possible? |
++-------------------------------+
+       | yes
+       ↓
+      code
+
+       | no
+       ↓
+
+small / cheap model
+       |
+       | insufficient confidence
+       ↓
+larger reasoning model
+       |
+       | highly sensitive / constrained
+       ↓
+approved private/local model</code></pre>
+<h2 id='cost-controls'>Cost controls</h2>
+<ul>
+<li>- deterministic logic before inference</li>
+<li>- cache repeatable outputs</li>
+<li>- batch low-priority work</li>
+<li>- asynchronous queues</li>
+<li>- model tiering</li>
+<li>- token/input limits</li>
+<li>- retrieval before sending large context</li>
+<li>- content hashing to avoid re-analysis</li>
+<li>- incremental/delta analysis</li>
+<li>- reuse Teardown graphs instead of recloning repositories</li>
+<li>- reuse Proof evidence instead of regenerating it</li>
+<li>- rate limits by product/team</li>
+<li>- per-application inference budgets</li>
+<li>- per-agent concurrency limits</li>
+<li>- explicit “expensive reasoning” escalation</li>
+</ul>
+<h3 id='example'>Example</h3>
+<p>Teardown should not analyze the entire repository on every commit.</p>
+<pre><code class="language-text">Initial scan
+   ↓
+Full graph
+
+Next commit
+   ↓
+Git diff
+   ↓
+Affected nodes only
+   ↓
+Graph delta</code></pre>
+<p>That reduces both model and compute cost while increasing throughput.</p>
+<hr>
+<h1 id='41-shearing-layers-how-the-system-learns'>41. Shearing Layers — How the System Learns</h1>
+<p>BaseCoat applies a <strong>Shearing Layers</strong> design idea to software and governance: different parts of a healthy system should be allowed to change at different rates without forcing every other layer to move with them.</p>
+<p>The idea is inspired by the architectural concept developed by Frank Duffy and expanded by Stewart Brand in <em>How Buildings Learn</em>. A building is not one thing changing at one speed. Its site, structure, services, interior layout, and contents evolve on different timescales. Systems become difficult to adapt when fast-changing layers are tightly coupled to slow-changing ones.</p>
+<p>BaseCoat applies the same reasoning to software:</p>
+<blockquote><strong>Fast layers learn. Slow layers remember.</strong></blockquote>
+<p>The fast layers are where teams experiment, respond to feedback, and discover better ways to work.</p>
+<p>The slow layers preserve the contracts, identities, controls, and infrastructure that give those experiments a stable place to operate.</p>
+<p>The goal is therefore <strong>not simply to put fast-changing behavior in configuration</strong>. The larger goal is to let each layer evolve at the pace appropriate to its purpose while minimizing unnecessary coupling between layers.</p>
+<h2 id='a-working-model-for-the-family'>A working model for the family</h2>
+<div class='table-wrap'><table><thead><tr><th>Pace</th><th>Role in the system</th><th>Examples</th><th>Typical deployment</th></tr></thead><tbody>
+<tr><td><strong>Fast — Experiment</strong></td><td>Try ideas, respond to local needs, discover better patterns</td><td>Prompts, local guidance, temporary agent instructions, experiments</td><td>Git artifacts / local configuration</td></tr>
+<tr><td><strong>Fast–Adaptive — Learn</strong></td><td>Turn useful patterns into reusable behavior</td><td>Skills, eval definitions, agent definitions, policy mappings</td><td>Versioned packages / configuration</td></tr>
+<tr><td><strong>Adaptive — Operationalize</strong></td><td>Make learned behavior repeatable</td><td>CI/CD workflows, durable workflows, agent orchestration</td><td>Workflow definitions / serverless</td></tr>
+<tr><td><strong>Moderate — Productize</strong></td><td>Provide stable capabilities used by many teams</td><td>APIs, collectors, workers, application services</td><td>Containers / managed application platforms</td></tr>
+<tr><td><strong>Slow — Standardize</strong></td><td>Preserve contracts that many components depend on</td><td>Binder schemas, canonical IDs, control model, evidence model, taxonomy contracts</td><td>Versioned compatibility contracts</td></tr>
+<tr><td><strong>Slowest — Anchor</strong></td><td>Establish durable enterprise boundaries</td><td>Identity, network boundaries, data stores, platform foundations, regulatory constraints</td><td>Managed infrastructure / enterprise platforms</td></tr>
+</tbody></table></div>
+<h2 id='learning-moves-inward-carefully'>Learning moves inward carefully</h2>
+<p>A useful pattern is:</p>
+<pre><code class="language-text">Experiment
+    ↓
+Observe
+    ↓
+Validate
+    ↓
+Repeat
+    ↓
+Promote
+    ↓
+Standardize</code></pre>
+<p>An idea should normally begin in a fast layer.</p>
+<p>Only after it proves useful should it move into a slower, more widely shared layer.</p>
+<p>Example:</p>
+<pre><code class="language-text">Developer prompt
+      ↓
+Reusable skill
+      ↓
+Shared BaseCoat guidance
+      ↓
+Automated workflow
+      ↓
+Enterprise control
+      ↓
+Platform-enforced default</code></pre>
+<p>This provides a natural path from <strong>learning to governance</strong>.</p>
+<h2 id='slow-layers-constrain-fast-layers-inform'>Slow layers constrain; fast layers inform</h2>
+<p>The relationship works in both directions.</p>
+<pre><code class="language-text">Slow layers
+    ↓
+provide boundaries, contracts, identity, safety
+
+Fast layers
+    ↑
+provide experiments, evidence, feedback, innovation</code></pre>
+<p>The slow layers should not dictate every implementation detail.</p>
+<p>The fast layers should not be able to silently invalidate the assumptions of the slow layers.</p>
+<p>A healthy system allows the layers to <strong>shear</strong>—to change independently while remaining connected through explicit contracts.</p>
+<h2 id='why-coupling-matters'>Why coupling matters</h2>
+<p>A common failure mode is allowing a fast-changing concern to become embedded inside a slow-moving layer.</p>
+<p>For example:</p>
+<pre><code class="language-text">Bad coupling:
+
+Prompt wording
+    embedded in
+application service
+    requiring
+container rebuild
+    requiring
+infrastructure deployment</code></pre>
+<p>A small guidance change now causes a large operational change.</p>
+<p>Prefer:</p>
+<pre><code class="language-text">Prompt / Skill
+     ↓
+versioned artifact
+     ↓
+stable runtime contract
+     ↓
+application service</code></pre>
+<p>The faster layer can evolve without redeploying the slower one.</p>
+<p>The reverse problem is also dangerous:</p>
+<pre><code class="language-text">Fast-moving agent
+     ↓
+silently changes
+canonical control semantics</code></pre>
+<p>Canonical controls belong in a slower layer and require deliberate promotion, review, and versioning.</p>
+<h2 id='how-the-family-learns'>How the family learns</h2>
+<p>The family should deliberately support learning at multiple speeds:</p>
+<pre><code class="language-text">Local experiment
+      ↓
+Adhesion measures outcome
+      ↓
+Proof preserves evidence
+      ↓
+Feedback identifies a useful pattern
+      ↓
+BaseCoat promotes reusable guidance
+      ↓
+Binder stabilizes shared contracts when necessary</code></pre>
+<p>This means governance itself can learn.</p>
+<p>A policy does not become permanent simply because it was once approved. Evidence, exceptions, developer friction, incidents, and successful local patterns can all provide signals that the governance layer should change.</p>
+<h2 id='architectural-rule'>Architectural rule</h2>
+<blockquote><strong>Let fast layers experiment and learn; let slow layers stabilize and remember. Couple them through explicit contracts rather than shared implementation.</strong></blockquote>
+<p>This is more precise than treating change rate only as a deployment concern.</p>
+<p>It affects:</p>
+<ul>
+<li>- repository structure,</li>
+<li>- product boundaries,</li>
+<li>- APIs,</li>
+<li>- schemas,</li>
+<li>- policy design,</li>
+<li>- agent behavior,</li>
+<li>- deployment architecture,</li>
+<li>- versioning,</li>
+<li>- evidence,</li>
+<li>- and how successful experiments become enterprise standards.</li>
+</ul>
+<h3 id='examples-in-this-family'>Examples in this family</h3>
+<pre><code class="language-text">Fast:
+  prompt
+  repo-specific instruction
+  experimental skill
+  evaluation rubric
+
+        ↓ learning / promotion
+
+Medium:
+  shared skill
+  BaseCoat guidance
+  Adhesion evaluation
+  workflow
+  autonomous worker
+
+        ↓ proven stability / broader dependency
+
+Slow:
+  Binder contract
+  canonical Batch identity
+  Proof schema
+  control semantics
+  enterprise taxonomy
+
+        ↓
+
+Anchor:
+  identity boundary
+  network boundary
+  regulated data boundary
+  durable system of record</code></pre>
+<p>The important question is not:</p>
+<blockquote>&quot;How often can we deploy this?&quot;</blockquote>
+<p>It is:</p>
+<blockquote><strong>&quot;How quickly should this concept be allowed to change, who depends on it, and what evidence should be required before we move it into a slower layer?&quot;</strong></blockquote>
+<h3 id='references'>References</h3>
+<ul>
+<li>- BaseCoat: <code>basecoat-10-core-shearing-layers</code> — design guidance for change velocity and coupling between BaseCoat layers.</li>
+<li>- Stewart Brand, <em>How Buildings Learn: What Happens After They&#x27;re Built</em> (1994).</li>
+<li>- Stewart Brand, “Pace Layering: How Complex Systems Learn and Keep Learning,” <em>Journal of Design and Science</em> (2018).</li>
+</ul>
+<hr>
+<h1 id='42-control-plane-vs-execution-plane'>42. Control Plane vs Execution Plane</h1>
+<p>Separate governance from the workers that execute it.</p>
+<pre><code class="language-text">                 CONTROL PLANE
+
+Binder
+BaseCoat
+Swatch
+Policies
+Profiles
+Identity
+Task definitions
+Approvals
+Budgets
+
+                     |
+                     v
+
+                EXECUTION PLANE
+
+GitHub Actions
+Serverless workflows
+Container jobs
+Hosted agents
+Self-hosted workers
+Private/local models</code></pre>
+<h2 id='benefits'>Benefits</h2>
+<ul>
+<li>- policies can change independently of compute</li>
+<li>- multiple execution platforms can coexist</li>
+<li>- sensitive workloads can be routed differently</li>
+<li>- model providers can change without rewriting governance</li>
+<li>- local/on-prem execution becomes possible</li>
+<li>- execution failures do not corrupt canonical governance state</li>
+</ul>
+<h3 id='example-routing'>Example routing</h3>
+<pre><code class="language-text">Teardown request
+
+classification = public
+    → hosted ephemeral job
+
+classification = internal
+    → enterprise container job
+
+classification = export-controlled
+    → approved isolated worker + approved model</code></pre>
+<hr>
+<h1 id='43-suggested-deployment-architecture-for-the-family'>43. Suggested Deployment Architecture for the Family</h1>
+<pre><code class="language-text">                            Git
+            Policies / Skills / Schemas / Workflows
+                             |
+                             v
+                          Binder
+                             |
+              +--------------+--------------+
+              |                             |
+          BaseCoat                      Sheen/Adhesion
+              |                             |
+              +--------------+--------------+
+                             |
+                           Swatch
+                      API + Graph Store
+                             |
+                Events / Queue / Scheduler
+             +---------------+----------------+
+             |               |                |
+          Snitch          Teardown          Crosslink
+        collectors     agent containers    workflows
+             |               |                |
+             +---------------+----------------+
+                             |
+                           Proof
+                    Proof / Provenance
+                             |
+             +---------------+----------------+
+             |                                |
+       Managed models                  Private/local models
+       as default                      when policy requires</code></pre>
+<h3 id='deployment-stance'>Deployment stance</h3>
+<ol>
+<li>1. <strong>Git is the distribution layer for governance artifacts.</strong></li>
+<li>2. <strong>Swatch is the persistent application graph.</strong></li>
+<li>3. <strong>Queues/events decouple discovery and analysis.</strong></li>
+<li>4. <strong>Snitch and Teardown scale independently.</strong></li>
+<li>5. <strong>Autonomous execution is ephemeral by default.</strong></li>
+<li>6. <strong>Crosslink uses durable workflow semantics rather than long-running processes.</strong></li>
+<li>7. <strong>Proof persists evidence outside disposable runtimes.</strong></li>
+<li>8. <strong>Model providers sit behind an abstraction/routing layer.</strong></li>
+<li>9. <strong>Local LLMs are an approved route, not a separate product architecture.</strong></li>
+</ol>
+<hr>
+<h1 id='44-product-specific-deployment-ideas'>44. Product-Specific Deployment Ideas</h1>
+<h2 id='basecoat'>BaseCoat</h2>
+<p><strong>Default:</strong> Git-native instructions, controls, skills, agents, schemas.</p>
+<p>Optional:</p>
+<ul>
+<li>- CI enforcement</li>
+<li>- policy evaluation CLI</li>
+<li>- thin API for control resolution if enterprise-scale dynamic policy calculation becomes necessary</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li>- requiring a BaseCoat server for basic governance</li>
+</ul>
+<hr>
+<h2 id='sheen'>Sheen</h2>
+<p><strong>Default:</strong> Git-native design tokens + skills + validation package.</p>
+<p>Runtime:</p>
+<ul>
+<li>- CI visual/accessibility validation</li>
+<li>- optional Storybook/design-system integrations</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li>- central service unless cross-enterprise token/catalog search requires it</li>
+</ul>
+<hr>
+<h2 id='adhesion'>Adhesion</h2>
+<p><strong>Default:</strong> test/eval definitions + runner adapters.</p>
+<p>Runtime progression:</p>
+<ol>
+<li>1. CI</li>
+<li>2. serverless orchestration</li>
+<li>3. container jobs for expensive suites</li>
+<li>4. dedicated workers only at sustained scale</li>
+</ol>
+<hr>
+<h2 id='swatch'>Swatch</h2>
+<p><strong>Default:</strong> real application.</p>
+<p>Likely components:</p>
+<ul>
+<li>- API</li>
+<li>- graph-capable datastore</li>
+<li>- search</li>
+<li>- identity/RBAC</li>
+<li>- event bus</li>
+<li>- ingestion APIs</li>
+<li>- reconciliation engine</li>
+</ul>
+<p>Agents enrich Swatch; they do not replace it.</p>
+<hr>
+<h2 id='snitch'>Snitch</h2>
+<p><strong>Default:</strong> plugin/collector framework.</p>
+<p>Collectors should usually be:</p>
+<ul>
+<li>- scheduled</li>
+<li>- event triggered</li>
+<li>- short lived</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>- GitHub collector</li>
+<li>- Azure collector</li>
+<li>- AWS collector</li>
+<li>- Kubernetes collector</li>
+<li>- ServiceNow collector</li>
+<li>- model/MCP discovery collector</li>
+</ul>
+<p>High-privilege collectors should run in isolated ephemeral environments.</p>
+<hr>
+<h2 id='teardown'>Teardown</h2>
+<p><strong>Default:</strong> queue-triggered ephemeral container.</p>
+<p>Why:</p>
+<ul>
+<li>- repository content may be untrusted</li>
+<li>- analysis can be CPU/memory intensive</li>
+<li>- jobs may require specialized tooling</li>
+<li>- clean environment improves repeatability</li>
+</ul>
+<p>Teardown should write graph deltas and evidence, then terminate.</p>
+<hr>
+<h2 id='crosslink'>Crosslink</h2>
+<p><strong>Default:</strong> durable workflow + thin UI/API.</p>
+<p>Use agents for:</p>
+<ul>
+<li>- incident summary</li>
+<li>- likely ownership interpretation</li>
+<li>- status drafting</li>
+<li>- timeline generation</li>
+</ul>
+<p>Do not use an agent for:</p>
+<ul>
+<li>- escalation timers</li>
+<li>- acknowledgements</li>
+<li>- paging rules</li>
+<li>- authorization</li>
+</ul>
+<p>Those should remain deterministic.</p>
+<hr>
+<h2 id='proof'>Proof</h2>
+<p><strong>Default:</strong> event ingestion API + durable append-oriented store.</p>
+<p>Producers:</p>
+<ul>
+<li>- CI/CD</li>
+<li>- Adhesion</li>
+<li>- Teardown</li>
+<li>- BaseCoat</li>
+<li>- Crosslink</li>
+<li>- external security/ITSM tools</li>
+</ul>
+<p>The write path should not depend on an LLM.</p>
+<hr>
+<h1 id='45-deployment-anti-patterns'>45. Deployment Anti-Patterns</h1>
+<h2 id='1-agent-for-everything'>1. Agent for everything</h2>
+<p>Bad:</p>
+<pre><code class="language-text">Agent decides whether a branch is protected.</code></pre>
+<p>Better:</p>
+<pre><code class="language-text">API query + deterministic policy check.</code></pre>
+<p>Use the agent to explain the result, not determine an objective fact.</p>
+<hr>
+<h2 id='2-long-running-container-waiting-for-humans'>2. Long-running container waiting for humans</h2>
+<p>Bad:</p>
+<pre><code class="language-text">Container waits 3 days for approval.</code></pre>
+<p>Better:</p>
+<pre><code class="language-text">Durable workflow persists state and resumes on approval.</code></pre>
+<hr>
+<h2 id='3-persistent-privileged-autonomous-agents'>3. Persistent privileged autonomous agents</h2>
+<p>Avoid continuously running agents with broad credentials.</p>
+<p>Prefer:</p>
+<ul>
+<li>- just-in-time identity</li>
+<li>- task-level scope</li>
+<li>- ephemeral runtime</li>
+<li>- explicit tools</li>
+<li>- short TTL</li>
+</ul>
+<hr>
+<h2 id='4-llm-as-system-of-record'>4. LLM as system of record</h2>
+<p>Never use conversational memory as the authoritative source for:</p>
+<ul>
+<li>- ownership</li>
+<li>- controls</li>
+<li>- evidence</li>
+<li>- classifications</li>
+<li>- exceptions</li>
+<li>- incidents</li>
+</ul>
+<hr>
+<h2 id='5-re-running-expensive-analysis-unnecessarily'>5. Re-running expensive analysis unnecessarily</h2>
+<p>Use:</p>
+<ul>
+<li>- hashes</li>
+<li>- graph deltas</li>
+<li>- cached evidence</li>
+<li>- incremental analysis</li>
+</ul>
+<hr>
+<h2 id='6-building-commodity-infrastructure'>6. Building commodity infrastructure</h2>
+<p>Prefer integrations for:</p>
+<ul>
+<li>- logs/metrics/traces</li>
+<li>- cloud cost</li>
+<li>- paging</li>
+<li>- source control</li>
+<li>- package scanning</li>
+<li>- identity</li>
+</ul>
+<p>Build where the family creates differentiated governance value.</p>
+<hr>
+<h1 id='46-deployment-decision-scorecard'>46. Deployment Decision Scorecard</h1>
+<p>For every new capability, fill this out before selecting an execution model.</p>
+<div class='table-wrap'><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>
+<tr><td>Can this be data/configuration instead of code?</td><td></td></tr>
+<tr><td>Can it run only when invoked?</td><td></td></tr>
+<tr><td>Can CI/CD host it?</td><td></td></tr>
+<tr><td>Is execution deterministic?</td><td></td></tr>
+<tr><td>Does it require an LLM?</td><td></td></tr>
+<tr><td>Does it require autonomous multi-step reasoning?</td><td></td></tr>
+<tr><td>Does it execute untrusted code/content?</td><td></td></tr>
+<tr><td>Does it need durable state?</td><td></td></tr>
+<tr><td>Does it need human-in-the-loop waiting?</td><td></td></tr>
+<tr><td>Does it require private network access?</td><td></td></tr>
+<tr><td>Does it require specialized GPU/CPU?</td><td></td></tr>
+<tr><td>Expected executions/day</td><td></td></tr>
+<tr><td>Expected inference tokens/day</td><td></td></tr>
+<tr><td>Maximum acceptable latency</td><td></td></tr>
+<tr><td>Required isolation level</td><td></td></tr>
+<tr><td>Data classification</td><td></td></tr>
+<tr><td>Required geographic boundary</td><td></td></tr>
+<tr><td>Cost ceiling</td><td></td></tr>
+<tr><td>Expected rate of behavior change</td><td></td></tr>
+<tr><td>Expected rate of infrastructure change</td><td></td></tr>
+</tbody></table></div>
+<h3 id='decision-output'>Decision output</h3>
+<pre><code class="language-text">Deployment class:
+D0 / D1 / D2 / D3 / D4 / D5 / D6 / D7
+
+Reason:
+
+Escalation trigger:
+&quot;When X becomes true, reconsider the deployment class.&quot;</code></pre>
+<p>This prevents architecture from being driven by enthusiasm for a particular runtime.</p>
+<hr>
+<h1 id='47-example-graduation-scenarios'>47. Example Graduation Scenarios</h1>
+<h2 id='teardown'>Teardown</h2>
+<h3 id='v1'>v1</h3>
+<p>GitHub Action invokes CLI.</p>
+<h3 id='v2'>v2</h3>
+<p>Queue-triggered container for larger repositories.</p>
+<h3 id='v3'>v3</h3>
+<p>Ephemeral autonomous agent container with restricted tools.</p>
+<h3 id='v4'>v4</h3>
+<p>Dedicated worker pool only if enterprise volume requires it.</p>
+<hr>
+<h2 id='snitch'>Snitch</h2>
+<h3 id='v1'>v1</h3>
+<p>Scheduled GitHub/Azure collectors.</p>
+<h3 id='v2'>v2</h3>
+<p>Event-driven collectors writing observations.</p>
+<h3 id='v3'>v3</h3>
+<p>Containerized privileged collectors for isolated environments.</p>
+<h3 id='v4'>v4</h3>
+<p>Dedicated collectors only for high-volume domains.</p>
+<hr>
+<h2 id='adhesion'>Adhesion</h2>
+<h3 id='v1'>v1</h3>
+<p>CI test/eval runner.</p>
+<h3 id='v2'>v2</h3>
+<p>Parallel evaluation jobs.</p>
+<h3 id='v3'>v3</h3>
+<p>Durable multi-agent evaluation workflow.</p>
+<h3 id='v4'>v4</h3>
+<p>Dedicated evaluation service only if shared enterprise throughput justifies it.</p>
+<hr>
+<h2 id='crosslink'>Crosslink</h2>
+<h3 id='v1'>v1</h3>
+<p>Workflow that resolves ownership and sends notifications.</p>
+<h3 id='v2'>v2</h3>
+<p>Durable escalation and acknowledgements.</p>
+<h3 id='v3'>v3</h3>
+<p>Agent-generated summaries/status messages.</p>
+<h3 id='v4'>v4</h3>
+<p>Interactive incident agent after deterministic coordination primitives are mature.</p>
+<hr>
+<h1 id='48-deployment-research-references'>48. Deployment Research References</h1>
+<p>Current platform capabilities worth considering during implementation:</p>
+<ul>
+<li>- GitHub Copilot agent skills  </li>
+</ul>
+<p>https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills</p>
+<ul>
+<li>- GitHub Actions runners and self-hosted runner guidance  </li>
+</ul>
+<p>https://docs.github.com/en/actions/concepts/runners</p>
+<p>https://docs.github.com/en/actions/concepts/runners/self-hosted-runners</p>
+<ul>
+<li>- Azure Container Apps Jobs  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/azure/container-apps/jobs-get-started-portal</p>
+<ul>
+<li>- Microsoft Agent Framework hosting options  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/agent-framework/hosting/</p>
+<ul>
+<li>- Durable Agent Framework workflows  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/agent-framework/hosting/azure-functions</p>
+<ul>
+<li>- Microsoft Foundry Hosted Agents  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents</p>
+<ul>
+<li>- vLLM OpenAI-compatible serving  </li>
+</ul>
+<p>https://docs.vllm.ai/en/latest/serving/openai_compatible_server/</p>
+<p>These are implementation options, not required dependencies of the family architecture.</p>
+<hr>
+<h1 id='49-deployment-decisions-to-iterate'>49. Deployment Decisions to Iterate</h1>
+<h2 id='candidate-decisions'>Candidate decisions</h2>
+<div class='table-wrap'><table><thead><tr><th>Decision</th><th>Current direction</th></tr></thead><tbody>
+<tr><td>Default governance distribution</td><td>Git-native artifacts</td></tr>
+<tr><td>Default reasoning extension</td><td>Skills/on-demand agents</td></tr>
+<tr><td>Default repo automation</td><td>CI/CD</td></tr>
+<tr><td>Default long-running orchestration</td><td>Durable/serverless workflows</td></tr>
+<tr><td>Default autonomous execution</td><td>Ephemeral containers</td></tr>
+<tr><td>Default model strategy</td><td>Managed model APIs with routing abstraction</td></tr>
+<tr><td>Local/private models</td><td>Policy- or economics-driven exception</td></tr>
+<tr><td>Persistent autonomous agents</td><td>Use sparingly</td></tr>
+<tr><td>Canonical state</td><td>Applications/datastores, never agent memory</td></tr>
+<tr><td>High-risk execution</td><td>Disposable sandbox + scoped identity</td></tr>
+<tr><td>Fast-changing behavior</td><td>Configuration/artifacts</td></tr>
+<tr><td>Slow-changing behavior</td><td>Infrastructure</td></tr>
+</tbody></table></div>
+<h2 id='open-questions-for-the-next-iteration'>Open questions for the next iteration</h2>
+<ul>
+<li>- Which deployment classes should Binder formally recognize?</li>
+<li>- Should every Swatch record declare an approved execution boundary?</li>
+<li>- Should BaseCoat controls be able to prohibit certain deployment classes?</li>
+<li>- Should Proof record model/runtime/deployment-class provenance for every AI-assisted action?</li>
+<li>- Should Snitch discover unmanaged local models and agent runtimes?</li>
+<li>- Should Teardown identify autonomous-agent execution paths inside a repository?</li>
+<li>- Should Adhesion include deployment-class-specific test suites?</li>
+<li>- Should Crosslink be permitted to invoke autonomous remediation, or only coordinate/approve it?</li>
+</ul>
+<hr>
+<h1 id='basecoat-deployment-alignment'>BaseCoat Deployment Alignment</h1>
+<h2 id='basecoat-s-native-operating-model'>BaseCoat&#x27;s native operating model</h2>
+<p>BaseCoat&#x27;s repository-native operating model should remain explicit even when the wider family uses a broader control-plane / execution-plane architecture.</p>
+<pre><code class="language-text">BaseCoat
+│
+├── Guardrails Plane
+│   ├── agents
+│   ├── skills
+│   ├── instructions
+│   └── prompts
+│
+└── Visibility Plane
+    ├── issues
+    ├── pull requests
+    ├── workflow runs
+    └── milestones / projects</code></pre>
+<p>This is a <strong>product-level model</strong>.</p>
+<p>The family-level model remains:</p>
+<pre><code class="language-text">Control Plane
+    ↕
+Execution Plane</code></pre>
+<p>Both are useful. They answer different questions.</p>
+<ul>
+<li>- <strong>Guardrails + Visibility</strong> explains how BaseCoat governs work inside GitHub.</li>
+<li>- <strong>Control + Execution</strong> explains how the wider family separates durable policy and state from workers, agents, workflows, and runtimes.</li>
+</ul>
+<h2 id='shearing-layers-preserve-the-canonical-basecoat-model'>Shearing Layers: preserve the canonical BaseCoat model</h2>
+<p>BaseCoat&#x27;s Shearing Layers guidance uses the architectural vocabulary popularized by <em>How Buildings Learn</em>:</p>
+<pre><code class="language-text">Site
+Structure
+Skin
+Services
+Space Plan
+Stuff</code></pre>
+<p>The important rule is:</p>
+<blockquote><strong>Put decisions at the fastest layer that can own them.</strong></blockquote>
+<p>The broader family interpretation remains useful:</p>
+<pre><code class="language-text">Fast
+Experiment
+Learn
+Operationalize
+Productize
+Standardize
+Anchor
+Slow</code></pre>
+<p>These should be presented as two views of the same idea, not as competing taxonomies.</p>
+<pre><code class="language-text">BaseCoat canonical vocabulary       Family interpretation
+-----------------------------       ---------------------
+Stuff                               Experiment
+Space Plan                          Learn / configure
+Services                            Operationalize
+Skin                                Productize
+Structure                           Standardize
+Site                                Anchor</code></pre>
+<p>The mapping is conceptual rather than a claim of exact one-to-one equivalence.</p>
+<h2 id='coupling-rule'>Coupling rule</h2>
+<p>Fast-changing concerns should depend on slower, more stable contracts—not the reverse.</p>
+<pre><code class="language-text">preferred:
+
+prompt / skill
+      ↓
+versioned BaseCoat contract
+      ↓
+stable service / platform contract
+
+avoid:
+
+slow shared contract
+      ↓
+hard dependency on
+temporary prompt wording</code></pre>
+<p>This keeps BaseCoat adaptable while preserving compatibility for the wider family.</p>
+<hr>
+<h1 id='sheen-deployment-alignment'>Sheen Deployment Alignment</h1>
+<p>Sheen reinforces the family&#x27;s artifact-first deployment philosophy.</p>
+<p>Most of Sheen is distributed as repository-native, versioned artifacts:</p>
+<pre><code class="language-text">tokens
+skills
+agents
+instructions
+prompts
+templates
+specifications
+validation rules</code></pre>
+<p>Consumer repositories use configuration plus synchronization tooling to pull the approved assets into place.</p>
+<p>That maps naturally to the family deployment model:</p>
+<pre><code class="language-text">D0
+schemas / tokens / specifications / instructions
+
+D1
+skills / prompts / agent definitions
+
+D2
+validation / synchronization / CI checks</code></pre>
+<p>Sheen therefore should <strong>not</strong> become a persistent application service unless a future capability clearly requires durable runtime state.</p>
+<p>Its current architecture is evidence that sophisticated governance can remain mostly artifact-driven.</p></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

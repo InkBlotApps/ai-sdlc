@@ -5471,3 +5471,50 @@ Crosslink / Operate
    ↓
 Reclaim
 ```
+
+
+---
+
+# Research Update — BaseCoat Consistency Review
+
+This update preserves the earlier research as historical context while clarifying the current relationship to the public BaseCoat implementation.
+
+## Current alignment
+
+- **BaseCoat** is the shared operating layer for governed GitHub Copilot work.
+- Its native primitives remain **Agent, Skill, Instruction, Prompt**.
+- Its product operating model remains **Guardrails Plane + Visibility Plane**.
+- The broader family additionally uses **Control Plane + Execution Plane** as an architectural distinction.
+- **Binder** is a proposed extraction/generalization of genuinely shared cross-product contracts with roots in BaseCoat; it is not assumed to already exist independently.
+- **Batchbook** owns the enterprise application catalog and canonical governed-application graph.
+- **Proof** owns the cross-product evidence/provenance model while BaseCoat continues to produce and consume GitHub-native evidence.
+- BaseCoat may orchestrate workflows across testing, UX, inventory, incident, and compliance domains without becoming the durable system of record for those sibling domains.
+- BaseCoat's Shearing Layers vocabulary should preserve **Site, Structure, Skin, Services, Space Plan, Stuff**. The broader family pace-layer model is an interpretation of the same principle.
+- The coatings/manufacturing metaphor is a family/product-architecture vocabulary. BaseCoat should continue to use GitHub/SDLC-native language where that is clearer to users.
+
+> **Speak locally. Govern consistently.**
+
+This update does not delete older research sections because the archive is intended to preserve the evolution of the design.
+
+
+---
+
+# Research Update — Sheen Consistency Review
+
+This update aligns the broader family research with the current public Sheen implementation.
+
+## Current alignment
+
+- **Sheen** is a design governance overlay for GitHub Copilot.
+- It is the **finish-coat sibling to BaseCoat**.
+- BaseCoat governs the engineering surface; Sheen governs the design surface.
+- Sheen's six design pillars are **Tokens & System, Brand, Usability, Accessibility, Information Architecture, and Governance**.
+- Sheen's durable assets include **design tokens, skills, agents, instructions, prompts, templates, validation rules, and design vocabulary**.
+- Sheen is not a component library, visual design tool, Figma replacement, documentation host, or engineering framework.
+- The token system is first class and follows a core → semantic → theme structure.
+- Sheen has an explicit consumer lifecycle: **Integrate → Onboard → Inventory → Audit → Use → Upgrade**.
+- Sheen defines experience expectations; Adhesion can independently evaluate implementation.
+- Proof can preserve Sheen evidence without taking ownership of design semantics.
+- Batchbook can reference Sheen profiles and token sets without absorbing Sheen's internal design-governance model.
+
+This update is appended rather than rewriting earlier research so the archive continues to preserve the evolution of the design.

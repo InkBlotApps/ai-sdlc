@@ -1,0 +1,465 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compliance &amp; Frameworks · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="compliance"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='compliance-and-framework-mapping'>Compliance and Framework Mapping</h1>
+<p>A framework for separating laws, regulations, assurance programs, standards, and practice models while mapping them to internal controls and profiles.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='16-compliance-and-operating-framework-taxonomy'>16. Compliance and Operating Framework Taxonomy</h1>
+<h2 id='regulations-legal-regimes'>Regulations / legal regimes</h2>
+<ul>
+<li>- ITAR</li>
+<li>- EAR</li>
+<li>- HIPAA</li>
+<li>- GDPR</li>
+<li>- SOX</li>
+<li>- state privacy laws</li>
+</ul>
+<h2 id='contract-assurance-certification-oriented-requirements'>Contract / assurance / certification-oriented requirements</h2>
+<ul>
+<li>- CMMC</li>
+<li>- FedRAMP</li>
+<li>- SOC 2</li>
+<li>- PCI DSS</li>
+</ul>
+<h2 id='standards-management-systems'>Standards / management systems</h2>
+<ul>
+<li>- ISO 27001</li>
+<li>- ISO 42001</li>
+<li>- ISO 20000</li>
+<li>- ISO 22301</li>
+</ul>
+<h2 id='frameworks-practice-models'>Frameworks / practice models</h2>
+<ul>
+<li>- NIST CSF</li>
+<li>- NIST SSDF</li>
+<li>- NIST AI RMF</li>
+<li>- ITIL / ITSM</li>
+<li>- FinOps</li>
+<li>- SRE</li>
+<li>- OWASP ASVS</li>
+<li>- OWASP GenAI</li>
+<li>- SLSA</li>
+</ul>
+<h2 id='design-rule'>Design rule</h2>
+<p>Do not treat all of these as equivalent. A law/regulation, an assurance framework, a management standard, and an operating practice should be represented differently.</p>
+<hr>
+<h1 id='17-compliance-profiles'>17. Compliance Profiles</h1>
+<p>Compliance should be applied through profiles.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">application: claims-portal
+
+profiles:
+  - enterprise-default
+  - hipaa
+  - soc2
+  - ai-high-risk</code></pre>
+<p>Basecoat resolves the effective control set from the selected profiles.</p>
+<h3 id='itar-example'>ITAR example</h3>
+<pre><code class="language-yaml">classification:
+  export_control:
+    regime: ITAR
+
+restrictions:
+  storage_regions:
+    - approved-us
+
+  personnel:
+    export_authorization_required: true
+
+  services:
+    external_ai: restricted
+
+  logging:
+    approved_boundaries_only: true
+
+  support:
+    approved_personnel_only: true</code></pre>
+<h3 id='cmmc-example'>CMMC example</h3>
+<pre><code class="language-text">Application
+   |
+handles:
+   CUI
+   |
+requires profile:
+   CMMC-L2
+   |
+maps to:
+   internal controls
+   |
+requires:
+   evidence + assessment support</code></pre>
+<p>Core model:</p>
+<blockquote><strong>classification → profile → controls → evidence</strong></blockquote>
+<hr>
+<h1 id='19-product-framework-adjacency-matrix'>19. Product / Framework Adjacency Matrix</h1>
+<div class='table-wrap'><table><thead><tr><th>Capability</th><th>Family product</th><th>Adjacent products</th><th>Frameworks / standards</th></tr></thead><tbody>
+<tr><td>Engineering governance</td><td>Basecoat</td><td>GitHub Enterprise, Azure Policy, OPA, Sentinel</td><td>NIST SSDF, NIST CSF, NIST AI RMF, ISO 27001, ISO 42001</td></tr>
+<tr><td>UX governance</td><td>Sheen</td><td>Figma, Storybook, Chromatic, axe</td><td>WCAG, Section 508, EN 301 549</td></tr>
+<tr><td>Testing / evals</td><td>Adhesion</td><td>Playwright, Cypress, SonarQube, Snyk, promptfoo</td><td>OWASP ASVS, NIST AI RMF, OWASP GenAI</td></tr>
+<tr><td>Inventory / graph</td><td>Swatch</td><td>ServiceNow CMDB/CSDM, Backstage, Compass, LeanIX</td><td>ITIL, ISO 20000, NIST CSF</td></tr>
+<tr><td>Discovery</td><td>Snitch</td><td>ServiceNow Discovery, Wiz, Defender for Cloud, Lansweeper</td><td>CIS Controls, NIST CSF Identify</td></tr>
+<tr><td>Reverse engineering</td><td>Teardown</td><td>Sourcegraph, GitHub dependency graph, Syft, Trivy</td><td>SPDX, CycloneDX, SLSA</td></tr>
+<tr><td>Incident coordination</td><td>Crosslink</td><td>PagerDuty, ServiceNow, incident.io, Rootly</td><td>ITIL Incident Mgmt, ISO 22301</td></tr>
+<tr><td>Evidence</td><td>Proof</td><td>ServiceNow GRC, Vanta, Drata, AuditBoard</td><td>OSCAL, SOC 2, ISO 27001, CMMC</td></tr>
+<tr><td>Policy targeting</td><td>Stencil</td><td>OPA selectors, Azure Policy scopes</td><td>Internal policy models</td></tr>
+<tr><td>Supply chain</td><td>Teardown + Proof / Formula</td><td>GitHub Attestations, JFrog, Snyk, Anchore</td><td>SLSA, SPDX, CycloneDX</td></tr>
+<tr><td>Observability</td><td>Integrations</td><td>Datadog, Azure Monitor, Dynatrace, Splunk</td><td>SRE, ITIL Event Mgmt</td></tr>
+<tr><td>Cost</td><td>Integrations</td><td>Apptio, Azure Cost Mgmt, Kubecost</td><td>FinOps</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='52-governance-is-not-the-same-as-law'>52. Governance Is Not the Same as Law</h1>
+<p>Governance is broader than law.</p>
+<p>Law and regulation can create obligations, but governance is the system an organization uses to decide how those obligations—and its own internal expectations—are interpreted, implemented, monitored, and changed.</p>
+<p>Sources of governance requirements can include:</p>
+<pre><code class="language-text">Law / Regulation
+       |
+Contracts
+       |
+Board / Executive Direction
+       |
+Corporate Policy
+       |
+Industry Standards
+       |
+Certification Requirements
+       |
+Customer Requirements
+       |
+Risk Appetite
+       |
+Architecture Standards
+       |
+Professional Norms
+       |
+Internal Operating Rules</code></pre>
+<p>All of these can create governance obligations.</p>
+<p>Examples:</p>
+<pre><code class="language-text">&quot;Do not export controlled technical data&quot;
+    → may originate in law/regulation
+
+&quot;Production repositories require two reviewers&quot;
+    → may originate in internal corporate policy
+
+&quot;Applications must use the approved design system&quot;
+    → may originate in an engineering standard</code></pre>
+<p>The enforcement mechanism may look similar even when the source of authority is different.</p>
+<h2 id='design-implication'>Design implication</h2>
+<p>Every control should eventually be traceable to an <strong>authority/source</strong>, but that authority does not have to be law.</p>
+<hr>
+<h1 id='53-government-governance-management-and-compliance'>53. Government, Governance, Management, and Compliance</h1>
+<p>These terms overlap but are not interchangeable.</p>
+<h2 id='government'>Government</h2>
+<p>Formal institutions with legal authority.</p>
+<h2 id='governance'>Governance</h2>
+<p>The system by which direction is established, decisions are overseen, responsibility is assigned, and accountability is maintained.</p>
+<h2 id='management'>Management</h2>
+<p>The planning and execution of work within the direction established by governance.</p>
+<h2 id='compliance'>Compliance</h2>
+<p>Conformance with a specific requirement, obligation, policy, contract, regulation, or standard.</p>
+<p>A useful relationship is:</p>
+<pre><code class="language-text">Governance
+    ↓
+sets direction and accountability
+
+Management
+    ↓
+plans and executes
+
+Controls
+    ↓
+translate expectations into mechanisms
+
+Compliance
+    ↓
+describes whether requirements are being met
+
+Assurance
+    ↓
+provides confidence that the system is working</code></pre>
+<p>This matters because a company can be <strong>compliant with one requirement and still have weak governance</strong>, or have strong governance while knowingly accepting a documented residual risk.</p>
+<hr>
+<h1 id='54-a-short-history-of-modern-governance-thinking'>54. A Short History of Modern Governance Thinking</h1>
+<p>The following is a simplified lineage, not a claim that each framework directly evolved from the one before it.</p>
+<pre><code class="language-text">Ancient steering metaphor
+        ↓
+Institutional / public governance
+        ↓
+Corporate governance
+        ↓
+IT governance
+        ↓
+Cybersecurity governance
+        ↓
+AI governance</code></pre>
+<h2 id='late-20th-century-public-and-institutional-governance'>Late 20th century — public and institutional governance</h2>
+<p>Modern governance language became increasingly common in public-sector and development contexts as organizations focused on:</p>
+<ul>
+<li>- authority,</li>
+<li>- accountability,</li>
+<li>- transparency,</li>
+<li>- institutions,</li>
+<li>- policy execution,</li>
+<li>- and stakeholder interests.</li>
+</ul>
+<h2 id='corporate-governance'>Corporate governance</h2>
+<p>Corporate-governance models formalized ideas such as:</p>
+<ul>
+<li>- strategic direction,</li>
+<li>- oversight,</li>
+<li>- board responsibility,</li>
+<li>- accountability,</li>
+<li>- risk,</li>
+<li>- stakeholder interests,</li>
+<li>- and monitoring management.</li>
+</ul>
+<p>A highly influential formulation described corporate governance as the <strong>system by which companies are directed and controlled</strong>.</p>
+<h2 id='it-governance'>IT governance</h2>
+<p>IT governance frameworks carried those same ideas into technology.</p>
+<p>A particularly useful pattern became:</p>
+<pre><code class="language-text">Evaluate
+   ↓
+Direct
+   ↓
+Monitor</code></pre>
+<p>Management then plans, builds, runs, and monitors systems within that direction.</p>
+<h2 id='cybersecurity-governance'>Cybersecurity governance</h2>
+<p>Modern cybersecurity frameworks elevated governance into an explicit function that includes:</p>
+<ul>
+<li>- organizational context,</li>
+<li>- roles and responsibilities,</li>
+<li>- policy,</li>
+<li>- risk strategy,</li>
+<li>- oversight,</li>
+<li>- legal and contractual requirements,</li>
+<li>- and supply-chain risk.</li>
+</ul>
+<h2 id='ai-governance'>AI governance</h2>
+<p>AI governance extends the same ideas across the AI lifecycle:</p>
+<ul>
+<li>- policies,</li>
+<li>- risk tolerances,</li>
+<li>- inventories,</li>
+<li>- testing,</li>
+<li>- transparency,</li>
+<li>- human accountability,</li>
+<li>- third-party risk,</li>
+<li>- monitoring,</li>
+<li>- incidents,</li>
+<li>- and decommissioning.</li>
+</ul>
+<p>The vocabulary changed.</p>
+<p>The governance loop did not.</p>
+<hr>
+<h1 id='58-governance-actors'>58. Governance Actors</h1>
+<p>A useful governance system separates responsibilities rather than putting every role in one team.</p>
+<p>A modernized role model:</p>
+<div class='table-wrap'><table><thead><tr><th>Role</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td><strong>Authority / Governing Body</strong></td><td>Establish intent and accountability</td></tr>
+<tr><td><strong>Policy Owner</strong></td><td>Translate intent into policy</td></tr>
+<tr><td><strong>Communicator / Enabler</strong></td><td>Make expectations understandable and usable</td></tr>
+<tr><td><strong>Control Owner / Enforcer</strong></td><td>Implement controls</td></tr>
+<tr><td><strong>Validator</strong></td><td>Test whether controls and outcomes work</td></tr>
+<tr><td><strong>Assurance / Auditor</strong></td><td>Independently assess confidence in the system</td></tr>
+<tr><td><strong>Governed Actor</strong></td><td>Human, team, service, or agent expected to operate within constraints</td></tr>
+</tbody></table></div>
+<p>This separation matters because the same system should not automatically:</p>
+<pre><code class="language-text">write the rule
+implement the rule
+test the rule
+declare the rule effective
+audit itself</code></pre>
+<p>Independence should increase as the consequence and assurance requirement increase.</p>
+<hr>
+<h1 id='60-governance-as-proportional-control'>60. Governance as Proportional Control</h1>
+<p>One of the most persistent ideas across the journey is that <strong>maximum enforcement is not automatically better governance</strong>.</p>
+<p>A useful modern vocabulary includes:</p>
+<ul>
+<li>- risk appetite</li>
+<li>- risk tolerance</li>
+<li>- proportionality</li>
+<li>- reasonable assurance</li>
+<li>- residual risk</li>
+<li>- compensating controls</li>
+<li>- exceptions</li>
+<li>- cost/benefit</li>
+<li>- control effectiveness</li>
+</ul>
+<p>That produces a more realistic formula:</p>
+<pre><code class="language-text">Governance Value
+    ≈
+Risk Reduced
+    -
+Control Cost
+    -
+Operational Friction
+    -
+Exception / Maintenance Cost</code></pre>
+<p>This is intentionally not a precise mathematical formula.</p>
+<p>It is a design heuristic.</p>
+<p>A control that technically reduces risk but creates massive workarounds, shadow systems, or operational cost may produce less governance value than a lighter control with strong visibility and evidence.</p>
+<hr>
+<h1 id='61-good-enough-is-an-engineering-concept-not-a-failure'>61. &quot;Good Enough&quot; Is an Engineering Concept, Not a Failure</h1>
+<p>Governance does not require eliminating all risk.</p>
+<p>The relevant questions are:</p>
+<pre><code class="language-text">What risk exists?
+
+What outcome matters?
+
+How much risk are we willing to accept?
+
+What control gives reasonable assurance?
+
+What residual risk remains?
+
+Who has authority to accept it?
+
+When should that decision expire or be reviewed?</code></pre>
+<p>This creates a disciplined place for:</p>
+<ul>
+<li>- exceptions,</li>
+<li>- waivers,</li>
+<li>- compensating controls,</li>
+<li>- temporary acceptance,</li>
+<li>- staged remediation,</li>
+<li>- and risk-based prioritization.</li>
+</ul>
+<p>A binary model:</p>
+<pre><code class="language-text">compliant / non-compliant</code></pre>
+<p>is often too weak to describe real enterprise governance.</p>
+<p>A stronger model is:</p>
+<pre><code class="language-text">requirement
+    ↓
+control
+    ↓
+evidence
+    ↓
+effectiveness
+    ↓
+residual risk
+    ↓
+accept / remediate / strengthen / retire</code></pre>
+<hr>
+<h1 id='62-classification-should-drive-governance'>62. Classification Should Drive Governance</h1>
+<p>Another recurring principle is that classification should influence architecture and controls.</p>
+<pre><code class="language-text">Classification
+      ↓
+Profile
+      ↓
+Controls
+      ↓
+Enforcement Strength
+      ↓
+Placement / Architecture
+      ↓
+Evidence Requirements</code></pre>
+<p>Examples:</p>
+<pre><code class="language-text">Public prototype
+    → lightweight governance
+
+Production customer application
+    → stronger SDLC and operational controls
+
+CUI workload
+    → controlled environment + stronger evidence
+
+ITAR-controlled workload
+    → personnel, geography, service, and export restrictions
+
+High-risk AI system
+    → stronger evaluation, monitoring, and approval requirements</code></pre>
+<p>This is why classification belongs in <strong>Swatch</strong>, while Basecoat resolves the control implications.</p>
+<hr>
+<h1 id='63-enforcement-belongs-at-the-right-scope'>63. Enforcement Belongs at the Right Scope</h1>
+<p>A policy may be correct but ineffective if enforced at the wrong point.</p>
+<p>Candidate scopes in the modern family include:</p>
+<pre><code class="language-text">Enterprise
+  ↓
+Business Unit
+  ↓
+Portfolio
+  ↓
+Application
+  ↓
+Repository
+  ↓
+Branch / Pull Request
+  ↓
+Build
+  ↓
+Artifact
+  ↓
+Deployment
+  ↓
+Runtime
+  ↓
+Model / Agent / Tool
+  ↓
+Data</code></pre>
+<p>The ideal enforcement point is usually the earliest place where the organization has:</p>
+<ol>
+<li>1. enough information to make the decision,</li>
+<li>2. enough authority to enforce it,</li>
+<li>3. and low enough cost to prevent or correct the problem.</li>
+</ol>
+<p>This supports a simple principle:</p>
+<blockquote><strong>Prevent early when the rule is deterministic; observe and validate later when reality cannot be known earlier.</strong></blockquote>
+<hr>
+<h1 id='71-side-quest-references-and-frameworks-to-explore'>71. Side Quest References and Frameworks to Explore</h1>
+<p>These are useful anchors for deeper research into formal governance terminology.</p>
+<h2 id='organizational-corporate-governance'>Organizational / corporate governance</h2>
+<ul>
+<li>- <strong>ISO 37000 — Governance of organizations</strong></li>
+<li>- <strong>G20/OECD Principles of Corporate Governance</strong></li>
+<li>- <strong>UK Corporate Governance Code / Cadbury lineage</strong></li>
+<li>- <strong>IIA Three Lines Model</strong></li>
+</ul>
+<h2 id='technology-governance'>Technology governance</h2>
+<ul>
+<li>- <strong>ISO/IEC 38500 — Governance of IT</strong></li>
+<li>- <strong>COBIT</strong></li>
+<li>- <strong>ITIL / ITSM</strong></li>
+<li>- <strong>ISO/IEC 20000</strong></li>
+</ul>
+<h2 id='cybersecurity-governance'>Cybersecurity governance</h2>
+<ul>
+<li>- <strong>NIST Cybersecurity Framework 2.0</strong></li>
+<li>- <strong>ISO/IEC 27001</strong></li>
+<li>- <strong>CIS Controls</strong></li>
+</ul>
+<h2 id='ai-governance'>AI governance</h2>
+<ul>
+<li>- <strong>NIST AI Risk Management Framework</strong></li>
+<li>- <strong>ISO/IEC 42001</strong></li>
+<li>- <strong>OWASP GenAI Security Project</strong></li>
+</ul>
+<h2 id='controls-and-assurance'>Controls and assurance</h2>
+<ul>
+<li>- <strong>NIST OSCAL</strong></li>
+<li>- <strong>SOC 2 / Trust Services Criteria</strong></li>
+<li>- <strong>CMMC</strong></li>
+<li>- <strong>FedRAMP</strong></li>
+<li>- <strong>PCI DSS</strong></li>
+</ul>
+<h2 id='useful-research-questions'>Useful research questions</h2>
+<ul>
+<li>- Which governance concepts belong in Binder schemas?</li>
+<li>- Which belong in Basecoat controls?</li>
+<li>- Which require independent assurance rather than self-validation?</li>
+<li>- How should risk appetite change enforcement strength?</li>
+<li>- How should governance authority be represented for autonomous agents?</li>
+<li>- Can governance capacity be measured?</li>
+<li>- When should a control graduate from guidance to architectural prevention?</li>
+</ul></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

@@ -1,107 +1,547 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Governance is the system that makes organizational intent operable.">
-  <title>Evidence &amp; Assurance · AI SDLC Governance</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body data-page="proof">
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
-      <span class="brand-mark">BC</span>
-      <span>
-        <strong>AI SDLC Governance</strong>
-        <small>working architecture</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
-      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
-    </div>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
-<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence &amp; Assurance · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="proof"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
 <a class="nav-link" data-page="family" href="family.html">Product Family</a>
-<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
 <a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
-<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
-<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
-<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
-<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
-      </nav>
-      <div class="sidebar-note">
-        <span class="status-dot"></span>
-        Living design system
-      </div>
-    </aside>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='evidence-and-assurance'>Evidence and Assurance</h1>
+<p>The Proof model: evidence basis, confidence, assurance levels, Stamps, CoA, Batch Records, Genealogy, Notary/Witness, and evidence policy.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='13-proof-evidence-and-provenance'>13. Proof — Evidence and Provenance</h1>
+<h2 id='role'>Role</h2>
+<p>Proof stores evidence, provenance, attestations, and conformance artifacts. It should not independently declare compliance.</p>
+<h3 id='core-model'>Core model</h3>
+<pre><code class="language-text">Control
+   ↓
+Policy
+   ↓
+Implementation
+   ↓
+Test
+   ↓
+Result
+   ↓
+Evidence
+   ↓
+Approval</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">subject: app:claims-portal
+control: BC-SCM-004
+assertion: pass
 
-    <main class="content">
-      <div class="page-head">
-        <p class="eyebrow">Proof</p>
-        <h1>Evidence & Assurance</h1>
-      </div>
-      
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Proof</p>
-    <h2>Evidence should explain what we know and why we trust it</h2>
-    <p>Do not collapse source quality, model confidence, attestation, and independent assurance into one vague “trust score.” Preserve the dimensions separately.</p>
-  </div>
-</section>
+evidence:
+  source: github
+  workflow: build.yml
+  run: 987324
+  commit: 5d7841f
 
-<section class="card-grid three">
-  <div class="card"><h3>Evidence basis</h3><p><b>Declared</b>, Observed, Identified, Inferred, Calculated, Verified.</p><p class="muted">How was the claim established?</p></div>
-  <div class="card"><h3>Confidence</h3><p>Primarily for inferred or probabilistic evidence. Preserve the producer’s uncertainty instead of disguising inference as fact.</p><p class="muted">How certain is the producer?</p></div>
-  <div class="card"><h3>Assurance</h3><p>A0 Unattested · A1 System Stamped · A2 Owner Attested · A3 Independent Validation · A4 Independent Assurance · A5 External Certification.</p><p class="muted">Who or what stands behind the claim?</p></div>
-</section>
+produced_by: adhesion
+observed_at: 2026-09-26
+expires_at: 2026-10-26</code></pre>
+<h3 id='adjacent-products'>Adjacent products</h3>
+<ul>
+<li>- ServiceNow GRC / IRM</li>
+<li>- Archer</li>
+<li>- Vanta</li>
+<li>- Drata</li>
+<li>- AuditBoard</li>
+</ul>
+<h3 id='useful-standards'>Useful standards</h3>
+<ul>
+<li>- OSCAL</li>
+<li>- in-toto / provenance concepts</li>
+<li>- SLSA attestations</li>
+</ul>
+<hr>
+<h1 id='96-evidence-vocabulary-update'>96. Evidence Vocabulary Update</h1>
+<p>The evidence and provenance vocabulary is now:</p>
+<pre><code class="language-text">Batchbook
+    Enterprise catalog of governed applications
 
-<section>
-  <div class="section-title"><p class="eyebrow">Evidence objects</p><h2>Proof has several different artifacts</h2></div>
-  <div class="card-grid two">
-    <div class="card"><h3>Stamp</h3><p>A compact machine-readable assertion, validation, attestation, or approval attached to evidence.</p></div>
-    <div class="card"><h3>CoA</h3><p>A generated point-in-time Certificate of Analysis summarizing conformance evidence for a Batch, release, artifact, or deployment.</p></div>
-    <div class="card"><h3>Batch Record</h3><p>The accumulated lifecycle record: builds, evaluations, deployments, changes, exceptions, incidents, remediation, and Proof references.</p></div>
-    <div class="card"><h3>Genealogy</h3><p>Traceability across source, dependencies, packages, models, agents, tools, artifacts, and deployments.</p></div>
-  </div>
-</section>
+Batch
+    One governed application
 
-<section>
-  <div class="section-title"><p class="eyebrow">Roles</p><h2>Validator, Notary, and Auditor are not the same thing</h2></div>
-  <div class="role-row">
-    <div><strong>Validator</strong><span>“I tested the claim.”</span></div>
-    <div><strong>Notary / Witness</strong><span>“I verified producer identity, signature, timestamp, integrity, and provenance.”</span></div>
-    <div><strong>Auditor / Assurance</strong><span>“I independently assessed whether the evidence and controls are sufficient.”</span></div>
-  </div>
-</section>
+Swatch
+    Compact identity/profile/manifest for the Batch
 
-<section class="panel">
-  <p class="eyebrow">Stamp policy</p>
-  <h2>Inference may create a finding without being allowed to block.</h2>
-  <p>A control can require a minimum evidence basis and assurance level. For example, inferred evidence may open an investigation, while an authoritative API verification may be required before blocking production.</p>
-</section>
+Batch Record
+    Historical record of what happened to the Batch over time
 
-    </main>
+Proof
+    Evidence and provenance capability
 
-    
-  </div>
+Stamp
+    A specific assertion, attestation, approval, or validation attached to evidence
 
-  <dialog id="searchDialog">
-    <form method="dialog" class="search-panel">
-      <div class="search-head">
-        <strong>Search the architecture</strong>
-        <button value="close" aria-label="Close search">Close</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </form>
-  </dialog>
+CoA
+    Certificate of Analysis — a point-in-time conformance summary
 
-  <script src="app.js"></script>
-</body>
-</html>
+Genealogy
+    Lineage of source, dependencies, models, artifacts, and deployments</code></pre>
+<h2 id='relationship'>Relationship</h2>
+<pre><code class="language-text">Batch
+  |
+  +-- Swatch
+  |
+  +-- Genealogy
+  |
+  +-- Batch Record
+  |      |
+  |      +-- builds
+  |      +-- deployments
+  |      +-- changes
+  |      +-- incidents
+  |      +-- exceptions
+  |
+  +-- Proof
+         |
+         +-- evidence
+         +-- provenance
+         +-- Stamps
+         +-- attestations
+         +-- CoA</code></pre>
+<p>The product name <strong>Proof</strong> replaces the earlier working evidence-system name.</p>
+<hr>
+<h1 id='97-proof-evidence-and-provenance'>97. Proof — Evidence and Provenance</h1>
+<h2 id='role'>Role</h2>
+<p>Proof answers:</p>
+<blockquote><strong>What evidence exists for this claim, where did it come from, how trustworthy is it, and who or what stands behind it?</strong></blockquote>
+<p>Proof should preserve:</p>
+<ul>
+<li>- source</li>
+<li>- subject</li>
+<li>- claim</li>
+<li>- observation method</li>
+<li>- confidence</li>
+<li>- validator</li>
+<li>- signer/attestor</li>
+<li>- timestamp</li>
+<li>- validity period</li>
+<li>- artifact hash</li>
+<li>- related control</li>
+<li>- related Batch</li>
+<li>- related release/deployment</li>
+<li>- revocation/expiration state</li>
+</ul>
+<p>Proof does <strong>not</strong> independently decide:</p>
+<blockquote>&quot;This application is compliant.&quot;</blockquote>
+<p>Instead, it records defensible statements such as:</p>
+<pre><code class="language-text">Control BC-IAM-001
+was evaluated against
+deployment prod-east
+using Azure configuration evidence
+at 2026-09-26T14:00
+and passed validator version 3.4.</code></pre>
+<hr>
+<h1 id='98-batch-record'>98. Batch Record</h1>
+<p>A <strong>Batch Record</strong> is the accumulated lifecycle history for one Batch.</p>
+<p>This is analogous to manufacturing batch-production records.</p>
+<pre><code class="language-text">Batch Record
+│
+├── identity changes
+├── ownership changes
+├── Formula versions
+├── Blueprint versions
+├── source commits
+├── builds
+├── SBOM / AI-BOM
+├── dependency changes
+├── evaluations
+├── Stamps
+├── exceptions
+├── approvals
+├── deployments
+├── incidents
+├── remediation
+├── retirement actions
+└── Proof references</code></pre>
+<p>The Batch Record answers:</p>
+<blockquote><strong>What happened to this governed application over its lifetime?</strong></blockquote>
+<p>It is not merely a log.</p>
+<p>It is the traceable history required to reconstruct important governance decisions and states.</p>
+<hr>
+<h1 id='99-genealogy'>99. Genealogy</h1>
+<p><strong>Genealogy</strong> captures where the components of a Batch came from and what they became.</p>
+<h2 id='software-genealogy'>Software genealogy</h2>
+<pre><code class="language-text">Commit
+  ↓
+Build
+  ↓
+Artifact
+  ↓
+Container
+  ↓
+Deployment</code></pre>
+<h2 id='dependency-genealogy'>Dependency genealogy</h2>
+<pre><code class="language-text">Application
+  ↓
+Package
+  ↓
+Transitive Package
+  ↓
+Source / Publisher</code></pre>
+<h2 id='ai-genealogy'>AI genealogy</h2>
+<pre><code class="language-text">Application
+  ↓
+Agent
+  ↓
+Model
+  ↓
+Prompt / Skill
+  ↓
+MCP Server
+  ↓
+Tool
+  ↓
+Knowledge Source</code></pre>
+<p>Genealogy complements topology:</p>
+<ul>
+<li>- <strong>Topology</strong> answers: <em>What is connected to what?</em></li>
+<li>- <strong>Genealogy</strong> answers: <em>Where did this come from, and what descended from it?</em></li>
+</ul>
+<p>Teardown is a natural producer of Genealogy data.</p>
+<hr>
+<h1 id='100-coa-certificate-of-analysis'>100. CoA — Certificate of Analysis</h1>
+<p>A <strong>CoA</strong> is a point-in-time summary of conformance evidence for a Batch, release, artifact, or deployment.</p>
+<p>It is analogous to the Certificate of Analysis used in chemical and regulated manufacturing.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">coa:
+  subject: deployment:claims-prod-2026-09-26
+  batch: app:claims-processing
+
+  profile:
+    - enterprise-default
+    - hipaa
+    - ai-high-risk
+
+  results:
+    basecoat: pass
+    adhesion: pass
+    sheen: pass
+    security: pass
+
+  evidence:
+    sbom: present
+    provenance: verified
+    exceptions:
+      active: 1
+      expired: 0
+
+  stamps:
+    - build-verified
+    - security-attested
+    - release-approved</code></pre>
+<p>A CoA should be <strong>generated from Proof</strong>, not manually authored as an unsupported declaration.</p>
+<p>It is a summary artifact, not the source of truth.</p>
+<hr>
+<h1 id='101-stamps'>101. Stamps</h1>
+<p>A <strong>Stamp</strong> is a compact, machine-readable assertion attached to evidence.</p>
+<p>Examples:</p>
+<pre><code class="language-text">Observed
+Identified
+Inferred
+Verified
+Attested
+Approved
+Independently Assured</code></pre>
+<p>However, these terms should <strong>not</strong> be treated as one simple ladder.</p>
+<p>They describe different properties.</p>
+<p>For example:</p>
+<blockquote>An inference can be highly confident but still not be independently attested.</blockquote>
+<blockquote>A human can attest to a claim that was originally self-declared.</blockquote>
+<p>The model therefore needs at least two dimensions:</p>
+<ol>
+<li>1. <strong>Evidence Basis</strong> — how the claim was established.</li>
+<li>2. <strong>Assurance</strong> — who or what stands behind it.</li>
+</ol>
+<hr>
+<h1 id='102-evidence-basis'>102. Evidence Basis</h1>
+<p>The <strong>Evidence Basis</strong> describes how Proof knows something.</p>
+<div class='table-wrap'><table><thead><tr><th>Basis</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td><strong>Declared</strong></td><td>A person/system stated it</td><td>Owner says the app handles PII</td></tr>
+<tr><td><strong>Observed</strong></td><td>A source was directly inspected</td><td>GitHub API reports branch protection</td></tr>
+<tr><td><strong>Identified</strong></td><td>Observation was resolved to a canonical entity</td><td>Repo matched to Batch <code>claims-processing</code></td></tr>
+<tr><td><strong>Inferred</strong></td><td>Derived probabilistically or heuristically</td><td>Teardown infers an external model dependency from code</td></tr>
+<tr><td><strong>Calculated</strong></td><td>Derived deterministically from trusted inputs</td><td>Dependency risk calculated from SBOM + advisory</td></tr>
+<tr><td><strong>Verified</strong></td><td>Checked against an authoritative or deterministic source</td><td>Azure policy confirms public access is disabled</td></tr>
+</tbody></table></div>
+<p>These states describe <strong>epistemology</strong>:</p>
+<blockquote><em>How did we arrive at this claim?</em></blockquote>
+<p>They should be preserved with the evidence so downstream controls can decide how much trust is appropriate.</p>
+<hr>
+<h1 id='103-assurance-level'>103. Assurance Level</h1>
+<p>The <strong>Assurance Level</strong> describes who or what stands behind the claim.</p>
+<p>A candidate model:</p>
+<pre><code class="language-text">A0 — Unattested
+     Evidence exists, but no trusted actor vouches for it.
+
+A1 — System Stamped
+     An approved automated validator produced/signed the assertion.
+
+A2 — Owner Attested
+     An accountable owner explicitly attested to the claim.
+
+A3 — Independent Validation
+     A separate validator confirmed the assertion.
+
+A4 — Independent Assurance
+     A designated assurance/audit function reviewed the evidence.
+
+A5 — External Certification
+     An authorized external organization issued a recognized certification
+     or assessment result.</code></pre>
+<p>This should be configurable by organizations.</p>
+<p>The important idea is separation:</p>
+<pre><code class="language-text">Evidence Basis:
+  Verified
+
+Assurance:
+  A1 System Stamped</code></pre>
+<p>is different from:</p>
+<pre><code class="language-text">Evidence Basis:
+  Declared
+
+Assurance:
+  A2 Owner Attested</code></pre>
+<p>Both may be valid evidence, but they carry different weight.</p>
+<hr>
+<h1 id='104-confidence-is-a-third-dimension'>104. Confidence Is a Third Dimension</h1>
+<p>For inferred or probabilistic evidence, Proof should also preserve <strong>confidence</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">claim:
+  external_model_endpoint: true
+
+basis: inferred
+confidence: 0.91
+
+producer:
+  product: teardown
+  version: 2.4
+
+assurance:
+  level: A1
+  type: system-stamped</code></pre>
+<p>This produces three separate questions:</p>
+<pre><code class="language-text">1. BASIS
+   How was the claim established?
+
+2. CONFIDENCE
+   How certain is the producer?
+
+3. ASSURANCE
+   Who/what stands behind the claim?</code></pre>
+<p>Do not collapse these into one &quot;trust score.&quot;</p>
+<p>That would hide useful distinctions and make policy decisions harder to explain.</p>
+<hr>
+<h1 id='105-stamp-policy'>105. Stamp Policy</h1>
+<p>Controls can specify the minimum evidence basis and assurance they require.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">control: BC-DATA-021
+
+requirement:
+  production CUI workloads must use approved model endpoints
+
+evidence_requirement:
+  acceptable_basis:
+    - verified
+
+  minimum_assurance:
+    level: A1
+
+  inferred_evidence:
+    allowed_for_finding: true
+    allowed_for_blocking: false</code></pre>
+<p>This allows proportional enforcement.</p>
+<pre><code class="language-text">Snitch infers a violation
+        ↓
+Create finding
+
+Teardown confirms it
+        ↓
+Increase confidence
+
+Authoritative API verifies it
+        ↓
+Eligible for blocking enforcement
+
+Independent assurance reviews it
+        ↓
+Eligible for audit evidence</code></pre>
+<p>This is a stronger model than treating every scanner or LLM statement as equally authoritative.</p>
+<hr>
+<h1 id='106-do-we-need-a-notary'>106. Do We Need a Notary?</h1>
+<p>Possibly — but as a <strong>technical role</strong>, not as a claim of legal notarization.</p>
+<p>A useful internal concept would be a <strong>Notary Service</strong> that:</p>
+<ul>
+<li>- validates the identity of the evidence producer,</li>
+<li>- verifies signatures,</li>
+<li>- validates hashes,</li>
+<li>- confirms timestamps,</li>
+<li>- checks certificate trust,</li>
+<li>- confirms artifact provenance,</li>
+<li>- records revocation,</li>
+<li>- and issues a trusted Stamp.</li>
+</ul>
+<pre><code class="language-text">Evidence Producer
+      |
+      v
+    Proof
+      |
+      v
+   Notary
+      |
+  verify identity
+  verify signature
+  verify artifact hash
+  verify provenance
+  verify timestamp
+      |
+      v
+    Stamp</code></pre>
+<p>The Notary would answer:</p>
+<blockquote><strong>Can I prove who produced this assertion and that it has not been altered?</strong></blockquote>
+<p>It would <strong>not</strong> answer:</p>
+<blockquote><strong>Is the underlying business claim true?</strong></blockquote>
+<p>That remains the validator&#x27;s responsibility.</p>
+<hr>
+<h1 id='107-notary-vs-validator-vs-auditor'>107. Notary vs. Validator vs. Auditor</h1>
+<p>These roles should remain distinct.</p>
+<pre><code class="language-text">Validator
+  &quot;I tested the claim.&quot;
+
+Notary
+  &quot;I verified who produced this record,
+   its signature, timestamp, and integrity.&quot;
+
+Auditor / Assurance
+  &quot;I independently assessed whether the
+   evidence and controls are sufficient.&quot;</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">Adhesion
+   validates:
+   &quot;The application passed this security test.&quot;
+
+Proof
+   stores:
+   test output + evidence
+
+Notary
+   verifies:
+   Adhesion identity + signature + artifact hash
+
+Stamp
+   records:
+   Verified / A1 System Stamped
+
+Independent assurance
+   may later issue:
+   A4 Independent Assurance</code></pre>
+<p>This separation reduces the risk of one component testing, signing, and auditing its own assertion.</p>
+<hr>
+<h1 id='108-alternative-name-witness'>108. Alternative Name: Witness</h1>
+<p>If <strong>Notary</strong> creates too much legal-semantic baggage, an alternative is:</p>
+<blockquote><strong>Witness</strong></blockquote>
+<p>A Witness verifies that an event, artifact, or assertion existed in a particular state at a particular time.</p>
+<p>Conceptually:</p>
+<pre><code class="language-text">Validator proves behavior.
+Witness proves provenance.
+Auditor proves assurance.</code></pre>
+<p>Other candidate names:</p>
+<ul>
+<li>- Witness</li>
+<li>- Attestor</li>
+<li>- Registrar</li>
+<li>- Seal</li>
+<li>- Certifier</li>
+</ul>
+<p>For now, <strong>Notary</strong> can remain a conceptual role inside Proof rather than a standalone product.</p>
+<hr>
+<h1 id='109-recommended-proof-model'>109. Recommended Proof Model</h1>
+<p>A Proof record should ultimately look something like:</p>
+<pre><code class="language-yaml">proof:
+  id: proof:8f821...
+
+  subject:
+    id: deployment:claims-prod
+    batch: app:claims-processing
+
+  claim:
+    control: BC-IAM-001
+    assertion: pass
+
+  basis:
+    type: verified
+    source: azure-api
+
+  confidence:
+    value: 1.0
+
+  producer:
+    id: adhesion:prod
+    version: 3.4
+
+  assurance:
+    level: A1
+    type: system-stamped
+
+  stamp:
+    signer: notary:enterprise
+    signature: sha256:...
+    issued_at: 2026-09-26T14:00:00-04:00
+    expires_at: 2026-10-26T14:00:00-04:00
+
+  provenance:
+    artifact_hash: sha256:...
+    source_commit: abc123
+    workflow_run: 94827
+
+  status:
+    revoked: false</code></pre>
+<p>The important parts are independently inspectable:</p>
+<pre><code class="language-text">Claim
+Basis
+Confidence
+Producer
+Assurance
+Stamp
+Provenance
+Validity</code></pre>
+<hr>
+<h1 id='relationship-to-basecoat-evidence'>Relationship to BaseCoat Evidence</h1>
+<p>Proof generalizes an evidence-first pattern that already exists inside BaseCoat.</p>
+<p>BaseCoat emphasizes repository-native evidence such as:</p>
+<ul>
+<li>- pull requests,</li>
+<li>- issues,</li>
+<li>- workflow runs,</li>
+<li>- job logs,</li>
+<li>- approval boundaries,</li>
+<li>- version-pinned assets,</li>
+<li>- validation results,</li>
+<li>- and integrity checks.</li>
+</ul>
+<p>Proof should not replace those native artifacts.</p>
+<p>Instead, Proof provides a family-level evidence model that can <strong>reference, normalize, sign, correlate, and preserve</strong> evidence from BaseCoat and other products.</p>
+<pre><code class="language-text">BaseCoat workflow run
+       ↓
+native GitHub evidence
+       ↓
+Proof reference
+       ↓
+Stamp / assurance metadata
+       ↓
+Batch Record
+       ↓
+optional CoA</code></pre>
+<p>This preserves an important boundary:</p>
+<blockquote><strong>BaseCoat creates and uses repository-native evidence. Proof provides the cross-product evidence and provenance model.</strong></blockquote></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

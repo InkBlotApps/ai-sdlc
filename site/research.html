@@ -1,0 +1,4342 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Full Research Archive · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="research"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='ai-sdlc-governance-full-working-research-archive'>AI SDLC Governance — Full Working Research Archive</h1>
+<p>This file preserves the complete Markdown research content from the working notebook in chronological order.</p>
+<p>It intentionally includes ideas that were later renamed, refined, superseded, or reorganized. Use the topic-specific documents in <code>docs/</code> for the current information architecture; use this archive for the full research trail.</p>
+<hr>
+<h1 id='ai-sdlc-governance-family-working-notebook'>AI SDLC Governance Family — Working Notebook</h1>
+<p><strong>Status:</strong> Working draft</p>
+<p><strong>Purpose:</strong> Capture the product-family architecture, naming system, responsibilities, adjacent products, compliance/framework mappings, and open design questions for an enterprise-scale AI SDLC governance platform.</p>
+<p>This notebook is intentionally structured as a <strong>living design document</strong>. Sections marked <strong>Decision</strong>, <strong>Candidate</strong>, and <strong>Open Question</strong> are meant to evolve as the family becomes clearer.</p>
+<hr>
+<h2 id='working-thesis'>Working thesis</h2>
+<p>The family is not just a collection of AI development tools. It is evolving toward an <strong>enterprise application governance platform</strong> with AI-assisted software development as the design center.</p>
+<p>A concise operating model:</p>
+<blockquote><strong>Snitch discovers reality. Teardown explains it. Swatch remembers it. Basecoat governs it. Sheen shapes the experience. Adhesion verifies it. Crosslink coordinates people when it fails. Proof proves what happened. Binder makes the family work together.</strong></blockquote>
+<hr>
+<h1 id='1-design-principles'>1. Design Principles</h1>
+<ol>
+<li>1. <strong>Each product should own a distinct domain primitive.</strong></li>
+<li>2. <strong>Shared family mechanics should not live inside one sibling product.</strong></li>
+<li>3. <strong>Compliance should be expressed as profiles and mappings, not as one-off products.</strong></li>
+<li>4. <strong>Discovery is not truth.</strong> Observations should be reconciled into canonical records.</li>
+<li>5. <strong>Evidence is not compliance.</strong> Store evidence and mappings; avoid claiming compliance automatically.</li>
+<li>6. <strong>Stable identity matters.</strong> Repositories, apps, services, models, agents, deployments, teams, and controls need durable IDs.</li>
+<li>7. <strong>Integrate before rebuilding.</strong> Use existing observability, cost, identity, SBOM, and ITSM platforms where practical.</li>
+<li>8. <strong>The graph is the center.</strong> Relationships between assets matter more than flat inventory.</li>
+<li>9. <strong>Make the secure/governed path the default path.</strong></li>
+<li>10. <strong>Keep domain products independently useful, but interoperable through shared contracts.</strong></li>
+</ol>
+<hr>
+<h1 id='2-current-and-candidate-product-family'>2. Current and Candidate Product Family</h1>
+<div class='table-wrap'><table><thead><tr><th>Product</th><th>Working role</th><th>Primary verb</th><th>Core primitive</th><th>Status</th></tr></thead><tbody>
+<tr><td><strong>Binder</strong></td><td>Shared family substrate / contracts</td><td>Connect</td><td>Manifest / schema / identity</td><td>Candidate</td></tr>
+<tr><td><strong>Basecoat</strong></td><td>AI-SDLC engineering governance</td><td>Govern</td><td>Control / instruction</td><td>Existing</td></tr>
+<tr><td><strong>Adhesion</strong></td><td>Testing, validation, evals</td><td>Verify</td><td>Test / assertion / evaluation</td><td>Existing</td></tr>
+<tr><td><strong>Sheen</strong></td><td>UI/UX governance</td><td>Experience</td><td>Design token / UX contract</td><td>Existing</td></tr>
+<tr><td><strong>Batchbook</strong></td><td>Enterprise catalog of governed applications</td><td>Know</td><td>Entity / record</td><td>Preferred name</td></tr>
+<tr><td><strong>Snitch</strong></td><td>Discovery and intelligence</td><td>Discover</td><td>Observation</td><td>Existing idea</td></tr>
+<tr><td><strong>Teardown</strong></td><td>Repo/app reverse engineering</td><td>Understand</td><td>Component / relationship</td><td>Existing idea</td></tr>
+<tr><td><strong>Crosslink</strong></td><td>Incident coordination / call tree</td><td>Coordinate</td><td>Escalation / responder</td><td>Candidate rename</td></tr>
+<tr><td><strong>Proof</strong></td><td>Evidence, provenance, attestations</td><td>Prove</td><td>Evidence / attestation / stamp</td><td>Candidate</td></tr>
+<tr><td><strong>Stencil</strong></td><td>Policy targeting / scoping</td><td>Apply</td><td>Scope / selector</td><td>Candidate</td></tr>
+<tr><td><strong>Formula</strong></td><td>Approved composition / supply-chain recipe</td><td>Compose</td><td>Composition</td><td>Candidate</td></tr>
+<tr><td><strong>Blueprint</strong></td><td>Intended architecture</td><td>Architect</td><td>Architecture contract</td><td>Candidate</td></tr>
+<tr><td><strong>Seal</strong></td><td>Security posture / hardening</td><td>Protect</td><td>Security control set</td><td>Candidate</td></tr>
+<tr><td><strong>Reclaim</strong></td><td>Retirement / deprecation</td><td>Retire</td><td>Lifecycle action</td><td>Candidate</td></tr>
+</tbody></table></div>
+<h3 id='naming-direction'>Naming direction</h3>
+<p>The current family works well when names remain short, concrete, industrial, and related to coatings/materials rather than generic enterprise software terms.</p>
+<hr>
+<h1 id='3-naming-system-swatch-deck-palette'>3. Naming System: Swatch, Deck, Palette</h1>
+<h2 id='decision-candidate'>Decision candidate</h2>
+<p>Use <strong>Swatch</strong> as the application/service catalog product.</p>
+<p>Inside Swatch:</p>
+<ul>
+<li>- <strong>Swatch</strong> — an individual application, service, repo, or governed entity record.</li>
+<li>- <strong>Deck</strong> — a collection of swatches grouped by ownership, platform, business unit, compliance boundary, or another durable classification.</li>
+<li>- <strong>Palette</strong> — a curated or dynamic subset selected for a purpose.</li>
+</ul>
+<h3 id='examples'>Examples</h3>
+<pre><code class="language-text">Swatch
+  ├── Claims Portal
+  ├── Claims API
+  └── Claims AI Service
+
+Deck: Manufacturing Apps
+Deck: Customer-Facing Apps
+Deck: CUI Workloads
+
+Palette: PCI Applications
+Palette: AI-enabled Applications
+Palette: Apps using Model X</code></pre>
+<p>Natural language:</p>
+<ul>
+<li>- “Add this application to Swatch.”</li>
+<li>- “Put it in the CUI Deck.”</li>
+<li>- “Show me the Production Deck.”</li>
+<li>- “Create a Palette of applications using this model.”</li>
+</ul>
+<hr>
+<h1 id='4-family-architecture'>4. Family Architecture</h1>
+<pre><code class="language-text">                         BINDER
+                 Shared Family Contract
+                           |
+       +-------------------+-------------------+
+       |                   |                   |
+    Basecoat             Sheen             Adhesion
+    Engineering          Experience        Verification
+    Governance           Governance        Governance
+       |                   |                   |
+       +-------------------+-------------------+
+                           |
+                         Swatch
+                 Enterprise App Graph
+                           |
+            +--------------+--------------+
+            |              |              |
+         Snitch         Teardown         Crosslink
+        Discover        Understand      Coordinate
+            |              |              |
+            +--------------+--------------+
+                           |
+                         Proof
+                          Prove</code></pre>
+<h2 id='interpretation'>Interpretation</h2>
+<ul>
+<li>- <strong>Binder</strong> defines family-wide contracts.</li>
+<li>- <strong>Swatch</strong> becomes the shared application/service graph and canonical record.</li>
+<li>- <strong>Snitch</strong> feeds observations into Swatch.</li>
+<li>- <strong>Teardown</strong> explains the internal structure of repositories/apps and enriches Swatch.</li>
+<li>- <strong>Basecoat</strong>, <strong>Sheen</strong>, and <strong>Adhesion</strong> apply specialized governance.</li>
+<li>- <strong>Crosslink</strong> resolves humans, escalation paths, and incident coordination.</li>
+<li>- <strong>Proof</strong> stores evidence and provenance.</li>
+</ul>
+<hr>
+<h1 id='5-shared-family-substrate-binder'>5. Shared Family Substrate — Binder</h1>
+<h2 id='purpose'>Purpose</h2>
+<p>Binder should own mechanics that every sibling needs, so Basecoat does not become the de facto parent implementation.</p>
+<h3 id='candidate-binder-responsibilities'>Candidate Binder responsibilities</h3>
+<pre><code class="language-text">Binder
+ ├── family-manifest.schema.json
+ ├── product-manifest.schema.json
+ ├── guidance-lock.schema.json
+ ├── evidence.schema.json
+ ├── control.schema.json
+ ├── exception.schema.json
+ ├── entity-id.schema.json
+ ├── sync
+ ├── rollback
+ ├── ownership
+ ├── validation
+ └── schema versioning</code></pre>
+<h3 id='binder-should-answer'>Binder should answer</h3>
+<ul>
+<li>- What products belong to this family?</li>
+<li>- Which namespaces do they own?</li>
+<li>- How are artifacts identified?</li>
+<li>- How are schemas versioned?</li>
+<li>- How are products synchronized?</li>
+<li>- How are ownership conflicts prevented?</li>
+<li>- How are upgrades and rollbacks handled?</li>
+<li>- How is evidence referenced?</li>
+<li>- How are cross-product links represented?</li>
+</ul>
+<h3 id='open-question'>Open question</h3>
+<p>Should Binder be:</p>
+<ol>
+<li>1. a standalone repository,</li>
+<li>2. a package/SDK,</li>
+<li>3. a set of schemas and CLI tools,</li>
+<li>4. or all three?</li>
+</ol>
+<hr>
+<h1 id='6-basecoat-engineering-governance'>6. Basecoat — Engineering Governance</h1>
+<h2 id='role'>Role</h2>
+<p>Basecoat governs <strong>how engineering work is performed</strong>.</p>
+<p>It should remain responsible for:</p>
+<ul>
+<li>- shared development guidance</li>
+<li>- enterprise engineering controls</li>
+<li>- AI coding guidance</li>
+<li>- secure defaults</li>
+<li>- agent/instruction governance</li>
+<li>- policy intent</li>
+<li>- distribution of engineering guidance</li>
+<li>- versioned governance artifacts</li>
+<li>- mappings from internal controls to external frameworks</li>
+</ul>
+<h2 id='boundary'>Boundary</h2>
+<p>Basecoat should <strong>not</strong> become the canonical database for:</p>
+<ul>
+<li>- application inventory</li>
+<li>- incident response</li>
+<li>- runtime telemetry</li>
+<li>- UX design tokens</li>
+<li>- test results</li>
+<li>- SBOMs</li>
+<li>- evidence records</li>
+<li>- ownership records</li>
+</ul>
+<p>It may orchestrate or query those domains through sibling products.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-text">Basecoat asks:
+&quot;What controls apply to app:claims-portal?&quot;
+
+Swatch provides:
+classification + ownership + profiles
+
+Basecoat returns:
+effective engineering controls</code></pre>
+<hr>
+<h1 id='7-sheen-experience-governance'>7. Sheen — Experience Governance</h1>
+<h2 id='role'>Role</h2>
+<p>Sheen owns UI/UX governance and should remain independently useful.</p>
+<h3 id='likely-primitives'>Likely primitives</h3>
+<ul>
+<li>- design tokens</li>
+<li>- semantic tokens</li>
+<li>- themes</li>
+<li>- accessibility requirements</li>
+<li>- interaction patterns</li>
+<li>- UX conventions</li>
+<li>- component guidance</li>
+<li>- conformance tests</li>
+</ul>
+<h3 id='framework-adjacency'>Framework adjacency</h3>
+<ul>
+<li>- WCAG</li>
+<li>- Section 508</li>
+<li>- EN 301 549</li>
+<li>- ISO 9241</li>
+<li>- design token specifications</li>
+<li>- enterprise design systems</li>
+</ul>
+<h3 id='architectural-lesson'>Architectural lesson</h3>
+<p>Sheen is a good model for sibling products because it has a domain-specific primitive rather than merely being a set of Basecoat instructions.</p>
+<hr>
+<h1 id='8-adhesion-validation-and-evaluation'>8. Adhesion — Validation and Evaluation</h1>
+<h2 id='role'>Role</h2>
+<p>Adhesion should be broader than unit/integration testing.</p>
+<h3 id='candidate-validation-domains'>Candidate validation domains</h3>
+<ul>
+<li>- unit tests</li>
+<li>- integration tests</li>
+<li>- contract tests</li>
+<li>- security tests</li>
+<li>- accessibility tests</li>
+<li>- performance tests</li>
+<li>- policy validation</li>
+<li>- architecture conformance</li>
+<li>- AI evaluations</li>
+<li>- prompt-injection tests</li>
+<li>- hallucination tests</li>
+<li>- model regression</li>
+<li>- agent/tool behavior</li>
+<li>- response safety</li>
+<li>- deterministic rules</li>
+</ul>
+<h3 id='core-primitive'>Core primitive</h3>
+<pre><code class="language-text">Evaluation
+ ├── subject
+ ├── assertion
+ ├── method
+ ├── expected result
+ ├── actual result
+ ├── evidence
+ └── timestamp</code></pre>
+<h3 id='framework-adjacency'>Framework adjacency</h3>
+<ul>
+<li>- OWASP ASVS</li>
+<li>- OWASP GenAI</li>
+<li>- NIST AI RMF</li>
+<li>- NIST SSDF</li>
+<li>- PCI DSS secure development requirements</li>
+</ul>
+<hr>
+<h1 id='9-swatch-enterprise-application-graph'>9. Swatch — Enterprise Application Graph</h1>
+<h2 id='role'>Role</h2>
+<p>Swatch should be more than a traditional CMDB.</p>
+<p>It should answer:</p>
+<blockquote>What do we have, who owns it, what is it connected to, what classifications apply, and what other entities depend on it?</blockquote>
+<h2 id='candidate-graph'>Candidate graph</h2>
+<pre><code class="language-text">Organization
+   |
+Portfolio
+   |
+Product
+   |
+Application
+   |
+System
+   |
+Component
+   |
+Repository
+   |
+Build
+   |
+Artifact
+   |
+Deployment</code></pre>
+<p>Relationships can extend to:</p>
+<pre><code class="language-text">Team
+Owner
+On-call team
+Cloud subscription
+Environment
+Database
+API
+Package
+Container
+Data source
+Model
+Model version
+Embedding model
+Vector store
+Prompt
+Agent
+Skill
+MCP server
+Tool
+Workflow
+Secret reference
+Certificate
+DNS name
+Cost center
+Business capability
+Data classification
+Compliance profile</code></pre>
+<h2 id='adjacent-products'>Adjacent products</h2>
+<ul>
+<li>- ServiceNow CMDB / CSDM</li>
+<li>- Backstage Software Catalog</li>
+<li>- Atlassian Compass</li>
+<li>- LeanIX</li>
+<li>- Ardoq</li>
+</ul>
+<h2 id='differentiator'>Differentiator</h2>
+<p>Traditional CMDB + software catalog + AI component graph + governance context.</p>
+<hr>
+<h1 id='10-snitch-discovery-and-intelligence'>10. Snitch — Discovery and Intelligence</h1>
+<h2 id='role'>Role</h2>
+<p>Snitch should answer:</p>
+<blockquote>What exists that Swatch does not know about, or what changed from the expected state?</blockquote>
+<h2 id='important-boundary'>Important boundary</h2>
+<p>Snitch produces <strong>observations</strong>, not canonical truth.</p>
+<h3 id='example-observation'>Example observation</h3>
+<pre><code class="language-yaml">source: github
+observed_at: 2026-09-26T13:00:00-04:00
+type: repository
+
+repository:
+  org: contoso
+  name: claims-ai
+
+signals:
+  language: python
+  dockerfile: true
+  external_ai_endpoint: true
+  mcp_server: true
+
+confidence: 0.98</code></pre>
+<p>Swatch then reconciles observations from multiple sources.</p>
+<h3 id='candidate-sources'>Candidate sources</h3>
+<ul>
+<li>- GitHub</li>
+<li>- Azure</li>
+<li>- AWS</li>
+<li>- GCP</li>
+<li>- Kubernetes</li>
+<li>- container registries</li>
+<li>- DNS</li>
+<li>- Entra ID / IAM systems</li>
+<li>- ServiceNow</li>
+<li>- observability platforms</li>
+<li>- SaaS APIs</li>
+<li>- model endpoints</li>
+<li>- MCP registries</li>
+</ul>
+<hr>
+<h1 id='11-teardown-reverse-engineering-and-graph-generation'>11. Teardown — Reverse Engineering and Graph Generation</h1>
+<h2 id='role'>Role</h2>
+<p>Teardown should answer:</p>
+<blockquote>What is this thing actually made of?</blockquote>
+<p>It should accept more than repositories over time.</p>
+<h3 id='candidate-inputs'>Candidate inputs</h3>
+<ul>
+<li>- repository</li>
+<li>- application</li>
+<li>- container image</li>
+<li>- deployment</li>
+<li>- SBOM</li>
+<li>- architecture document</li>
+<li>- IaC package</li>
+</ul>
+<h3 id='candidate-output-graph'>Candidate output graph</h3>
+<pre><code class="language-text">Repository
+ |
+ +-- application
+ +-- service
+ +-- API
+ +-- Dockerfile
+ +-- Terraform
+ +-- package manifests
+ +-- CI/CD workflows
+ +-- databases
+ +-- model endpoints
+ +-- agents
+ +-- prompts
+ +-- MCP servers
+ +-- external APIs
+ +-- secrets references
+ +-- data flows</code></pre>
+<h3 id='standards-to-reuse'>Standards to reuse</h3>
+<ul>
+<li>- SPDX</li>
+<li>- CycloneDX</li>
+<li>- SLSA provenance</li>
+</ul>
+<h3 id='ai-specific-extension'>AI-specific extension</h3>
+<p>Teardown should recognize:</p>
+<ul>
+<li>- models</li>
+<li>- model providers</li>
+<li>- model versions</li>
+<li>- prompts</li>
+<li>- agents</li>
+<li>- skills</li>
+<li>- MCP servers</li>
+<li>- tools</li>
+<li>- vector stores</li>
+<li>- embedding models</li>
+<li>- RAG sources</li>
+<li>- guardrails</li>
+<li>- AI evaluations</li>
+</ul>
+<hr>
+<h1 id='12-crosslink-incident-coordination'>12. Crosslink — Incident Coordination</h1>
+<h2 id='role'>Role</h2>
+<p>Crosslink is the product name for the incident coordination capability that began as the <strong>Call Tree</strong> concept.</p>
+<p>It should answer:</p>
+<blockquote>Who needs to respond, how do we reach them, what role do they have, and how do we coordinate the incident?</blockquote>
+<h3 id='capabilities'>Capabilities</h3>
+<ul>
+<li>- on-call resolution</li>
+<li>- escalation policies</li>
+<li>- call trees</li>
+<li>- bridge creation</li>
+<li>- responder acknowledgment</li>
+<li>- incident roles</li>
+<li>- business owner notification</li>
+<li>- executive escalation</li>
+<li>- vendor escalation</li>
+<li>- recurring status updates</li>
+<li>- post-incident handoff</li>
+</ul>
+<h3 id='incident-roles'>Incident roles</h3>
+<pre><code class="language-text">Incident Commander
+Technical Lead
+Communications Lead
+Business Owner
+Security
+Vendor
+Executive Liaison</code></pre>
+<h3 id='workflow'>Workflow</h3>
+<pre><code class="language-text">Incident created
+      ↓
+Impacted services resolved in Swatch
+      ↓
+Owners and on-call teams resolved
+      ↓
+Crosslink creates coordination channel / bridge
+      ↓
+Responders notified
+      ↓
+Non-acknowledgements escalated
+      ↓
+Roles tracked
+      ↓
+Resolution
+      ↓
+Post-incident review</code></pre>
+<h3 id='adjacent-products'>Adjacent products</h3>
+<ul>
+<li>- PagerDuty</li>
+<li>- ServiceNow Major Incident Management</li>
+<li>- incident.io</li>
+<li>- Rootly</li>
+<li>- Jira Service Management</li>
+<li>- Microsoft Teams</li>
+<li>- Slack</li>
+</ul>
+<hr>
+<h1 id='13-proof-evidence-and-provenance'>13. Proof — Evidence and Provenance</h1>
+<h2 id='role'>Role</h2>
+<p>Proof stores evidence, provenance, attestations, and conformance artifacts. It should not independently declare compliance.</p>
+<h3 id='core-model'>Core model</h3>
+<pre><code class="language-text">Control
+   ↓
+Policy
+   ↓
+Implementation
+   ↓
+Test
+   ↓
+Result
+   ↓
+Evidence
+   ↓
+Approval</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">subject: app:claims-portal
+control: BC-SCM-004
+assertion: pass
+
+evidence:
+  source: github
+  workflow: build.yml
+  run: 987324
+  commit: 5d7841f
+
+produced_by: adhesion
+observed_at: 2026-09-26
+expires_at: 2026-10-26</code></pre>
+<h3 id='adjacent-products'>Adjacent products</h3>
+<ul>
+<li>- ServiceNow GRC / IRM</li>
+<li>- Archer</li>
+<li>- Vanta</li>
+<li>- Drata</li>
+<li>- AuditBoard</li>
+</ul>
+<h3 id='useful-standards'>Useful standards</h3>
+<ul>
+<li>- OSCAL</li>
+<li>- in-toto / provenance concepts</li>
+<li>- SLSA attestations</li>
+</ul>
+<hr>
+<h1 id='14-stable-identity-model'>14. Stable Identity Model</h1>
+<p>Stable identifiers should exist across the entire family.</p>
+<h3 id='examples'>Examples</h3>
+<pre><code class="language-text">app:claims-portal
+repo:github:contoso/claims-portal
+service:claims-api
+model:azure-openai:model-x
+agent:claims-assistant
+mcp:claims-records
+deployment:prod-eastus
+team:claims-platform
+control:BC-IAM-001</code></pre>
+<h3 id='cross-product-flow'>Cross-product flow</h3>
+<pre><code class="language-text">Snitch discovers:
+repo:github:contoso/claims-portal
+
+Teardown analyzes:
+repo:github:contoso/claims-portal
+
+Swatch relates:
+repo -&gt; app:claims-portal
+
+Basecoat assigns:
+controls -&gt; app:claims-portal
+
+Adhesion validates:
+app:claims-portal
+
+Proof stores:
+evidence -&gt; app:claims-portal
+
+Crosslink resolves:
+app -&gt; team -&gt; on-call</code></pre>
+<hr>
+<h1 id='15-common-control-model'>15. Common Control Model</h1>
+<p>External frameworks should map to internal engineering controls.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">id: BC-IAM-001
+title: Workloads must use non-secret authentication
+
+intent:
+  prevent long-lived credentials in automated workloads
+
+requirements:
+  - workload identity preferred
+  - OIDC federation allowed
+  - static secrets prohibited without approved exception
+
+evidence:
+  - workflow configuration
+  - cloud identity configuration
+
+validation:
+  automated: true</code></pre>
+<h3 id='framework-mappings'>Framework mappings</h3>
+<pre><code class="language-text">BC-IAM-001
+  ├── NIST SSDF
+  ├── NIST CSF
+  ├── ISO 27001
+  ├── CMMC
+  ├── SOC 2
+  ├── PCI DSS
+  └── Internal Policy</code></pre>
+<p>This keeps the engineering standard stable while external frameworks evolve.</p>
+<hr>
+<h1 id='16-compliance-and-operating-framework-taxonomy'>16. Compliance and Operating Framework Taxonomy</h1>
+<h2 id='regulations-legal-regimes'>Regulations / legal regimes</h2>
+<ul>
+<li>- ITAR</li>
+<li>- EAR</li>
+<li>- HIPAA</li>
+<li>- GDPR</li>
+<li>- SOX</li>
+<li>- state privacy laws</li>
+</ul>
+<h2 id='contract-assurance-certification-oriented-requirements'>Contract / assurance / certification-oriented requirements</h2>
+<ul>
+<li>- CMMC</li>
+<li>- FedRAMP</li>
+<li>- SOC 2</li>
+<li>- PCI DSS</li>
+</ul>
+<h2 id='standards-management-systems'>Standards / management systems</h2>
+<ul>
+<li>- ISO 27001</li>
+<li>- ISO 42001</li>
+<li>- ISO 20000</li>
+<li>- ISO 22301</li>
+</ul>
+<h2 id='frameworks-practice-models'>Frameworks / practice models</h2>
+<ul>
+<li>- NIST CSF</li>
+<li>- NIST SSDF</li>
+<li>- NIST AI RMF</li>
+<li>- ITIL / ITSM</li>
+<li>- FinOps</li>
+<li>- SRE</li>
+<li>- OWASP ASVS</li>
+<li>- OWASP GenAI</li>
+<li>- SLSA</li>
+</ul>
+<h2 id='design-rule'>Design rule</h2>
+<p>Do not treat all of these as equivalent. A law/regulation, an assurance framework, a management standard, and an operating practice should be represented differently.</p>
+<hr>
+<h1 id='17-compliance-profiles'>17. Compliance Profiles</h1>
+<p>Compliance should be applied through profiles.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">application: claims-portal
+
+profiles:
+  - enterprise-default
+  - hipaa
+  - soc2
+  - ai-high-risk</code></pre>
+<p>Basecoat resolves the effective control set from the selected profiles.</p>
+<h3 id='itar-example'>ITAR example</h3>
+<pre><code class="language-yaml">classification:
+  export_control:
+    regime: ITAR
+
+restrictions:
+  storage_regions:
+    - approved-us
+
+  personnel:
+    export_authorization_required: true
+
+  services:
+    external_ai: restricted
+
+  logging:
+    approved_boundaries_only: true
+
+  support:
+    approved_personnel_only: true</code></pre>
+<h3 id='cmmc-example'>CMMC example</h3>
+<pre><code class="language-text">Application
+   |
+handles:
+   CUI
+   |
+requires profile:
+   CMMC-L2
+   |
+maps to:
+   internal controls
+   |
+requires:
+   evidence + assessment support</code></pre>
+<p>Core model:</p>
+<blockquote><strong>classification → profile → controls → evidence</strong></blockquote>
+<hr>
+<h1 id='18-exception-model'>18. Exception Model</h1>
+<p>Exceptions need to be first-class.</p>
+<pre><code class="language-text">Control
+   |
+Violation
+   |
+Exception
+   |
+Owner
+   |
+Approver
+   |
+Reason
+   |
+Compensating Control
+   |
+Expiration</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">control: BC-NET-013
+subject: app:legacy-payments
+
+exception:
+  reason: legacy vendor integration
+
+approved_by:
+  - security-architecture
+
+expires: 2026-12-31
+
+compensating_controls:
+  - IP allowlist
+  - WAF inspection
+  - increased logging</code></pre>
+<h3 id='cross-product-behavior'>Cross-product behavior</h3>
+<ul>
+<li>- Snitch discovers expired exceptions.</li>
+<li>- Adhesion validates compensating controls.</li>
+<li>- Crosslink escalates production exceptions when needed.</li>
+<li>- Swatch displays exception state.</li>
+<li>- Basecoat changes enforcement after expiry.</li>
+<li>- Proof records the history.</li>
+</ul>
+<hr>
+<h1 id='19-product-framework-adjacency-matrix'>19. Product / Framework Adjacency Matrix</h1>
+<div class='table-wrap'><table><thead><tr><th>Capability</th><th>Family product</th><th>Adjacent products</th><th>Frameworks / standards</th></tr></thead><tbody>
+<tr><td>Engineering governance</td><td>Basecoat</td><td>GitHub Enterprise, Azure Policy, OPA, Sentinel</td><td>NIST SSDF, NIST CSF, NIST AI RMF, ISO 27001, ISO 42001</td></tr>
+<tr><td>UX governance</td><td>Sheen</td><td>Figma, Storybook, Chromatic, axe</td><td>WCAG, Section 508, EN 301 549</td></tr>
+<tr><td>Testing / evals</td><td>Adhesion</td><td>Playwright, Cypress, SonarQube, Snyk, promptfoo</td><td>OWASP ASVS, NIST AI RMF, OWASP GenAI</td></tr>
+<tr><td>Inventory / graph</td><td>Swatch</td><td>ServiceNow CMDB/CSDM, Backstage, Compass, LeanIX</td><td>ITIL, ISO 20000, NIST CSF</td></tr>
+<tr><td>Discovery</td><td>Snitch</td><td>ServiceNow Discovery, Wiz, Defender for Cloud, Lansweeper</td><td>CIS Controls, NIST CSF Identify</td></tr>
+<tr><td>Reverse engineering</td><td>Teardown</td><td>Sourcegraph, GitHub dependency graph, Syft, Trivy</td><td>SPDX, CycloneDX, SLSA</td></tr>
+<tr><td>Incident coordination</td><td>Crosslink</td><td>PagerDuty, ServiceNow, incident.io, Rootly</td><td>ITIL Incident Mgmt, ISO 22301</td></tr>
+<tr><td>Evidence</td><td>Proof</td><td>ServiceNow GRC, Vanta, Drata, AuditBoard</td><td>OSCAL, SOC 2, ISO 27001, CMMC</td></tr>
+<tr><td>Policy targeting</td><td>Stencil</td><td>OPA selectors, Azure Policy scopes</td><td>Internal policy models</td></tr>
+<tr><td>Supply chain</td><td>Teardown + Proof / Formula</td><td>GitHub Attestations, JFrog, Snyk, Anchore</td><td>SLSA, SPDX, CycloneDX</td></tr>
+<tr><td>Observability</td><td>Integrations</td><td>Datadog, Azure Monitor, Dynatrace, Splunk</td><td>SRE, ITIL Event Mgmt</td></tr>
+<tr><td>Cost</td><td>Integrations</td><td>Apptio, Azure Cost Mgmt, Kubecost</td><td>FinOps</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='20-candidate-product-names-to-reserve'>20. Candidate Product Names to Reserve</h1>
+<h2 id='strong-candidates'>Strong candidates</h2>
+<ul>
+<li>- <strong>Binder</strong> — shared family contracts</li>
+<li>- <strong>Swatch</strong> — application catalog / graph</li>
+<li>- <strong>Deck</strong> — durable grouping within Swatch</li>
+<li>- <strong>Palette</strong> — curated/dynamic subset within Swatch</li>
+<li>- <strong>Stencil</strong> — policy targeting / scope</li>
+<li>- <strong>Formula</strong> — approved composition</li>
+<li>- <strong>Crosslink</strong> — incident coordination</li>
+<li>- <strong>Proof</strong> — evidence / provenance</li>
+<li>- <strong>Blueprint</strong> — intended architecture</li>
+<li>- <strong>Seal</strong> — security / hardening</li>
+<li>- <strong>Reclaim</strong> — retirement / lifecycle</li>
+<li>- <strong>Substrate</strong> — platform/environment</li>
+<li>- <strong>Batch</strong> — release/provenance unit</li>
+<li>- <strong>Cure</strong> — readiness/maturity</li>
+<li>- <strong>Mask</strong> — exclusions/scoping</li>
+<li>- <strong>Finish</strong> — release readiness</li>
+</ul>
+<h2 id='names-already-established'>Names already established</h2>
+<ul>
+<li>- Basecoat</li>
+<li>- Adhesion</li>
+<li>- Sheen</li>
+<li>- Snitch</li>
+<li>- Teardown</li>
+</ul>
+<hr>
+<h1 id='21-potential-product-boundaries'>21. Potential Product Boundaries</h1>
+<h2 id='build-as-first-class-products'>Build as first-class products</h2>
+<p>Likely strong candidates:</p>
+<ol>
+<li>1. Basecoat</li>
+<li>2. Adhesion</li>
+<li>3. Sheen</li>
+<li>4. Swatch</li>
+<li>5. Snitch</li>
+<li>6. Teardown</li>
+<li>7. Crosslink</li>
+<li>8. Proof</li>
+<li>9. Binder</li>
+</ol>
+<h2 id='consider-as-shared-services-concepts-before-making-products'>Consider as shared services / concepts before making products</h2>
+<ul>
+<li>- Stencil</li>
+<li>- Formula</li>
+<li>- Blueprint</li>
+<li>- Seal</li>
+<li>- Reclaim</li>
+<li>- Gauge</li>
+<li>- Cost / FinOps</li>
+<li>- runtime observability</li>
+</ul>
+<h3 id='reasoning'>Reasoning</h3>
+<p>Avoid product sprawl. Some concepts may be better expressed as:</p>
+<ul>
+<li>- Swatch entity types,</li>
+<li>- Basecoat control domains,</li>
+<li>- Teardown outputs,</li>
+<li>- Binder primitives,</li>
+<li>- or integrations with existing products.</li>
+</ul>
+<hr>
+<h1 id='22-example-enterprise-record'>22. Example Enterprise Record</h1>
+<pre><code class="language-yaml">application:
+  id: app:claims-processing
+  name: Claims Processing
+
+owner:
+  team: claims-platform
+
+repositories:
+  - repo:github:contoso/claims-web
+  - repo:github:contoso/claims-api
+  - repo:github:contoso/claims-ai
+
+data:
+  classifications:
+    - PII
+    - PHI
+
+ai:
+  models:
+    - model:azure-openai:model-x
+  agents:
+    - agent:claims-agent
+  mcp:
+    - mcp:claims-records
+
+deployments:
+  - deployment:prod-east
+  - deployment:prod-west
+
+profiles:
+  - enterprise-standard
+  - hipaa
+  - soc2
+  - ai-high-risk
+
+operations:
+  on_call: claims-platform
+
+governance:
+  controls_applicable: 142
+  evidence_current: 137
+  exceptions_active: 3
+  evidence_missing: 2</code></pre>
+<h3 id='questions-this-enables'>Questions this enables</h3>
+<ul>
+<li>- Which apps use model X?</li>
+<li>- Which apps use a vulnerable package?</li>
+<li>- Which repos expose MCP servers?</li>
+<li>- Which apps process CUI?</li>
+<li>- Which ITAR apps call external AI endpoints?</li>
+<li>- Which apps have expired exceptions?</li>
+<li>- Which apps lack owners?</li>
+<li>- Which production apps lack on-call coverage?</li>
+<li>- Which apps are on older Basecoat versions?</li>
+<li>- Which apps failed the latest Adhesion eval?</li>
+<li>- What is the blast radius if service X fails?</li>
+</ul>
+<hr>
+<h1 id='23-decision-log'>23. Decision Log</h1>
+<p>Use this table to capture decisions as the family evolves.</p>
+<div class='table-wrap'><table><thead><tr><th>Date</th><th>Decision</th><th>Rationale</th><th>Status</th></tr></thead><tbody>
+<tr><td>2026-09-26</td><td>Use <strong>Swatch</strong> as the preferred app-catalog name</td><td>Fits paint/coatings family; individual record metaphor works naturally</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Use <strong>Deck</strong> for durable groupings and <strong>Palette</strong> for curated subsets</td><td>Preserves paint terminology while distinguishing grouping semantics</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Explore <strong>Binder</strong> as the shared family substrate</td><td>Prevents Basecoat from owning cross-product mechanics</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Treat compliance as profiles + mappings</td><td>Avoids framework-specific product sprawl</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Treat Snitch output as observations, not truth</td><td>Allows reconciliation from multiple systems</td><td>Candidate</td></tr>
+<tr><td>2026-09-26</td><td>Treat Swatch as a graph, not a flat CMDB</td><td>Relationships are essential for impact, governance, and AI inventory</td><td>Candidate</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='24-open-questions'>24. Open Questions</h1>
+<h2 id='product-architecture'>Product architecture</h2>
+<ul>
+<li>- Should Binder be a repo, SDK, schema package, CLI, or combination?</li>
+<li>- Which artifacts remain in Basecoat after Binder is extracted?</li>
+<li>- Should Stencil be a product or simply a Binder/Basecoat primitive?</li>
+<li>- Should Formula be an independent supply-chain service or a Teardown output?</li>
+<li>- Is Proof independently deployed or an append-only service behind the family?</li>
+</ul>
+<h2 id='swatch'>Swatch</h2>
+<ul>
+<li>- What is the minimum entity model for v1?</li>
+<li>- What is a Swatch: only an application, or any governed entity?</li>
+<li>- Are Decks static and Palettes dynamic?</li>
+<li>- Should Swatch own business capabilities and portfolios?</li>
+<li>- How are aliases and duplicate records reconciled?</li>
+</ul>
+<h2 id='snitch'>Snitch</h2>
+<ul>
+<li>- Which discovery sources are v1?</li>
+<li>- Should collectors be plugins?</li>
+<li>- How is confidence scored?</li>
+<li>- How are conflicting observations reconciled?</li>
+</ul>
+<h2 id='teardown'>Teardown</h2>
+<ul>
+<li>- Repo-only v1 or repo + SBOM + deployment?</li>
+<li>- Which AI assets are first-class?</li>
+<li>- Which graph format should be canonical?</li>
+<li>- How much architecture inference should be deterministic vs AI-assisted?</li>
+</ul>
+<h2 id='compliance'>Compliance</h2>
+<ul>
+<li>- How much of OSCAL should be adopted?</li>
+<li>- Which profiles should ship first?</li>
+<li>- What language should distinguish regulation, standard, framework, and internal policy?</li>
+<li>- How should inheritance and conflicting profile requirements work?</li>
+</ul>
+<h2 id='operations'>Operations</h2>
+<ul>
+<li>- Keep the product name <strong>Call Tree</strong>, or rename to <strong>Crosslink</strong>?</li>
+<li>- Should Crosslink create bridges/channels or integrate only?</li>
+<li>- Should incident records live in Crosslink or Swatch?</li>
+</ul>
+<hr>
+<h1 id='25-proposed-near-term-sequence'>25. Proposed Near-Term Sequence</h1>
+<h2 id='phase-1-define-the-family-contract'>Phase 1 — Define the family contract</h2>
+<ul>
+<li>- Define product manifest</li>
+<li>- Define entity IDs</li>
+<li>- Define namespaces</li>
+<li>- Define evidence references</li>
+<li>- Define ownership semantics</li>
+<li>- Define version compatibility</li>
+</ul>
+<p><strong>Output:</strong> Binder v0.1 concept</p>
+<h2 id='phase-2-define-swatch'>Phase 2 — Define Swatch</h2>
+<ul>
+<li>- Minimum entity graph</li>
+<li>- Application</li>
+<li>- Repository</li>
+<li>- Service</li>
+<li>- Team</li>
+<li>- Deployment</li>
+<li>- Model</li>
+<li>- Agent</li>
+<li>- MCP server</li>
+<li>- Data classification</li>
+<li>- Compliance profile</li>
+</ul>
+<p><strong>Output:</strong> Swatch schema v0.1</p>
+<h2 id='phase-3-define-observation-and-graph-ingestion'>Phase 3 — Define observation and graph ingestion</h2>
+<ul>
+<li>- Snitch observation schema</li>
+<li>- Teardown graph schema</li>
+<li>- reconciliation rules</li>
+<li>- confidence / source precedence</li>
+</ul>
+<h2 id='phase-4-controls-and-evidence'>Phase 4 — Controls and evidence</h2>
+<ul>
+<li>- internal control schema</li>
+<li>- profile schema</li>
+<li>- exception schema</li>
+<li>- Proof evidence schema</li>
+<li>- Adhesion result mapping</li>
+</ul>
+<h2 id='phase-5-operations'>Phase 5 — Operations</h2>
+<ul>
+<li>- ownership</li>
+<li>- on-call</li>
+<li>- escalation</li>
+<li>- Crosslink / Call Tree</li>
+<li>- incident relationships</li>
+</ul>
+<hr>
+<h1 id='26-iteration-scratchpad'>26. Iteration Scratchpad</h1>
+<p>Use this section for ideas that are not yet decisions.</p>
+<h3 id='new-names'>New names</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='new-products-capabilities'>New products / capabilities</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='things-to-merge'>Things to merge</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='things-to-remove'>Things to remove</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+<li>- </li>
+</ul>
+<h3 id='questions-raised-by-implementation'>Questions raised by implementation</h3>
+<ul>
+<li>- </li>
+<li>- </li>
+</ul>
+<p>-</p>
+<hr>
+<h1 id='27-next-iteration-prompts'>27. Next Iteration Prompts</h1>
+<p>Useful prompts for continuing this notebook:</p>
+<ol>
+<li>1. <strong>“Define Swatch v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Produce the minimum entity model, IDs, Deck/Palette semantics, APIs, and example records.</li>
+</ul>
+<ol>
+<li>2. <strong>“Define Binder v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Extract the shared contract implied by Basecoat, Adhesion, and Sheen.</li>
+</ul>
+<ol>
+<li>3. <strong>“Define Snitch v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Pick discovery sources, observation schema, confidence model, and reconciliation workflow.</li>
+</ul>
+<ol>
+<li>4. <strong>“Define Teardown v1.”</strong></li>
+</ol>
+<ul>
+<li>   - Create the repo graph schema, AI-BOM model, and expected analysis outputs.</li>
+</ul>
+<ol>
+<li>5. <strong>“Create the control model.”</strong></li>
+</ol>
+<ul>
+<li>   - Define internal controls, framework mappings, profiles, exceptions, and evidence.</li>
+</ul>
+<ol>
+<li>6. <strong>“Map the family to ITAR/CMMC/HIPAA/PCI/SOC2.”</strong></li>
+</ol>
+<ul>
+<li>   - Show how classification, controls, evidence, and operations differ by regime.</li>
+</ul>
+<ol>
+<li>7. <strong>“Draw the full system architecture.”</strong></li>
+</ol>
+<ul>
+<li>   - APIs, event flows, graph storage, policy evaluation, evidence ingestion, and integrations.</li>
+</ul>
+<ol>
+<li>8. <strong>“Turn this into a product roadmap.”</strong></li>
+</ol>
+<ul>
+<li>   - MVP boundaries, sequencing, dependencies, and what should deliberately not be built.</li>
+</ul>
+<hr>
+<h1 id='28-deployment-philosophy'>28. Deployment Philosophy</h1>
+<p>The family should deliberately support <strong>multiple execution models</strong> rather than forcing every capability into an always-on agent or application.</p>
+<p>The deployment question should be:</p>
+<blockquote>What is the <strong>least complex execution model</strong> that provides the required autonomy, isolation, state, latency, and scale?</blockquote>
+<p>The preferred progression is:</p>
+<pre><code class="language-text">Static artifact
+    ↓
+Instruction / policy
+    ↓
+Skill
+    ↓
+Prompt/custom agent definition
+    ↓
+Deterministic workflow
+    ↓
+Event-driven agent
+    ↓
+Ephemeral autonomous container
+    ↓
+Persistent hosted agent
+    ↓
+Dedicated/local model infrastructure</code></pre>
+<p>A capability should move down this stack only when there is a concrete reason.</p>
+<h2 id='primary-optimization-dimensions'>Primary optimization dimensions</h2>
+<p>Every deployment decision should explicitly consider:</p>
+<ul>
+<li>- <strong>Cost</strong></li>
+<li>  - fixed infrastructure cost</li>
+<li>  - marginal inference cost</li>
+<li>  - idle cost</li>
+<li>  - engineering/operations cost</li>
+</ul>
+<ul>
+<li>- <strong>Rate of change</strong></li>
+<li>  - governance changes</li>
+<li>  - prompt/skill changes</li>
+<li>  - code changes</li>
+<li>  - model changes</li>
+<li>  - infrastructure changes</li>
+</ul>
+<ul>
+<li>- <strong>Complexity</strong></li>
+<li>  - deployment complexity</li>
+<li>  - state management</li>
+<li>  - security boundaries</li>
+<li>  - troubleshooting</li>
+<li>  - scaling</li>
+<li>  - patching</li>
+</ul>
+<ul>
+<li>- <strong>Risk</strong></li>
+<li>  - privileges</li>
+<li>  - data classification</li>
+<li>  - destructive actions</li>
+<li>  - external connectivity</li>
+<li>  - autonomy level</li>
+</ul>
+<ul>
+<li>- <strong>Runtime need</strong></li>
+<li>  - interactive</li>
+<li>  - scheduled</li>
+<li>  - event driven</li>
+<li>  - long running</li>
+<li>  - human-in-the-loop</li>
+<li>  - batch</li>
+</ul>
+<ul>
+<li>- <strong>Isolation</strong></li>
+<li>  - shared model/session</li>
+<li>  - process isolation</li>
+<li>  - container isolation</li>
+<li>  - VM/sandbox isolation</li>
+<li>  - dedicated infrastructure</li>
+</ul>
+<hr>
+<h1 id='29-deployment-classes'>29. Deployment Classes</h1>
+<p>A useful family-wide abstraction is to define a small number of <strong>deployment classes</strong>.</p>
+<div class='table-wrap'><table><thead><tr><th>Class</th><th>Pattern</th><th>Fixed Cost</th><th>Marginal Cost</th><th>Change Velocity</th><th>Ops Complexity</th><th>Best For</th></tr></thead><tbody>
+<tr><td><strong>D0</strong></td><td>Markdown / schema / policy artifact</td><td>Very low</td><td>None</td><td>Very high</td><td>Very low</td><td>Rules, standards, schemas</td></tr>
+<tr><td><strong>D1</strong></td><td>Skill / prompt / custom agent definition</td><td>Very low</td><td>Inference only</td><td>Very high</td><td>Low</td><td>Assisted developer tasks</td></tr>
+<tr><td><strong>D2</strong></td><td>CI/CD or deterministic workflow</td><td>Low</td><td>Execution + optional inference</td><td>High</td><td>Low–Medium</td><td>Policy checks, repeatable automation</td></tr>
+<tr><td><strong>D3</strong></td><td>Serverless/event-driven agent workflow</td><td>Low</td><td>Invocation based</td><td>High</td><td>Medium</td><td>Events, durable workflows, HITL</td></tr>
+<tr><td><strong>D4</strong></td><td>Ephemeral containerized autonomous agent</td><td>Low idle</td><td>Compute + inference</td><td>Medium</td><td>Medium</td><td>Repo analysis, discovery, isolated autonomous work</td></tr>
+<tr><td><strong>D5</strong></td><td>Persistent managed/hosted agent</td><td>Medium</td><td>Compute + inference</td><td>Medium</td><td>Medium</td><td>Stateful interactive agents, long-running sessions</td></tr>
+<tr><td><strong>D6</strong></td><td>Dedicated agent/application service</td><td>Medium–High</td><td>Compute + inference</td><td>Medium</td><td>High</td><td>High throughput, private integration, predictable latency</td></tr>
+<tr><td><strong>D7</strong></td><td>Local/private LLM infrastructure</td><td>High fixed</td><td>Low/variable marginal</td><td>Low–Medium</td><td>High–Very High</td><td>Sovereignty, offline, sensitive data, high steady volume</td></tr>
+</tbody></table></div>
+<h3 id='design-principle'>Design principle</h3>
+<p><strong>D0–D2 should be the default.</strong></p>
+<p>D3–D7 require an explicit justification such as:</p>
+<ul>
+<li>- durable state</li>
+<li>- autonomous execution</li>
+<li>- private network access</li>
+<li>- isolation</li>
+<li>- long-running work</li>
+<li>- deterministic orchestration</li>
+<li>- high throughput</li>
+<li>- data-sovereignty/offline requirements</li>
+<li>- inference economics at sustained scale</li>
+</ul>
+<hr>
+<h1 id='30-the-graduation-model'>30. The Graduation Model</h1>
+<p>Avoid <strong>agentifying</strong> every feature.</p>
+<p>A capability should graduate only as its requirements increase.</p>
+<pre><code class="language-text">Can this be expressed as a rule or schema?
+          |
+         Yes
+          ↓
+          D0
+
+Does the model need reusable task-specific knowledge/tools?
+          |
+         Yes
+          ↓
+          D1 Skill
+
+Does execution need repeatability and deterministic steps?
+          |
+         Yes
+          ↓
+          D2 Workflow
+
+Does it need events, timers, retries, state, or human approval?
+          |
+         Yes
+          ↓
+          D3 Durable workflow
+
+Does it need autonomous code execution or strong workload isolation?
+          |
+         Yes
+          ↓
+          D4 Ephemeral agent container
+
+Does it need persistent conversational/session state or interactive service behavior?
+          |
+         Yes
+          ↓
+          D5 Hosted agent
+
+Does it need dedicated performance, networking, or scaling?
+          |
+         Yes
+          ↓
+          D6 Dedicated service
+
+Does policy/data sovereignty require the model itself to run locally?
+          |
+         Yes
+          ↓
+          D7 Local/private model</code></pre>
+<p>This creates a defensible architecture and prevents infrastructure from growing faster than the product value.</p>
+<hr>
+<h1 id='31-deployment-recommendation-by-family-product'>31. Deployment Recommendation by Family Product</h1>
+<div class='table-wrap'><table><thead><tr><th>Product</th><th>Preferred initial deployment</th><th>Why</th></tr></thead><tbody>
+<tr><td><strong>Binder</strong></td><td>D0 package + schemas + CLI</td><td>Should have almost no runtime dependency</td></tr>
+<tr><td><strong>Basecoat</strong></td><td>D0/D1 + D2 validation</td><td>Governance changes frequently and should remain Git-versioned</td></tr>
+<tr><td><strong>Sheen</strong></td><td>D0/D1 + D2 conformance</td><td>Tokens/guidance are artifacts; tests run on demand</td></tr>
+<tr><td><strong>Adhesion</strong></td><td>D1/D2, with D3 for orchestration</td><td>Most evaluations can run in CI; complex suites may need durable execution</td></tr>
+<tr><td><strong>Swatch</strong></td><td>D3/D6 application/API</td><td>Canonical graph needs persistent storage and query APIs</td></tr>
+<tr><td><strong>Snitch</strong></td><td>D2/D3/D4 collectors</td><td>Mostly scheduled/event-driven discovery; isolate risky collectors</td></tr>
+<tr><td><strong>Teardown</strong></td><td>D4 ephemeral containers</td><td>Clone/analyze untrusted repos in disposable environments</td></tr>
+<tr><td><strong>Crosslink</strong></td><td>D3 durable workflow + thin app</td><td>Events, timers, escalation, acknowledgements, human-in-loop</td></tr>
+<tr><td><strong>Proof</strong></td><td>D3/D6 API + durable store</td><td>Evidence ingestion is event-driven; records must persist</td></tr>
+<tr><td><strong>Stencil</strong></td><td>D0/D2 library/policy evaluator</td><td>Prefer shared evaluation library rather than another service</td></tr>
+<tr><td><strong>Formula</strong></td><td>D0 record + D2 comparison</td><td>Composition is data; evaluation can run in pipelines</td></tr>
+<tr><td><strong>Blueprint</strong></td><td>D0 record + D1 design skill</td><td>Architecture intent changes more like documentation than runtime code</td></tr>
+<tr><td><strong>Seal</strong></td><td>Prefer integrations + D2 checks</td><td>Avoid rebuilding CNAPP/AppSec products</td></tr>
+<tr><td><strong>Reclaim</strong></td><td>D3 workflow</td><td>Retirement is long-running, approval-heavy workflow</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='32-recommended-execution-patterns'>32. Recommended Execution Patterns</h1>
+<h2 id='pattern-a-git-native-artifact'>Pattern A — Git-native artifact</h2>
+<p>Use for:</p>
+<ul>
+<li>- Basecoat controls</li>
+<li>- Sheen tokens</li>
+<li>- Adhesion test definitions</li>
+<li>- Binder schemas</li>
+<li>- Blueprint architecture contracts</li>
+<li>- Formula definitions</li>
+<li>- compliance mappings</li>
+</ul>
+<pre><code class="language-text">Git
+ ↓
+PR
+ ↓
+Review
+ ↓
+Version
+ ↓
+Distribute</code></pre>
+<h3 id='advantages'>Advantages</h3>
+<ul>
+<li>- almost no idle cost</li>
+<li>- excellent auditability</li>
+<li>- easy rollback</li>
+<li>- high rate of change</li>
+<li>- familiar enterprise controls</li>
+<li>- code-owner approval</li>
+<li>- branches/tags/releases</li>
+</ul>
+<h3 id='rule'>Rule</h3>
+<p>If the capability can be represented as <strong>versioned data</strong>, prefer Git before introducing a runtime service.</p>
+<hr>
+<h1 id='33-pattern-b-skills-and-on-demand-agents'>33. Pattern B — Skills and On-Demand Agents</h1>
+<p>Use a <strong>skill</strong> when the work requires specialized knowledge, instructions, scripts, or references but does not need a continuously running service.</p>
+<p>Examples:</p>
+<pre><code class="language-text">Basecoat skill:
+  Evaluate repository governance
+
+Sheen skill:
+  Review a page for design-system conformance
+
+Adhesion skill:
+  Generate an evaluation plan
+
+Teardown skill:
+  Explain an already-generated graph</code></pre>
+<p>Benefits:</p>
+<ul>
+<li>- changes travel with source control</li>
+<li>- near-zero idle infrastructure</li>
+<li>- skills load only when relevant</li>
+<li>- behavior can evolve faster than application code</li>
+<li>- common logic can be shared across interactive agents and coding environments</li>
+</ul>
+<p>This is especially useful when a task requires <strong>reasoning but not persistent autonomous execution</strong>.</p>
+<h3 id='boundary'>Boundary</h3>
+<p>A skill should describe <strong>how to perform work</strong>.</p>
+<p>It should not become:</p>
+<ul>
+<li>- the durable system of record,</li>
+<li>- a long-running scheduler,</li>
+<li>- an unbounded autonomous worker,</li>
+<li>- or an excuse to hide deterministic logic inside prompts.</li>
+</ul>
+<hr>
+<h1 id='34-pattern-c-ci-cd-workflows-as-the-first-automation-runtime'>34. Pattern C — CI/CD Workflows as the First Automation Runtime</h1>
+<p>For repository-scoped governance, GitHub Actions or equivalent CI/CD should be the <strong>first runtime considered</strong>.</p>
+<p>Examples:</p>
+<pre><code class="language-text">Pull request
+   ↓
+Basecoat validation
+   ↓
+Sheen conformance
+   ↓
+Adhesion tests
+   ↓
+Teardown delta
+   ↓
+Proof evidence</code></pre>
+<p>Best for:</p>
+<ul>
+<li>- policy validation</li>
+<li>- schema checking</li>
+<li>- SBOM creation</li>
+<li>- test/eval execution</li>
+<li>- security checks</li>
+<li>- conformance checks</li>
+<li>- drift checks</li>
+<li>- publishing evidence</li>
+<li>- synchronizing governed artifacts</li>
+</ul>
+<h3 id='why'>Why</h3>
+<p>The pipeline already knows:</p>
+<ul>
+<li>- repository</li>
+<li>- commit</li>
+<li>- actor</li>
+<li>- branch</li>
+<li>- build</li>
+<li>- artifact</li>
+<li>- status</li>
+</ul>
+<p>That produces excellent provenance without creating another orchestration platform.</p>
+<h3 id='hosted-vs-self-hosted-runners'>Hosted vs self-hosted runners</h3>
+<p>Prefer hosted runners for simplicity unless private network access, specialized hardware, data restrictions, or custom software require self-hosting.</p>
+<p>If self-hosting is required, favor <strong>ephemeral runners</strong> over persistent shared machines.</p>
+<hr>
+<h1 id='35-pattern-d-serverless-and-durable-workflows'>35. Pattern D — Serverless and Durable Workflows</h1>
+<p>Use a durable/event-driven workflow when a task requires:</p>
+<ul>
+<li>- retries</li>
+<li>- timers</li>
+<li>- callbacks</li>
+<li>- approvals</li>
+<li>- fan-out / fan-in</li>
+<li>- multiple agents</li>
+<li>- long-running state</li>
+<li>- human-in-the-loop</li>
+<li>- waiting on an external condition</li>
+</ul>
+<p>Strong candidates:</p>
+<h3 id='crosslink'>Crosslink</h3>
+<pre><code class="language-text">Incident
+ ↓
+Resolve affected apps in Swatch
+ ↓
+Resolve responders
+ ↓
+Notify
+ ↓
+Wait for acknowledgement
+ ↓
+Escalate
+ ↓
+Create bridge
+ ↓
+Periodic updates
+ ↓
+Close</code></pre>
+<h3 id='reclaim'>Reclaim</h3>
+<pre><code class="language-text">Retirement requested
+ ↓
+Find dependents
+ ↓
+Notify owners
+ ↓
+Wait for approval
+ ↓
+Remove traffic
+ ↓
+Archive evidence
+ ↓
+Delete resources
+ ↓
+Close</code></pre>
+<h3 id='compliance-remediation'>Compliance remediation</h3>
+<pre><code class="language-text">Violation
+ ↓
+Open remediation
+ ↓
+Assign owner
+ ↓
+Wait
+ ↓
+Retest
+ ↓
+Escalate if expired</code></pre>
+<p>This is preferable to keeping a container running while it waits.</p>
+<hr>
+<h1 id='36-pattern-e-ephemeral-autonomous-agent-containers'>36. Pattern E — Ephemeral Autonomous Agent Containers</h1>
+<p>Use autonomous containerized agents selectively.</p>
+<p>Good candidates:</p>
+<ul>
+<li>- <strong>Teardown</strong> repository analysis</li>
+<li>- deep dependency analysis</li>
+<li>- code transformation</li>
+<li>- security investigation</li>
+<li>- isolated build/reproduction</li>
+<li>- discovery against privileged systems</li>
+<li>- remediation proposal generation</li>
+<li>- large multi-step repository operations</li>
+</ul>
+<h3 id='architecture'>Architecture</h3>
+<pre><code class="language-text">Event / Queue
+     ↓
+Scheduler
+     ↓
+Disposable container
+     ↓
+Agent runtime
+     ↓
+Restricted tools
+     ↓
+Output artifact / observation / evidence
+     ↓
+Container destroyed</code></pre>
+<h3 id='benefits'>Benefits</h3>
+<ul>
+<li>- strong isolation</li>
+<li>- clean execution environment</li>
+<li>- explicit resource limits</li>
+<li>- easy versioning</li>
+<li>- disposable credentials</li>
+<li>- reproducibility</li>
+<li>- scale-to-zero potential</li>
+</ul>
+<h3 id='guardrails'>Guardrails</h3>
+<p>Each autonomous container should receive:</p>
+<ul>
+<li>- a scoped identity</li>
+<li>- explicit allowed tools</li>
+<li>- explicit network policy</li>
+<li>- CPU/memory/time limits</li>
+<li>- a task-specific workspace</li>
+<li>- no standing credentials</li>
+<li>- immutable base image</li>
+<li>- signed/versioned image</li>
+<li>- complete logs</li>
+<li>- external evidence persistence</li>
+<li>- output validation before downstream action</li>
+</ul>
+<h3 id='key-principle'>Key principle</h3>
+<p><strong>Autonomy belongs inside a bounded sandbox.</strong></p>
+<p>Do not give a general-purpose agent broad enterprise permissions and rely on the prompt as the security boundary.</p>
+<hr>
+<h1 id='37-pattern-f-managed-hosted-agents'>37. Pattern F — Managed Hosted Agents</h1>
+<p>Use managed hosted agents when the value comes from <strong>stateful interactive behavior</strong> rather than a one-shot job.</p>
+<p>Candidate situations:</p>
+<ul>
+<li>- multi-turn governance advisor</li>
+<li>- architecture assistant</li>
+<li>- interactive incident assistant</li>
+<li>- long-running investigation</li>
+<li>- agent that must maintain user/session files</li>
+<li>- agents exposed as APIs to applications</li>
+<li>- agents requiring managed identity and managed lifecycle</li>
+</ul>
+<p>A managed agent platform can remove the need to operate:</p>
+<ul>
+<li>- container scaling</li>
+<li>- endpoint hosting</li>
+<li>- session persistence</li>
+<li>- identity plumbing</li>
+<li>- basic observability</li>
+<li>- agent lifecycle</li>
+</ul>
+<h3 id='trade-off'>Trade-off</h3>
+<p>Managed hosting reduces infrastructure complexity but increases:</p>
+<ul>
+<li>- platform dependency</li>
+<li>- service cost</li>
+<li>- deployment/runtime coupling</li>
+<li>- possible constraints on networking/runtime behavior</li>
+</ul>
+<p>Use it when those trade-offs are justified by stateful agent behavior.</p>
+<hr>
+<h1 id='38-pattern-g-application-workflow-agent'>38. Pattern G — Application + Workflow + Agent</h1>
+<p>Some products should be normal applications with agents as <strong>components</strong>, not “agent applications.”</p>
+<p>Swatch is the clearest example.</p>
+<pre><code class="language-text">             Swatch Web/API
+                  |
+         +--------+---------+
+         |                  |
+     Graph Store          Queue
+                            |
+                   +--------+--------+
+                   |                 |
+                Snitch           Teardown
+               collectors        workers
+                   |                 |
+                   +--------+--------+
+                            |
+                          Proof</code></pre>
+<p>The user-facing app should own:</p>
+<ul>
+<li>- authentication</li>
+<li>- authorization</li>
+<li>- navigation</li>
+<li>- querying</li>
+<li>- canonical state</li>
+<li>- transaction boundaries</li>
+</ul>
+<p>Agents should own:</p>
+<ul>
+<li>- interpretation</li>
+<li>- enrichment</li>
+<li>- investigation</li>
+<li>- summarization</li>
+<li>- recommendations</li>
+<li>- bounded autonomous tasks</li>
+</ul>
+<h3 id='rule'>Rule</h3>
+<p><strong>Do not make the LLM the database, workflow engine, authorization layer, or source of truth.</strong></p>
+<hr>
+<h1 id='39-local-and-private-llms'>39. Local and Private LLMs</h1>
+<p>Local/private models should be a <strong>deployment option</strong>, not the default architecture.</p>
+<p>Good reasons to use them:</p>
+<ul>
+<li>- disconnected/offline environments</li>
+<li>- export-control or sovereignty constraints</li>
+<li>- highly sensitive data boundaries</li>
+<li>- predictable very-high sustained inference volume</li>
+<li>- low-latency local inference</li>
+<li>- specialized models</li>
+<li>- experimentation where external model calls are undesirable</li>
+</ul>
+<p>Weak reasons:</p>
+<ul>
+<li>- “local is cheaper”</li>
+<li>- avoiding API integration</li>
+<li>- assuming local automatically means secure</li>
+<li>- running a GPU continuously for an occasional task</li>
+</ul>
+<h2 id='two-useful-local-patterns'>Two useful local patterns</h2>
+<h3 id='developer-workstation-local-model'>Developer / workstation local model</h3>
+<p>Example runtimes:</p>
+<ul>
+<li>- Ollama-class local runtimes</li>
+<li>- developer workstation GPU</li>
+<li>- Dev Box / workstation sandbox</li>
+</ul>
+<p>Best for:</p>
+<ul>
+<li>- experimentation</li>
+<li>- low-volume private analysis</li>
+<li>- offline development</li>
+<li>- local evaluation</li>
+</ul>
+<h3 id='enterprise-private-inference-service'>Enterprise private inference service</h3>
+<p>Example:</p>
+<ul>
+<li>- vLLM-style OpenAI-compatible serving</li>
+<li>- GPU VM/cluster</li>
+<li>- internal endpoint behind enterprise identity/network controls</li>
+</ul>
+<p>Best for:</p>
+<ul>
+<li>- steady inference load</li>
+<li>- shared private models</li>
+<li>- controlled model versions</li>
+<li>- internal network-only inference</li>
+</ul>
+<h2 id='important-cost-model'>Important cost model</h2>
+<pre><code class="language-text">Hosted API:
+  low fixed cost
+  variable token cost
+  minimal model operations
+
+Local/private:
+  GPU fixed cost
+  utilization risk
+  model lifecycle ownership
+  patching
+  capacity planning
+  observability
+  security hardening</code></pre>
+<p>The break-even point should be measured, not assumed.</p>
+<hr>
+<h1 id='40-model-routing-and-cost-control'>40. Model Routing and Cost Control</h1>
+<p>The architecture should separate <strong>task orchestration</strong> from <strong>model selection</strong>.</p>
+<pre><code class="language-text">Task
+ ↓
+Risk / complexity classifier
+ ↓
++-------------------------------+
+| deterministic code possible? |
++-------------------------------+
+       | yes
+       ↓
+      code
+
+       | no
+       ↓
+
+small / cheap model
+       |
+       | insufficient confidence
+       ↓
+larger reasoning model
+       |
+       | highly sensitive / constrained
+       ↓
+approved private/local model</code></pre>
+<h2 id='cost-controls'>Cost controls</h2>
+<ul>
+<li>- deterministic logic before inference</li>
+<li>- cache repeatable outputs</li>
+<li>- batch low-priority work</li>
+<li>- asynchronous queues</li>
+<li>- model tiering</li>
+<li>- token/input limits</li>
+<li>- retrieval before sending large context</li>
+<li>- content hashing to avoid re-analysis</li>
+<li>- incremental/delta analysis</li>
+<li>- reuse Teardown graphs instead of recloning repositories</li>
+<li>- reuse Proof evidence instead of regenerating it</li>
+<li>- rate limits by product/team</li>
+<li>- per-application inference budgets</li>
+<li>- per-agent concurrency limits</li>
+<li>- explicit “expensive reasoning” escalation</li>
+</ul>
+<h3 id='example'>Example</h3>
+<p>Teardown should not analyze the entire repository on every commit.</p>
+<pre><code class="language-text">Initial scan
+   ↓
+Full graph
+
+Next commit
+   ↓
+Git diff
+   ↓
+Affected nodes only
+   ↓
+Graph delta</code></pre>
+<p>That reduces both model and compute cost while increasing throughput.</p>
+<hr>
+<h1 id='41-shearing-layers-how-the-system-learns'>41. Shearing Layers — How the System Learns</h1>
+<p>Basecoat applies a <strong>Shearing Layers</strong> design idea to software and governance: different parts of a healthy system should be allowed to change at different rates without forcing every other layer to move with them.</p>
+<p>The idea is inspired by the architectural concept developed by Frank Duffy and expanded by Stewart Brand in <em>How Buildings Learn</em>. A building is not one thing changing at one speed. Its site, structure, services, interior layout, and contents evolve on different timescales. Systems become difficult to adapt when fast-changing layers are tightly coupled to slow-changing ones.</p>
+<p>Basecoat applies the same reasoning to software:</p>
+<blockquote><strong>Fast layers learn. Slow layers remember.</strong></blockquote>
+<p>The fast layers are where teams experiment, respond to feedback, and discover better ways to work.</p>
+<p>The slow layers preserve the contracts, identities, controls, and infrastructure that give those experiments a stable place to operate.</p>
+<p>The goal is therefore <strong>not simply to put fast-changing behavior in configuration</strong>. The larger goal is to let each layer evolve at the pace appropriate to its purpose while minimizing unnecessary coupling between layers.</p>
+<h2 id='a-working-model-for-the-family'>A working model for the family</h2>
+<div class='table-wrap'><table><thead><tr><th>Pace</th><th>Role in the system</th><th>Examples</th><th>Typical deployment</th></tr></thead><tbody>
+<tr><td><strong>Fast — Experiment</strong></td><td>Try ideas, respond to local needs, discover better patterns</td><td>Prompts, local guidance, temporary agent instructions, experiments</td><td>Git artifacts / local configuration</td></tr>
+<tr><td><strong>Fast–Adaptive — Learn</strong></td><td>Turn useful patterns into reusable behavior</td><td>Skills, eval definitions, agent definitions, policy mappings</td><td>Versioned packages / configuration</td></tr>
+<tr><td><strong>Adaptive — Operationalize</strong></td><td>Make learned behavior repeatable</td><td>CI/CD workflows, durable workflows, agent orchestration</td><td>Workflow definitions / serverless</td></tr>
+<tr><td><strong>Moderate — Productize</strong></td><td>Provide stable capabilities used by many teams</td><td>APIs, collectors, workers, application services</td><td>Containers / managed application platforms</td></tr>
+<tr><td><strong>Slow — Standardize</strong></td><td>Preserve contracts that many components depend on</td><td>Binder schemas, canonical IDs, control model, evidence model, taxonomy contracts</td><td>Versioned compatibility contracts</td></tr>
+<tr><td><strong>Slowest — Anchor</strong></td><td>Establish durable enterprise boundaries</td><td>Identity, network boundaries, data stores, platform foundations, regulatory constraints</td><td>Managed infrastructure / enterprise platforms</td></tr>
+</tbody></table></div>
+<h2 id='learning-moves-inward-carefully'>Learning moves inward carefully</h2>
+<p>A useful pattern is:</p>
+<pre><code class="language-text">Experiment
+    ↓
+Observe
+    ↓
+Validate
+    ↓
+Repeat
+    ↓
+Promote
+    ↓
+Standardize</code></pre>
+<p>An idea should normally begin in a fast layer.</p>
+<p>Only after it proves useful should it move into a slower, more widely shared layer.</p>
+<p>Example:</p>
+<pre><code class="language-text">Developer prompt
+      ↓
+Reusable skill
+      ↓
+Shared Basecoat guidance
+      ↓
+Automated workflow
+      ↓
+Enterprise control
+      ↓
+Platform-enforced default</code></pre>
+<p>This provides a natural path from <strong>learning to governance</strong>.</p>
+<h2 id='slow-layers-constrain-fast-layers-inform'>Slow layers constrain; fast layers inform</h2>
+<p>The relationship works in both directions.</p>
+<pre><code class="language-text">Slow layers
+    ↓
+provide boundaries, contracts, identity, safety
+
+Fast layers
+    ↑
+provide experiments, evidence, feedback, innovation</code></pre>
+<p>The slow layers should not dictate every implementation detail.</p>
+<p>The fast layers should not be able to silently invalidate the assumptions of the slow layers.</p>
+<p>A healthy system allows the layers to <strong>shear</strong>—to change independently while remaining connected through explicit contracts.</p>
+<h2 id='why-coupling-matters'>Why coupling matters</h2>
+<p>A common failure mode is allowing a fast-changing concern to become embedded inside a slow-moving layer.</p>
+<p>For example:</p>
+<pre><code class="language-text">Bad coupling:
+
+Prompt wording
+    embedded in
+application service
+    requiring
+container rebuild
+    requiring
+infrastructure deployment</code></pre>
+<p>A small guidance change now causes a large operational change.</p>
+<p>Prefer:</p>
+<pre><code class="language-text">Prompt / Skill
+     ↓
+versioned artifact
+     ↓
+stable runtime contract
+     ↓
+application service</code></pre>
+<p>The faster layer can evolve without redeploying the slower one.</p>
+<p>The reverse problem is also dangerous:</p>
+<pre><code class="language-text">Fast-moving agent
+     ↓
+silently changes
+canonical control semantics</code></pre>
+<p>Canonical controls belong in a slower layer and require deliberate promotion, review, and versioning.</p>
+<h2 id='how-the-family-learns'>How the family learns</h2>
+<p>The family should deliberately support learning at multiple speeds:</p>
+<pre><code class="language-text">Local experiment
+      ↓
+Adhesion measures outcome
+      ↓
+Proof preserves evidence
+      ↓
+Feedback identifies a useful pattern
+      ↓
+Basecoat promotes reusable guidance
+      ↓
+Binder stabilizes shared contracts when necessary</code></pre>
+<p>This means governance itself can learn.</p>
+<p>A policy does not become permanent simply because it was once approved. Evidence, exceptions, developer friction, incidents, and successful local patterns can all provide signals that the governance layer should change.</p>
+<h2 id='architectural-rule'>Architectural rule</h2>
+<blockquote><strong>Let fast layers experiment and learn; let slow layers stabilize and remember. Couple them through explicit contracts rather than shared implementation.</strong></blockquote>
+<p>This is more precise than treating change rate only as a deployment concern.</p>
+<p>It affects:</p>
+<ul>
+<li>- repository structure,</li>
+<li>- product boundaries,</li>
+<li>- APIs,</li>
+<li>- schemas,</li>
+<li>- policy design,</li>
+<li>- agent behavior,</li>
+<li>- deployment architecture,</li>
+<li>- versioning,</li>
+<li>- evidence,</li>
+<li>- and how successful experiments become enterprise standards.</li>
+</ul>
+<h3 id='examples-in-this-family'>Examples in this family</h3>
+<pre><code class="language-text">Fast:
+  prompt
+  repo-specific instruction
+  experimental skill
+  evaluation rubric
+
+        ↓ learning / promotion
+
+Medium:
+  shared skill
+  Basecoat guidance
+  Adhesion evaluation
+  workflow
+  autonomous worker
+
+        ↓ proven stability / broader dependency
+
+Slow:
+  Binder contract
+  canonical Batch identity
+  Proof schema
+  control semantics
+  enterprise taxonomy
+
+        ↓
+
+Anchor:
+  identity boundary
+  network boundary
+  regulated data boundary
+  durable system of record</code></pre>
+<p>The important question is not:</p>
+<blockquote>&quot;How often can we deploy this?&quot;</blockquote>
+<p>It is:</p>
+<blockquote><strong>&quot;How quickly should this concept be allowed to change, who depends on it, and what evidence should be required before we move it into a slower layer?&quot;</strong></blockquote>
+<h3 id='references'>References</h3>
+<ul>
+<li>- Basecoat: <code>basecoat-10-core-shearing-layers</code> — design guidance for change velocity and coupling between Basecoat layers.</li>
+<li>- Stewart Brand, <em>How Buildings Learn: What Happens After They&#x27;re Built</em> (1994).</li>
+<li>- Stewart Brand, “Pace Layering: How Complex Systems Learn and Keep Learning,” <em>Journal of Design and Science</em> (2018).</li>
+</ul>
+<hr>
+<h1 id='42-control-plane-vs-execution-plane'>42. Control Plane vs Execution Plane</h1>
+<p>Separate governance from the workers that execute it.</p>
+<pre><code class="language-text">                 CONTROL PLANE
+
+Binder
+Basecoat
+Swatch
+Policies
+Profiles
+Identity
+Task definitions
+Approvals
+Budgets
+
+                     |
+                     v
+
+                EXECUTION PLANE
+
+GitHub Actions
+Serverless workflows
+Container jobs
+Hosted agents
+Self-hosted workers
+Private/local models</code></pre>
+<h2 id='benefits'>Benefits</h2>
+<ul>
+<li>- policies can change independently of compute</li>
+<li>- multiple execution platforms can coexist</li>
+<li>- sensitive workloads can be routed differently</li>
+<li>- model providers can change without rewriting governance</li>
+<li>- local/on-prem execution becomes possible</li>
+<li>- execution failures do not corrupt canonical governance state</li>
+</ul>
+<h3 id='example-routing'>Example routing</h3>
+<pre><code class="language-text">Teardown request
+
+classification = public
+    → hosted ephemeral job
+
+classification = internal
+    → enterprise container job
+
+classification = export-controlled
+    → approved isolated worker + approved model</code></pre>
+<hr>
+<h1 id='43-suggested-deployment-architecture-for-the-family'>43. Suggested Deployment Architecture for the Family</h1>
+<pre><code class="language-text">                            Git
+            Policies / Skills / Schemas / Workflows
+                             |
+                             v
+                          Binder
+                             |
+              +--------------+--------------+
+              |                             |
+          Basecoat                      Sheen/Adhesion
+              |                             |
+              +--------------+--------------+
+                             |
+                           Swatch
+                      API + Graph Store
+                             |
+                Events / Queue / Scheduler
+             +---------------+----------------+
+             |               |                |
+          Snitch          Teardown          Crosslink
+        collectors     agent containers    workflows
+             |               |                |
+             +---------------+----------------+
+                             |
+                           Proof
+                    Proof / Provenance
+                             |
+             +---------------+----------------+
+             |                                |
+       Managed models                  Private/local models
+       as default                      when policy requires</code></pre>
+<h3 id='deployment-stance'>Deployment stance</h3>
+<ol>
+<li>1. <strong>Git is the distribution layer for governance artifacts.</strong></li>
+<li>2. <strong>Swatch is the persistent application graph.</strong></li>
+<li>3. <strong>Queues/events decouple discovery and analysis.</strong></li>
+<li>4. <strong>Snitch and Teardown scale independently.</strong></li>
+<li>5. <strong>Autonomous execution is ephemeral by default.</strong></li>
+<li>6. <strong>Crosslink uses durable workflow semantics rather than long-running processes.</strong></li>
+<li>7. <strong>Proof persists evidence outside disposable runtimes.</strong></li>
+<li>8. <strong>Model providers sit behind an abstraction/routing layer.</strong></li>
+<li>9. <strong>Local LLMs are an approved route, not a separate product architecture.</strong></li>
+</ol>
+<hr>
+<h1 id='44-product-specific-deployment-ideas'>44. Product-Specific Deployment Ideas</h1>
+<h2 id='basecoat'>Basecoat</h2>
+<p><strong>Default:</strong> Git-native instructions, controls, skills, agents, schemas.</p>
+<p>Optional:</p>
+<ul>
+<li>- CI enforcement</li>
+<li>- policy evaluation CLI</li>
+<li>- thin API for control resolution if enterprise-scale dynamic policy calculation becomes necessary</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li>- requiring a Basecoat server for basic governance</li>
+</ul>
+<hr>
+<h2 id='sheen'>Sheen</h2>
+<p><strong>Default:</strong> Git-native design tokens + skills + validation package.</p>
+<p>Runtime:</p>
+<ul>
+<li>- CI visual/accessibility validation</li>
+<li>- optional Storybook/design-system integrations</li>
+</ul>
+<p>Avoid:</p>
+<ul>
+<li>- central service unless cross-enterprise token/catalog search requires it</li>
+</ul>
+<hr>
+<h2 id='adhesion'>Adhesion</h2>
+<p><strong>Default:</strong> test/eval definitions + runner adapters.</p>
+<p>Runtime progression:</p>
+<ol>
+<li>1. CI</li>
+<li>2. serverless orchestration</li>
+<li>3. container jobs for expensive suites</li>
+<li>4. dedicated workers only at sustained scale</li>
+</ol>
+<hr>
+<h2 id='swatch'>Swatch</h2>
+<p><strong>Default:</strong> real application.</p>
+<p>Likely components:</p>
+<ul>
+<li>- API</li>
+<li>- graph-capable datastore</li>
+<li>- search</li>
+<li>- identity/RBAC</li>
+<li>- event bus</li>
+<li>- ingestion APIs</li>
+<li>- reconciliation engine</li>
+</ul>
+<p>Agents enrich Swatch; they do not replace it.</p>
+<hr>
+<h2 id='snitch'>Snitch</h2>
+<p><strong>Default:</strong> plugin/collector framework.</p>
+<p>Collectors should usually be:</p>
+<ul>
+<li>- scheduled</li>
+<li>- event triggered</li>
+<li>- short lived</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>- GitHub collector</li>
+<li>- Azure collector</li>
+<li>- AWS collector</li>
+<li>- Kubernetes collector</li>
+<li>- ServiceNow collector</li>
+<li>- model/MCP discovery collector</li>
+</ul>
+<p>High-privilege collectors should run in isolated ephemeral environments.</p>
+<hr>
+<h2 id='teardown'>Teardown</h2>
+<p><strong>Default:</strong> queue-triggered ephemeral container.</p>
+<p>Why:</p>
+<ul>
+<li>- repository content may be untrusted</li>
+<li>- analysis can be CPU/memory intensive</li>
+<li>- jobs may require specialized tooling</li>
+<li>- clean environment improves repeatability</li>
+</ul>
+<p>Teardown should write graph deltas and evidence, then terminate.</p>
+<hr>
+<h2 id='crosslink'>Crosslink</h2>
+<p><strong>Default:</strong> durable workflow + thin UI/API.</p>
+<p>Use agents for:</p>
+<ul>
+<li>- incident summary</li>
+<li>- likely ownership interpretation</li>
+<li>- status drafting</li>
+<li>- timeline generation</li>
+</ul>
+<p>Do not use an agent for:</p>
+<ul>
+<li>- escalation timers</li>
+<li>- acknowledgements</li>
+<li>- paging rules</li>
+<li>- authorization</li>
+</ul>
+<p>Those should remain deterministic.</p>
+<hr>
+<h2 id='proof'>Proof</h2>
+<p><strong>Default:</strong> event ingestion API + durable append-oriented store.</p>
+<p>Producers:</p>
+<ul>
+<li>- CI/CD</li>
+<li>- Adhesion</li>
+<li>- Teardown</li>
+<li>- Basecoat</li>
+<li>- Crosslink</li>
+<li>- external security/ITSM tools</li>
+</ul>
+<p>The write path should not depend on an LLM.</p>
+<hr>
+<h1 id='45-deployment-anti-patterns'>45. Deployment Anti-Patterns</h1>
+<h2 id='1-agent-for-everything'>1. Agent for everything</h2>
+<p>Bad:</p>
+<pre><code class="language-text">Agent decides whether a branch is protected.</code></pre>
+<p>Better:</p>
+<pre><code class="language-text">API query + deterministic policy check.</code></pre>
+<p>Use the agent to explain the result, not determine an objective fact.</p>
+<hr>
+<h2 id='2-long-running-container-waiting-for-humans'>2. Long-running container waiting for humans</h2>
+<p>Bad:</p>
+<pre><code class="language-text">Container waits 3 days for approval.</code></pre>
+<p>Better:</p>
+<pre><code class="language-text">Durable workflow persists state and resumes on approval.</code></pre>
+<hr>
+<h2 id='3-persistent-privileged-autonomous-agents'>3. Persistent privileged autonomous agents</h2>
+<p>Avoid continuously running agents with broad credentials.</p>
+<p>Prefer:</p>
+<ul>
+<li>- just-in-time identity</li>
+<li>- task-level scope</li>
+<li>- ephemeral runtime</li>
+<li>- explicit tools</li>
+<li>- short TTL</li>
+</ul>
+<hr>
+<h2 id='4-llm-as-system-of-record'>4. LLM as system of record</h2>
+<p>Never use conversational memory as the authoritative source for:</p>
+<ul>
+<li>- ownership</li>
+<li>- controls</li>
+<li>- evidence</li>
+<li>- classifications</li>
+<li>- exceptions</li>
+<li>- incidents</li>
+</ul>
+<hr>
+<h2 id='5-re-running-expensive-analysis-unnecessarily'>5. Re-running expensive analysis unnecessarily</h2>
+<p>Use:</p>
+<ul>
+<li>- hashes</li>
+<li>- graph deltas</li>
+<li>- cached evidence</li>
+<li>- incremental analysis</li>
+</ul>
+<hr>
+<h2 id='6-building-commodity-infrastructure'>6. Building commodity infrastructure</h2>
+<p>Prefer integrations for:</p>
+<ul>
+<li>- logs/metrics/traces</li>
+<li>- cloud cost</li>
+<li>- paging</li>
+<li>- source control</li>
+<li>- package scanning</li>
+<li>- identity</li>
+</ul>
+<p>Build where the family creates differentiated governance value.</p>
+<hr>
+<h1 id='46-deployment-decision-scorecard'>46. Deployment Decision Scorecard</h1>
+<p>For every new capability, fill this out before selecting an execution model.</p>
+<div class='table-wrap'><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>
+<tr><td>Can this be data/configuration instead of code?</td><td></td></tr>
+<tr><td>Can it run only when invoked?</td><td></td></tr>
+<tr><td>Can CI/CD host it?</td><td></td></tr>
+<tr><td>Is execution deterministic?</td><td></td></tr>
+<tr><td>Does it require an LLM?</td><td></td></tr>
+<tr><td>Does it require autonomous multi-step reasoning?</td><td></td></tr>
+<tr><td>Does it execute untrusted code/content?</td><td></td></tr>
+<tr><td>Does it need durable state?</td><td></td></tr>
+<tr><td>Does it need human-in-the-loop waiting?</td><td></td></tr>
+<tr><td>Does it require private network access?</td><td></td></tr>
+<tr><td>Does it require specialized GPU/CPU?</td><td></td></tr>
+<tr><td>Expected executions/day</td><td></td></tr>
+<tr><td>Expected inference tokens/day</td><td></td></tr>
+<tr><td>Maximum acceptable latency</td><td></td></tr>
+<tr><td>Required isolation level</td><td></td></tr>
+<tr><td>Data classification</td><td></td></tr>
+<tr><td>Required geographic boundary</td><td></td></tr>
+<tr><td>Cost ceiling</td><td></td></tr>
+<tr><td>Expected rate of behavior change</td><td></td></tr>
+<tr><td>Expected rate of infrastructure change</td><td></td></tr>
+</tbody></table></div>
+<h3 id='decision-output'>Decision output</h3>
+<pre><code class="language-text">Deployment class:
+D0 / D1 / D2 / D3 / D4 / D5 / D6 / D7
+
+Reason:
+
+Escalation trigger:
+&quot;When X becomes true, reconsider the deployment class.&quot;</code></pre>
+<p>This prevents architecture from being driven by enthusiasm for a particular runtime.</p>
+<hr>
+<h1 id='47-example-graduation-scenarios'>47. Example Graduation Scenarios</h1>
+<h2 id='teardown'>Teardown</h2>
+<h3 id='v1'>v1</h3>
+<p>GitHub Action invokes CLI.</p>
+<h3 id='v2'>v2</h3>
+<p>Queue-triggered container for larger repositories.</p>
+<h3 id='v3'>v3</h3>
+<p>Ephemeral autonomous agent container with restricted tools.</p>
+<h3 id='v4'>v4</h3>
+<p>Dedicated worker pool only if enterprise volume requires it.</p>
+<hr>
+<h2 id='snitch'>Snitch</h2>
+<h3 id='v1'>v1</h3>
+<p>Scheduled GitHub/Azure collectors.</p>
+<h3 id='v2'>v2</h3>
+<p>Event-driven collectors writing observations.</p>
+<h3 id='v3'>v3</h3>
+<p>Containerized privileged collectors for isolated environments.</p>
+<h3 id='v4'>v4</h3>
+<p>Dedicated collectors only for high-volume domains.</p>
+<hr>
+<h2 id='adhesion'>Adhesion</h2>
+<h3 id='v1'>v1</h3>
+<p>CI test/eval runner.</p>
+<h3 id='v2'>v2</h3>
+<p>Parallel evaluation jobs.</p>
+<h3 id='v3'>v3</h3>
+<p>Durable multi-agent evaluation workflow.</p>
+<h3 id='v4'>v4</h3>
+<p>Dedicated evaluation service only if shared enterprise throughput justifies it.</p>
+<hr>
+<h2 id='crosslink'>Crosslink</h2>
+<h3 id='v1'>v1</h3>
+<p>Workflow that resolves ownership and sends notifications.</p>
+<h3 id='v2'>v2</h3>
+<p>Durable escalation and acknowledgements.</p>
+<h3 id='v3'>v3</h3>
+<p>Agent-generated summaries/status messages.</p>
+<h3 id='v4'>v4</h3>
+<p>Interactive incident agent after deterministic coordination primitives are mature.</p>
+<hr>
+<h1 id='48-deployment-research-references'>48. Deployment Research References</h1>
+<p>Current platform capabilities worth considering during implementation:</p>
+<ul>
+<li>- GitHub Copilot agent skills  </li>
+</ul>
+<p>https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills</p>
+<ul>
+<li>- GitHub Actions runners and self-hosted runner guidance  </li>
+</ul>
+<p>https://docs.github.com/en/actions/concepts/runners</p>
+<p>https://docs.github.com/en/actions/concepts/runners/self-hosted-runners</p>
+<ul>
+<li>- Azure Container Apps Jobs  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/azure/container-apps/jobs-get-started-portal</p>
+<ul>
+<li>- Microsoft Agent Framework hosting options  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/agent-framework/hosting/</p>
+<ul>
+<li>- Durable Agent Framework workflows  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/agent-framework/hosting/azure-functions</p>
+<ul>
+<li>- Microsoft Foundry Hosted Agents  </li>
+</ul>
+<p>https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/hosted-agents</p>
+<ul>
+<li>- vLLM OpenAI-compatible serving  </li>
+</ul>
+<p>https://docs.vllm.ai/en/latest/serving/openai_compatible_server/</p>
+<p>These are implementation options, not required dependencies of the family architecture.</p>
+<hr>
+<h1 id='49-deployment-decisions-to-iterate'>49. Deployment Decisions to Iterate</h1>
+<h2 id='candidate-decisions'>Candidate decisions</h2>
+<div class='table-wrap'><table><thead><tr><th>Decision</th><th>Current direction</th></tr></thead><tbody>
+<tr><td>Default governance distribution</td><td>Git-native artifacts</td></tr>
+<tr><td>Default reasoning extension</td><td>Skills/on-demand agents</td></tr>
+<tr><td>Default repo automation</td><td>CI/CD</td></tr>
+<tr><td>Default long-running orchestration</td><td>Durable/serverless workflows</td></tr>
+<tr><td>Default autonomous execution</td><td>Ephemeral containers</td></tr>
+<tr><td>Default model strategy</td><td>Managed model APIs with routing abstraction</td></tr>
+<tr><td>Local/private models</td><td>Policy- or economics-driven exception</td></tr>
+<tr><td>Persistent autonomous agents</td><td>Use sparingly</td></tr>
+<tr><td>Canonical state</td><td>Applications/datastores, never agent memory</td></tr>
+<tr><td>High-risk execution</td><td>Disposable sandbox + scoped identity</td></tr>
+<tr><td>Fast-changing behavior</td><td>Configuration/artifacts</td></tr>
+<tr><td>Slow-changing behavior</td><td>Infrastructure</td></tr>
+</tbody></table></div>
+<h2 id='open-questions-for-the-next-iteration'>Open questions for the next iteration</h2>
+<ul>
+<li>- Which deployment classes should Binder formally recognize?</li>
+<li>- Should every Swatch record declare an approved execution boundary?</li>
+<li>- Should Basecoat controls be able to prohibit certain deployment classes?</li>
+<li>- Should Proof record model/runtime/deployment-class provenance for every AI-assisted action?</li>
+<li>- Should Snitch discover unmanaged local models and agent runtimes?</li>
+<li>- Should Teardown identify autonomous-agent execution paths inside a repository?</li>
+<li>- Should Adhesion include deployment-class-specific test suites?</li>
+<li>- Should Crosslink be permitted to invoke autonomous remediation, or only coordinate/approve it?</li>
+</ul>
+<hr>
+<h1 id='50-side-quest-where-governance-came-from'>50. Side Quest — Where Governance Came From</h1>
+<blockquote><strong>Optional reading:</strong> This section is a historical and conceptual side quest for anyone who wants to understand why the governance model in this notebook looks the way it does.</blockquote>
+<p>The ideas in this notebook have been evolving for a long time.</p>
+<p>Long before AI-assisted development, cloud landing zones, policy-as-code, autonomous agents, software bills of materials, or AI risk frameworks, the same core questions kept appearing:</p>
+<ul>
+<li>- Who has authority?</li>
+<li>- What is governed?</li>
+<li>- Who is governed?</li>
+<li>- How much should be enforced?</li>
+<li>- Where should enforcement happen?</li>
+<li>- How should violations be detected?</li>
+<li>- What happens when a rule is broken?</li>
+<li>- How are exceptions handled?</li>
+<li>- How do policies change when reality proves them wrong?</li>
+<li>- How do we preserve enough freedom for people to get work done?</li>
+</ul>
+<p>The technology has changed dramatically. The governance problem has not.</p>
+<p>This section traces the historical ideas that now inform the Basecoat family.</p>
+<hr>
+<h1 id='51-the-oldest-metaphor-governance-means-steering'>51. The Oldest Metaphor: Governance Means Steering</h1>
+<p>The word <strong>governance</strong> traces back through Old French and Latin to the Greek root <strong>kybernan</strong>, meaning roughly <strong>to steer or pilot</strong>.</p>
+<p>That gives us a useful starting metaphor:</p>
+<blockquote><strong>Governance is steering, not handcuffing.</strong></blockquote>
+<p>The objective is not to control every individual movement. It is to establish:</p>
+<ul>
+<li>- direction,</li>
+<li>- boundaries,</li>
+<li>- responsibility,</li>
+<li>- feedback,</li>
+<li>- and corrective action</li>
+</ul>
+<p>so that many independent actors can move without causing the organization to lose control of where it is going.</p>
+<p>This metaphor remains useful for modern distributed engineering organizations.</p>
+<pre><code class="language-text">Desired direction
+       ↓
+Guidance / constraints
+       ↓
+Independent action
+       ↓
+Observation
+       ↓
+Correction
+       ↓
+Continue</code></pre>
+<p>That is a governance loop.</p>
+<hr>
+<h1 id='52-governance-is-not-the-same-as-law'>52. Governance Is Not the Same as Law</h1>
+<p>Governance is broader than law.</p>
+<p>Law and regulation can create obligations, but governance is the system an organization uses to decide how those obligations—and its own internal expectations—are interpreted, implemented, monitored, and changed.</p>
+<p>Sources of governance requirements can include:</p>
+<pre><code class="language-text">Law / Regulation
+       |
+Contracts
+       |
+Board / Executive Direction
+       |
+Corporate Policy
+       |
+Industry Standards
+       |
+Certification Requirements
+       |
+Customer Requirements
+       |
+Risk Appetite
+       |
+Architecture Standards
+       |
+Professional Norms
+       |
+Internal Operating Rules</code></pre>
+<p>All of these can create governance obligations.</p>
+<p>Examples:</p>
+<pre><code class="language-text">&quot;Do not export controlled technical data&quot;
+    → may originate in law/regulation
+
+&quot;Production repositories require two reviewers&quot;
+    → may originate in internal corporate policy
+
+&quot;Applications must use the approved design system&quot;
+    → may originate in an engineering standard</code></pre>
+<p>The enforcement mechanism may look similar even when the source of authority is different.</p>
+<h2 id='design-implication'>Design implication</h2>
+<p>Every control should eventually be traceable to an <strong>authority/source</strong>, but that authority does not have to be law.</p>
+<hr>
+<h1 id='53-government-governance-management-and-compliance'>53. Government, Governance, Management, and Compliance</h1>
+<p>These terms overlap but are not interchangeable.</p>
+<h2 id='government'>Government</h2>
+<p>Formal institutions with legal authority.</p>
+<h2 id='governance'>Governance</h2>
+<p>The system by which direction is established, decisions are overseen, responsibility is assigned, and accountability is maintained.</p>
+<h2 id='management'>Management</h2>
+<p>The planning and execution of work within the direction established by governance.</p>
+<h2 id='compliance'>Compliance</h2>
+<p>Conformance with a specific requirement, obligation, policy, contract, regulation, or standard.</p>
+<p>A useful relationship is:</p>
+<pre><code class="language-text">Governance
+    ↓
+sets direction and accountability
+
+Management
+    ↓
+plans and executes
+
+Controls
+    ↓
+translate expectations into mechanisms
+
+Compliance
+    ↓
+describes whether requirements are being met
+
+Assurance
+    ↓
+provides confidence that the system is working</code></pre>
+<p>This matters because a company can be <strong>compliant with one requirement and still have weak governance</strong>, or have strong governance while knowingly accepting a documented residual risk.</p>
+<hr>
+<h1 id='54-a-short-history-of-modern-governance-thinking'>54. A Short History of Modern Governance Thinking</h1>
+<p>The following is a simplified lineage, not a claim that each framework directly evolved from the one before it.</p>
+<pre><code class="language-text">Ancient steering metaphor
+        ↓
+Institutional / public governance
+        ↓
+Corporate governance
+        ↓
+IT governance
+        ↓
+Cybersecurity governance
+        ↓
+AI governance</code></pre>
+<h2 id='late-20th-century-public-and-institutional-governance'>Late 20th century — public and institutional governance</h2>
+<p>Modern governance language became increasingly common in public-sector and development contexts as organizations focused on:</p>
+<ul>
+<li>- authority,</li>
+<li>- accountability,</li>
+<li>- transparency,</li>
+<li>- institutions,</li>
+<li>- policy execution,</li>
+<li>- and stakeholder interests.</li>
+</ul>
+<h2 id='corporate-governance'>Corporate governance</h2>
+<p>Corporate-governance models formalized ideas such as:</p>
+<ul>
+<li>- strategic direction,</li>
+<li>- oversight,</li>
+<li>- board responsibility,</li>
+<li>- accountability,</li>
+<li>- risk,</li>
+<li>- stakeholder interests,</li>
+<li>- and monitoring management.</li>
+</ul>
+<p>A highly influential formulation described corporate governance as the <strong>system by which companies are directed and controlled</strong>.</p>
+<h2 id='it-governance'>IT governance</h2>
+<p>IT governance frameworks carried those same ideas into technology.</p>
+<p>A particularly useful pattern became:</p>
+<pre><code class="language-text">Evaluate
+   ↓
+Direct
+   ↓
+Monitor</code></pre>
+<p>Management then plans, builds, runs, and monitors systems within that direction.</p>
+<h2 id='cybersecurity-governance'>Cybersecurity governance</h2>
+<p>Modern cybersecurity frameworks elevated governance into an explicit function that includes:</p>
+<ul>
+<li>- organizational context,</li>
+<li>- roles and responsibilities,</li>
+<li>- policy,</li>
+<li>- risk strategy,</li>
+<li>- oversight,</li>
+<li>- legal and contractual requirements,</li>
+<li>- and supply-chain risk.</li>
+</ul>
+<h2 id='ai-governance'>AI governance</h2>
+<p>AI governance extends the same ideas across the AI lifecycle:</p>
+<ul>
+<li>- policies,</li>
+<li>- risk tolerances,</li>
+<li>- inventories,</li>
+<li>- testing,</li>
+<li>- transparency,</li>
+<li>- human accountability,</li>
+<li>- third-party risk,</li>
+<li>- monitoring,</li>
+<li>- incidents,</li>
+<li>- and decommissioning.</li>
+</ul>
+<p>The vocabulary changed.</p>
+<p>The governance loop did not.</p>
+<hr>
+<h1 id='55-a-long-journey-to-the-current-model'>55. A Long Journey to the Current Model</h1>
+<p>The current architecture did not begin with AI.</p>
+<p>The recurring pattern has been:</p>
+<pre><code class="language-text">Define what matters
+        ↓
+Determine who/what it applies to
+        ↓
+Choose how strongly to enforce it
+        ↓
+Choose where enforcement belongs
+        ↓
+Implement the least-complex effective mechanism
+        ↓
+Observe what actually happens
+        ↓
+Validate the outcome
+        ↓
+Respond to failures
+        ↓
+Learn from exceptions and friction
+        ↓
+Change the policy
+        ↓
+Repeat</code></pre>
+<p>The implementation technologies have moved through several generations:</p>
+<pre><code class="language-text">manual policy
+    ↓
+templates
+    ↓
+provisioning automation
+    ↓
+workflow
+    ↓
+policy-as-code
+    ↓
+CI/CD guardrails
+    ↓
+cloud policy
+    ↓
+skills and agents
+    ↓
+autonomous workflows</code></pre>
+<p>The core problem remains the same:</p>
+<blockquote><strong>How do we create enough control to achieve organizational intent without making the system so difficult that people route around it?</strong></blockquote>
+<hr>
+<h1 id='56-the-governance-gradient'>56. The Governance Gradient</h1>
+<p>Governance should not be treated as binary.</p>
+<p>A control can be applied at different strengths depending on risk, context, evidence quality, and organizational tolerance.</p>
+<pre><code class="language-text">Observe
+   ↓
+Inform
+   ↓
+Recommend
+   ↓
+Warn
+   ↓
+Require evidence
+   ↓
+Require approval
+   ↓
+Block
+   ↓
+Prevent architecturally</code></pre>
+<p>This can be described as a <strong>Governance Gradient</strong>.</p>
+<p>The enforcement level can depend on:</p>
+<pre><code class="language-text">Risk
+Impact
+Likelihood
+Classification
+Regulatory obligation
+Confidence of detection
+Cost of control
+Cost of failure
+Developer/user friction
+Reversibility</code></pre>
+<h2 id='example'>Example</h2>
+<pre><code class="language-text">UI consistency
+    → recommend / validate
+
+Missing production owner
+    → warn, then escalate
+
+Secret committed to source
+    → block
+
+Export-controlled data sent to an unapproved service
+    → prevent architecturally</code></pre>
+<p>The organization is therefore not simply &quot;strict&quot; or &quot;permissive.&quot;</p>
+<p>Different controls occupy different positions on the gradient.</p>
+<hr>
+<h1 id='57-the-governance-loop'>57. The Governance Loop</h1>
+<p>The platform family can be mapped to a generic governance lifecycle.</p>
+<pre><code class="language-text">                    DEFINE
+                      |
+                  Basecoat
+                      |
+                      v
+                    APPLY
+                      |
+                  Stencil
+                      |
+                      v
+                   PREVENT
+                      |
+          Platform / CI / Guardrails
+                      |
+                      v
+                  OBSERVE
+                 /       \
+            Snitch       Teardown
+                 \       /
+                  v     v
+                  VALIDATE
+                      |
+                   Adhesion
+                      |
+                      v
+                    RECORD
+                      |
+                    Proof
+                      |
+                      v
+                   RESPOND
+                      |
+                    Crosslink
+                      |
+                      v
+                   IMPROVE
+                      |
+                  Basecoat</code></pre>
+<p><strong>Swatch</strong> provides the context for the thing being governed.</p>
+<p><strong>Binder</strong> provides the contracts that allow the family to work together.</p>
+<p>The important part is the loop:</p>
+<pre><code class="language-text">Policy
+  ↓
+Implementation
+  ↓
+Behavior
+  ↓
+Evidence
+  ↓
+Outcome
+  ↓
+Feedback
+  ↓
+Policy change</code></pre>
+<p>Governance is therefore a living control system rather than a static rulebook.</p>
+<hr>
+<h1 id='58-governance-actors'>58. Governance Actors</h1>
+<p>A useful governance system separates responsibilities rather than putting every role in one team.</p>
+<p>A modernized role model:</p>
+<div class='table-wrap'><table><thead><tr><th>Role</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td><strong>Authority / Governing Body</strong></td><td>Establish intent and accountability</td></tr>
+<tr><td><strong>Policy Owner</strong></td><td>Translate intent into policy</td></tr>
+<tr><td><strong>Communicator / Enabler</strong></td><td>Make expectations understandable and usable</td></tr>
+<tr><td><strong>Control Owner / Enforcer</strong></td><td>Implement controls</td></tr>
+<tr><td><strong>Validator</strong></td><td>Test whether controls and outcomes work</td></tr>
+<tr><td><strong>Assurance / Auditor</strong></td><td>Independently assess confidence in the system</td></tr>
+<tr><td><strong>Governed Actor</strong></td><td>Human, team, service, or agent expected to operate within constraints</td></tr>
+</tbody></table></div>
+<p>This separation matters because the same system should not automatically:</p>
+<pre><code class="language-text">write the rule
+implement the rule
+test the rule
+declare the rule effective
+audit itself</code></pre>
+<p>Independence should increase as the consequence and assurance requirement increase.</p>
+<hr>
+<h1 id='59-governance-authority-and-autonomous-agents'>59. Governance Authority and Autonomous Agents</h1>
+<p>AI agents introduce a new actor, but they do not eliminate governance authority.</p>
+<p>A useful principle is:</p>
+<blockquote><strong>Automation may execute governance authority; it does not create governance authority.</strong></blockquote>
+<pre><code class="language-text">Human / Organizational Authority
+             |
+             v
+           Policy
+             |
+             v
+           Control
+             |
+             v
+   Delegated Automation
+       /           \
+ Workflow         Agent
+       \           /
+             |
+             v
+        Decision / Action
+             |
+             v
+           Evidence</code></pre>
+<p>An agent can:</p>
+<ul>
+<li>- observe,</li>
+<li>- recommend,</li>
+<li>- test,</li>
+<li>- enforce,</li>
+<li>- remediate,</li>
+<li>- escalate,</li>
+<li>- or coordinate.</li>
+</ul>
+<p>But its authority should be traceable to an approved control and an accountable human or organizational authority.</p>
+<p>This becomes particularly important for autonomous remediation.</p>
+<hr>
+<h1 id='60-governance-as-proportional-control'>60. Governance as Proportional Control</h1>
+<p>One of the most persistent ideas across the journey is that <strong>maximum enforcement is not automatically better governance</strong>.</p>
+<p>A useful modern vocabulary includes:</p>
+<ul>
+<li>- risk appetite</li>
+<li>- risk tolerance</li>
+<li>- proportionality</li>
+<li>- reasonable assurance</li>
+<li>- residual risk</li>
+<li>- compensating controls</li>
+<li>- exceptions</li>
+<li>- cost/benefit</li>
+<li>- control effectiveness</li>
+</ul>
+<p>That produces a more realistic formula:</p>
+<pre><code class="language-text">Governance Value
+    ≈
+Risk Reduced
+    -
+Control Cost
+    -
+Operational Friction
+    -
+Exception / Maintenance Cost</code></pre>
+<p>This is intentionally not a precise mathematical formula.</p>
+<p>It is a design heuristic.</p>
+<p>A control that technically reduces risk but creates massive workarounds, shadow systems, or operational cost may produce less governance value than a lighter control with strong visibility and evidence.</p>
+<hr>
+<h1 id='61-good-enough-is-an-engineering-concept-not-a-failure'>61. &quot;Good Enough&quot; Is an Engineering Concept, Not a Failure</h1>
+<p>Governance does not require eliminating all risk.</p>
+<p>The relevant questions are:</p>
+<pre><code class="language-text">What risk exists?
+
+What outcome matters?
+
+How much risk are we willing to accept?
+
+What control gives reasonable assurance?
+
+What residual risk remains?
+
+Who has authority to accept it?
+
+When should that decision expire or be reviewed?</code></pre>
+<p>This creates a disciplined place for:</p>
+<ul>
+<li>- exceptions,</li>
+<li>- waivers,</li>
+<li>- compensating controls,</li>
+<li>- temporary acceptance,</li>
+<li>- staged remediation,</li>
+<li>- and risk-based prioritization.</li>
+</ul>
+<p>A binary model:</p>
+<pre><code class="language-text">compliant / non-compliant</code></pre>
+<p>is often too weak to describe real enterprise governance.</p>
+<p>A stronger model is:</p>
+<pre><code class="language-text">requirement
+    ↓
+control
+    ↓
+evidence
+    ↓
+effectiveness
+    ↓
+residual risk
+    ↓
+accept / remediate / strengthen / retire</code></pre>
+<hr>
+<h1 id='62-classification-should-drive-governance'>62. Classification Should Drive Governance</h1>
+<p>Another recurring principle is that classification should influence architecture and controls.</p>
+<pre><code class="language-text">Classification
+      ↓
+Profile
+      ↓
+Controls
+      ↓
+Enforcement Strength
+      ↓
+Placement / Architecture
+      ↓
+Evidence Requirements</code></pre>
+<p>Examples:</p>
+<pre><code class="language-text">Public prototype
+    → lightweight governance
+
+Production customer application
+    → stronger SDLC and operational controls
+
+CUI workload
+    → controlled environment + stronger evidence
+
+ITAR-controlled workload
+    → personnel, geography, service, and export restrictions
+
+High-risk AI system
+    → stronger evaluation, monitoring, and approval requirements</code></pre>
+<p>This is why classification belongs in <strong>Swatch</strong>, while Basecoat resolves the control implications.</p>
+<hr>
+<h1 id='63-enforcement-belongs-at-the-right-scope'>63. Enforcement Belongs at the Right Scope</h1>
+<p>A policy may be correct but ineffective if enforced at the wrong point.</p>
+<p>Candidate scopes in the modern family include:</p>
+<pre><code class="language-text">Enterprise
+  ↓
+Business Unit
+  ↓
+Portfolio
+  ↓
+Application
+  ↓
+Repository
+  ↓
+Branch / Pull Request
+  ↓
+Build
+  ↓
+Artifact
+  ↓
+Deployment
+  ↓
+Runtime
+  ↓
+Model / Agent / Tool
+  ↓
+Data</code></pre>
+<p>The ideal enforcement point is usually the earliest place where the organization has:</p>
+<ol>
+<li>1. enough information to make the decision,</li>
+<li>2. enough authority to enforce it,</li>
+<li>3. and low enough cost to prevent or correct the problem.</li>
+</ol>
+<p>This supports a simple principle:</p>
+<blockquote><strong>Prevent early when the rule is deterministic; observe and validate later when reality cannot be known earlier.</strong></blockquote>
+<hr>
+<h1 id='64-reversibility-is-a-governance-feature'>64. Reversibility Is a Governance Feature</h1>
+<p>Governance actions should not automatically be permanent.</p>
+<p>Possible responses include:</p>
+<pre><code class="language-text">Inform
+Warn
+Request evidence
+Require approval
+Quarantine
+Read-only
+Disable capability
+Rollback
+Archive
+Hold
+Remediate
+Restore
+Delete</code></pre>
+<p>The system should understand whether an enforcement action is:</p>
+<ul>
+<li>- reversible,</li>
+<li>- partially reversible,</li>
+<li>- destructive,</li>
+<li>- or legally required to preserve evidence.</li>
+</ul>
+<p>This is particularly important for:</p>
+<ul>
+<li>- automated remediation,</li>
+<li>- autonomous agents,</li>
+<li>- lifecycle management,</li>
+<li>- incident response,</li>
+<li>- records retention,</li>
+<li>- and decommissioning.</li>
+</ul>
+<p>A useful principle:</p>
+<blockquote><strong>Prefer reversible controls until the confidence and authority justify irreversible action.</strong></blockquote>
+<hr>
+<h1 id='65-governance-capacity'>65. Governance Capacity</h1>
+<p>Organizations differ in how much governance complexity they can successfully operate.</p>
+<p>Factors include:</p>
+<ul>
+<li>- technical maturity</li>
+<li>- staffing</li>
+<li>- central vs federated structure</li>
+<li>- internal vs outsourced development</li>
+<li>- developer skill</li>
+<li>- user skill</li>
+<li>- regulatory burden</li>
+<li>- platform standardization</li>
+<li>- acquisition history</li>
+<li>- number of environments</li>
+<li>- organizational change rate</li>
+</ul>
+<p>This suggests a concept of <strong>governance capacity</strong>.</p>
+<pre><code class="language-text">Strong requirement
+      +
+Weak governance capacity
+      =
+Do not add paperwork.
+
+Instead:
+simplify the path,
+automate the control,
+reduce choices,
+and provide secure defaults.</code></pre>
+<p>This reinforces a major Basecoat principle:</p>
+<blockquote><strong>The stronger the requirement, the less it should depend on perfect human behavior.</strong></blockquote>
+<hr>
+<h1 id='66-federated-governance'>66. Federated Governance</h1>
+<p>Enterprise-scale governance should not require every technical decision to be centralized.</p>
+<p>The desired model is:</p>
+<pre><code class="language-text">Centralized:
+  intent
+  controls
+  minimum standards
+  identity
+  evidence requirements
+  accountability
+
+Federated:
+  architecture choices
+  implementation
+  delivery
+  experimentation
+  local optimization</code></pre>
+<p>In other words:</p>
+<blockquote><strong>Centralize the guardrails. Decentralize the work.</strong></blockquote>
+<p>This is particularly important for large engineering organizations and autonomous development agents.</p>
+<p>The purpose of Basecoat is not to make every repository identical.</p>
+<p>It is to make organizational intent portable across repositories without destroying team autonomy.</p>
+<hr>
+<h1 id='67-governance-fragmentation-is-a-governance-problem'>67. Governance Fragmentation Is a Governance Problem</h1>
+<p>Organizations often respond to each new requirement by creating another:</p>
+<ul>
+<li>- tool,</li>
+<li>- workflow,</li>
+<li>- dashboard,</li>
+<li>- policy,</li>
+<li>- portal,</li>
+<li>- scanner,</li>
+<li>- database,</li>
+<li>- committee,</li>
+<li>- or review gate.</li>
+</ul>
+<p>Over time, the controls themselves become difficult to govern.</p>
+<p>This family should actively avoid that outcome.</p>
+<p>The shared architecture exists so that:</p>
+<pre><code class="language-text">one identity model
+one control model
+one evidence model
+one exception model
+one family contract</code></pre>
+<p>can support many specialized capabilities.</p>
+<p>That is one of the reasons <strong>Binder</strong> matters.</p>
+<p>The family should be composable without becoming a collection of unrelated governance systems.</p>
+<hr>
+<h1 id='68-governance-is-experienced-through-the-path'>68. Governance Is Experienced Through the Path</h1>
+<p>Governance is not only a backend policy system.</p>
+<p>People encounter governance through:</p>
+<ul>
+<li>- templates,</li>
+<li>- defaults,</li>
+<li>- labels,</li>
+<li>- warnings,</li>
+<li>- documentation,</li>
+<li>- user interfaces,</li>
+<li>- approval workflows,</li>
+<li>- error messages,</li>
+<li>- provisioning flows,</li>
+<li>- remediation steps,</li>
+<li>- and self-service experiences.</li>
+</ul>
+<p>This makes experience design part of governance.</p>
+<p>A badly designed control can be technically correct and operationally ineffective.</p>
+<p>That creates an important relationship:</p>
+<pre><code class="language-text">Basecoat
+    defines intent
+
+Sheen
+    helps make the governed path understandable and usable
+
+Adhesion
+    verifies that both the technical and experience expectations are met</code></pre>
+<p>The usability of governance directly affects whether people comply with it or route around it.</p>
+<hr>
+<h1 id='69-a-modern-governance-control-model'>69. A Modern Governance Control Model</h1>
+<p>The historical ideas in this side quest can be condensed into a modern control object.</p>
+<pre><code class="language-text">CONTROL
+│
+├── Authority
+│   └── Who has the right to establish this requirement?
+│
+├── Intent
+│   └── What outcome are we trying to achieve?
+│
+├── Subject
+│   └── Who/what is governed?
+│
+├── Classification / Applicability
+│   └── Why does this control apply?
+│
+├── Strength
+│   └── Inform / Warn / Approve / Block / Prevent
+│
+├── Scope
+│   └── Enterprise / App / Repo / Build / Runtime / Model / Data
+│
+├── Enforcement Point
+│   └── Where can the control actually be applied?
+│
+├── Implementation
+│   └── Artifact / Skill / Workflow / Policy / Platform / Agent
+│
+├── Evidence
+│   └── How do we know the control is operating?
+│
+├── Confidence
+│   └── Deterministic / observed / inferred / unknown
+│
+├── Exception
+│   └── What controlled deviation is allowed?
+│
+├── Response
+│   └── Remediate / Quarantine / Escalate / Reclaim
+│
+├── Reversibility
+│   └── Can the action be safely undone?
+│
+└── Feedback
+    └── Keep / Relax / Strengthen / Amend / Retire</code></pre>
+<p>This can become a candidate schema for Basecoat/Binder.</p>
+<hr>
+<h1 id='70-the-core-philosophy'>70. The Core Philosophy</h1>
+<p>After a long journey through enterprise platforms, provisioning, cloud, security, DevOps, AI-assisted development, and autonomous agents, the core governance problem remains surprisingly stable.</p>
+<p>A useful summary is:</p>
+<blockquote><strong>Governance is the system that makes organizational intent operable.</strong></blockquote>
+<p>It does this by creating:</p>
+<pre><code class="language-text">Direction
+Boundaries
+Authority
+Accountability
+Feedback</code></pre>
+<p>And the family implements those ideas as:</p>
+<pre><code class="language-text">Swatch     → know what exists
+Basecoat   → define intent and controls
+Stencil    → determine applicability and scope
+Binder     → connect the system
+Snitch     → observe reality
+Teardown   → understand composition
+Adhesion   → validate outcomes
+Proof      → preserve evidence
+Crosslink     → coordinate response
+Reclaim    → govern the end of life
+Sheen      → make the governed path usable</code></pre>
+<p>The destination has changed.</p>
+<p>The steering problem has not.</p>
+<hr>
+<h1 id='71-side-quest-references-and-frameworks-to-explore'>71. Side Quest References and Frameworks to Explore</h1>
+<p>These are useful anchors for deeper research into formal governance terminology.</p>
+<h2 id='organizational-corporate-governance'>Organizational / corporate governance</h2>
+<ul>
+<li>- <strong>ISO 37000 — Governance of organizations</strong></li>
+<li>- <strong>G20/OECD Principles of Corporate Governance</strong></li>
+<li>- <strong>UK Corporate Governance Code / Cadbury lineage</strong></li>
+<li>- <strong>IIA Three Lines Model</strong></li>
+</ul>
+<h2 id='technology-governance'>Technology governance</h2>
+<ul>
+<li>- <strong>ISO/IEC 38500 — Governance of IT</strong></li>
+<li>- <strong>COBIT</strong></li>
+<li>- <strong>ITIL / ITSM</strong></li>
+<li>- <strong>ISO/IEC 20000</strong></li>
+</ul>
+<h2 id='cybersecurity-governance'>Cybersecurity governance</h2>
+<ul>
+<li>- <strong>NIST Cybersecurity Framework 2.0</strong></li>
+<li>- <strong>ISO/IEC 27001</strong></li>
+<li>- <strong>CIS Controls</strong></li>
+</ul>
+<h2 id='ai-governance'>AI governance</h2>
+<ul>
+<li>- <strong>NIST AI Risk Management Framework</strong></li>
+<li>- <strong>ISO/IEC 42001</strong></li>
+<li>- <strong>OWASP GenAI Security Project</strong></li>
+</ul>
+<h2 id='controls-and-assurance'>Controls and assurance</h2>
+<ul>
+<li>- <strong>NIST OSCAL</strong></li>
+<li>- <strong>SOC 2 / Trust Services Criteria</strong></li>
+<li>- <strong>CMMC</strong></li>
+<li>- <strong>FedRAMP</strong></li>
+<li>- <strong>PCI DSS</strong></li>
+</ul>
+<h2 id='useful-research-questions'>Useful research questions</h2>
+<ul>
+<li>- Which governance concepts belong in Binder schemas?</li>
+<li>- Which belong in Basecoat controls?</li>
+<li>- Which require independent assurance rather than self-validation?</li>
+<li>- How should risk appetite change enforcement strength?</li>
+<li>- How should governance authority be represented for autonomous agents?</li>
+<li>- Can governance capacity be measured?</li>
+<li>- When should a control graduate from guidance to architectural prevention?</li>
+</ul>
+<hr>
+<h1 id='72-side-quest-follow-up-ideas'>72. Side Quest Follow-Up Ideas</h1>
+<p>Possible future iterations:</p>
+<ul>
+<li>- Build a timeline graphic from ancient governance → corporate governance → IT → cyber → AI.</li>
+<li>- Compare <strong>ISO 37000 / ISO 38500 / COBIT / NIST CSF / NIST AI RMF</strong> against the family model.</li>
+<li>- Formalize the <strong>Governance Gradient</strong> as a Basecoat schema.</li>
+<li>- Formalize <strong>Authority → Policy → Control → Enforcement → Evidence → Assurance</strong> in Binder.</li>
+<li>- Add a governance-capacity model for choosing between documentation, automation, workflow, and architectural prevention.</li>
+<li>- Define independence requirements for validators and auditors.</li>
+<li>- Define a human-accountability model for autonomous agents.</li>
+</ul>
+<hr>
+<h1 id='73-naming-update-crosslink'>73. Naming Update — Crosslink</h1>
+<p><strong>Decision:</strong> Use <strong>Crosslink</strong> as the product name for incident and operational coordination.</p>
+<h2 id='why-crosslink-fits'>Why Crosslink fits</h2>
+<p>In coatings and polymer chemistry, crosslinking connects polymer chains into a stronger network.</p>
+<p>That maps naturally to incident and operational coordination:</p>
+<pre><code class="language-text">Incident / Event
+      |
+   Crosslink
+      |
+  +---+-------------+-------------+
+  |                 |             |
+Owner           On-call       Security
+  |                 |             |
+Business        Technical       Vendor
+Owner           Responder       Support</code></pre>
+<p>Crosslink is responsible for connecting the <strong>right people, roles, teams, and escalation paths</strong> around a governed application.</p>
+<h3 id='product-role'>Product role</h3>
+<blockquote><strong>Crosslink — Coordinate</strong></blockquote>
+<p>Candidate capabilities:</p>
+<ul>
+<li>- call trees</li>
+<li>- on-call resolution</li>
+<li>- escalation paths</li>
+<li>- responder acknowledgement</li>
+<li>- bridge/channel coordination</li>
+<li>- incident roles</li>
+<li>- business-owner notification</li>
+<li>- vendor escalation</li>
+<li>- status communications</li>
+<li>- post-incident handoff</li>
+</ul>
+<h3 id='boundary'>Boundary</h3>
+<p>Crosslink coordinates response.</p>
+<p>It should not become the primary:</p>
+<ul>
+<li>- observability platform,</li>
+<li>- incident-detection engine,</li>
+<li>- application inventory,</li>
+<li>- or diagnostic system.</li>
+</ul>
+<p>Those capabilities should be supplied by integrations, Snitch, Teardown, and Swatch/Batch context.</p>
+<hr>
+<h1 id='74-rethinking-batch-a-governed-application-package'>74. Rethinking Batch — A Governed Application Package</h1>
+<p>A stronger interpretation of <strong>Batch</strong> is emerging.</p>
+<p>Instead of treating Batch only as an evidence store, a <strong>Batch can represent one complete governed application unit</strong>.</p>
+<p>A Batch brings together the material needed to understand, govern, validate, operate, and prove one application.</p>
+<pre><code class="language-text">Batch: Claims Processing
+│
+├── Identity / Manifest
+│
+├── Swatch
+│   ├── ownership
+│   ├── classification
+│   ├── business context
+│   ├── lifecycle
+│   └── profiles
+│
+├── Teardown Graph
+│   ├── repositories
+│   ├── services
+│   ├── APIs
+│   ├── packages
+│   ├── models
+│   ├── agents
+│   ├── MCP servers
+│   └── dependencies
+│
+├── Blueprint / Formula
+│   ├── intended architecture
+│   └── approved composition
+│
+├── Basecoat
+│   ├── applicable controls
+│   ├── policy versions
+│   └── exceptions
+│
+├── Adhesion
+│   ├── tests
+│   ├── evaluations
+│   └── results
+│
+├── Sheen
+│   └── experience/design conformance
+│
+├── Crosslink
+│   ├── owners
+│   ├── responders
+│   └── escalation paths
+│
+└── Proof / Provenance
+    ├── builds
+    ├── SBOM
+    ├── attestations
+    ├── approvals
+    ├── deployments
+    └── history</code></pre>
+<p>This makes <strong>Batch</strong> analogous to a manufactured coating batch:</p>
+<ul>
+<li>- it has an identity,</li>
+<li>- a composition,</li>
+<li>- a specification,</li>
+<li>- inputs,</li>
+<li>- test results,</li>
+<li>- provenance,</li>
+<li>- disposition,</li>
+<li>- and history.</li>
+</ul>
+<p>The application is not just a record in a CMDB. It is a <strong>governed product instance with traceable composition and evidence</strong>.</p>
+<hr>
+<h1 id='75-what-is-a-catalog-of-batches'>75. What Is a Catalog of Batches?</h1>
+<p>In manufacturing, collections of batch records are commonly described using terms such as:</p>
+<ul>
+<li>- <strong>batch register</strong></li>
+<li>- <strong>batch log</strong></li>
+<li>- <strong>batch history</strong></li>
+<li>- <strong>batch record repository</strong></li>
+<li>- <strong>lot history / lot genealogy</strong></li>
+</ul>
+<p>For this product family, the strongest naming candidates are:</p>
+<div class='table-wrap'><table><thead><tr><th>Candidate</th><th>Meaning</th><th>Fit</th></tr></thead><tbody>
+<tr><td><strong>Batchbook</strong></td><td>A book/catalog containing batches</td><td>Strongest family/product name</td></tr>
+<tr><td><strong>Batch Register</strong></td><td>Formal register of batches</td><td>Precise, enterprise, less playful</td></tr>
+<tr><td><strong>Batch Log</strong></td><td>Chronological record</td><td>Better for history than catalog/navigation</td></tr>
+<tr><td><strong>Batch Library</strong></td><td>Collection of reusable/known batches</td><td>Familiar, but generic</td></tr>
+<tr><td><strong>Batch Deck</strong></td><td>A grouped collection</td><td>Fits Swatch/Deck vocabulary but less manufacturing-authentic</td></tr>
+<tr><td><strong>Lotbook</strong></td><td>Collection of lots</td><td>Strong traceability metaphor, less intuitive in software</td></tr>
+<tr><td><strong>Formula Book</strong></td><td>Traditional collection of formulations</td><td>Better for approved recipes than actual application instances</td></tr>
+</tbody></table></div>
+<h2 id='current-preferred-model'>Current preferred model</h2>
+<h3 id='batchbook'><strong>Batchbook</strong></h3>
+<p>The enterprise catalog / system of record.</p>
+<h3 id='batch'><strong>Batch</strong></h3>
+<p>One governed application.</p>
+<h3 id='swatch'><strong>Swatch</strong></h3>
+<p>The compact identity/profile/manifest view of that Batch.</p>
+<h3 id='deck'><strong>Deck</strong></h3>
+<p>A durable grouping of Batches.</p>
+<h3 id='palette'><strong>Palette</strong></h3>
+<p>A curated or dynamic selection of Batches.</p>
+<pre><code class="language-text">                    Batchbook
+                        |
+        +---------------+---------------+
+        |               |               |
+      Batch           Batch           Batch
+   Claims App       ERP Service      AI Portal
+        |
+        +-- Swatch
+        +-- Graph
+        +-- Formula
+        +-- Controls
+        +-- Tests
+        +-- Evidence
+        +-- Crosslink</code></pre>
+<p>This resolves an important naming issue:</p>
+<blockquote><strong>Swatch does not have to be the entire catalog.</strong></blockquote>
+<p>A Swatch can be the concise, recognizable representation of one Batch, while <strong>Batchbook</strong> is the larger enterprise catalog and graph.</p>
+<hr>
+<h1 id='76-batchbook-vocabulary'>76. Batchbook Vocabulary</h1>
+<p>A potential domain vocabulary:</p>
+<pre><code class="language-text">Batchbook
+    Enterprise catalog of governed applications
+
+Batch
+    One governed application/product instance
+
+Swatch
+    Human- and machine-readable application profile
+
+Deck
+    Durable organizational grouping
+
+Palette
+    Dynamic/curated selection
+
+Formula
+    Approved component/composition definition
+
+Blueprint
+    Intended architecture
+
+Teardown
+    Discovered architecture/composition graph
+
+Stamp
+    A signed/approved attestation or validation result
+
+Batch Record
+    Historical evidence package for a particular version/release
+
+Lot
+    Optional immutable artifact/build/deployment grouping</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-text">Batchbook
+  |
+  +-- Batch: claims-processing
+        |
+        +-- Swatch: claims-processing.yaml
+        |
+        +-- Blueprint: claims-v4
+        |
+        +-- Formula: python-api-ai-v3
+        |
+        +-- Teardown:
+        |      actual application graph
+        |
+        +-- Basecoat:
+        |      142 applicable controls
+        |
+        +-- Adhesion:
+        |      latest evaluation results
+        |
+        +-- Crosslink:
+        |      claims-platform responders
+        |
+        +-- Batch Records:
+               release 2026.09.1
+               release 2026.09.2
+               release 2026.09.3</code></pre>
+<p>This distinction also prevents the word <strong>Batch</strong> from being overloaded as both the current application and every individual build.</p>
+<p>The <strong>Batch</strong> is the governed application.</p>
+<p>A <strong>Batch Record</strong> captures a point-in-time release/build/evidence state.</p>
+<hr>
+<h1 id='77-revised-family-map'>77. Revised Family Map</h1>
+<p>With the naming changes and the stronger Batch model:</p>
+<pre><code class="language-text">                         BINDER
+                 Shared Family Contract
+                           |
+       +-------------------+-------------------+
+       |                   |                   |
+    Basecoat             Sheen             Adhesion
+     Govern             Experience           Verify
+       |                   |                   |
+       +-------------------+-------------------+
+                           |
+                       BATCHBOOK
+                  Enterprise Catalog
+                           |
+                         Batch
+              One Governed Application
+                           |
+          +----------------+----------------+
+          |                |                |
+        Swatch          Teardown        Crosslink
+        Profile         Understand      Coordinate
+          |                |                |
+          +----------------+----------------+
+                           |
+                         Snitch
+                        Discover
+                           |
+                       Observations</code></pre>
+<p>Each Batch can also contain or reference:</p>
+<pre><code class="language-text">Blueprint
+Formula
+Controls
+Exceptions
+Evaluations
+Evidence
+Attestations
+Deployment history
+Lifecycle state</code></pre>
+<h2 id='working-verbs'>Working verbs</h2>
+<ul>
+<li>- <strong>Binder — Connect</strong></li>
+<li>- <strong>Basecoat — Govern</strong></li>
+<li>- <strong>Sheen — Experience</strong></li>
+<li>- <strong>Adhesion — Verify</strong></li>
+<li>- <strong>Batchbook — Catalog</strong></li>
+<li>- <strong>Batch — Represent</strong></li>
+<li>- <strong>Swatch — Identify</strong></li>
+<li>- <strong>Snitch — Discover</strong></li>
+<li>- <strong>Teardown — Understand</strong></li>
+<li>- <strong>Crosslink — Coordinate</strong></li>
+</ul>
+<hr>
+<h1 id='crosslink-naming-convention'>Crosslink naming convention</h1>
+<p><strong>Crosslink</strong> is the canonical name for the incident and operational coordination product.</p>
+<p>It owns concepts such as:</p>
+<ul>
+<li>- call trees</li>
+<li>- on-call resolution</li>
+<li>- responder roles</li>
+<li>- escalation paths</li>
+<li>- bridge/channel coordination</li>
+<li>- acknowledgements</li>
+<li>- business and vendor escalation</li>
+<li>- incident communication</li>
+</ul>
+<p>The earlier <strong>Call Tree</strong> wording can remain as a feature name inside Crosslink, but it is no longer the product name.</p>
+<hr>
+<h1 id='79-organization-vocabulary-and-taxonomy'>79. Organization Vocabulary and Taxonomy</h1>
+<p>The product family should not require every organization to adopt the Basecoat-family vocabulary exactly as written.</p>
+<p>Different organizations already have their own language for:</p>
+<ul>
+<li>- applications,</li>
+<li>- products,</li>
+<li>- systems,</li>
+<li>- services,</li>
+<li>- platforms,</li>
+<li>- workloads,</li>
+<li>- repositories,</li>
+<li>- teams,</li>
+<li>- environments,</li>
+<li>- risks,</li>
+<li>- controls,</li>
+<li>- exceptions,</li>
+<li>- incidents,</li>
+<li>- releases,</li>
+<li>- AI assets,</li>
+<li>- and lifecycle states.</li>
+</ul>
+<p>The platform should allow organizations to map those local terms onto a <strong>stable canonical model</strong>.</p>
+<p>The principle is:</p>
+<blockquote><strong>Standardize the meaning, not necessarily the words.</strong></blockquote>
+<p>A company should be able to keep the terminology its developers, architects, operators, auditors, and business teams already understand while still participating in the same governance model.</p>
+<hr>
+<h1 id='80-canonical-model-vs-local-vocabulary'>80. Canonical Model vs. Local Vocabulary</h1>
+<p>The family should maintain a small canonical ontology underneath the user-facing terminology.</p>
+<p>Example:</p>
+<pre><code class="language-text">Canonical concept       Organization A       Organization B       Organization C
+
+Application              App                  Product              Workload
+Repository               Repo                 Codebase             Project
+Team                     Squad                Product Team         Service Team
+Deployment               Release              Instance             Runtime
+Control                  Guardrail            Standard             Requirement
+Exception                Waiver               Deviation            Risk Acceptance
+Incident                 Incident             Event                Sev
+Batch                    Application          System               Product
+Deck                     Portfolio            Domain               Business Unit
+Palette                  Filter               Cohort               View</code></pre>
+<p>The organization-facing UI, APIs, agents, and documentation can use local terms.</p>
+<p>The underlying identifiers remain canonical.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">canonical:
+  type: application
+
+local:
+  term: product
+
+id: app:claims-processing</code></pre>
+<p>This provides consistency without forcing terminology changes on the organization.</p>
+<hr>
+<h1 id='81-taxonomy-is-part-of-governance'>81. Taxonomy Is Part of Governance</h1>
+<p>Vocabulary is not just a UI concern.</p>
+<p>The terms an organization chooses influence:</p>
+<ul>
+<li>- ownership,</li>
+<li>- reporting,</li>
+<li>- access control,</li>
+<li>- policy applicability,</li>
+<li>- architecture decisions,</li>
+<li>- incident routing,</li>
+<li>- compliance evidence,</li>
+<li>- lifecycle management,</li>
+<li>- and automation.</li>
+</ul>
+<p>If one group says <strong>application</strong>, another says <strong>service</strong>, and another says <strong>product</strong>, the important question is not which word is correct.</p>
+<p>The important question is:</p>
+<blockquote><strong>Do they mean the same governed thing?</strong></blockquote>
+<p>A taxonomy provides that shared meaning.</p>
+<pre><code class="language-text">Term
+  ↓
+Definition
+  ↓
+Canonical concept
+  ↓
+Relationships
+  ↓
+Allowed states
+  ↓
+Applicable controls</code></pre>
+<p>This is closer to an <strong>ontology</strong> than a simple glossary because the relationships matter.</p>
+<hr>
+<h1 id='82-organizational-vocabulary-profile'>82. Organizational Vocabulary Profile</h1>
+<p>Each organization could maintain a versioned <strong>Vocabulary Profile</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">organization: contoso
+
+vocabulary:
+  application:
+    display_name: Product
+    plural: Products
+    aliases:
+      - App
+      - Workload
+
+  batch:
+    display_name: Application
+    plural: Applications
+
+  deck:
+    display_name: Portfolio
+    plural: Portfolios
+
+  team:
+    display_name: Squad
+    plural: Squads
+
+  control:
+    display_name: Guardrail
+    plural: Guardrails
+
+  exception:
+    display_name: Risk Acceptance
+    plural: Risk Acceptances
+
+  incident:
+    display_name: Sev
+    plural: Sevs</code></pre>
+<p>The profile should be:</p>
+<ul>
+<li>- version controlled,</li>
+<li>- centrally governed,</li>
+<li>- machine readable,</li>
+<li>- overridable only where explicitly allowed,</li>
+<li>- and usable by UI, APIs, agents, generated documentation, and reports.</li>
+</ul>
+<hr>
+<h1 id='83-canonical-ids-must-not-change-with-vocabulary'>83. Canonical IDs Must Not Change with Vocabulary</h1>
+<p>Display terminology can change.</p>
+<p>Canonical identity should not.</p>
+<p>Example:</p>
+<pre><code class="language-text">Today:
+  &quot;Product&quot;
+
+Tomorrow:
+  &quot;Application&quot;
+
+Canonical ID:
+  app:claims-processing</code></pre>
+<p>The object should remain the same even if the organization changes terminology.</p>
+<p>This protects:</p>
+<ul>
+<li>- historical evidence,</li>
+<li>- API stability,</li>
+<li>- automation,</li>
+<li>- integrations,</li>
+<li>- policy mappings,</li>
+<li>- and audit history.</li>
+</ul>
+<h3 id='rule'>Rule</h3>
+<blockquote><strong>Names are presentation. IDs are identity.</strong></blockquote>
+<hr>
+<h1 id='84-taxonomy-layers'>84. Taxonomy Layers</h1>
+<p>A useful organization-specific taxonomy can be layered.</p>
+<h2 id='layer-1-enterprise-concepts'>Layer 1 — Enterprise concepts</h2>
+<pre><code class="language-text">Portfolio
+Product
+Application
+Service
+Platform
+Team
+Owner
+Environment</code></pre>
+<h2 id='layer-2-software-delivery-concepts'>Layer 2 — Software delivery concepts</h2>
+<pre><code class="language-text">Repository
+Branch
+Build
+Artifact
+Release
+Deployment
+Dependency
+Workflow</code></pre>
+<h2 id='layer-3-ai-concepts'>Layer 3 — AI concepts</h2>
+<pre><code class="language-text">Model
+Agent
+Prompt
+Skill
+MCP Server
+Tool
+Embedding Model
+Vector Store
+Knowledge Source
+Evaluation
+Guardrail</code></pre>
+<h2 id='layer-4-governance-concepts'>Layer 4 — Governance concepts</h2>
+<pre><code class="language-text">Policy
+Control
+Standard
+Profile
+Exception
+Finding
+Evidence
+Attestation
+Approval
+Risk Acceptance</code></pre>
+<h2 id='layer-5-operational-concepts'>Layer 5 — Operational concepts</h2>
+<pre><code class="language-text">Incident
+Severity
+Responder
+Escalation
+Bridge
+Recovery
+Retirement</code></pre>
+<p>Organizations can adopt all layers or only the ones relevant to their operating model.</p>
+<hr>
+<h1 id='85-allow-multiple-taxonomies-at-once'>85. Allow Multiple Taxonomies at Once</h1>
+<p>Large enterprises rarely have one universal vocabulary.</p>
+<p>Different domains may need different views of the same object.</p>
+<p>Example:</p>
+<pre><code class="language-text">Engineering:
+  Application
+
+Finance:
+  Cost Center Asset
+
+Architecture:
+  Business Application
+
+Operations:
+  Service
+
+Security:
+  Workload
+
+Compliance:
+  In-Scope System</code></pre>
+<p>These should not become duplicate records.</p>
+<p>They should be <strong>facets of the same governed entity</strong>.</p>
+<pre><code class="language-text">                app:claims-processing
+                         |
+       +-----------------+-----------------+
+       |                 |                 |
+ Engineering          Security         Finance
+ &quot;Application&quot;        &quot;Workload&quot;       &quot;Cost Object&quot;</code></pre>
+<p>This allows each stakeholder group to work in familiar language while preserving a shared enterprise graph.</p>
+<hr>
+<h1 id='86-controlled-synonyms-and-aliases'>86. Controlled Synonyms and Aliases</h1>
+<p>The platform should support explicit aliases rather than guessing terminology.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">concept: application
+
+preferred_term: Application
+
+aliases:
+  - App
+  - Product
+  - Workload
+  - System
+
+disallowed_ambiguities:
+  - Service</code></pre>
+<p>Aliases should be scoped where necessary.</p>
+<p>For example:</p>
+<pre><code class="language-yaml">scope: manufacturing
+
+application:
+  preferred_term: Solution</code></pre>
+<p>while:</p>
+<pre><code class="language-yaml">scope: retail
+
+application:
+  preferred_term: Product</code></pre>
+<p>This makes language adaptable without making the underlying model ambiguous.</p>
+<hr>
+<h1 id='87-organization-owned-classification-taxonomies'>87. Organization-Owned Classification Taxonomies</h1>
+<p>The same approach should apply to classifications.</p>
+<p>Basecoat should not force every organization to use:</p>
+<pre><code class="language-text">Low
+Medium
+High</code></pre>
+<p>An organization may already use:</p>
+<pre><code class="language-text">Public
+Internal
+Confidential
+Highly Confidential</code></pre>
+<p>or:</p>
+<pre><code class="language-text">LBI
+MBI
+HBI</code></pre>
+<p>or:</p>
+<pre><code class="language-text">Tier 0
+Tier 1
+Tier 2
+Tier 3</code></pre>
+<p>or domain-specific categories such as:</p>
+<pre><code class="language-text">Prototype
+Business Critical
+Mission Critical
+Safety Critical
+Export Controlled</code></pre>
+<p>The platform should map these to canonical properties rather than replace them.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">local_classification:
+  name: Mission Critical
+
+canonical_properties:
+  availability_criticality: very_high
+  recovery_priority: tier_0
+  stronger_change_control: true
+  continuous_validation: required</code></pre>
+<p>The label is local.</p>
+<p>The behavior is standardized.</p>
+<hr>
+<h1 id='88-taxonomy-driven-governance'>88. Taxonomy-Driven Governance</h1>
+<p>Local taxonomy can drive controls.</p>
+<p>Example:</p>
+<pre><code class="language-text">Organization says:
+  &quot;Tier 0&quot;
+
+Taxonomy maps Tier 0 to:
+  mission critical
+  production
+  customer facing
+  RTO &lt; 1 hour
+  enhanced audit
+  named on-call team
+
+Basecoat resolves:
+  stronger control profile
+
+Crosslink resolves:
+  24x7 escalation
+
+Adhesion resolves:
+  additional resilience tests
+
+Swatch/Batch records:
+  Tier 0 classification</code></pre>
+<p>This turns organizational vocabulary into an operational interface to governance.</p>
+<p>The organization does not need to learn the platform&#x27;s internal language to receive consistent controls.</p>
+<hr>
+<h1 id='89-taxonomy-governance'>89. Taxonomy Governance</h1>
+<p>The vocabulary itself needs governance.</p>
+<p>For each term, capture:</p>
+<pre><code class="language-text">Term
+Definition
+Canonical concept
+Owner
+Status
+Effective date
+Aliases
+Deprecated terms
+Replacement term
+Relationships
+Allowed values
+Applicable scopes</code></pre>
+<p>Example:</p>
+<pre><code class="language-yaml">term: Product
+canonical: application
+owner: enterprise-architecture
+status: active
+effective_date: 2026-01-01
+
+aliases:
+  - App
+
+deprecated_terms:
+  - Solution
+
+relationships:
+  owned_by: team
+  contains: service
+  deployed_as: deployment</code></pre>
+<p>This avoids uncontrolled terminology drift.</p>
+<hr>
+<h1 id='90-vocabulary-change-without-breaking-the-platform'>90. Vocabulary Change Without Breaking the Platform</h1>
+<p>Organizations change language over time.</p>
+<p>The platform should support migration without rewriting history.</p>
+<p>Example:</p>
+<pre><code class="language-text">2019–2025:
+  &quot;Application&quot;
+
+2026:
+  &quot;Digital Product&quot;</code></pre>
+<p>Historical records can retain:</p>
+<pre><code class="language-text">display_name_at_time: Application</code></pre>
+<p>while current views show:</p>
+<pre><code class="language-text">preferred_term: Digital Product</code></pre>
+<p>The canonical object remains:</p>
+<pre><code class="language-text">type: application</code></pre>
+<p>This is another reason that local terminology should sit above the stable identity and schema layer.</p>
+<hr>
+<h1 id='91-vocabulary-should-shape-the-user-experience'>91. Vocabulary Should Shape the User Experience</h1>
+<p>Once defined, the organization&#x27;s vocabulary should flow through the entire family.</p>
+<p>Example:</p>
+<pre><code class="language-text">Vocabulary Profile
+        |
+        +--&gt; Batchbook UI
+        |
+        +--&gt; Basecoat documentation
+        |
+        +--&gt; Agent responses
+        |
+        +--&gt; Generated reports
+        |
+        +--&gt; Crosslink incident messages
+        |
+        +--&gt; Adhesion findings
+        |
+        +--&gt; Swatch manifests
+        |
+        +--&gt; Search</code></pre>
+<p>If the organization calls applications <strong>Products</strong>, then an agent should say:</p>
+<blockquote>&quot;The Payments Product has three open findings.&quot;</blockquote>
+<p>not:</p>
+<blockquote>&quot;The Payments Batch has three open findings.&quot;</blockquote>
+<p>The family vocabulary remains useful internally and for product identity, but the organization should experience governance in its own language.</p>
+<hr>
+<h1 id='92-vocabulary-aware-agents'>92. Vocabulary-Aware Agents</h1>
+<p>Agents should receive the organization&#x27;s vocabulary profile as context.</p>
+<p>Example system context:</p>
+<pre><code class="language-yaml">organization_vocabulary:
+  batch: Application
+  deck: Portfolio
+  control: Guardrail
+  exception: Risk Acceptance
+  incident: Severity Event</code></pre>
+<p>Then the agent can translate naturally.</p>
+<p>Canonical request:</p>
+<pre><code class="language-text">Find all batches in deck:payments
+with expired exceptions.</code></pre>
+<p>Organization-facing response:</p>
+<pre><code class="language-text">Three Applications in the Payments Portfolio
+have expired Risk Acceptances.</code></pre>
+<p>This also reduces prompt duplication because terminology becomes data rather than hard-coded instructions.</p>
+<hr>
+<h1 id='93-taxonomy-mapping-during-adoption'>93. Taxonomy Mapping During Adoption</h1>
+<p>A useful onboarding exercise for a new organization is:</p>
+<pre><code class="language-text">Step 1
+List the terms the organization already uses.
+
+Step 2
+Define each term in plain language.
+
+Step 3
+Map each term to a canonical concept.
+
+Step 4
+Identify collisions and ambiguities.
+
+Step 5
+Define relationships.
+
+Step 6
+Define classifications and states.
+
+Step 7
+Assign taxonomy owners.
+
+Step 8
+Publish the vocabulary profile.
+
+Step 9
+Use it in UI, agents, workflows, and documentation.
+
+Step 10
+Review periodically.</code></pre>
+<p>A simple adoption table:</p>
+<div class='table-wrap'><table><thead><tr><th>Local term</th><th>Local definition</th><th>Canonical concept</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Product</td><td>Customer-facing software capability</td><td>Application</td><td>Preferred enterprise term</td></tr>
+<tr><td>Squad</td><td>Team accountable for a product</td><td>Team</td><td>Maps to identity group</td></tr>
+<tr><td>Guardrail</td><td>Mandatory engineering rule</td><td>Control</td><td>Can be preventive or detective</td></tr>
+<tr><td>Risk Acceptance</td><td>Approved temporary deviation</td><td>Exception</td><td>Must expire</td></tr>
+<tr><td>Sev</td><td>Operational disruption</td><td>Incident</td><td>Uses severity taxonomy</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='94-taxonomy-design-principles'>94. Taxonomy Design Principles</h1>
+<p>Recommended principles:</p>
+<ol>
+<li>1. <strong>Use the organization&#x27;s language wherever possible.</strong></li>
+<li>2. <strong>Keep canonical IDs and schemas stable underneath.</strong></li>
+<li>3. <strong>Define terms, not just labels.</strong></li>
+<li>4. <strong>Allow aliases, but avoid uncontrolled synonyms.</strong></li>
+<li>5. <strong>Model relationships, not only categories.</strong></li>
+<li>6. <strong>Version the taxonomy.</strong></li>
+<li>7. <strong>Assign owners to important terms.</strong></li>
+<li>8. <strong>Support deprecation and migration.</strong></li>
+<li>9. <strong>Let classification drive governance behavior.</strong></li>
+<li>10. <strong>Do not force one enterprise vocabulary where multiple stakeholder views are legitimate.</strong></li>
+<li>11. <strong>Agents should translate between canonical and local vocabulary.</strong></li>
+<li>12. <strong>Taxonomy changes should not invalidate historical evidence.</strong></li>
+</ol>
+<p>A concise principle:</p>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote>
+<hr>
+<h1 id='95-taxonomy-as-an-adoption-layer'>95. Taxonomy as an Adoption Layer</h1>
+<p>This creates an important architectural layer between the family and the enterprise.</p>
+<pre><code class="language-text">              Organization Language
+
+ Product | Squad | Guardrail | Risk Acceptance
+                       |
+                       v
+               Vocabulary Profile
+                       |
+                       v
+                Canonical Model
+
+ Application | Team | Control | Exception
+                       |
+                       v
+                  Binder
+                       |
+        +--------------+--------------+
+        |              |              |
+     Basecoat        Batchbook      Adhesion
+        |              |              |
+      Snitch        Crosslink       Sheen</code></pre>
+<p>The family therefore provides a <strong>governance grammar</strong>, while organizations provide their own <strong>governance vocabulary</strong>.</p>
+<p>That allows the same architecture to support very different companies without requiring them to reorganize how they talk about building software.</p>
+<hr>
+<h1 id='96-evidence-vocabulary-update'>96. Evidence Vocabulary Update</h1>
+<p>The evidence and provenance vocabulary is now:</p>
+<pre><code class="language-text">Batchbook
+    Enterprise catalog of governed applications
+
+Batch
+    One governed application
+
+Swatch
+    Compact identity/profile/manifest for the Batch
+
+Batch Record
+    Historical record of what happened to the Batch over time
+
+Proof
+    Evidence and provenance capability
+
+Stamp
+    A specific assertion, attestation, approval, or validation attached to evidence
+
+CoA
+    Certificate of Analysis — a point-in-time conformance summary
+
+Genealogy
+    Lineage of source, dependencies, models, artifacts, and deployments</code></pre>
+<h2 id='relationship'>Relationship</h2>
+<pre><code class="language-text">Batch
+  |
+  +-- Swatch
+  |
+  +-- Genealogy
+  |
+  +-- Batch Record
+  |      |
+  |      +-- builds
+  |      +-- deployments
+  |      +-- changes
+  |      +-- incidents
+  |      +-- exceptions
+  |
+  +-- Proof
+         |
+         +-- evidence
+         +-- provenance
+         +-- Stamps
+         +-- attestations
+         +-- CoA</code></pre>
+<p>The product name <strong>Proof</strong> replaces the earlier working evidence-system name.</p>
+<hr>
+<h1 id='97-proof-evidence-and-provenance'>97. Proof — Evidence and Provenance</h1>
+<h2 id='role'>Role</h2>
+<p>Proof answers:</p>
+<blockquote><strong>What evidence exists for this claim, where did it come from, how trustworthy is it, and who or what stands behind it?</strong></blockquote>
+<p>Proof should preserve:</p>
+<ul>
+<li>- source</li>
+<li>- subject</li>
+<li>- claim</li>
+<li>- observation method</li>
+<li>- confidence</li>
+<li>- validator</li>
+<li>- signer/attestor</li>
+<li>- timestamp</li>
+<li>- validity period</li>
+<li>- artifact hash</li>
+<li>- related control</li>
+<li>- related Batch</li>
+<li>- related release/deployment</li>
+<li>- revocation/expiration state</li>
+</ul>
+<p>Proof does <strong>not</strong> independently decide:</p>
+<blockquote>&quot;This application is compliant.&quot;</blockquote>
+<p>Instead, it records defensible statements such as:</p>
+<pre><code class="language-text">Control BC-IAM-001
+was evaluated against
+deployment prod-east
+using Azure configuration evidence
+at 2026-09-26T14:00
+and passed validator version 3.4.</code></pre>
+<hr>
+<h1 id='98-batch-record'>98. Batch Record</h1>
+<p>A <strong>Batch Record</strong> is the accumulated lifecycle history for one Batch.</p>
+<p>This is analogous to manufacturing batch-production records.</p>
+<pre><code class="language-text">Batch Record
+│
+├── identity changes
+├── ownership changes
+├── Formula versions
+├── Blueprint versions
+├── source commits
+├── builds
+├── SBOM / AI-BOM
+├── dependency changes
+├── evaluations
+├── Stamps
+├── exceptions
+├── approvals
+├── deployments
+├── incidents
+├── remediation
+├── retirement actions
+└── Proof references</code></pre>
+<p>The Batch Record answers:</p>
+<blockquote><strong>What happened to this governed application over its lifetime?</strong></blockquote>
+<p>It is not merely a log.</p>
+<p>It is the traceable history required to reconstruct important governance decisions and states.</p>
+<hr>
+<h1 id='99-genealogy'>99. Genealogy</h1>
+<p><strong>Genealogy</strong> captures where the components of a Batch came from and what they became.</p>
+<h2 id='software-genealogy'>Software genealogy</h2>
+<pre><code class="language-text">Commit
+  ↓
+Build
+  ↓
+Artifact
+  ↓
+Container
+  ↓
+Deployment</code></pre>
+<h2 id='dependency-genealogy'>Dependency genealogy</h2>
+<pre><code class="language-text">Application
+  ↓
+Package
+  ↓
+Transitive Package
+  ↓
+Source / Publisher</code></pre>
+<h2 id='ai-genealogy'>AI genealogy</h2>
+<pre><code class="language-text">Application
+  ↓
+Agent
+  ↓
+Model
+  ↓
+Prompt / Skill
+  ↓
+MCP Server
+  ↓
+Tool
+  ↓
+Knowledge Source</code></pre>
+<p>Genealogy complements topology:</p>
+<ul>
+<li>- <strong>Topology</strong> answers: <em>What is connected to what?</em></li>
+<li>- <strong>Genealogy</strong> answers: <em>Where did this come from, and what descended from it?</em></li>
+</ul>
+<p>Teardown is a natural producer of Genealogy data.</p>
+<hr>
+<h1 id='100-coa-certificate-of-analysis'>100. CoA — Certificate of Analysis</h1>
+<p>A <strong>CoA</strong> is a point-in-time summary of conformance evidence for a Batch, release, artifact, or deployment.</p>
+<p>It is analogous to the Certificate of Analysis used in chemical and regulated manufacturing.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">coa:
+  subject: deployment:claims-prod-2026-09-26
+  batch: app:claims-processing
+
+  profile:
+    - enterprise-default
+    - hipaa
+    - ai-high-risk
+
+  results:
+    basecoat: pass
+    adhesion: pass
+    sheen: pass
+    security: pass
+
+  evidence:
+    sbom: present
+    provenance: verified
+    exceptions:
+      active: 1
+      expired: 0
+
+  stamps:
+    - build-verified
+    - security-attested
+    - release-approved</code></pre>
+<p>A CoA should be <strong>generated from Proof</strong>, not manually authored as an unsupported declaration.</p>
+<p>It is a summary artifact, not the source of truth.</p>
+<hr>
+<h1 id='101-stamps'>101. Stamps</h1>
+<p>A <strong>Stamp</strong> is a compact, machine-readable assertion attached to evidence.</p>
+<p>Examples:</p>
+<pre><code class="language-text">Observed
+Identified
+Inferred
+Verified
+Attested
+Approved
+Independently Assured</code></pre>
+<p>However, these terms should <strong>not</strong> be treated as one simple ladder.</p>
+<p>They describe different properties.</p>
+<p>For example:</p>
+<blockquote>An inference can be highly confident but still not be independently attested.</blockquote>
+<blockquote>A human can attest to a claim that was originally self-declared.</blockquote>
+<p>The model therefore needs at least two dimensions:</p>
+<ol>
+<li>1. <strong>Evidence Basis</strong> — how the claim was established.</li>
+<li>2. <strong>Assurance</strong> — who or what stands behind it.</li>
+</ol>
+<hr>
+<h1 id='102-evidence-basis'>102. Evidence Basis</h1>
+<p>The <strong>Evidence Basis</strong> describes how Proof knows something.</p>
+<div class='table-wrap'><table><thead><tr><th>Basis</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td><strong>Declared</strong></td><td>A person/system stated it</td><td>Owner says the app handles PII</td></tr>
+<tr><td><strong>Observed</strong></td><td>A source was directly inspected</td><td>GitHub API reports branch protection</td></tr>
+<tr><td><strong>Identified</strong></td><td>Observation was resolved to a canonical entity</td><td>Repo matched to Batch <code>claims-processing</code></td></tr>
+<tr><td><strong>Inferred</strong></td><td>Derived probabilistically or heuristically</td><td>Teardown infers an external model dependency from code</td></tr>
+<tr><td><strong>Calculated</strong></td><td>Derived deterministically from trusted inputs</td><td>Dependency risk calculated from SBOM + advisory</td></tr>
+<tr><td><strong>Verified</strong></td><td>Checked against an authoritative or deterministic source</td><td>Azure policy confirms public access is disabled</td></tr>
+</tbody></table></div>
+<p>These states describe <strong>epistemology</strong>:</p>
+<blockquote><em>How did we arrive at this claim?</em></blockquote>
+<p>They should be preserved with the evidence so downstream controls can decide how much trust is appropriate.</p>
+<hr>
+<h1 id='103-assurance-level'>103. Assurance Level</h1>
+<p>The <strong>Assurance Level</strong> describes who or what stands behind the claim.</p>
+<p>A candidate model:</p>
+<pre><code class="language-text">A0 — Unattested
+     Evidence exists, but no trusted actor vouches for it.
+
+A1 — System Stamped
+     An approved automated validator produced/signed the assertion.
+
+A2 — Owner Attested
+     An accountable owner explicitly attested to the claim.
+
+A3 — Independent Validation
+     A separate validator confirmed the assertion.
+
+A4 — Independent Assurance
+     A designated assurance/audit function reviewed the evidence.
+
+A5 — External Certification
+     An authorized external organization issued a recognized certification
+     or assessment result.</code></pre>
+<p>This should be configurable by organizations.</p>
+<p>The important idea is separation:</p>
+<pre><code class="language-text">Evidence Basis:
+  Verified
+
+Assurance:
+  A1 System Stamped</code></pre>
+<p>is different from:</p>
+<pre><code class="language-text">Evidence Basis:
+  Declared
+
+Assurance:
+  A2 Owner Attested</code></pre>
+<p>Both may be valid evidence, but they carry different weight.</p>
+<hr>
+<h1 id='104-confidence-is-a-third-dimension'>104. Confidence Is a Third Dimension</h1>
+<p>For inferred or probabilistic evidence, Proof should also preserve <strong>confidence</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">claim:
+  external_model_endpoint: true
+
+basis: inferred
+confidence: 0.91
+
+producer:
+  product: teardown
+  version: 2.4
+
+assurance:
+  level: A1
+  type: system-stamped</code></pre>
+<p>This produces three separate questions:</p>
+<pre><code class="language-text">1. BASIS
+   How was the claim established?
+
+2. CONFIDENCE
+   How certain is the producer?
+
+3. ASSURANCE
+   Who/what stands behind the claim?</code></pre>
+<p>Do not collapse these into one &quot;trust score.&quot;</p>
+<p>That would hide useful distinctions and make policy decisions harder to explain.</p>
+<hr>
+<h1 id='105-stamp-policy'>105. Stamp Policy</h1>
+<p>Controls can specify the minimum evidence basis and assurance they require.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">control: BC-DATA-021
+
+requirement:
+  production CUI workloads must use approved model endpoints
+
+evidence_requirement:
+  acceptable_basis:
+    - verified
+
+  minimum_assurance:
+    level: A1
+
+  inferred_evidence:
+    allowed_for_finding: true
+    allowed_for_blocking: false</code></pre>
+<p>This allows proportional enforcement.</p>
+<pre><code class="language-text">Snitch infers a violation
+        ↓
+Create finding
+
+Teardown confirms it
+        ↓
+Increase confidence
+
+Authoritative API verifies it
+        ↓
+Eligible for blocking enforcement
+
+Independent assurance reviews it
+        ↓
+Eligible for audit evidence</code></pre>
+<p>This is a stronger model than treating every scanner or LLM statement as equally authoritative.</p>
+<hr>
+<h1 id='106-do-we-need-a-notary'>106. Do We Need a Notary?</h1>
+<p>Possibly — but as a <strong>technical role</strong>, not as a claim of legal notarization.</p>
+<p>A useful internal concept would be a <strong>Notary Service</strong> that:</p>
+<ul>
+<li>- validates the identity of the evidence producer,</li>
+<li>- verifies signatures,</li>
+<li>- validates hashes,</li>
+<li>- confirms timestamps,</li>
+<li>- checks certificate trust,</li>
+<li>- confirms artifact provenance,</li>
+<li>- records revocation,</li>
+<li>- and issues a trusted Stamp.</li>
+</ul>
+<pre><code class="language-text">Evidence Producer
+      |
+      v
+    Proof
+      |
+      v
+   Notary
+      |
+  verify identity
+  verify signature
+  verify artifact hash
+  verify provenance
+  verify timestamp
+      |
+      v
+    Stamp</code></pre>
+<p>The Notary would answer:</p>
+<blockquote><strong>Can I prove who produced this assertion and that it has not been altered?</strong></blockquote>
+<p>It would <strong>not</strong> answer:</p>
+<blockquote><strong>Is the underlying business claim true?</strong></blockquote>
+<p>That remains the validator&#x27;s responsibility.</p>
+<hr>
+<h1 id='107-notary-vs-validator-vs-auditor'>107. Notary vs. Validator vs. Auditor</h1>
+<p>These roles should remain distinct.</p>
+<pre><code class="language-text">Validator
+  &quot;I tested the claim.&quot;
+
+Notary
+  &quot;I verified who produced this record,
+   its signature, timestamp, and integrity.&quot;
+
+Auditor / Assurance
+  &quot;I independently assessed whether the
+   evidence and controls are sufficient.&quot;</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">Adhesion
+   validates:
+   &quot;The application passed this security test.&quot;
+
+Proof
+   stores:
+   test output + evidence
+
+Notary
+   verifies:
+   Adhesion identity + signature + artifact hash
+
+Stamp
+   records:
+   Verified / A1 System Stamped
+
+Independent assurance
+   may later issue:
+   A4 Independent Assurance</code></pre>
+<p>This separation reduces the risk of one component testing, signing, and auditing its own assertion.</p>
+<hr>
+<h1 id='108-alternative-name-witness'>108. Alternative Name: Witness</h1>
+<p>If <strong>Notary</strong> creates too much legal-semantic baggage, an alternative is:</p>
+<blockquote><strong>Witness</strong></blockquote>
+<p>A Witness verifies that an event, artifact, or assertion existed in a particular state at a particular time.</p>
+<p>Conceptually:</p>
+<pre><code class="language-text">Validator proves behavior.
+Witness proves provenance.
+Auditor proves assurance.</code></pre>
+<p>Other candidate names:</p>
+<ul>
+<li>- Witness</li>
+<li>- Attestor</li>
+<li>- Registrar</li>
+<li>- Seal</li>
+<li>- Certifier</li>
+</ul>
+<p>For now, <strong>Notary</strong> can remain a conceptual role inside Proof rather than a standalone product.</p>
+<hr>
+<h1 id='109-recommended-proof-model'>109. Recommended Proof Model</h1>
+<p>A Proof record should ultimately look something like:</p>
+<pre><code class="language-yaml">proof:
+  id: proof:8f821...
+
+  subject:
+    id: deployment:claims-prod
+    batch: app:claims-processing
+
+  claim:
+    control: BC-IAM-001
+    assertion: pass
+
+  basis:
+    type: verified
+    source: azure-api
+
+  confidence:
+    value: 1.0
+
+  producer:
+    id: adhesion:prod
+    version: 3.4
+
+  assurance:
+    level: A1
+    type: system-stamped
+
+  stamp:
+    signer: notary:enterprise
+    signature: sha256:...
+    issued_at: 2026-09-26T14:00:00-04:00
+    expires_at: 2026-10-26T14:00:00-04:00
+
+  provenance:
+    artifact_hash: sha256:...
+    source_commit: abc123
+    workflow_run: 94827
+
+  status:
+    revoked: false</code></pre>
+<p>The important parts are independently inspectable:</p>
+<pre><code class="language-text">Claim
+Basis
+Confidence
+Producer
+Assurance
+Stamp
+Provenance
+Validity</code></pre>
+<hr>
+<h1 id='110-updated-family-vocabulary'>110. Updated Family Vocabulary</h1>
+<p>The current working vocabulary is:</p>
+<pre><code class="language-text">Binder      Connect the family
+Basecoat    Govern engineering
+Sheen       Govern experience
+Adhesion    Verify behavior and quality
+
+Batchbook   Catalog governed applications
+Batch       One governed application
+Swatch      Identify/profile the Batch
+
+Snitch      Discover observations
+Teardown    Understand composition and Genealogy
+Crosslink   Coordinate people and incidents
+
+Proof       Preserve evidence and provenance
+Stamp       Assertion / attestation marker
+CoA         Point-in-time conformance summary
+Notary      Verify identity, signatures, integrity, and provenance
+Genealogy   Trace component lineage
+
+Blueprint   Intended architecture
+Formula     Approved composition
+Reclaim     Lifecycle / retirement</code></pre>
+<p>A compact lifecycle:</p>
+<pre><code class="language-text">Batchbook
+   ↓
+Batch
+   ↓
+Swatch
+   ↓
+Basecoat
+   ↓
+Build
+   ↓
+Teardown / Genealogy
+   ↓
+Adhesion
+   ↓
+Proof
+   ↓
+Stamp
+   ↓
+CoA
+   ↓
+Deploy
+   ↓
+Crosslink / Operate
+   ↓
+Reclaim</code></pre>
+<hr>
+<h1 id='research-update-basecoat-consistency-review'>Research Update — BaseCoat Consistency Review</h1>
+<p>This update preserves the earlier research as historical context while clarifying the current relationship to the public BaseCoat implementation.</p>
+<h2 id='current-alignment'>Current alignment</h2>
+<ul>
+<li>- <strong>BaseCoat</strong> is the shared operating layer for governed GitHub Copilot work.</li>
+<li>- Its native primitives remain <strong>Agent, Skill, Instruction, Prompt</strong>.</li>
+<li>- Its product operating model remains <strong>Guardrails Plane + Visibility Plane</strong>.</li>
+<li>- The broader family additionally uses <strong>Control Plane + Execution Plane</strong> as an architectural distinction.</li>
+<li>- <strong>Binder</strong> is a proposed extraction/generalization of genuinely shared cross-product contracts with roots in BaseCoat; it is not assumed to already exist independently.</li>
+<li>- <strong>Batchbook</strong> owns the enterprise application catalog and canonical governed-application graph.</li>
+<li>- <strong>Proof</strong> owns the cross-product evidence/provenance model while BaseCoat continues to produce and consume GitHub-native evidence.</li>
+<li>- BaseCoat may orchestrate workflows across testing, UX, inventory, incident, and compliance domains without becoming the durable system of record for those sibling domains.</li>
+<li>- BaseCoat&#x27;s Shearing Layers vocabulary should preserve <strong>Site, Structure, Skin, Services, Space Plan, Stuff</strong>. The broader family pace-layer model is an interpretation of the same principle.</li>
+<li>- The coatings/manufacturing metaphor is a family/product-architecture vocabulary. BaseCoat should continue to use GitHub/SDLC-native language where that is clearer to users.</li>
+</ul>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote>
+<p>This update does not delete older research sections because the archive is intended to preserve the evolution of the design.</p>
+<hr>
+<h1 id='research-update-sheen-consistency-review'>Research Update — Sheen Consistency Review</h1>
+<p>This update aligns the broader family research with the current public Sheen implementation.</p>
+<h2 id='current-alignment'>Current alignment</h2>
+<ul>
+<li>- <strong>Sheen</strong> is a design governance overlay for GitHub Copilot.</li>
+<li>- It is the <strong>finish-coat sibling to BaseCoat</strong>.</li>
+<li>- BaseCoat governs the engineering surface; Sheen governs the design surface.</li>
+<li>- Sheen&#x27;s six design pillars are <strong>Tokens &amp; System, Brand, Usability, Accessibility, Information Architecture, and Governance</strong>.</li>
+<li>- Sheen&#x27;s durable assets include <strong>design tokens, skills, agents, instructions, prompts, templates, validation rules, and design vocabulary</strong>.</li>
+<li>- Sheen is not a component library, visual design tool, Figma replacement, documentation host, or engineering framework.</li>
+<li>- The token system is first class and follows a core → semantic → theme structure.</li>
+<li>- Sheen has an explicit consumer lifecycle: <strong>Integrate → Onboard → Inventory → Audit → Use → Upgrade</strong>.</li>
+<li>- Sheen defines experience expectations; Adhesion can independently evaluate implementation.</li>
+<li>- Proof can preserve Sheen evidence without taking ownership of design semantics.</li>
+<li>- Batchbook can reference Sheen profiles and token sets without absorbing Sheen&#x27;s internal design-governance model.</li>
+</ul>
+<p>This update is appended rather than rewriting earlier research so the archive continues to preserve the evolution of the design.</p></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

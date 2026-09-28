@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sheen Consistency · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="sheen"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='sheen-consistency-and-integration'>Sheen Consistency and Integration</h1>
+<p>This document records how the broader AI SDLC Governance family aligns with the current public Sheen implementation.</p>
+<h2 id='canonical-role'>Canonical role</h2>
+<blockquote><strong>Sheen is a design governance overlay for GitHub Copilot.</strong></blockquote>
+<p>It wraps design requests in context, standards, tokens, accessibility, brand guidance, and design decision structure so teams can produce more consistent and reviewable experiences.</p>
+<p>Sheen is the <strong>finish-coat sibling to BaseCoat</strong>.</p>
+<pre><code class="language-text">BaseCoat
+  governs the engineering surface
+
+Sheen
+  governs the design surface</code></pre>
+<h2 id='design-pillars'>Design pillars</h2>
+<p>Sheen currently organizes design governance around six pillars:</p>
+<pre><code class="language-text">Tokens &amp; System
+Brand
+Usability
+Accessibility
+Information Architecture
+Governance</code></pre>
+<p>These pillars should be preserved when the broader family describes Sheen.</p>
+<h2 id='product-primitives'>Product primitives</h2>
+<p>Sheen&#x27;s primary assets are:</p>
+<pre><code class="language-text">design tokens
+skills
+agents
+instructions
+prompts
+templates
+validation rules
+design vocabulary</code></pre>
+<p>A useful family-level primitive is:</p>
+<blockquote><strong>Design token / experience rule / design decision</strong></blockquote>
+<h2 id='token-system'>Token system</h2>
+<p>Sheen&#x27;s token architecture is a significant part of the product contract.</p>
+<pre><code class="language-text">core primitives
+      ↓
+semantic roles
+      ↓
+themes</code></pre>
+<p>The implementation supports:</p>
+<pre><code class="language-text">core/
+semantic/
+themes/</code></pre>
+<p>This lets consumer teams preserve their own brand and design language while retaining a normalized token model.</p>
+<h2 id='accessibility'>Accessibility</h2>
+<p>Accessibility is not an optional add-on in Sheen.</p>
+<p>The product treats accessibility constraints as governed design requirements and incorporates them into validation and evaluation.</p>
+<p>This is important to the wider family because it demonstrates a pattern that should be reused elsewhere:</p>
+<blockquote><strong>Make critical quality properties part of the normal path rather than a separate review at the end.</strong></blockquote>
+<h2 id='consumer-lifecycle'>Consumer lifecycle</h2>
+<p>The implemented lifecycle is:</p>
+<pre><code class="language-text">Integrate
+Onboard
+Inventory
+Audit
+Use
+Upgrade</code></pre>
+<p>This should influence how other family products think about adoption.</p>
+<p>A product is not fully designed if it only defines the source assets.</p>
+<p>It should also define:</p>
+<ul>
+<li>- how a consumer adopts them,</li>
+<li>- how current state is inventoried,</li>
+<li>- how conformance is audited,</li>
+<li>- how assets are synchronized,</li>
+<li>- how versions change,</li>
+<li>- and how rollback works.</li>
+</ul>
+<h2 id='relationship-to-basecoat'>Relationship to BaseCoat</h2>
+<p>BaseCoat and Sheen are designed to coexist.</p>
+<p>Their namespaces remain distinct, and Sheen can consume a pinned read-only copy of BaseCoat assets/tooling where required.</p>
+<p>The architectural lesson for the wider family is:</p>
+<blockquote><strong>Sibling products can depend on shared contracts without merging their domain ownership.</strong></blockquote>
+<h2 id='relationship-to-adhesion'>Relationship to Adhesion</h2>
+<pre><code class="language-text">Sheen
+  defines design expectations
+
+Adhesion
+  independently evaluates implementation</code></pre>
+<p>Examples:</p>
+<pre><code class="language-text">Sheen:
+  WCAG expectation
+  token-role contract
+  interaction rule
+  information-architecture expectation
+
+Adhesion:
+  contrast test
+  automated accessibility test
+  rendered-UI conformance
+  regression evaluation</code></pre>
+<h2 id='relationship-to-proof'>Relationship to Proof</h2>
+<p>Sheen-generated evidence can flow into Proof:</p>
+<pre><code class="language-text">token validation
+design audit
+accessibility check
+decision record
+theme validation
+inventory result</code></pre>
+<p>Proof can preserve provenance and assurance.</p>
+<p>Sheen remains the authoritative owner of design-domain semantics.</p>
+<h2 id='relationship-to-batchbook'>Relationship to Batchbook</h2>
+<p>A Batch can reference a Sheen profile:</p>
+<pre><code class="language-yaml">batch:
+  id: app:claims-portal
+
+experience:
+  sheen:
+    profile: enterprise-web
+    token_set: claims-brand-v4
+    theme_set:
+      - light
+      - dark
+      - high-contrast</code></pre>
+<p>This allows Batchbook to know <strong>which design-governance contract applies</strong> without absorbing Sheen&#x27;s detailed token model.</p>
+<h2 id='vocabulary-boundary'>Vocabulary boundary</h2>
+<p>Sheen should use its own domain-native language:</p>
+<pre><code class="language-text">tokens
+themes
+brand
+usability
+accessibility
+information architecture
+design governance
+inventory
+audit
+design decision</code></pre>
+<p>The broader family may translate these into canonical controls, evidence, and Batch relationships.</p>
+<blockquote><strong>Standardize meaning without forcing terminology.</strong></blockquote>
+<h2 id='family-consistency-checklist'>Family consistency checklist</h2>
+<p>When updating the wider AI-SDLC architecture:</p>
+<ul>
+<li>- Describe Sheen as a design-governance overlay, not a UI generator.</li>
+<li>- Preserve the six design pillars.</li>
+<li>- Preserve design tokens as a first-class Sheen capability.</li>
+<li>- Keep BaseCoat and Sheen as siblings with separate namespaces and ownership.</li>
+<li>- Keep Sheen definition separate from Adhesion verification.</li>
+<li>- Let Proof consume Sheen evidence without becoming the design source of truth.</li>
+<li>- Let Batchbook reference Sheen profiles without absorbing the token system.</li>
+<li>- Treat the consumer lifecycle as part of product architecture.</li>
+<li>- Keep Sheen mostly artifact-first unless durable runtime state becomes necessary.</li>
+</ul></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

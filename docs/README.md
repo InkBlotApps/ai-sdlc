@@ -13,6 +13,8 @@ This directory preserves the research and design thinking behind the AI SDLC Gov
 7. [Compliance and Framework Mapping](07-compliance-and-frameworks.md)
 8. [Side Quest: Where Governance Came From](08-history-side-quest.md)
 9. [Roadmap, Decisions, and Open Questions](09-roadmap-decisions-and-open-questions.md)
+10. [BaseCoat Consistency and Integration](10-basecoat-consistency.md)
+11. [Sheen Consistency and Integration](11-sheen-consistency.md)
 
 ## Full research trail
 
@@ -50,3 +52,17 @@ The archive preserves the notebook chronologically, including earlier working na
 > **Speak locally. Govern consistently.**
 
 > **Fast layers learn. Slow layers remember.**
+
+
+## BaseCoat alignment
+
+The current curated documentation treats BaseCoat as the **shared operating layer for governed GitHub Copilot work** and preserves its native Agent / Skill / Instruction / Prompt model, Guardrails + Visibility operating model, and repository-native vocabulary.
+
+See [BaseCoat Consistency and Integration](10-basecoat-consistency.md).
+
+
+## Sheen alignment
+
+The curated documentation treats Sheen as the **design governance overlay for GitHub Copilot** and preserves its token system, six design pillars, agent/skill/instruction/prompt model, consumer lifecycle, and separation from BaseCoat and Adhesion.
+
+See [Sheen Consistency and Integration](11-sheen-consistency.md).

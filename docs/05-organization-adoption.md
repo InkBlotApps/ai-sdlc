@@ -8,7 +8,7 @@ How organizations can adopt the governance model using their own language, taxon
 
 # 79. Organization Vocabulary and Taxonomy
 
-The product family should not require every organization to adopt the Basecoat-family vocabulary exactly as written.
+The product family should not require every organization to adopt the BaseCoat-family vocabulary exactly as written.
 
 Different organizations already have their own language for:
 
@@ -381,7 +381,7 @@ This makes language adaptable without making the underlying model ambiguous.
 
 The same approach should apply to classifications.
 
-Basecoat should not force every organization to use:
+BaseCoat should not force every organization to use:
 
 ```text
 Low
@@ -464,7 +464,7 @@ Taxonomy maps Tier 0 to:
   enhanced audit
   named on-call team
 
-Basecoat resolves:
+BaseCoat resolves:
   stronger control profile
 
 Crosslink resolves:
@@ -578,7 +578,7 @@ Vocabulary Profile
         |
         +--> Batchbook UI
         |
-        +--> Basecoat documentation
+        +--> BaseCoat documentation
         |
         +--> Agent responses
         |
@@ -733,7 +733,7 @@ This creates an important architectural layer between the family and the enterpr
                        |
         +--------------+--------------+
         |              |              |
-     Basecoat        Batchbook      Adhesion
+     BaseCoat        Batchbook      Adhesion
         |              |              |
       Snitch        Crosslink       Sheen
 ```
@@ -741,3 +741,90 @@ This creates an important architectural layer between the family and the enterpr
 The family therefore provides a **governance grammar**, while organizations provide their own **governance vocabulary**.
 
 That allows the same architecture to support very different companies without requiring them to reorganize how they talk about building software.
+
+---
+
+# Family Vocabulary vs. Product-Native Vocabulary
+
+The organization-vocabulary principle also applies **inside the product family**.
+
+The family can use a shared architectural metaphor without forcing every product to expose that metaphor in its daily user experience.
+
+For example:
+
+```text
+Family concept / product identity   BaseCoat-facing language
+---------------------------------   ------------------------
+Proof                               workflow evidence / job output
+Stamp                               attestation / approval / status
+Batch                               application / repository context
+Genealogy                           dependency / provenance chain
+```
+
+BaseCoat should continue to use GitHub and SDLC-native terminology where that is clearer to developers.
+
+Other organizations can map those same canonical concepts into their own vocabulary.
+
+This produces three layers:
+
+```text
+Canonical meaning
+       ↓
+Product-native vocabulary
+       ↓
+Organization-local vocabulary
+```
+
+Example:
+
+```text
+Canonical:
+  control
+
+BaseCoat:
+  instruction / guardrail
+
+Organization:
+  engineering standard
+```
+
+The important rule remains:
+
+> **Standardize the meaning, not necessarily the words.**
+
+
+---
+
+# Sheen as a Vocabulary Example
+
+Sheen is a useful example of why product-native vocabulary and canonical family vocabulary should remain separate.
+
+At the family level:
+
+```text
+canonical concept:
+  experience control
+```
+
+Inside Sheen:
+
+```text
+token rule
+brand constraint
+accessibility requirement
+design decision
+information-architecture rule
+```
+
+Inside an adopting organization:
+
+```text
+design standard
+brand guideline
+UX guardrail
+accessibility policy
+```
+
+All three can refer to the same governed intent without forcing everyone to use identical language.
+
+Sheen also maintains a machine-readable design vocabulary, reinforcing the broader family principle that vocabulary itself can be versioned, governed, and consumed by agents and tooling.

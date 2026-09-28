@@ -677,3 +677,42 @@ Stamp
 Provenance
 Validity
 ```
+
+---
+
+# Relationship to BaseCoat Evidence
+
+Proof generalizes an evidence-first pattern that already exists inside BaseCoat.
+
+BaseCoat emphasizes repository-native evidence such as:
+
+- pull requests,
+- issues,
+- workflow runs,
+- job logs,
+- approval boundaries,
+- version-pinned assets,
+- validation results,
+- and integrity checks.
+
+Proof should not replace those native artifacts.
+
+Instead, Proof provides a family-level evidence model that can **reference, normalize, sign, correlate, and preserve** evidence from BaseCoat and other products.
+
+```text
+BaseCoat workflow run
+       ↓
+native GitHub evidence
+       ↓
+Proof reference
+       ↓
+Stamp / assurance metadata
+       ↓
+Batch Record
+       ↓
+optional CoA
+```
+
+This preserves an important boundary:
+
+> **BaseCoat creates and uses repository-native evidence. Proof provides the cross-product evidence and provenance model.**

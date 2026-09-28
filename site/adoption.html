@@ -1,108 +1,579 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Governance is the system that makes organizational intent operable.">
-  <title>Organization Adoption · AI SDLC Governance</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body data-page="adoption">
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
-      <span class="brand-mark">BC</span>
-      <span>
-        <strong>AI SDLC Governance</strong>
-        <small>working architecture</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
-      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
-    </div>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
-<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Organization Adoption · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="adoption"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
 <a class="nav-link" data-page="family" href="family.html">Product Family</a>
-<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
 <a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
-<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
-<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
-<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
-<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
-      </nav>
-      <div class="sidebar-note">
-        <span class="status-dot"></span>
-        Living design system
-      </div>
-    </aside>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='organization-adoption-vocabulary-and-taxonomy'>Organization Adoption, Vocabulary, and Taxonomy</h1>
+<p>How organizations can adopt the governance model using their own language, taxonomy, classifications, and operating model without changing canonical meaning.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='79-organization-vocabulary-and-taxonomy'>79. Organization Vocabulary and Taxonomy</h1>
+<p>The product family should not require every organization to adopt the BaseCoat-family vocabulary exactly as written.</p>
+<p>Different organizations already have their own language for:</p>
+<ul>
+<li>- applications,</li>
+<li>- products,</li>
+<li>- systems,</li>
+<li>- services,</li>
+<li>- platforms,</li>
+<li>- workloads,</li>
+<li>- repositories,</li>
+<li>- teams,</li>
+<li>- environments,</li>
+<li>- risks,</li>
+<li>- controls,</li>
+<li>- exceptions,</li>
+<li>- incidents,</li>
+<li>- releases,</li>
+<li>- AI assets,</li>
+<li>- and lifecycle states.</li>
+</ul>
+<p>The platform should allow organizations to map those local terms onto a <strong>stable canonical model</strong>.</p>
+<p>The principle is:</p>
+<blockquote><strong>Standardize the meaning, not necessarily the words.</strong></blockquote>
+<p>A company should be able to keep the terminology its developers, architects, operators, auditors, and business teams already understand while still participating in the same governance model.</p>
+<hr>
+<h1 id='80-canonical-model-vs-local-vocabulary'>80. Canonical Model vs. Local Vocabulary</h1>
+<p>The family should maintain a small canonical ontology underneath the user-facing terminology.</p>
+<p>Example:</p>
+<pre><code class="language-text">Canonical concept       Organization A       Organization B       Organization C
 
-    <main class="content">
-      <div class="page-head">
-        <p class="eyebrow">Vocabulary & taxonomy</p>
-        <h1>Organization Adoption</h1>
-      </div>
-      
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Adoption layer</p>
-    <h2>Standardize the meaning, not necessarily the words.</h2>
-    <p>Organizations should be able to keep the vocabulary their developers, architects, operators, auditors, and business teams already use while mapping it onto stable canonical concepts.</p>
-  </div>
+Application              App                  Product              Workload
+Repository               Repo                 Codebase             Project
+Team                     Squad                Product Team         Service Team
+Deployment               Release              Instance             Runtime
+Control                  Guardrail            Standard             Requirement
+Exception                Waiver               Deviation            Risk Acceptance
+Incident                 Incident             Event                Sev
+Batch                    Application          System               Product
+Deck                     Portfolio            Domain               Business Unit
+Palette                  Filter               Cohort               View</code></pre>
+<p>The organization-facing UI, APIs, agents, and documentation can use local terms.</p>
+<p>The underlying identifiers remain canonical.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">canonical:
+  type: application
 
-  <div class="translation">
-    <div><strong>Organization language</strong><span>Product · Squad · Guardrail · Risk Acceptance · Sev</span></div>
-    <b>↓</b>
-    <div><strong>Vocabulary profile</strong><span>aliases · definitions · owners · mappings · versions</span></div>
-    <b>↓</b>
-    <div><strong>Canonical model</strong><span>Application · Team · Control · Exception · Incident</span></div>
-  </div>
-</section>
+local:
+  term: product
 
-<section class="card-grid two">
-  <div class="card"><h3>Names are presentation. IDs are identity.</h3><p>An organization may rename “Application” to “Digital Product” without breaking evidence, APIs, automation, policy mappings, or history.</p></div>
-  <div class="card"><h3>Multiple taxonomies can coexist</h3><p>The same Batch may be an Application to engineering, a Workload to security, a Business Application to architecture, and a Cost Object to finance.</p></div>
-  <div class="card"><h3>Classification should drive behavior</h3><p>Local labels such as Tier 0, Mission Critical, HBI, CUI, or Export Controlled should map to canonical properties and effective controls.</p></div>
-  <div class="card"><h3>Agents should speak locally</h3><p>Canonical requests can remain stable while agent responses, UI labels, reports, and workflows use the organization's preferred language.</p></div>
-</section>
+id: app:claims-processing</code></pre>
+<p>This provides consistency without forcing terminology changes on the organization.</p>
+<hr>
+<h1 id='81-taxonomy-is-part-of-governance'>81. Taxonomy Is Part of Governance</h1>
+<p>Vocabulary is not just a UI concern.</p>
+<p>The terms an organization chooses influence:</p>
+<ul>
+<li>- ownership,</li>
+<li>- reporting,</li>
+<li>- access control,</li>
+<li>- policy applicability,</li>
+<li>- architecture decisions,</li>
+<li>- incident routing,</li>
+<li>- compliance evidence,</li>
+<li>- lifecycle management,</li>
+<li>- and automation.</li>
+</ul>
+<p>If one group says <strong>application</strong>, another says <strong>service</strong>, and another says <strong>product</strong>, the important question is not which word is correct.</p>
+<p>The important question is:</p>
+<blockquote><strong>Do they mean the same governed thing?</strong></blockquote>
+<p>A taxonomy provides that shared meaning.</p>
+<pre><code class="language-text">Term
+  ↓
+Definition
+  ↓
+Canonical concept
+  ↓
+Relationships
+  ↓
+Allowed states
+  ↓
+Applicable controls</code></pre>
+<p>This is closer to an <strong>ontology</strong> than a simple glossary because the relationships matter.</p>
+<hr>
+<h1 id='82-organizational-vocabulary-profile'>82. Organizational Vocabulary Profile</h1>
+<p>Each organization could maintain a versioned <strong>Vocabulary Profile</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">organization: contoso
 
-<section>
-  <div class="section-title"><p class="eyebrow">Compliance & frameworks</p><h2>Profiles, not product forks</h2></div>
-  <p>Regulations, contractual requirements, management standards, and practice frameworks should be modeled distinctly, then mapped to internal controls and classifications.</p>
-  <div class="frameworks">
-    <div><b>Legal / regulatory</b><span>ITAR, EAR, HIPAA, GDPR, SOX, privacy laws</span></div>
-    <div><b>Assurance / contractual</b><span>CMMC, FedRAMP, SOC 2, PCI DSS</span></div>
-    <div><b>Management standards</b><span>ISO 27001, ISO 42001, ISO 20000, ISO 22301</span></div>
-    <div><b>Practice frameworks</b><span>NIST CSF, NIST SSDF, NIST AI RMF, ITIL, FinOps, SRE, OWASP, SLSA</span></div>
-  </div>
-</section>
+vocabulary:
+  application:
+    display_name: Product
+    plural: Products
+    aliases:
+      - App
+      - Workload
 
-<section class="panel accent">
-  <p class="eyebrow">Adoption principle</p>
-  <h2>Speak locally. Govern consistently.</h2>
-  <p>The family provides a governance grammar. The organization provides its own governance vocabulary.</p>
-</section>
+  batch:
+    display_name: Application
+    plural: Applications
 
-    </main>
+  deck:
+    display_name: Portfolio
+    plural: Portfolios
 
-    
-  </div>
+  team:
+    display_name: Squad
+    plural: Squads
 
-  <dialog id="searchDialog">
-    <form method="dialog" class="search-panel">
-      <div class="search-head">
-        <strong>Search the architecture</strong>
-        <button value="close" aria-label="Close search">Close</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </form>
-  </dialog>
+  control:
+    display_name: Guardrail
+    plural: Guardrails
 
-  <script src="app.js"></script>
-</body>
-</html>
+  exception:
+    display_name: Risk Acceptance
+    plural: Risk Acceptances
+
+  incident:
+    display_name: Sev
+    plural: Sevs</code></pre>
+<p>The profile should be:</p>
+<ul>
+<li>- version controlled,</li>
+<li>- centrally governed,</li>
+<li>- machine readable,</li>
+<li>- overridable only where explicitly allowed,</li>
+<li>- and usable by UI, APIs, agents, generated documentation, and reports.</li>
+</ul>
+<hr>
+<h1 id='83-canonical-ids-must-not-change-with-vocabulary'>83. Canonical IDs Must Not Change with Vocabulary</h1>
+<p>Display terminology can change.</p>
+<p>Canonical identity should not.</p>
+<p>Example:</p>
+<pre><code class="language-text">Today:
+  &quot;Product&quot;
+
+Tomorrow:
+  &quot;Application&quot;
+
+Canonical ID:
+  app:claims-processing</code></pre>
+<p>The object should remain the same even if the organization changes terminology.</p>
+<p>This protects:</p>
+<ul>
+<li>- historical evidence,</li>
+<li>- API stability,</li>
+<li>- automation,</li>
+<li>- integrations,</li>
+<li>- policy mappings,</li>
+<li>- and audit history.</li>
+</ul>
+<h3 id='rule'>Rule</h3>
+<blockquote><strong>Names are presentation. IDs are identity.</strong></blockquote>
+<hr>
+<h1 id='84-taxonomy-layers'>84. Taxonomy Layers</h1>
+<p>A useful organization-specific taxonomy can be layered.</p>
+<h2 id='layer-1-enterprise-concepts'>Layer 1 — Enterprise concepts</h2>
+<pre><code class="language-text">Portfolio
+Product
+Application
+Service
+Platform
+Team
+Owner
+Environment</code></pre>
+<h2 id='layer-2-software-delivery-concepts'>Layer 2 — Software delivery concepts</h2>
+<pre><code class="language-text">Repository
+Branch
+Build
+Artifact
+Release
+Deployment
+Dependency
+Workflow</code></pre>
+<h2 id='layer-3-ai-concepts'>Layer 3 — AI concepts</h2>
+<pre><code class="language-text">Model
+Agent
+Prompt
+Skill
+MCP Server
+Tool
+Embedding Model
+Vector Store
+Knowledge Source
+Evaluation
+Guardrail</code></pre>
+<h2 id='layer-4-governance-concepts'>Layer 4 — Governance concepts</h2>
+<pre><code class="language-text">Policy
+Control
+Standard
+Profile
+Exception
+Finding
+Evidence
+Attestation
+Approval
+Risk Acceptance</code></pre>
+<h2 id='layer-5-operational-concepts'>Layer 5 — Operational concepts</h2>
+<pre><code class="language-text">Incident
+Severity
+Responder
+Escalation
+Bridge
+Recovery
+Retirement</code></pre>
+<p>Organizations can adopt all layers or only the ones relevant to their operating model.</p>
+<hr>
+<h1 id='85-allow-multiple-taxonomies-at-once'>85. Allow Multiple Taxonomies at Once</h1>
+<p>Large enterprises rarely have one universal vocabulary.</p>
+<p>Different domains may need different views of the same object.</p>
+<p>Example:</p>
+<pre><code class="language-text">Engineering:
+  Application
+
+Finance:
+  Cost Center Asset
+
+Architecture:
+  Business Application
+
+Operations:
+  Service
+
+Security:
+  Workload
+
+Compliance:
+  In-Scope System</code></pre>
+<p>These should not become duplicate records.</p>
+<p>They should be <strong>facets of the same governed entity</strong>.</p>
+<pre><code class="language-text">                app:claims-processing
+                         |
+       +-----------------+-----------------+
+       |                 |                 |
+ Engineering          Security         Finance
+ &quot;Application&quot;        &quot;Workload&quot;       &quot;Cost Object&quot;</code></pre>
+<p>This allows each stakeholder group to work in familiar language while preserving a shared enterprise graph.</p>
+<hr>
+<h1 id='86-controlled-synonyms-and-aliases'>86. Controlled Synonyms and Aliases</h1>
+<p>The platform should support explicit aliases rather than guessing terminology.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">concept: application
+
+preferred_term: Application
+
+aliases:
+  - App
+  - Product
+  - Workload
+  - System
+
+disallowed_ambiguities:
+  - Service</code></pre>
+<p>Aliases should be scoped where necessary.</p>
+<p>For example:</p>
+<pre><code class="language-yaml">scope: manufacturing
+
+application:
+  preferred_term: Solution</code></pre>
+<p>while:</p>
+<pre><code class="language-yaml">scope: retail
+
+application:
+  preferred_term: Product</code></pre>
+<p>This makes language adaptable without making the underlying model ambiguous.</p>
+<hr>
+<h1 id='87-organization-owned-classification-taxonomies'>87. Organization-Owned Classification Taxonomies</h1>
+<p>The same approach should apply to classifications.</p>
+<p>BaseCoat should not force every organization to use:</p>
+<pre><code class="language-text">Low
+Medium
+High</code></pre>
+<p>An organization may already use:</p>
+<pre><code class="language-text">Public
+Internal
+Confidential
+Highly Confidential</code></pre>
+<p>or:</p>
+<pre><code class="language-text">LBI
+MBI
+HBI</code></pre>
+<p>or:</p>
+<pre><code class="language-text">Tier 0
+Tier 1
+Tier 2
+Tier 3</code></pre>
+<p>or domain-specific categories such as:</p>
+<pre><code class="language-text">Prototype
+Business Critical
+Mission Critical
+Safety Critical
+Export Controlled</code></pre>
+<p>The platform should map these to canonical properties rather than replace them.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">local_classification:
+  name: Mission Critical
+
+canonical_properties:
+  availability_criticality: very_high
+  recovery_priority: tier_0
+  stronger_change_control: true
+  continuous_validation: required</code></pre>
+<p>The label is local.</p>
+<p>The behavior is standardized.</p>
+<hr>
+<h1 id='88-taxonomy-driven-governance'>88. Taxonomy-Driven Governance</h1>
+<p>Local taxonomy can drive controls.</p>
+<p>Example:</p>
+<pre><code class="language-text">Organization says:
+  &quot;Tier 0&quot;
+
+Taxonomy maps Tier 0 to:
+  mission critical
+  production
+  customer facing
+  RTO &lt; 1 hour
+  enhanced audit
+  named on-call team
+
+BaseCoat resolves:
+  stronger control profile
+
+Crosslink resolves:
+  24x7 escalation
+
+Adhesion resolves:
+  additional resilience tests
+
+Swatch/Batch records:
+  Tier 0 classification</code></pre>
+<p>This turns organizational vocabulary into an operational interface to governance.</p>
+<p>The organization does not need to learn the platform&#x27;s internal language to receive consistent controls.</p>
+<hr>
+<h1 id='89-taxonomy-governance'>89. Taxonomy Governance</h1>
+<p>The vocabulary itself needs governance.</p>
+<p>For each term, capture:</p>
+<pre><code class="language-text">Term
+Definition
+Canonical concept
+Owner
+Status
+Effective date
+Aliases
+Deprecated terms
+Replacement term
+Relationships
+Allowed values
+Applicable scopes</code></pre>
+<p>Example:</p>
+<pre><code class="language-yaml">term: Product
+canonical: application
+owner: enterprise-architecture
+status: active
+effective_date: 2026-01-01
+
+aliases:
+  - App
+
+deprecated_terms:
+  - Solution
+
+relationships:
+  owned_by: team
+  contains: service
+  deployed_as: deployment</code></pre>
+<p>This avoids uncontrolled terminology drift.</p>
+<hr>
+<h1 id='90-vocabulary-change-without-breaking-the-platform'>90. Vocabulary Change Without Breaking the Platform</h1>
+<p>Organizations change language over time.</p>
+<p>The platform should support migration without rewriting history.</p>
+<p>Example:</p>
+<pre><code class="language-text">2019–2025:
+  &quot;Application&quot;
+
+2026:
+  &quot;Digital Product&quot;</code></pre>
+<p>Historical records can retain:</p>
+<pre><code class="language-text">display_name_at_time: Application</code></pre>
+<p>while current views show:</p>
+<pre><code class="language-text">preferred_term: Digital Product</code></pre>
+<p>The canonical object remains:</p>
+<pre><code class="language-text">type: application</code></pre>
+<p>This is another reason that local terminology should sit above the stable identity and schema layer.</p>
+<hr>
+<h1 id='91-vocabulary-should-shape-the-user-experience'>91. Vocabulary Should Shape the User Experience</h1>
+<p>Once defined, the organization&#x27;s vocabulary should flow through the entire family.</p>
+<p>Example:</p>
+<pre><code class="language-text">Vocabulary Profile
+        |
+        +--&gt; Batchbook UI
+        |
+        +--&gt; BaseCoat documentation
+        |
+        +--&gt; Agent responses
+        |
+        +--&gt; Generated reports
+        |
+        +--&gt; Crosslink incident messages
+        |
+        +--&gt; Adhesion findings
+        |
+        +--&gt; Swatch manifests
+        |
+        +--&gt; Search</code></pre>
+<p>If the organization calls applications <strong>Products</strong>, then an agent should say:</p>
+<blockquote>&quot;The Payments Product has three open findings.&quot;</blockquote>
+<p>not:</p>
+<blockquote>&quot;The Payments Batch has three open findings.&quot;</blockquote>
+<p>The family vocabulary remains useful internally and for product identity, but the organization should experience governance in its own language.</p>
+<hr>
+<h1 id='92-vocabulary-aware-agents'>92. Vocabulary-Aware Agents</h1>
+<p>Agents should receive the organization&#x27;s vocabulary profile as context.</p>
+<p>Example system context:</p>
+<pre><code class="language-yaml">organization_vocabulary:
+  batch: Application
+  deck: Portfolio
+  control: Guardrail
+  exception: Risk Acceptance
+  incident: Severity Event</code></pre>
+<p>Then the agent can translate naturally.</p>
+<p>Canonical request:</p>
+<pre><code class="language-text">Find all batches in deck:payments
+with expired exceptions.</code></pre>
+<p>Organization-facing response:</p>
+<pre><code class="language-text">Three Applications in the Payments Portfolio
+have expired Risk Acceptances.</code></pre>
+<p>This also reduces prompt duplication because terminology becomes data rather than hard-coded instructions.</p>
+<hr>
+<h1 id='93-taxonomy-mapping-during-adoption'>93. Taxonomy Mapping During Adoption</h1>
+<p>A useful onboarding exercise for a new organization is:</p>
+<pre><code class="language-text">Step 1
+List the terms the organization already uses.
+
+Step 2
+Define each term in plain language.
+
+Step 3
+Map each term to a canonical concept.
+
+Step 4
+Identify collisions and ambiguities.
+
+Step 5
+Define relationships.
+
+Step 6
+Define classifications and states.
+
+Step 7
+Assign taxonomy owners.
+
+Step 8
+Publish the vocabulary profile.
+
+Step 9
+Use it in UI, agents, workflows, and documentation.
+
+Step 10
+Review periodically.</code></pre>
+<p>A simple adoption table:</p>
+<div class='table-wrap'><table><thead><tr><th>Local term</th><th>Local definition</th><th>Canonical concept</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Product</td><td>Customer-facing software capability</td><td>Application</td><td>Preferred enterprise term</td></tr>
+<tr><td>Squad</td><td>Team accountable for a product</td><td>Team</td><td>Maps to identity group</td></tr>
+<tr><td>Guardrail</td><td>Mandatory engineering rule</td><td>Control</td><td>Can be preventive or detective</td></tr>
+<tr><td>Risk Acceptance</td><td>Approved temporary deviation</td><td>Exception</td><td>Must expire</td></tr>
+<tr><td>Sev</td><td>Operational disruption</td><td>Incident</td><td>Uses severity taxonomy</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='94-taxonomy-design-principles'>94. Taxonomy Design Principles</h1>
+<p>Recommended principles:</p>
+<ol>
+<li>1. <strong>Use the organization&#x27;s language wherever possible.</strong></li>
+<li>2. <strong>Keep canonical IDs and schemas stable underneath.</strong></li>
+<li>3. <strong>Define terms, not just labels.</strong></li>
+<li>4. <strong>Allow aliases, but avoid uncontrolled synonyms.</strong></li>
+<li>5. <strong>Model relationships, not only categories.</strong></li>
+<li>6. <strong>Version the taxonomy.</strong></li>
+<li>7. <strong>Assign owners to important terms.</strong></li>
+<li>8. <strong>Support deprecation and migration.</strong></li>
+<li>9. <strong>Let classification drive governance behavior.</strong></li>
+<li>10. <strong>Do not force one enterprise vocabulary where multiple stakeholder views are legitimate.</strong></li>
+<li>11. <strong>Agents should translate between canonical and local vocabulary.</strong></li>
+<li>12. <strong>Taxonomy changes should not invalidate historical evidence.</strong></li>
+</ol>
+<p>A concise principle:</p>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote>
+<hr>
+<h1 id='95-taxonomy-as-an-adoption-layer'>95. Taxonomy as an Adoption Layer</h1>
+<p>This creates an important architectural layer between the family and the enterprise.</p>
+<pre><code class="language-text">              Organization Language
+
+ Product | Squad | Guardrail | Risk Acceptance
+                       |
+                       v
+               Vocabulary Profile
+                       |
+                       v
+                Canonical Model
+
+ Application | Team | Control | Exception
+                       |
+                       v
+                  Binder
+                       |
+        +--------------+--------------+
+        |              |              |
+     BaseCoat        Batchbook      Adhesion
+        |              |              |
+      Snitch        Crosslink       Sheen</code></pre>
+<p>The family therefore provides a <strong>governance grammar</strong>, while organizations provide their own <strong>governance vocabulary</strong>.</p>
+<p>That allows the same architecture to support very different companies without requiring them to reorganize how they talk about building software.</p>
+<hr>
+<h1 id='family-vocabulary-vs-product-native-vocabulary'>Family Vocabulary vs. Product-Native Vocabulary</h1>
+<p>The organization-vocabulary principle also applies <strong>inside the product family</strong>.</p>
+<p>The family can use a shared architectural metaphor without forcing every product to expose that metaphor in its daily user experience.</p>
+<p>For example:</p>
+<pre><code class="language-text">Family concept / product identity   BaseCoat-facing language
+---------------------------------   ------------------------
+Proof                               workflow evidence / job output
+Stamp                               attestation / approval / status
+Batch                               application / repository context
+Genealogy                           dependency / provenance chain</code></pre>
+<p>BaseCoat should continue to use GitHub and SDLC-native terminology where that is clearer to developers.</p>
+<p>Other organizations can map those same canonical concepts into their own vocabulary.</p>
+<p>This produces three layers:</p>
+<pre><code class="language-text">Canonical meaning
+       ↓
+Product-native vocabulary
+       ↓
+Organization-local vocabulary</code></pre>
+<p>Example:</p>
+<pre><code class="language-text">Canonical:
+  control
+
+BaseCoat:
+  instruction / guardrail
+
+Organization:
+  engineering standard</code></pre>
+<p>The important rule remains:</p>
+<blockquote><strong>Standardize the meaning, not necessarily the words.</strong></blockquote>
+<hr>
+<h1 id='sheen-as-a-vocabulary-example'>Sheen as a Vocabulary Example</h1>
+<p>Sheen is a useful example of why product-native vocabulary and canonical family vocabulary should remain separate.</p>
+<p>At the family level:</p>
+<pre><code class="language-text">canonical concept:
+  experience control</code></pre>
+<p>Inside Sheen:</p>
+<pre><code class="language-text">token rule
+brand constraint
+accessibility requirement
+design decision
+information-architecture rule</code></pre>
+<p>Inside an adopting organization:</p>
+<pre><code class="language-text">design standard
+brand guideline
+UX guardrail
+accessibility policy</code></pre>
+<p>All three can refer to the same governed intent without forcing everyone to use identical language.</p>
+<p>Sheen also maintains a machine-readable design vocabulary, reinforcing the broader family principle that vocabulary itself can be versioned, governed, and consumed by agents and tooling.</p></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

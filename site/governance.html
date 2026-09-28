@@ -1,148 +1,662 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Governance is the system that makes organizational intent operable.">
-  <title>Governance Model · AI SDLC Governance</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body data-page="governance">
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
-      <span class="brand-mark">BC</span>
-      <span>
-        <strong>AI SDLC Governance</strong>
-        <small>working architecture</small>
-      </span>
-    </a>
-    <div class="top-actions">
-      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
-      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
-    </div>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar">
-      <nav aria-label="Primary navigation">
-        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
-<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Governance Model · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="governance"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
 <a class="nav-link" data-page="family" href="family.html">Product Family</a>
-<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
 <a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
-<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
-<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
-<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
-<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
-      </nav>
-      <div class="sidebar-note">
-        <span class="status-dot"></span>
-        Living design system
-      </div>
-    </aside>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='governance-model'>Governance Model</h1>
+<p>The core governance philosophy, operating loop, enforcement gradient, control model, exceptions, authority, and proportionality.</p>
+<blockquote>This document is part of the AI SDLC Governance working research set. It is intentionally a living design document and may evolve as the product family matures.</blockquote>
+<hr>
+<h1 id='1-design-principles'>1. Design Principles</h1>
+<ol>
+<li>1. <strong>Each product should own a distinct domain primitive.</strong></li>
+<li>2. <strong>Shared family mechanics should not live inside one sibling product.</strong></li>
+<li>3. <strong>Compliance should be expressed as profiles and mappings, not as one-off products.</strong></li>
+<li>4. <strong>Discovery is not truth.</strong> Observations should be reconciled into canonical records.</li>
+<li>5. <strong>Evidence is not compliance.</strong> Store evidence and mappings; avoid claiming compliance automatically.</li>
+<li>6. <strong>Stable identity matters.</strong> Repositories, apps, services, models, agents, deployments, teams, and controls need durable IDs.</li>
+<li>7. <strong>Integrate before rebuilding.</strong> Use existing observability, cost, identity, SBOM, and ITSM platforms where practical.</li>
+<li>8. <strong>The graph is the center.</strong> Relationships between assets matter more than flat inventory.</li>
+<li>9. <strong>Make the secure/governed path the default path.</strong></li>
+<li>10. <strong>Keep domain products independently useful, but interoperable through shared contracts.</strong></li>
+</ol>
+<hr>
+<h1 id='15-common-control-model'>15. Common Control Model</h1>
+<p>External frameworks should map to internal engineering controls.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">id: BC-IAM-001
+title: Workloads must use non-secret authentication
 
-    <main class="content">
-      <div class="page-head">
-        <p class="eyebrow">Governance</p>
-        <h1>Governance Model</h1>
-      </div>
-      
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Core idea</p>
-    <h2>Governance makes intent operable</h2>
-    <p>Governance is broader than law or compliance. It establishes direction, boundaries, authority, accountability, feedback, and the mechanisms that translate expectations into behavior.</p>
-  </div>
+intent:
+  prevent long-lived credentials in automated workloads
 
-  <div class="flow">
-    <div><strong>Purpose</strong><span>Why the organization exists and what outcomes matter.</span></div>
-    <b>→</b>
-    <div><strong>Governance</strong><span>Direction, oversight, accountability.</span></div>
-    <b>→</b>
-    <div><strong>Policy</strong><span>What is expected.</span></div>
-    <b>→</b>
-    <div><strong>Control</strong><span>How expectations become operational.</span></div>
-    <b>→</b>
-    <div><strong>Evidence</strong><span>How we know.</span></div>
-    <b>→</b>
-    <div><strong>Feedback</strong><span>What changes next.</span></div>
-  </div>
-</section>
+requirements:
+  - workload identity preferred
+  - OIDC federation allowed
+  - static secrets prohibited without approved exception
 
-<section>
-  <div class="section-title">
-    <p class="eyebrow">Governance gradient</p>
-    <h2>Enforcement is proportional, not binary</h2>
-  </div>
-  <div class="gradient-list">
-    <span>Observe</span><span>Inform</span><span>Recommend</span><span>Warn</span><span>Require evidence</span><span>Require approval</span><span>Block</span><span>Prevent architecturally</span>
-  </div>
-  <p class="muted">The right position depends on risk, impact, likelihood, classification, regulatory obligations, confidence, cost, friction, and reversibility.</p>
-</section>
+evidence:
+  - workflow configuration
+  - cloud identity configuration
 
-<section>
-  <div class="section-title"><p class="eyebrow">Governance loop</p><h2>Define → apply → prevent → observe → validate → record → respond → improve</h2></div>
-  <div class="diagram">
-    <div class="node"><b>Define</b><small>Basecoat</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Apply</b><small>Stencil / profiles</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Prevent</b><small>platform / CI</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Observe</b><small>Snitch / Teardown</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Validate</b><small>Adhesion</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Record</b><small>Proof</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Respond</b><small>Crosslink</small></div>
-    <div class="arrow">→</div>
-    <div class="node"><b>Improve</b><small>Basecoat</small></div>
-  </div>
-</section>
+validation:
+  automated: true</code></pre>
+<h3 id='framework-mappings'>Framework mappings</h3>
+<pre><code class="language-text">BC-IAM-001
+  ├── NIST SSDF
+  ├── NIST CSF
+  ├── ISO 27001
+  ├── CMMC
+  ├── SOC 2
+  ├── PCI DSS
+  └── Internal Policy</code></pre>
+<p>This keeps the engineering standard stable while external frameworks evolve.</p>
+<hr>
+<h1 id='17-compliance-profiles'>17. Compliance Profiles</h1>
+<p>Compliance should be applied through profiles.</p>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">application: claims-portal
 
-<section class="card-grid two">
-  <div class="card"><h3>Governance actors</h3><p>Authority / governing body, policy owner, communicator/enabler, control owner/enforcer, validator, assurance/auditor, and governed actor.</p></div>
-  <div class="card"><h3>Autonomous agents</h3><p>Automation may execute delegated governance authority; it does not create that authority. Agent actions must trace back to an approved policy/control and accountable owner.</p></div>
-  <div class="card"><h3>Exceptions</h3><p>Exceptions are first-class: owner, approver, reason, compensating controls, expiration, evidence, and review.</p></div>
-  <div class="card"><h3>Reversibility</h3><p>Prefer reversible controls until confidence and authority justify irreversible action: warn, quarantine, read-only, rollback, archive, restore, then delete when appropriate.</p></div>
-</section>
+profiles:
+  - enterprise-default
+  - hipaa
+  - soc2
+  - ai-high-risk</code></pre>
+<p>Basecoat resolves the effective control set from the selected profiles.</p>
+<h3 id='itar-example'>ITAR example</h3>
+<pre><code class="language-yaml">classification:
+  export_control:
+    regime: ITAR
 
-<section>
-  <div class="section-title"><p class="eyebrow">Modern control object</p><h2>A control is more than a rule</h2></div>
-  <div class="code-card"><pre>CONTROL
+restrictions:
+  storage_regions:
+    - approved-us
+
+  personnel:
+    export_authorization_required: true
+
+  services:
+    external_ai: restricted
+
+  logging:
+    approved_boundaries_only: true
+
+  support:
+    approved_personnel_only: true</code></pre>
+<h3 id='cmmc-example'>CMMC example</h3>
+<pre><code class="language-text">Application
+   |
+handles:
+   CUI
+   |
+requires profile:
+   CMMC-L2
+   |
+maps to:
+   internal controls
+   |
+requires:
+   evidence + assessment support</code></pre>
+<p>Core model:</p>
+<blockquote><strong>classification → profile → controls → evidence</strong></blockquote>
+<hr>
+<h1 id='18-exception-model'>18. Exception Model</h1>
+<p>Exceptions need to be first-class.</p>
+<pre><code class="language-text">Control
+   |
+Violation
+   |
+Exception
+   |
+Owner
+   |
+Approver
+   |
+Reason
+   |
+Compensating Control
+   |
+Expiration</code></pre>
+<h3 id='example'>Example</h3>
+<pre><code class="language-yaml">control: BC-NET-013
+subject: app:legacy-payments
+
+exception:
+  reason: legacy vendor integration
+
+approved_by:
+  - security-architecture
+
+expires: 2026-12-31
+
+compensating_controls:
+  - IP allowlist
+  - WAF inspection
+  - increased logging</code></pre>
+<h3 id='cross-product-behavior'>Cross-product behavior</h3>
+<ul>
+<li>- Snitch discovers expired exceptions.</li>
+<li>- Adhesion validates compensating controls.</li>
+<li>- Crosslink escalates production exceptions when needed.</li>
+<li>- Swatch displays exception state.</li>
+<li>- Basecoat changes enforcement after expiry.</li>
+<li>- Proof records the history.</li>
+</ul>
+<hr>
+<h1 id='56-the-governance-gradient'>56. The Governance Gradient</h1>
+<p>Governance should not be treated as binary.</p>
+<p>A control can be applied at different strengths depending on risk, context, evidence quality, and organizational tolerance.</p>
+<pre><code class="language-text">Observe
+   ↓
+Inform
+   ↓
+Recommend
+   ↓
+Warn
+   ↓
+Require evidence
+   ↓
+Require approval
+   ↓
+Block
+   ↓
+Prevent architecturally</code></pre>
+<p>This can be described as a <strong>Governance Gradient</strong>.</p>
+<p>The enforcement level can depend on:</p>
+<pre><code class="language-text">Risk
+Impact
+Likelihood
+Classification
+Regulatory obligation
+Confidence of detection
+Cost of control
+Cost of failure
+Developer/user friction
+Reversibility</code></pre>
+<h2 id='example'>Example</h2>
+<pre><code class="language-text">UI consistency
+    → recommend / validate
+
+Missing production owner
+    → warn, then escalate
+
+Secret committed to source
+    → block
+
+Export-controlled data sent to an unapproved service
+    → prevent architecturally</code></pre>
+<p>The organization is therefore not simply &quot;strict&quot; or &quot;permissive.&quot;</p>
+<p>Different controls occupy different positions on the gradient.</p>
+<hr>
+<h1 id='57-the-governance-loop'>57. The Governance Loop</h1>
+<p>The platform family can be mapped to a generic governance lifecycle.</p>
+<pre><code class="language-text">                    DEFINE
+                      |
+                  Basecoat
+                      |
+                      v
+                    APPLY
+                      |
+                  Stencil
+                      |
+                      v
+                   PREVENT
+                      |
+          Platform / CI / Guardrails
+                      |
+                      v
+                  OBSERVE
+                 /       \
+            Snitch       Teardown
+                 \       /
+                  v     v
+                  VALIDATE
+                      |
+                   Adhesion
+                      |
+                      v
+                    RECORD
+                      |
+                    Proof
+                      |
+                      v
+                   RESPOND
+                      |
+                    Crosslink
+                      |
+                      v
+                   IMPROVE
+                      |
+                  Basecoat</code></pre>
+<p><strong>Swatch</strong> provides the context for the thing being governed.</p>
+<p><strong>Binder</strong> provides the contracts that allow the family to work together.</p>
+<p>The important part is the loop:</p>
+<pre><code class="language-text">Policy
+  ↓
+Implementation
+  ↓
+Behavior
+  ↓
+Evidence
+  ↓
+Outcome
+  ↓
+Feedback
+  ↓
+Policy change</code></pre>
+<p>Governance is therefore a living control system rather than a static rulebook.</p>
+<hr>
+<h1 id='58-governance-actors'>58. Governance Actors</h1>
+<p>A useful governance system separates responsibilities rather than putting every role in one team.</p>
+<p>A modernized role model:</p>
+<div class='table-wrap'><table><thead><tr><th>Role</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td><strong>Authority / Governing Body</strong></td><td>Establish intent and accountability</td></tr>
+<tr><td><strong>Policy Owner</strong></td><td>Translate intent into policy</td></tr>
+<tr><td><strong>Communicator / Enabler</strong></td><td>Make expectations understandable and usable</td></tr>
+<tr><td><strong>Control Owner / Enforcer</strong></td><td>Implement controls</td></tr>
+<tr><td><strong>Validator</strong></td><td>Test whether controls and outcomes work</td></tr>
+<tr><td><strong>Assurance / Auditor</strong></td><td>Independently assess confidence in the system</td></tr>
+<tr><td><strong>Governed Actor</strong></td><td>Human, team, service, or agent expected to operate within constraints</td></tr>
+</tbody></table></div>
+<p>This separation matters because the same system should not automatically:</p>
+<pre><code class="language-text">write the rule
+implement the rule
+test the rule
+declare the rule effective
+audit itself</code></pre>
+<p>Independence should increase as the consequence and assurance requirement increase.</p>
+<hr>
+<h1 id='59-governance-authority-and-autonomous-agents'>59. Governance Authority and Autonomous Agents</h1>
+<p>AI agents introduce a new actor, but they do not eliminate governance authority.</p>
+<p>A useful principle is:</p>
+<blockquote><strong>Automation may execute governance authority; it does not create governance authority.</strong></blockquote>
+<pre><code class="language-text">Human / Organizational Authority
+             |
+             v
+           Policy
+             |
+             v
+           Control
+             |
+             v
+   Delegated Automation
+       /           \
+ Workflow         Agent
+       \           /
+             |
+             v
+        Decision / Action
+             |
+             v
+           Evidence</code></pre>
+<p>An agent can:</p>
+<ul>
+<li>- observe,</li>
+<li>- recommend,</li>
+<li>- test,</li>
+<li>- enforce,</li>
+<li>- remediate,</li>
+<li>- escalate,</li>
+<li>- or coordinate.</li>
+</ul>
+<p>But its authority should be traceable to an approved control and an accountable human or organizational authority.</p>
+<p>This becomes particularly important for autonomous remediation.</p>
+<hr>
+<h1 id='60-governance-as-proportional-control'>60. Governance as Proportional Control</h1>
+<p>One of the most persistent ideas across the journey is that <strong>maximum enforcement is not automatically better governance</strong>.</p>
+<p>A useful modern vocabulary includes:</p>
+<ul>
+<li>- risk appetite</li>
+<li>- risk tolerance</li>
+<li>- proportionality</li>
+<li>- reasonable assurance</li>
+<li>- residual risk</li>
+<li>- compensating controls</li>
+<li>- exceptions</li>
+<li>- cost/benefit</li>
+<li>- control effectiveness</li>
+</ul>
+<p>That produces a more realistic formula:</p>
+<pre><code class="language-text">Governance Value
+    ≈
+Risk Reduced
+    -
+Control Cost
+    -
+Operational Friction
+    -
+Exception / Maintenance Cost</code></pre>
+<p>This is intentionally not a precise mathematical formula.</p>
+<p>It is a design heuristic.</p>
+<p>A control that technically reduces risk but creates massive workarounds, shadow systems, or operational cost may produce less governance value than a lighter control with strong visibility and evidence.</p>
+<hr>
+<h1 id='61-good-enough-is-an-engineering-concept-not-a-failure'>61. &quot;Good Enough&quot; Is an Engineering Concept, Not a Failure</h1>
+<p>Governance does not require eliminating all risk.</p>
+<p>The relevant questions are:</p>
+<pre><code class="language-text">What risk exists?
+
+What outcome matters?
+
+How much risk are we willing to accept?
+
+What control gives reasonable assurance?
+
+What residual risk remains?
+
+Who has authority to accept it?
+
+When should that decision expire or be reviewed?</code></pre>
+<p>This creates a disciplined place for:</p>
+<ul>
+<li>- exceptions,</li>
+<li>- waivers,</li>
+<li>- compensating controls,</li>
+<li>- temporary acceptance,</li>
+<li>- staged remediation,</li>
+<li>- and risk-based prioritization.</li>
+</ul>
+<p>A binary model:</p>
+<pre><code class="language-text">compliant / non-compliant</code></pre>
+<p>is often too weak to describe real enterprise governance.</p>
+<p>A stronger model is:</p>
+<pre><code class="language-text">requirement
+    ↓
+control
+    ↓
+evidence
+    ↓
+effectiveness
+    ↓
+residual risk
+    ↓
+accept / remediate / strengthen / retire</code></pre>
+<hr>
+<h1 id='62-classification-should-drive-governance'>62. Classification Should Drive Governance</h1>
+<p>Another recurring principle is that classification should influence architecture and controls.</p>
+<pre><code class="language-text">Classification
+      ↓
+Profile
+      ↓
+Controls
+      ↓
+Enforcement Strength
+      ↓
+Placement / Architecture
+      ↓
+Evidence Requirements</code></pre>
+<p>Examples:</p>
+<pre><code class="language-text">Public prototype
+    → lightweight governance
+
+Production customer application
+    → stronger SDLC and operational controls
+
+CUI workload
+    → controlled environment + stronger evidence
+
+ITAR-controlled workload
+    → personnel, geography, service, and export restrictions
+
+High-risk AI system
+    → stronger evaluation, monitoring, and approval requirements</code></pre>
+<p>This is why classification belongs in <strong>Swatch</strong>, while Basecoat resolves the control implications.</p>
+<hr>
+<h1 id='63-enforcement-belongs-at-the-right-scope'>63. Enforcement Belongs at the Right Scope</h1>
+<p>A policy may be correct but ineffective if enforced at the wrong point.</p>
+<p>Candidate scopes in the modern family include:</p>
+<pre><code class="language-text">Enterprise
+  ↓
+Business Unit
+  ↓
+Portfolio
+  ↓
+Application
+  ↓
+Repository
+  ↓
+Branch / Pull Request
+  ↓
+Build
+  ↓
+Artifact
+  ↓
+Deployment
+  ↓
+Runtime
+  ↓
+Model / Agent / Tool
+  ↓
+Data</code></pre>
+<p>The ideal enforcement point is usually the earliest place where the organization has:</p>
+<ol>
+<li>1. enough information to make the decision,</li>
+<li>2. enough authority to enforce it,</li>
+<li>3. and low enough cost to prevent or correct the problem.</li>
+</ol>
+<p>This supports a simple principle:</p>
+<blockquote><strong>Prevent early when the rule is deterministic; observe and validate later when reality cannot be known earlier.</strong></blockquote>
+<hr>
+<h1 id='64-reversibility-is-a-governance-feature'>64. Reversibility Is a Governance Feature</h1>
+<p>Governance actions should not automatically be permanent.</p>
+<p>Possible responses include:</p>
+<pre><code class="language-text">Inform
+Warn
+Request evidence
+Require approval
+Quarantine
+Read-only
+Disable capability
+Rollback
+Archive
+Hold
+Remediate
+Restore
+Delete</code></pre>
+<p>The system should understand whether an enforcement action is:</p>
+<ul>
+<li>- reversible,</li>
+<li>- partially reversible,</li>
+<li>- destructive,</li>
+<li>- or legally required to preserve evidence.</li>
+</ul>
+<p>This is particularly important for:</p>
+<ul>
+<li>- automated remediation,</li>
+<li>- autonomous agents,</li>
+<li>- lifecycle management,</li>
+<li>- incident response,</li>
+<li>- records retention,</li>
+<li>- and decommissioning.</li>
+</ul>
+<p>A useful principle:</p>
+<blockquote><strong>Prefer reversible controls until the confidence and authority justify irreversible action.</strong></blockquote>
+<hr>
+<h1 id='65-governance-capacity'>65. Governance Capacity</h1>
+<p>Organizations differ in how much governance complexity they can successfully operate.</p>
+<p>Factors include:</p>
+<ul>
+<li>- technical maturity</li>
+<li>- staffing</li>
+<li>- central vs federated structure</li>
+<li>- internal vs outsourced development</li>
+<li>- developer skill</li>
+<li>- user skill</li>
+<li>- regulatory burden</li>
+<li>- platform standardization</li>
+<li>- acquisition history</li>
+<li>- number of environments</li>
+<li>- organizational change rate</li>
+</ul>
+<p>This suggests a concept of <strong>governance capacity</strong>.</p>
+<pre><code class="language-text">Strong requirement
+      +
+Weak governance capacity
+      =
+Do not add paperwork.
+
+Instead:
+simplify the path,
+automate the control,
+reduce choices,
+and provide secure defaults.</code></pre>
+<p>This reinforces a major Basecoat principle:</p>
+<blockquote><strong>The stronger the requirement, the less it should depend on perfect human behavior.</strong></blockquote>
+<hr>
+<h1 id='66-federated-governance'>66. Federated Governance</h1>
+<p>Enterprise-scale governance should not require every technical decision to be centralized.</p>
+<p>The desired model is:</p>
+<pre><code class="language-text">Centralized:
+  intent
+  controls
+  minimum standards
+  identity
+  evidence requirements
+  accountability
+
+Federated:
+  architecture choices
+  implementation
+  delivery
+  experimentation
+  local optimization</code></pre>
+<p>In other words:</p>
+<blockquote><strong>Centralize the guardrails. Decentralize the work.</strong></blockquote>
+<p>This is particularly important for large engineering organizations and autonomous development agents.</p>
+<p>The purpose of Basecoat is not to make every repository identical.</p>
+<p>It is to make organizational intent portable across repositories without destroying team autonomy.</p>
+<hr>
+<h1 id='67-governance-fragmentation-is-a-governance-problem'>67. Governance Fragmentation Is a Governance Problem</h1>
+<p>Organizations often respond to each new requirement by creating another:</p>
+<ul>
+<li>- tool,</li>
+<li>- workflow,</li>
+<li>- dashboard,</li>
+<li>- policy,</li>
+<li>- portal,</li>
+<li>- scanner,</li>
+<li>- database,</li>
+<li>- committee,</li>
+<li>- or review gate.</li>
+</ul>
+<p>Over time, the controls themselves become difficult to govern.</p>
+<p>This family should actively avoid that outcome.</p>
+<p>The shared architecture exists so that:</p>
+<pre><code class="language-text">one identity model
+one control model
+one evidence model
+one exception model
+one family contract</code></pre>
+<p>can support many specialized capabilities.</p>
+<p>That is one of the reasons <strong>Binder</strong> matters.</p>
+<p>The family should be composable without becoming a collection of unrelated governance systems.</p>
+<hr>
+<h1 id='68-governance-is-experienced-through-the-path'>68. Governance Is Experienced Through the Path</h1>
+<p>Governance is not only a backend policy system.</p>
+<p>People encounter governance through:</p>
+<ul>
+<li>- templates,</li>
+<li>- defaults,</li>
+<li>- labels,</li>
+<li>- warnings,</li>
+<li>- documentation,</li>
+<li>- user interfaces,</li>
+<li>- approval workflows,</li>
+<li>- error messages,</li>
+<li>- provisioning flows,</li>
+<li>- remediation steps,</li>
+<li>- and self-service experiences.</li>
+</ul>
+<p>This makes experience design part of governance.</p>
+<p>A badly designed control can be technically correct and operationally ineffective.</p>
+<p>That creates an important relationship:</p>
+<pre><code class="language-text">Basecoat
+    defines intent
+
+Sheen
+    helps make the governed path understandable and usable
+
+Adhesion
+    verifies that both the technical and experience expectations are met</code></pre>
+<p>The usability of governance directly affects whether people comply with it or route around it.</p>
+<hr>
+<h1 id='69-a-modern-governance-control-model'>69. A Modern Governance Control Model</h1>
+<p>The historical ideas in this side quest can be condensed into a modern control object.</p>
+<pre><code class="language-text">CONTROL
+│
 ├── Authority
+│   └── Who has the right to establish this requirement?
+│
 ├── Intent
+│   └── What outcome are we trying to achieve?
+│
 ├── Subject
+│   └── Who/what is governed?
+│
 ├── Classification / Applicability
+│   └── Why does this control apply?
+│
 ├── Strength
+│   └── Inform / Warn / Approve / Block / Prevent
+│
 ├── Scope
+│   └── Enterprise / App / Repo / Build / Runtime / Model / Data
+│
 ├── Enforcement Point
+│   └── Where can the control actually be applied?
+│
 ├── Implementation
+│   └── Artifact / Skill / Workflow / Policy / Platform / Agent
+│
 ├── Evidence
+│   └── How do we know the control is operating?
+│
 ├── Confidence
+│   └── Deterministic / observed / inferred / unknown
+│
 ├── Exception
+│   └── What controlled deviation is allowed?
+│
 ├── Response
+│   └── Remediate / Quarantine / Escalate / Reclaim
+│
 ├── Reversibility
-└── Feedback</pre></div>
-</section>
-
-    </main>
-
-    
-  </div>
-
-  <dialog id="searchDialog">
-    <form method="dialog" class="search-panel">
-      <div class="search-head">
-        <strong>Search the architecture</strong>
-        <button value="close" aria-label="Close search">Close</button>
-      </div>
-      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
-      <div id="searchResults" class="search-results"></div>
-    </form>
-  </dialog>
-
-  <script src="app.js"></script>
-</body>
-</html>
+│   └── Can the action be safely undone?
+│
+└── Feedback
+    └── Keep / Relax / Strengthen / Amend / Retire</code></pre>
+<p>This can become a candidate schema for Basecoat/Binder.</p>
+<hr>
+<h1 id='70-the-core-philosophy'>70. The Core Philosophy</h1>
+<p>After a long journey through enterprise platforms, provisioning, cloud, security, DevOps, AI-assisted development, and autonomous agents, the core governance problem remains surprisingly stable.</p>
+<p>A useful summary is:</p>
+<blockquote><strong>Governance is the system that makes organizational intent operable.</strong></blockquote>
+<p>It does this by creating:</p>
+<pre><code class="language-text">Direction
+Boundaries
+Authority
+Accountability
+Feedback</code></pre>
+<p>And the family implements those ideas as:</p>
+<pre><code class="language-text">Swatch     → know what exists
+Basecoat   → define intent and controls
+Stencil    → determine applicability and scope
+Binder     → connect the system
+Snitch     → observe reality
+Teardown   → understand composition
+Adhesion   → validate outcomes
+Proof      → preserve evidence
+Crosslink     → coordinate response
+Reclaim    → govern the end of life
+Sheen      → make the governed path usable</code></pre>
+<p>The destination has changed.</p>
+<p>The steering problem has not.</p></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>

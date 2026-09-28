@@ -22,3 +22,10 @@ The family is designed around a few durable ideas:
 - agents should operate with bounded delegated authority rather than becoming the system of record;
 - evidence basis, confidence, and assurance should remain separate;
 - fast-changing layers should be able to learn without destabilizing slow-changing contracts.
+
+
+## BaseCoat alignment
+
+The family architecture is designed to stay consistent with the public BaseCoat implementation.
+
+BaseCoat remains the shared operating layer for governed GitHub Copilot work, while sibling products own their specialized durable domains. See [`docs/10-basecoat-consistency.md`](docs/10-basecoat-consistency.md).

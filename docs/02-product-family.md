@@ -11,9 +11,9 @@ The current and candidate product family, responsibilities, naming, and family a
 | Product | Working role | Primary verb | Core primitive | Status |
 |---|---|---:|---|---|
 | **Binder** | Shared family substrate / contracts | Connect | Manifest / schema / identity | Candidate |
-| **Basecoat** | AI-SDLC engineering governance | Govern | Control / instruction | Existing |
+| **BaseCoat** | Shared operating layer for governed GitHub Copilot work | Govern | Agent / skill / instruction / prompt | Existing |
 | **Adhesion** | Testing, validation, evals | Verify | Test / assertion / evaluation | Existing |
-| **Sheen** | UI/UX governance | Experience | Design token / UX contract | Existing |
+| **Sheen** | Design governance overlay for GitHub Copilot | Experience | Token / design rule / skill / agent | Existing |
 | **Batchbook** | Enterprise catalog of governed applications | Know | Entity / record | Preferred name |
 | **Snitch** | Discovery and intelligence | Discover | Observation | Existing idea |
 | **Teardown** | Repo/app reverse engineering | Understand | Component / relationship | Existing idea |
@@ -77,7 +77,7 @@ Natural language:
                            |
        +-------------------+-------------------+
        |                   |                   |
-    Basecoat             Sheen             Adhesion
+    BaseCoat             Sheen             Adhesion
     Engineering          Experience        Verification
     Governance           Governance        Governance
        |                   |                   |
@@ -103,7 +103,7 @@ Natural language:
 - **Swatch** becomes the shared application/service graph and canonical record.
 - **Snitch** feeds observations into Swatch.
 - **Teardown** explains the internal structure of repositories/apps and enriches Swatch.
-- **Basecoat**, **Sheen**, and **Adhesion** apply specialized governance.
+- **BaseCoat**, **Sheen**, and **Adhesion** apply specialized governance.
 - **Crosslink** resolves humans, escalation paths, and incident coordination.
 - **Proof** stores evidence and provenance.
 
@@ -113,7 +113,7 @@ Natural language:
 
 ## Purpose
 
-Binder should own mechanics that every sibling needs, so Basecoat does not become the de facto parent implementation.
+Binder should own mechanics that every sibling needs, so BaseCoat does not become the de facto parent implementation.
 
 ### Candidate Binder responsibilities
 
@@ -155,11 +155,11 @@ Should Binder be:
 
 ---
 
-# 6. Basecoat — Engineering Governance
+# 6. BaseCoat — Engineering Governance
 
 ## Role
 
-Basecoat governs **how engineering work is performed**.
+BaseCoat governs **how engineering work is performed**.
 
 It should remain responsible for:
 
@@ -175,7 +175,7 @@ It should remain responsible for:
 
 ## Boundary
 
-Basecoat should **not** become the canonical database for:
+BaseCoat should **not** become the canonical database for:
 
 - application inventory
 - incident response
@@ -191,13 +191,13 @@ It may orchestrate or query those domains through sibling products.
 ### Example
 
 ```text
-Basecoat asks:
+BaseCoat asks:
 "What controls apply to app:claims-portal?"
 
 Swatch provides:
 classification + ownership + profiles
 
-Basecoat returns:
+BaseCoat returns:
 effective engineering controls
 ```
 
@@ -231,7 +231,7 @@ Sheen owns UI/UX governance and should remain independently useful.
 
 ### Architectural lesson
 
-Sheen is a good model for sibling products because it has a domain-specific primitive rather than merely being a set of Basecoat instructions.
+Sheen is a good model for sibling products because it has a domain-specific primitive rather than merely being a set of BaseCoat instructions.
 
 ---
 
@@ -633,7 +633,7 @@ expires_at: 2026-10-26
 
 ## Names already established
 
-- Basecoat
+- BaseCoat
 - Adhesion
 - Sheen
 - Snitch
@@ -647,7 +647,7 @@ expires_at: 2026-10-26
 
 Likely strong candidates:
 
-1. Basecoat
+1. BaseCoat
 2. Adhesion
 3. Sheen
 4. Swatch
@@ -672,7 +672,7 @@ Likely strong candidates:
 
 Avoid product sprawl. Some concepts may be better expressed as:
 - Swatch entity types,
-- Basecoat control domains,
+- BaseCoat control domains,
 - Teardown outputs,
 - Binder primitives,
 - or integrations with existing products.
@@ -769,7 +769,7 @@ Batch: Claims Processing
 │   ├── intended architecture
 │   └── approved composition
 │
-├── Basecoat
+├── BaseCoat
 │   ├── applicable controls
 │   ├── policy versions
 │   └── exceptions
@@ -930,7 +930,7 @@ Batchbook
         +-- Teardown:
         |      actual application graph
         |
-        +-- Basecoat:
+        +-- BaseCoat:
         |      142 applicable controls
         |
         +-- Adhesion:
@@ -963,7 +963,7 @@ With the naming changes and the stronger Batch model:
                            |
        +-------------------+-------------------+
        |                   |                   |
-    Basecoat             Sheen             Adhesion
+    BaseCoat             Sheen             Adhesion
      Govern             Experience           Verify
        |                   |                   |
        +-------------------+-------------------+
@@ -1004,7 +1004,7 @@ Lifecycle state
 ## Working verbs
 
 - **Binder — Connect**
-- **Basecoat — Govern**
+- **BaseCoat — Govern**
 - **Sheen — Experience**
 - **Adhesion — Verify**
 - **Batchbook — Catalog**
@@ -1022,7 +1022,7 @@ The current working vocabulary is:
 
 ```text
 Binder      Connect the family
-Basecoat    Govern engineering
+BaseCoat    Govern engineering
 Sheen       Govern experience
 Adhesion    Verify behavior and quality
 
@@ -1054,7 +1054,7 @@ Batch
    ↓
 Swatch
    ↓
-Basecoat
+BaseCoat
    ↓
 Build
    ↓
@@ -1074,3 +1074,364 @@ Crosslink / Operate
    ↓
 Reclaim
 ```
+
+---
+
+# BaseCoat Alignment
+
+## Canonical product description
+
+Within this family, **BaseCoat** should be described consistently with the public BaseCoat repository:
+
+> **BaseCoat is the shared operating layer for governed GitHub Copilot work.**
+
+BaseCoat provides composable **agents, skills, instructions, and prompts** that route AI-assisted software work through intent, evidence, validation, approval boundaries, and repository-native workflows.
+
+This is narrower and more useful than describing BaseCoat as the entire enterprise governance control plane.
+
+The family-level architecture is broader:
+
+```text
+AI SDLC Governance Family
+│
+├── BaseCoat
+│   └── governed AI-assisted engineering
+├── Sheen
+│   └── experience governance
+├── Adhesion
+│   └── validation and evaluation
+├── Batchbook
+│   └── canonical application catalog
+├── Snitch / Teardown
+│   └── discovery, topology, Genealogy
+├── Crosslink
+│   └── operational coordination
+└── Proof
+    └── evidence and provenance
+```
+
+BaseCoat may contain workflows or agents that operate across these domains, but the durable domain model and system of record should remain with the sibling that owns that domain.
+
+Example:
+
+```text
+BaseCoat incident-response agent
+        ↓
+uses / invokes
+Crosslink capabilities
+
+BaseCoat application-inventory agent
+        ↓
+produces observations for
+Snitch / Teardown / Batchbook
+
+BaseCoat UX workflow
+        ↓
+uses
+Sheen contracts
+
+BaseCoat testing workflow
+        ↓
+invokes
+Adhesion evaluations
+```
+
+## Four BaseCoat primitives
+
+The current BaseCoat model is intentionally built around four native primitives:
+
+| Primitive | Role |
+|---|---|
+| **Agent** | Who / how the work is performed |
+| **Skill** | Reusable knowledge and procedures |
+| **Instruction** | Ambient rules and standards |
+| **Prompt** | Structured invocation |
+
+The `/basecoat` router sits above these primitives as the common entry point.
+
+These primitives are part of BaseCoat's product contract and should not be replaced by family-level terminology.
+
+## Guardrails and Visibility
+
+BaseCoat uses two complementary planes:
+
+```text
+Guardrails Plane
+agents · skills · instructions · prompts
+              +
+Visibility Plane
+issues · pull requests · workflows · milestones / projects
+```
+
+The intent is:
+
+> Guardrails without visibility create blind execution.  
+> Visibility without guardrails creates inconsistent execution.
+
+This model is specific to BaseCoat and complements the broader family distinction between **control plane** and **execution plane**.
+
+```text
+Family architecture:
+Control plane ↔ Execution plane
+
+BaseCoat operating model:
+Guardrails plane ↔ Visibility plane
+```
+
+## Binder: current state vs. target state
+
+**Binder is a target family architecture, not yet the canonical shared implementation.**
+
+Today, BaseCoat already contains shared cross-product mechanics such as versioned ownership/lock semantics used by BaseCoat, Sheen, and Adhesion.
+
+The Binder idea should therefore be described as:
+
+> **A proposed extraction and generalization of cross-product contracts that currently have roots in BaseCoat.**
+
+This gives Binder a practical migration path rather than treating it as a greenfield invention.
+
+```text
+Today
+BaseCoat-hosted shared contracts
+        ↓
+Generalize
+        ↓
+Binder
+shared family contracts independent of any sibling product
+```
+
+## Product-language boundary
+
+The broader family can continue to use coatings and manufacturing names such as **Batch**, **Swatch**, **Proof**, **Stamp**, and **CoA**.
+
+BaseCoat itself should continue to speak primarily in the native language of GitHub and software delivery:
+
+```text
+repository
+pull request
+issue
+workflow run
+job log
+agent
+skill
+instruction
+prompt
+release
+version drift
+```
+
+The family metaphor is product architecture.
+
+The product should still speak the language its users use.
+
+> **Speak locally. Govern consistently.**
+
+
+---
+
+# Sheen Alignment
+
+## Canonical product description
+
+Within the family, **Sheen** should be described as:
+
+> **A design governance overlay for GitHub Copilot that grounds design work in context, taste, standards, tokens, accessibility, brand, and structured design decisions.**
+
+Sheen is the **finish-coat sibling to BaseCoat**:
+
+```text
+BaseCoat
+  governs the engineering surface
+
+Sheen
+  governs the design / experience surface
+```
+
+The products are designed to coexist. Their namespaces remain distinct so consumer repositories can adopt both without collisions.
+
+## What Sheen actually owns
+
+Sheen owns the design-governance domain rather than generic "UI generation."
+
+Its current design surface includes six pillars:
+
+```text
+1. Tokens & System
+2. Brand
+3. Usability
+4. Accessibility
+5. Information Architecture
+6. Governance
+```
+
+Its reusable assets include:
+
+```text
+design tokens
+skills
+agents
+instructions
+prompts
+templates
+validation rules
+design vocabulary
+sync / rollback tooling
+```
+
+Sheen treats design decisions as engineering artifacts:
+
+- structured,
+- reviewable,
+- traceable,
+- testable,
+- and distributable through repository-native workflows.
+
+## Sheen is not
+
+Sheen should not be described as:
+
+- a component library,
+- a Figma replacement,
+- an image-generation tool,
+- a documentation host,
+- a prescriptive design system,
+- or the engineering-governance layer.
+
+It produces **design specifications, token schemas, governance artifacts, evaluations, and decision records** that downstream tools and teams can consume.
+
+## Token model
+
+Sheen has a durable token-system role in the family.
+
+The token pipeline supports:
+
+```text
+core primitives
+      ↓
+semantic aliases
+      ↓
+themes
+      ↓
+consumer output
+```
+
+The current repository uses DTCG/W3C-style design tokens and explicitly separates:
+
+```text
+core/
+semantic/
+themes/
+```
+
+This gives Sheen a stronger domain primitive than the earlier generic phrase "UX contract."
+
+A better family primitive is:
+
+> **Design token / experience rule / design decision**
+
+## Consumer lifecycle
+
+Sheen has an explicit consumer lifecycle:
+
+```text
+Integrate
+   ↓
+Onboard
+   ↓
+Inventory
+   ↓
+Audit
+   ↓
+Use
+   ↓
+Upgrade
+```
+
+This is important because Sheen is not merely a source repository. It defines how consumers adopt, validate, synchronize, and evolve the design-governance assets.
+
+## Relationship to BaseCoat
+
+BaseCoat and Sheen should remain siblings with explicit ownership:
+
+```text
+BaseCoat
+  engineering-SDLC governance
+
+Sheen
+  design / UX / brand / accessibility governance
+```
+
+BaseCoat may route or invoke design-related work.
+
+Sheen owns the durable design-governance contracts.
+
+## Relationship to Adhesion
+
+Sheen defines design rules and expectations.
+
+Adhesion can independently evaluate them.
+
+Example:
+
+```text
+Sheen
+  defines:
+  semantic token roles
+  WCAG requirements
+  interaction expectations
+  design decisions
+
+        ↓
+
+Adhesion
+  evaluates:
+  contrast
+  accessibility behavior
+  UI conformance
+  regression
+  implementation evidence
+```
+
+This preserves the family separation between:
+
+> **define** and **verify**
+
+## Relationship to Proof
+
+Sheen produces useful evidence:
+
+```text
+token validation
+accessibility checks
+design decisions
+audit findings
+inventory results
+theme conformance
+```
+
+Proof can preserve and normalize those results across the wider family.
+
+Sheen remains the authoritative owner of the design-domain meaning.
+
+## Product-native vocabulary
+
+Like BaseCoat, Sheen should retain its own native language rather than exposing every family metaphor directly.
+
+Sheen-facing terminology should favor:
+
+```text
+token
+theme
+brand
+accessibility
+usability
+information architecture
+design decision
+audit
+inventory
+design context
+```
+
+The family can still connect those concepts to Batch, Proof, Stamp, and other canonical entities behind the scenes.
+
+> **Speak locally. Govern consistently.**

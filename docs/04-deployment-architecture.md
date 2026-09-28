@@ -185,7 +185,7 @@ This creates a defensible architecture and prevents infrastructure from growing 
 | Product | Preferred initial deployment | Why |
 |---|---|---|
 | **Binder** | D0 package + schemas + CLI | Should have almost no runtime dependency |
-| **Basecoat** | D0/D1 + D2 validation | Governance changes frequently and should remain Git-versioned |
+| **BaseCoat** | D0/D1 + D2 validation | Governance changes frequently and should remain Git-versioned |
 | **Sheen** | D0/D1 + D2 conformance | Tokens/guidance are artifacts; tests run on demand |
 | **Adhesion** | D1/D2, with D3 for orchestration | Most evaluations can run in CI; complex suites may need durable execution |
 | **Swatch** | D3/D6 application/API | Canonical graph needs persistent storage and query APIs |
@@ -207,7 +207,7 @@ This creates a defensible architecture and prevents infrastructure from growing 
 
 Use for:
 
-- Basecoat controls
+- BaseCoat controls
 - Sheen tokens
 - Adhesion test definitions
 - Binder schemas
@@ -250,7 +250,7 @@ Use a **skill** when the work requires specialized knowledge, instructions, scri
 Examples:
 
 ```text
-Basecoat skill:
+BaseCoat skill:
   Evaluate repository governance
 
 Sheen skill:
@@ -294,7 +294,7 @@ Examples:
 ```text
 Pull request
    ↓
-Basecoat validation
+BaseCoat validation
    ↓
 Sheen conformance
    ↓
@@ -710,11 +710,11 @@ That reduces both model and compute cost while increasing throughput.
 
 # 41. Shearing Layers — How the System Learns
 
-Basecoat applies a **Shearing Layers** design idea to software and governance: different parts of a healthy system should be allowed to change at different rates without forcing every other layer to move with them.
+BaseCoat applies a **Shearing Layers** design idea to software and governance: different parts of a healthy system should be allowed to change at different rates without forcing every other layer to move with them.
 
 The idea is inspired by the architectural concept developed by Frank Duffy and expanded by Stewart Brand in *How Buildings Learn*. A building is not one thing changing at one speed. Its site, structure, services, interior layout, and contents evolve on different timescales. Systems become difficult to adapt when fast-changing layers are tightly coupled to slow-changing ones.
 
-Basecoat applies the same reasoning to software:
+BaseCoat applies the same reasoning to software:
 
 > **Fast layers learn. Slow layers remember.**
 
@@ -764,7 +764,7 @@ Developer prompt
       ↓
 Reusable skill
       ↓
-Shared Basecoat guidance
+Shared BaseCoat guidance
       ↓
 Automated workflow
       ↓
@@ -853,7 +853,7 @@ Proof preserves evidence
       ↓
 Feedback identifies a useful pattern
       ↓
-Basecoat promotes reusable guidance
+BaseCoat promotes reusable guidance
       ↓
 Binder stabilizes shared contracts when necessary
 ```
@@ -894,7 +894,7 @@ Fast:
 
 Medium:
   shared skill
-  Basecoat guidance
+  BaseCoat guidance
   Adhesion evaluation
   workflow
   autonomous worker
@@ -927,7 +927,7 @@ It is:
 
 ### References
 
-- Basecoat: `basecoat-10-core-shearing-layers` — design guidance for change velocity and coupling between Basecoat layers.
+- BaseCoat: `basecoat-10-core-shearing-layers` — design guidance for change velocity and coupling between BaseCoat layers.
 - Stewart Brand, *How Buildings Learn: What Happens After They're Built* (1994).
 - Stewart Brand, “Pace Layering: How Complex Systems Learn and Keep Learning,” *Journal of Design and Science* (2018).
 
@@ -941,7 +941,7 @@ Separate governance from the workers that execute it.
                  CONTROL PLANE
 
 Binder
-Basecoat
+BaseCoat
 Swatch
 Policies
 Profiles
@@ -1000,7 +1000,7 @@ classification = export-controlled
                              |
               +--------------+--------------+
               |                             |
-          Basecoat                      Sheen/Adhesion
+          BaseCoat                      Sheen/Adhesion
               |                             |
               +--------------+--------------+
                              |
@@ -1040,7 +1040,7 @@ classification = export-controlled
 
 # 44. Product-Specific Deployment Ideas
 
-## Basecoat
+## BaseCoat
 
 **Default:** Git-native instructions, controls, skills, agents, schemas.
 
@@ -1050,7 +1050,7 @@ Optional:
 - thin API for control resolution if enterprise-scale dynamic policy calculation becomes necessary
 
 Avoid:
-- requiring a Basecoat server for basic governance
+- requiring a BaseCoat server for basic governance
 
 ---
 
@@ -1159,7 +1159,7 @@ Producers:
 - CI/CD
 - Adhesion
 - Teardown
-- Basecoat
+- BaseCoat
 - Crosslink
 - external security/ITSM tools
 
@@ -1414,9 +1414,155 @@ These are implementation options, not required dependencies of the family archit
 
 - Which deployment classes should Binder formally recognize?
 - Should every Swatch record declare an approved execution boundary?
-- Should Basecoat controls be able to prohibit certain deployment classes?
+- Should BaseCoat controls be able to prohibit certain deployment classes?
 - Should Proof record model/runtime/deployment-class provenance for every AI-assisted action?
 - Should Snitch discover unmanaged local models and agent runtimes?
 - Should Teardown identify autonomous-agent execution paths inside a repository?
 - Should Adhesion include deployment-class-specific test suites?
 - Should Crosslink be permitted to invoke autonomous remediation, or only coordinate/approve it?
+
+---
+
+# BaseCoat Deployment Alignment
+
+## BaseCoat's native operating model
+
+BaseCoat's repository-native operating model should remain explicit even when the wider family uses a broader control-plane / execution-plane architecture.
+
+```text
+BaseCoat
+│
+├── Guardrails Plane
+│   ├── agents
+│   ├── skills
+│   ├── instructions
+│   └── prompts
+│
+└── Visibility Plane
+    ├── issues
+    ├── pull requests
+    ├── workflow runs
+    └── milestones / projects
+```
+
+This is a **product-level model**.
+
+The family-level model remains:
+
+```text
+Control Plane
+    ↕
+Execution Plane
+```
+
+Both are useful. They answer different questions.
+
+- **Guardrails + Visibility** explains how BaseCoat governs work inside GitHub.
+- **Control + Execution** explains how the wider family separates durable policy and state from workers, agents, workflows, and runtimes.
+
+## Shearing Layers: preserve the canonical BaseCoat model
+
+BaseCoat's Shearing Layers guidance uses the architectural vocabulary popularized by *How Buildings Learn*:
+
+```text
+Site
+Structure
+Skin
+Services
+Space Plan
+Stuff
+```
+
+The important rule is:
+
+> **Put decisions at the fastest layer that can own them.**
+
+The broader family interpretation remains useful:
+
+```text
+Fast
+Experiment
+Learn
+Operationalize
+Productize
+Standardize
+Anchor
+Slow
+```
+
+These should be presented as two views of the same idea, not as competing taxonomies.
+
+```text
+BaseCoat canonical vocabulary       Family interpretation
+-----------------------------       ---------------------
+Stuff                               Experiment
+Space Plan                          Learn / configure
+Services                            Operationalize
+Skin                                Productize
+Structure                           Standardize
+Site                                Anchor
+```
+
+The mapping is conceptual rather than a claim of exact one-to-one equivalence.
+
+## Coupling rule
+
+Fast-changing concerns should depend on slower, more stable contracts—not the reverse.
+
+```text
+preferred:
+
+prompt / skill
+      ↓
+versioned BaseCoat contract
+      ↓
+stable service / platform contract
+
+avoid:
+
+slow shared contract
+      ↓
+hard dependency on
+temporary prompt wording
+```
+
+This keeps BaseCoat adaptable while preserving compatibility for the wider family.
+
+
+---
+
+# Sheen Deployment Alignment
+
+Sheen reinforces the family's artifact-first deployment philosophy.
+
+Most of Sheen is distributed as repository-native, versioned artifacts:
+
+```text
+tokens
+skills
+agents
+instructions
+prompts
+templates
+specifications
+validation rules
+```
+
+Consumer repositories use configuration plus synchronization tooling to pull the approved assets into place.
+
+That maps naturally to the family deployment model:
+
+```text
+D0
+schemas / tokens / specifications / instructions
+
+D1
+skills / prompts / agent definitions
+
+D2
+validation / synchronization / CI checks
+```
+
+Sheen therefore should **not** become a persistent application service unless a future capability clearly requires durable runtime state.
+
+Its current architecture is evidence that sophisticated governance can remain mostly artifact-driven.

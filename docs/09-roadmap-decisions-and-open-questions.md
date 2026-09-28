@@ -12,12 +12,12 @@ Use this table to capture decisions as the family evolves.
 
 | Date | Decision | Rationale | Status |
 |---|---|---|---|
-| 2026-09-26 | Use **Swatch** as the preferred app-catalog name | Fits paint/coatings family; individual record metaphor works naturally | Candidate |
+| 2026-09-26 | Use **Batchbook** as the enterprise catalog, **Batch** as one governed application, and **Swatch** as its compact profile | Separates catalog, governed application, and profile semantics cleanly | Preferred |
 | 2026-09-26 | Use **Deck** for durable groupings and **Palette** for curated subsets | Preserves paint terminology while distinguishing grouping semantics | Candidate |
-| 2026-09-26 | Explore **Binder** as the shared family substrate | Prevents Basecoat from owning cross-product mechanics | Candidate |
+| 2026-09-26 | Explore **Binder** as the target shared family substrate | Generalizes cross-product contracts that currently have roots in BaseCoat | Candidate |
 | 2026-09-26 | Treat compliance as profiles + mappings | Avoids framework-specific product sprawl | Candidate |
 | 2026-09-26 | Treat Snitch output as observations, not truth | Allows reconciliation from multiple systems | Candidate |
-| 2026-09-26 | Treat Swatch as a graph, not a flat CMDB | Relationships are essential for impact, governance, and AI inventory | Candidate |
+| 2026-09-26 | Treat Batchbook as a graph-backed catalog, not a flat CMDB | Relationships are essential for impact, governance, and AI inventory | Preferred |
 
 ---
 
@@ -26,17 +26,17 @@ Use this table to capture decisions as the family evolves.
 ## Product architecture
 
 - Should Binder be a repo, SDK, schema package, CLI, or combination?
-- Which artifacts remain in Basecoat after Binder is extracted?
-- Should Stencil be a product or simply a Binder/Basecoat primitive?
+- Which artifacts remain in BaseCoat after Binder is extracted?
+- Should Stencil be a product or simply a Binder/BaseCoat primitive?
 - Should Formula be an independent supply-chain service or a Teardown output?
 - Is Proof independently deployed or an append-only service behind the family?
 
-## Swatch
+## Batchbook / Batch / Swatch
 
 - What is the minimum entity model for v1?
-- What is a Swatch: only an application, or any governed entity?
-- Are Decks static and Palettes dynamic?
-- Should Swatch own business capabilities and portfolios?
+- Should Batch always mean one governed application, or can other governed entity types also become Batches?
+- What is the minimum Swatch profile required for every Batch?
+- Are Decks static/durable and Palettes dynamic/curated?
 - How are aliases and duplicate records reconciled?
 
 ## Snitch
@@ -62,7 +62,7 @@ Use this table to capture decisions as the family evolves.
 
 ## Operations
 
-- Keep the product name **Call Tree**, or rename to **Crosslink**?
+- Crosslink is the canonical product name; should **Call Tree** remain as a feature name?
 - Should Crosslink create bridges/channels or integrate only?
 - Should incident records live in Crosslink or Swatch?
 
@@ -166,7 +166,7 @@ Useful prompts for continuing this notebook:
    - Produce the minimum entity model, IDs, Deck/Palette semantics, APIs, and example records.
 
 2. **“Define Binder v1.”**
-   - Extract the shared contract implied by Basecoat, Adhesion, and Sheen.
+   - Extract the shared contract implied by BaseCoat, Adhesion, and Sheen.
 
 3. **“Define Snitch v1.”**
    - Pick discovery sources, observation schema, confidence model, and reconciliation workflow.
@@ -211,7 +211,7 @@ Useful prompts for continuing this notebook:
 
 - Which deployment classes should Binder formally recognize?
 - Should every Swatch record declare an approved execution boundary?
-- Should Basecoat controls be able to prohibit certain deployment classes?
+- Should BaseCoat controls be able to prohibit certain deployment classes?
 - Should Proof record model/runtime/deployment-class provenance for every AI-assisted action?
 - Should Snitch discover unmanaged local models and agent runtimes?
 - Should Teardown identify autonomous-agent execution paths inside a repository?
@@ -226,8 +226,43 @@ Possible future iterations:
 
 - Build a timeline graphic from ancient governance → corporate governance → IT → cyber → AI.
 - Compare **ISO 37000 / ISO 38500 / COBIT / NIST CSF / NIST AI RMF** against the family model.
-- Formalize the **Governance Gradient** as a Basecoat schema.
+- Formalize the **Governance Gradient** as a BaseCoat schema.
 - Formalize **Authority → Policy → Control → Enforcement → Evidence → Assurance** in Binder.
 - Add a governance-capacity model for choosing between documentation, automation, workflow, and architectural prevention.
 - Define independence requirements for validators and auditors.
 - Define a human-accountability model for autonomous agents.
+
+---
+
+# BaseCoat Alignment Decisions
+
+The following clarifications are now part of the working architecture:
+
+| Decision | Working position |
+|---|---|
+| BaseCoat scope | Shared operating layer for governed GitHub Copilot work |
+| BaseCoat primitives | Agent, Skill, Instruction, Prompt |
+| BaseCoat operating model | Guardrails Plane + Visibility Plane |
+| Wider family architecture | Control Plane + Execution Plane |
+| Binder | Proposed extraction/generalization of shared contracts with roots in BaseCoat |
+| Family naming | Coatings/manufacturing metaphor is allowed at the family architecture level |
+| BaseCoat user vocabulary | Prefer GitHub / SDLC-native terms for day-to-day product interaction |
+| Proof relationship | Proof generalizes and correlates evidence; BaseCoat retains repository-native evidence |
+| Shearing Layers | Preserve BaseCoat's Site / Structure / Skin / Services / Space Plan / Stuff vocabulary; use family pace layers as an interpretation |
+
+## Updated near-term implication
+
+Before extracting Binder, document the existing cross-product contracts in BaseCoat and identify which ones truly belong at the family level.
+
+A safer sequence is:
+
+```text
+1. Inventory existing BaseCoat shared contracts
+2. Identify consumers in Sheen and Adhesion
+3. Define stable family interfaces
+4. Preserve backward compatibility
+5. Extract only the contracts with multiple durable owners
+6. Leave BaseCoat-specific GitHub/Copilot behavior in BaseCoat
+```
+
+This avoids creating Binder as an abstract platform before there is evidence that a contract is genuinely shared.

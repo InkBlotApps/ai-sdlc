@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BaseCoat Consistency · AI SDLC Governance</title><link rel="stylesheet" href="styles.css"></head>
+<body data-page="basecoat"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">AI</span><span><strong>AI SDLC Governance</strong><small>working architecture</small></span></a><div class="top-actions"><button id="searchButton">Search</button><button id="themeButton">Theme</button></div></header>
+<div class="shell"><aside class="sidebar"><nav><a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="information" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence</a>
+<a class="nav-link" data-page="compliance" href="compliance.html">Compliance</a>
+<a class="nav-link" data-page="basecoat" href="basecoat.html">BaseCoat Alignment</a>
+<a class="nav-link" data-page="sheen" href="sheen.html">Sheen Alignment</a>
+<a class="nav-link" data-page="history" href="history.html">History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap</a>
+<a class="nav-link" data-page="research" href="research.html">Research Archive</a></nav><div class="sidebar-note">Living design system</div></aside><main class="content"><article class="markdown-body"><h1 id='basecoat-consistency-and-integration'>BaseCoat Consistency and Integration</h1>
+<p>This document records how the broader AI SDLC Governance family aligns with the current public BaseCoat implementation.</p>
+<h2 id='canonical-basecoat-role'>Canonical BaseCoat role</h2>
+<blockquote><strong>BaseCoat is the shared operating layer for governed GitHub Copilot work.</strong></blockquote>
+<p>It provides composable agents, skills, instructions, and prompts that help route AI-assisted engineering work through intent, evidence, validation, approval boundaries, and GitHub-native visibility.</p>
+<p>BaseCoat is one product in the broader governance family. It is not the entire family control plane.</p>
+<h2 id='native-basecoat-primitives'>Native BaseCoat primitives</h2>
+<pre><code class="language-text">Agent
+Skill
+Instruction
+Prompt</code></pre>
+<p>The <code>/basecoat</code> router provides the common entry point above those primitives.</p>
+<h2 id='native-basecoat-operating-model'>Native BaseCoat operating model</h2>
+<pre><code class="language-text">Guardrails Plane
+agents · skills · instructions · prompts
+
+            +
+
+Visibility Plane
+issues · pull requests · workflows · milestones / projects</code></pre>
+<p>The wider family also uses a separate architectural distinction:</p>
+<pre><code class="language-text">Control Plane ↔ Execution Plane</code></pre>
+<p>The two models are complementary.</p>
+<h2 id='scope-boundary'>Scope boundary</h2>
+<p>BaseCoat can provide workflows that touch testing, UX, inventory, incidents, compliance, or other SDLC domains.</p>
+<p>The sibling products should still own the durable domain model:</p>
+<div class='table-wrap'><table><thead><tr><th>Domain</th><th>Durable owner</th></tr></thead><tbody>
+<tr><td>AI-assisted engineering governance</td><td>BaseCoat</td></tr>
+<tr><td>Experience / UI governance</td><td>Sheen</td></tr>
+<tr><td>Tests / evaluations</td><td>Adhesion</td></tr>
+<tr><td>Application catalog</td><td>Batchbook</td></tr>
+<tr><td>Discovery observations</td><td>Snitch</td></tr>
+<tr><td>Topology / Genealogy</td><td>Teardown</td></tr>
+<tr><td>Incident coordination</td><td>Crosslink</td></tr>
+<tr><td>Evidence / provenance</td><td>Proof</td></tr>
+</tbody></table></div>
+<p>Example:</p>
+<pre><code class="language-text">BaseCoat workflow
+      ↓
+invokes specialized capability
+      ↓
+sibling product owns durable domain state</code></pre>
+<h2 id='binder-migration-model'>Binder migration model</h2>
+<p>Binder is a proposed target architecture.</p>
+<p>It should emerge by extracting genuinely shared contracts that currently have roots in BaseCoat rather than by moving BaseCoat-specific behavior into a generic platform.</p>
+<pre><code class="language-text">BaseCoat shared contract
+        ↓
+multiple durable consumers
+        ↓
+stabilize interface
+        ↓
+Binder candidate</code></pre>
+<p>Do not extract a contract simply because it <em>could</em> be shared.</p>
+<p>Extract it when multiple sibling products actually require independent ownership and compatibility.</p>
+<h2 id='shearing-layers'>Shearing Layers</h2>
+<p>Preserve the BaseCoat vocabulary:</p>
+<pre><code class="language-text">Site
+Structure
+Skin
+Services
+Space Plan
+Stuff</code></pre>
+<p>Use the family interpretation as an explanatory overlay:</p>
+<pre><code class="language-text">Anchor
+Standardize
+Productize
+Operationalize
+Learn
+Experiment</code></pre>
+<p>The central design rule is:</p>
+<blockquote><strong>Put decisions at the fastest layer that can own them.</strong></blockquote>
+<p>Fast layers should be allowed to learn without forcing slow layers to redeploy. Slow layers should provide stable contracts rather than depending on temporary implementation details.</p>
+<h2 id='evidence'>Evidence</h2>
+<p>BaseCoat already produces and depends on GitHub-native evidence.</p>
+<p>Examples include:</p>
+<ul>
+<li>- issues,</li>
+<li>- pull requests,</li>
+<li>- workflow runs,</li>
+<li>- job logs,</li>
+<li>- approvals,</li>
+<li>- validation results,</li>
+<li>- version information,</li>
+<li>- and integrity checks.</li>
+</ul>
+<p>Proof should reference and normalize this evidence rather than replacing it.</p>
+<pre><code class="language-text">BaseCoat native evidence
+        ↓
+Proof
+        ↓
+Stamp / assurance
+        ↓
+Batch Record
+        ↓
+CoA when needed</code></pre>
+<h2 id='vocabulary'>Vocabulary</h2>
+<p>The product-family metaphor and product UX vocabulary do not have to be identical.</p>
+<p>BaseCoat should normally speak:</p>
+<pre><code class="language-text">repo
+PR
+issue
+workflow
+agent
+skill
+instruction
+prompt
+release
+version drift</code></pre>
+<p>The wider architecture may speak:</p>
+<pre><code class="language-text">Batch
+Swatch
+Proof
+Stamp
+CoA
+Genealogy</code></pre>
+<p>Organizations may then translate those canonical concepts again through their own Vocabulary Profile.</p>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote>
+<h2 id='consistency-checklist'>Consistency checklist</h2>
+<p>When updating this research, check that:</p>
+<ul>
+<li>- BaseCoat is not described as the entire enterprise governance system.</li>
+<li>- Agent / Skill / Instruction / Prompt remain BaseCoat&#x27;s native primitives.</li>
+<li>- Guardrails + Visibility remains the BaseCoat operating model.</li>
+<li>- Binder is described as a target extraction/generalization, not an already-independent implementation.</li>
+<li>- Batchbook owns the enterprise application catalog.</li>
+<li>- Proof owns cross-product evidence/provenance.</li>
+<li>- BaseCoat can orchestrate siblings without owning their durable domain state.</li>
+<li>- Product-native vocabulary is allowed to differ from family-level metaphor.</li>
+<li>- Shearing Layers preserves the BaseCoat conceptual origin and vocabulary.</li>
+</ul></article></main></div>
+<dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>
