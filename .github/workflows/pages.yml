@@ -25,6 +25,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      REPO_METADATA_TOKEN: ${{ secrets.REPO_METADATA_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -42,3 +44,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e
+
+      - name: Update repository About website
+        if: env.REPO_METADATA_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ env.REPO_METADATA_TOKEN }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          gh api --method PATCH "repos/${GITHUB_REPOSITORY}" \
+            -f homepage="${PAGE_URL}"
+
+      - name: Explain missing metadata token
+        if: env.REPO_METADATA_TOKEN == ''
+        run: |
+          echo "::notice::Pages deployed successfully, but the repository About website was not updated because REPO_METADATA_TOKEN is not configured."
+          echo "::notice::Create a fine-grained token scoped only to this repository with Administration: Read and write, then store it as the REPO_METADATA_TOKEN Actions secret."
