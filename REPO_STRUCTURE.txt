@@ -1,0 +1,16 @@
+ai-sdlc/
+├── README.md
+├── index.html
+├── ...
+└── docs/
+    ├── README.md
+    ├── 01-governance-model.md
+    ├── 02-product-family.md
+    ├── 03-information-model.md
+    ├── 04-deployment-architecture.md
+    ├── 05-organization-adoption.md
+    ├── 06-evidence-and-assurance.md
+    ├── 07-compliance-and-frameworks.md
+    ├── 08-history-side-quest.md
+    ├── 09-roadmap-decisions-and-open-questions.md
+    └── 99-full-research-archive.md
