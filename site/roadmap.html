@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Roadmap &amp; Decisions · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="roadmap">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Working plan</p>
+        <h1>Roadmap & Decisions</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Current direction</p>
+    <h2>Build the contracts before multiplying the products</h2>
+    <p>The roadmap prioritizes shared semantics—identity, control, evidence, taxonomy, and product contracts—before deeper autonomous runtimes.</p>
+  </div>
+
+  <div class="roadmap">
+    <div><span>Phase 1</span><strong>Binder v0.1</strong><p>Product manifest, entity IDs, namespaces, evidence references, ownership semantics, compatibility.</p></div>
+    <div><span>Phase 2</span><strong>Batchbook / Batch / Swatch</strong><p>Minimum graph, canonical entities, ownership, classifications, profiles, decks, palettes.</p></div>
+    <div><span>Phase 3</span><strong>Snitch + Teardown</strong><p>Observation schema, topology, Genealogy, reconciliation, confidence, source precedence.</p></div>
+    <div><span>Phase 4</span><strong>Controls + Proof</strong><p>Control schema, profiles, exceptions, evidence basis, assurance, Stamps, CoA.</p></div>
+    <div><span>Phase 5</span><strong>Crosslink + lifecycle</strong><p>On-call, escalation, incident coordination, retirement, Reclaim, feedback loops.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Decisions so far</p><h2>Working decisions</h2></div>
+  <div class="decision-list">
+    <div><b>Crosslink</b><span>Canonical incident/operational coordination product name.</span></div>
+    <div><b>Proof</b><span>Canonical evidence/provenance product name.</span></div>
+    <div><b>Batchbook / Batch / Swatch</b><span>Catalog / governed application / compact profile.</span></div>
+    <div><b>Taxonomy</b><span>Organizations map local vocabulary onto stable canonical concepts.</span></div>
+    <div><b>Compliance</b><span>Profiles and mappings, not separate product forks.</span></div>
+    <div><b>Deployment</b><span>D0–D2 first; autonomous and dedicated runtimes require justification.</span></div>
+    <div><b>Agents</b><span>Never the database, authorization layer, workflow engine, or source of truth.</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Open questions</p><h2>Questions worth keeping open</h2></div>
+  <div class="card-grid two">
+    <div class="card"><h3>Binder</h3><p>Standalone repo, package/SDK, CLI, schemas—or a combination?</p></div>
+    <div class="card"><h3>Batchbook storage</h3><p>What is the minimum graph model and persistence technology?</p></div>
+    <div class="card"><h3>Stencil</h3><p>Product, policy primitive, or control-scoping mechanism inside Binder/Basecoat?</p></div>
+    <div class="card"><h3>Notary / Witness</h3><p>Concept inside Proof or a separately deployable trust service?</p></div>
+    <div class="card"><h3>Reclaim</h3><p>Independent lifecycle product or durable workflow capability?</p></div>
+    <div class="card"><h3>Control promotion</h3><p>What evidence is required before a local practice becomes a shared control or architectural default?</p></div>
+  </div>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

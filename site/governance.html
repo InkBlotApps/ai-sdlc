@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Governance Model · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="governance">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Governance</p>
+        <h1>Governance Model</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Core idea</p>
+    <h2>Governance makes intent operable</h2>
+    <p>Governance is broader than law or compliance. It establishes direction, boundaries, authority, accountability, feedback, and the mechanisms that translate expectations into behavior.</p>
+  </div>
+
+  <div class="flow">
+    <div><strong>Purpose</strong><span>Why the organization exists and what outcomes matter.</span></div>
+    <b>→</b>
+    <div><strong>Governance</strong><span>Direction, oversight, accountability.</span></div>
+    <b>→</b>
+    <div><strong>Policy</strong><span>What is expected.</span></div>
+    <b>→</b>
+    <div><strong>Control</strong><span>How expectations become operational.</span></div>
+    <b>→</b>
+    <div><strong>Evidence</strong><span>How we know.</span></div>
+    <b>→</b>
+    <div><strong>Feedback</strong><span>What changes next.</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Governance gradient</p>
+    <h2>Enforcement is proportional, not binary</h2>
+  </div>
+  <div class="gradient-list">
+    <span>Observe</span><span>Inform</span><span>Recommend</span><span>Warn</span><span>Require evidence</span><span>Require approval</span><span>Block</span><span>Prevent architecturally</span>
+  </div>
+  <p class="muted">The right position depends on risk, impact, likelihood, classification, regulatory obligations, confidence, cost, friction, and reversibility.</p>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Governance loop</p><h2>Define → apply → prevent → observe → validate → record → respond → improve</h2></div>
+  <div class="diagram">
+    <div class="node"><b>Define</b><small>Basecoat</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Apply</b><small>Stencil / profiles</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Prevent</b><small>platform / CI</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Observe</b><small>Snitch / Teardown</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Validate</b><small>Adhesion</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Record</b><small>Proof</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Respond</b><small>Crosslink</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><b>Improve</b><small>Basecoat</small></div>
+  </div>
+</section>
+
+<section class="card-grid two">
+  <div class="card"><h3>Governance actors</h3><p>Authority / governing body, policy owner, communicator/enabler, control owner/enforcer, validator, assurance/auditor, and governed actor.</p></div>
+  <div class="card"><h3>Autonomous agents</h3><p>Automation may execute delegated governance authority; it does not create that authority. Agent actions must trace back to an approved policy/control and accountable owner.</p></div>
+  <div class="card"><h3>Exceptions</h3><p>Exceptions are first-class: owner, approver, reason, compensating controls, expiration, evidence, and review.</p></div>
+  <div class="card"><h3>Reversibility</h3><p>Prefer reversible controls until confidence and authority justify irreversible action: warn, quarantine, read-only, rollback, archive, restore, then delete when appropriate.</p></div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Modern control object</p><h2>A control is more than a rule</h2></div>
+  <div class="code-card"><pre>CONTROL
+├── Authority
+├── Intent
+├── Subject
+├── Classification / Applicability
+├── Strength
+├── Scope
+├── Enforcement Point
+├── Implementation
+├── Evidence
+├── Confidence
+├── Exception
+├── Response
+├── Reversibility
+└── Feedback</pre></div>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

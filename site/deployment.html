@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Deployment · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="deployment">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Execution architecture</p>
+        <h1>Deployment</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Deployment philosophy</p>
+    <h2>Use the least-complex execution model that works</h2>
+    <p>Do not deploy an autonomous service when a versioned artifact, skill, or workflow is enough. Capabilities should earn their way into more expensive and complex runtime models.</p>
+  </div>
+
+  <div class="ladder">
+    <div><b>D0</b><span>Artifact / schema / policy</span></div>
+    <div><b>D1</b><span>Skill / prompt / agent definition</span></div>
+    <div><b>D2</b><span>CI/CD or deterministic workflow</span></div>
+    <div><b>D3</b><span>Serverless / durable agent workflow</span></div>
+    <div><b>D4</b><span>Ephemeral autonomous container</span></div>
+    <div><b>D5</b><span>Managed hosted agent</span></div>
+    <div><b>D6</b><span>Dedicated agent/application service</span></div>
+    <div><b>D7</b><span>Local/private LLM infrastructure</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Shearing layers</p>
+    <h2>Fast layers learn. Slow layers remember.</h2>
+    <p>Different parts of the system should change at different rates. Successful experiments are promoted inward toward slower, more durable layers only after they prove useful.</p>
+  </div>
+
+  <div class="pace-table">
+    <div><strong>Fast — Experiment</strong><span>prompts, local guidance, temporary agent instructions</span></div>
+    <div><strong>Fast–Adaptive — Learn</strong><span>skills, eval definitions, agent definitions, policy mappings</span></div>
+    <div><strong>Adaptive — Operationalize</strong><span>CI/CD, durable workflows, orchestration</span></div>
+    <div><strong>Moderate — Productize</strong><span>APIs, collectors, workers, app services</span></div>
+    <div><strong>Slow — Standardize</strong><span>Binder schemas, IDs, control/evidence models, taxonomy contracts</span></div>
+    <div><strong>Slowest — Anchor</strong><span>identity, network boundaries, durable stores, regulatory constraints</span></div>
+  </div>
+
+  <div class="promotion">
+    <span>Experiment</span><b>→</b><span>Observe</span><b>→</b><span>Validate</span><b>→</b><span>Repeat</span><b>→</b><span>Promote</span><b>→</b><span>Standardize</span>
+  </div>
+</section>
+
+<section class="card-grid two">
+  <div class="card"><h3>Skills first</h3><p>Use skills when specialized knowledge and tools are needed but persistent state and autonomous runtime are not.</p></div>
+  <div class="card"><h3>CI/CD before services</h3><p>Repository governance naturally belongs where commit, actor, branch, build, artifact, and status are already known.</p></div>
+  <div class="card"><h3>Durable workflow for waiting</h3><p>Use workflow state for timers, approvals, retries, callbacks, escalation, and human-in-the-loop. Do not leave a container running for three days.</p></div>
+  <div class="card"><h3>Ephemeral autonomy</h3><p>Autonomous repository analysis belongs in disposable containers with scoped identity, explicit tools, network controls, resource limits, and complete evidence.</p></div>
+  <div class="card"><h3>Local models are an option</h3><p>Use private/local inference for sovereignty, offline operation, sensitive boundaries, specialized models, or measured economics—not because “local must be cheaper.”</p></div>
+  <div class="card"><h3>Separate control and execution</h3><p>Governance policy should remain independent of the workers, runtimes, clouds, and model providers that execute it.</p></div>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

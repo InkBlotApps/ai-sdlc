@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Evidence &amp; Assurance · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="proof">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Proof</p>
+        <h1>Evidence & Assurance</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Proof</p>
+    <h2>Evidence should explain what we know and why we trust it</h2>
+    <p>Do not collapse source quality, model confidence, attestation, and independent assurance into one vague “trust score.” Preserve the dimensions separately.</p>
+  </div>
+</section>
+
+<section class="card-grid three">
+  <div class="card"><h3>Evidence basis</h3><p><b>Declared</b>, Observed, Identified, Inferred, Calculated, Verified.</p><p class="muted">How was the claim established?</p></div>
+  <div class="card"><h3>Confidence</h3><p>Primarily for inferred or probabilistic evidence. Preserve the producer’s uncertainty instead of disguising inference as fact.</p><p class="muted">How certain is the producer?</p></div>
+  <div class="card"><h3>Assurance</h3><p>A0 Unattested · A1 System Stamped · A2 Owner Attested · A3 Independent Validation · A4 Independent Assurance · A5 External Certification.</p><p class="muted">Who or what stands behind the claim?</p></div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Evidence objects</p><h2>Proof has several different artifacts</h2></div>
+  <div class="card-grid two">
+    <div class="card"><h3>Stamp</h3><p>A compact machine-readable assertion, validation, attestation, or approval attached to evidence.</p></div>
+    <div class="card"><h3>CoA</h3><p>A generated point-in-time Certificate of Analysis summarizing conformance evidence for a Batch, release, artifact, or deployment.</p></div>
+    <div class="card"><h3>Batch Record</h3><p>The accumulated lifecycle record: builds, evaluations, deployments, changes, exceptions, incidents, remediation, and Proof references.</p></div>
+    <div class="card"><h3>Genealogy</h3><p>Traceability across source, dependencies, packages, models, agents, tools, artifacts, and deployments.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Roles</p><h2>Validator, Notary, and Auditor are not the same thing</h2></div>
+  <div class="role-row">
+    <div><strong>Validator</strong><span>“I tested the claim.”</span></div>
+    <div><strong>Notary / Witness</strong><span>“I verified producer identity, signature, timestamp, integrity, and provenance.”</span></div>
+    <div><strong>Auditor / Assurance</strong><span>“I independently assessed whether the evidence and controls are sufficient.”</span></div>
+  </div>
+</section>
+
+<section class="panel">
+  <p class="eyebrow">Stamp policy</p>
+  <h2>Inference may create a finding without being allowed to block.</h2>
+  <p>A control can require a minimum evidence basis and assurance level. For example, inferred evidence may open an investigation, while an authoritative API verification may be required before blocking production.</p>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Organization Adoption · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="adoption">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Vocabulary & taxonomy</p>
+        <h1>Organization Adoption</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Adoption layer</p>
+    <h2>Standardize the meaning, not necessarily the words.</h2>
+    <p>Organizations should be able to keep the vocabulary their developers, architects, operators, auditors, and business teams already use while mapping it onto stable canonical concepts.</p>
+  </div>
+
+  <div class="translation">
+    <div><strong>Organization language</strong><span>Product · Squad · Guardrail · Risk Acceptance · Sev</span></div>
+    <b>↓</b>
+    <div><strong>Vocabulary profile</strong><span>aliases · definitions · owners · mappings · versions</span></div>
+    <b>↓</b>
+    <div><strong>Canonical model</strong><span>Application · Team · Control · Exception · Incident</span></div>
+  </div>
+</section>
+
+<section class="card-grid two">
+  <div class="card"><h3>Names are presentation. IDs are identity.</h3><p>An organization may rename “Application” to “Digital Product” without breaking evidence, APIs, automation, policy mappings, or history.</p></div>
+  <div class="card"><h3>Multiple taxonomies can coexist</h3><p>The same Batch may be an Application to engineering, a Workload to security, a Business Application to architecture, and a Cost Object to finance.</p></div>
+  <div class="card"><h3>Classification should drive behavior</h3><p>Local labels such as Tier 0, Mission Critical, HBI, CUI, or Export Controlled should map to canonical properties and effective controls.</p></div>
+  <div class="card"><h3>Agents should speak locally</h3><p>Canonical requests can remain stable while agent responses, UI labels, reports, and workflows use the organization's preferred language.</p></div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Compliance & frameworks</p><h2>Profiles, not product forks</h2></div>
+  <p>Regulations, contractual requirements, management standards, and practice frameworks should be modeled distinctly, then mapped to internal controls and classifications.</p>
+  <div class="frameworks">
+    <div><b>Legal / regulatory</b><span>ITAR, EAR, HIPAA, GDPR, SOX, privacy laws</span></div>
+    <div><b>Assurance / contractual</b><span>CMMC, FedRAMP, SOC 2, PCI DSS</span></div>
+    <div><b>Management standards</b><span>ISO 27001, ISO 42001, ISO 20000, ISO 22301</span></div>
+    <div><b>Practice frameworks</b><span>NIST CSF, NIST SSDF, NIST AI RMF, ITIL, FinOps, SRE, OWASP, SLSA</span></div>
+  </div>
+</section>
+
+<section class="panel accent">
+  <p class="eyebrow">Adoption principle</p>
+  <h2>Speak locally. Govern consistently.</h2>
+  <p>The family provides a governance grammar. The organization provides its own governance vocabulary.</p>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

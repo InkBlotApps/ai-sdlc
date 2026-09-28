@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Product Family · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="family">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Products</p>
+        <h1>Product Family</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Product architecture</p>
+    <h2>A family of specialized capabilities on shared contracts</h2>
+    <p>The products should remain independently useful, but share identity, policy, evidence, vocabulary, and lifecycle semantics through Binder.</p>
+  </div>
+
+  <div class="family-map">
+    <div class="family-layer"><span>Shared substrate</span><strong>Binder</strong><em>Connect</em></div>
+    <div class="family-row">
+      <div><strong>Basecoat</strong><span>Govern engineering</span></div>
+      <div><strong>Sheen</strong><span>Govern experience</span></div>
+      <div><strong>Adhesion</strong><span>Verify behavior & quality</span></div>
+    </div>
+    <div class="family-layer"><span>Enterprise catalog</span><strong>Batchbook</strong><em>Catalog</em></div>
+    <div class="family-row">
+      <div><strong>Snitch</strong><span>Discover</span></div>
+      <div><strong>Teardown</strong><span>Understand</span></div>
+      <div><strong>Crosslink</strong><span>Coordinate</span></div>
+      <div><strong>Proof</strong><span>Prove</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="card-grid three">
+    <div class="card product"><span class="pill">Core</span><h3>Binder</h3><p>Family manifests, namespaces, schemas, identity, sync/rollback, version compatibility, evidence references, and ownership boundaries.</p></div>
+    <div class="card product"><span class="pill">Govern</span><h3>Basecoat</h3><p>Engineering policy, reusable instructions, AI-SDLC controls, secure defaults, guidance distribution, control mappings, and governance orchestration.</p></div>
+    <div class="card product"><span class="pill">Experience</span><h3>Sheen</h3><p>Design tokens, semantic tokens, themes, accessibility, interaction patterns, design guidance, and UI conformance.</p></div>
+    <div class="card product"><span class="pill">Verify</span><h3>Adhesion</h3><p>Tests and evaluations across functional, security, accessibility, performance, policy, architecture, model, prompt, and agent behavior.</p></div>
+    <div class="card product"><span class="pill">Catalog</span><h3>Batchbook</h3><p>Enterprise catalog of governed applications. Each Batch carries identity, graph, composition, controls, evidence, lifecycle, and ownership.</p></div>
+    <div class="card product"><span class="pill">Discover</span><h3>Snitch</h3><p>Collectors and observations. Finds unknown, unmanaged, changed, or contradictory assets without pretending discovery equals canonical truth.</p></div>
+    <div class="card product"><span class="pill">Understand</span><h3>Teardown</h3><p>Reverse-engineers repositories, applications, containers, SBOMs, IaC, AI components, topology, and Genealogy.</p></div>
+    <div class="card product"><span class="pill">Coordinate</span><h3>Crosslink</h3><p>Call trees, on-call, responders, escalation paths, acknowledgements, incident bridges, business owners, and vendor coordination.</p></div>
+    <div class="card product"><span class="pill">Prove</span><h3>Proof</h3><p>Evidence, provenance, Stamps, attestations, CoA generation, confidence, assurance, integrity, and evidence validity.</p></div>
+  </div>
+</section>
+
+<section class="panel">
+  <p class="eyebrow">Product boundary rule</p>
+  <h2>Do not turn every concept into another product.</h2>
+  <p>Stencil, Formula, Blueprint, Reclaim, Stamp, CoA, Genealogy, Notary/Witness, and deployment classes may remain primitives or services unless independent runtime ownership creates real value.</p>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Governance is the system that makes organizational intent operable.">
+  <title>Information Model · AI SDLC Governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="model">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="AI SDLC Governance home">
+      <span class="brand-mark">BC</span>
+      <span>
+        <strong>AI SDLC Governance</strong>
+        <small>working architecture</small>
+      </span>
+    </a>
+    <div class="top-actions">
+      <button id="searchButton" class="icon-button" aria-label="Search site">Search</button>
+      <button id="themeButton" class="icon-button" aria-label="Toggle theme">Theme</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav aria-label="Primary navigation">
+        <a class="nav-link" data-page="home" href="index.html">Start Here</a>
+<a class="nav-link" data-page="governance" href="governance.html">Governance Model</a>
+<a class="nav-link" data-page="family" href="family.html">Product Family</a>
+<a class="nav-link" data-page="model" href="information-model.html">Information Model</a>
+<a class="nav-link" data-page="deployment" href="deployment.html">Deployment</a>
+<a class="nav-link" data-page="adoption" href="adoption.html">Organization Adoption</a>
+<a class="nav-link" data-page="proof" href="proof.html">Evidence & Assurance</a>
+<a class="nav-link" data-page="history" href="history.html">Side Quest: History</a>
+<a class="nav-link" data-page="roadmap" href="roadmap.html">Roadmap & Decisions</a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        Living design system
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page-head">
+        <p class="eyebrow">Information architecture</p>
+        <h1>Information Model</h1>
+      </div>
+      
+<section>
+  <div class="section-title">
+    <p class="eyebrow">Core information architecture</p>
+    <h2>Batchbook → Batch → Swatch</h2>
+    <p>The catalog is not a flat CMDB. It is a graph of governed applications, their composition, ownership, history, controls, evidence, and operational relationships.</p>
+  </div>
+
+  <div class="hierarchy">
+    <div class="big-node"><span>Enterprise catalog</span><strong>Batchbook</strong></div>
+    <div class="down">↓</div>
+    <div class="big-node"><span>One governed application</span><strong>Batch</strong></div>
+    <div class="down">↓</div>
+    <div class="big-node"><span>Compact profile / manifest</span><strong>Swatch</strong></div>
+  </div>
+</section>
+
+<section class="card-grid two">
+  <div class="card"><h3>Batch</h3><p>A complete governed application unit: identity, ownership, classifications, graph, architecture, approved composition, controls, evaluations, responders, evidence, deployments, and lifecycle.</p></div>
+  <div class="card"><h3>Swatch</h3><p>The concise human- and machine-readable representation of a Batch: name, purpose, owner, criticality, classifications, profiles, key technologies, and references.</p></div>
+  <div class="card"><h3>Deck</h3><p>A durable grouping of Batches, such as a portfolio, business domain, CUI boundary, or manufacturing application estate.</p></div>
+  <div class="card"><h3>Palette</h3><p>A curated or dynamic selection of Batches, such as “all applications using model X” or “production apps with expired exceptions.”</p></div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Inside a Batch</p><h2>One identity, many views</h2></div>
+  <div class="code-card"><pre>Batch: claims-processing
+├── Swatch
+│   ├── ownership
+│   ├── classifications
+│   ├── lifecycle
+│   └── profiles
+├── Blueprint
+│   └── intended architecture
+├── Formula
+│   └── approved composition
+├── Teardown
+│   ├── topology
+│   └── Genealogy
+├── Basecoat
+│   ├── controls
+│   └── exceptions
+├── Adhesion
+│   └── evaluations
+├── Sheen
+│   └── experience conformance
+├── Crosslink
+│   └── responders / escalation
+└── Proof
+    ├── Batch Record
+    ├── Stamps
+    └── CoA</pre></div>
+</section>
+
+<section>
+  <div class="section-title"><p class="eyebrow">Stable identity</p><h2>Names can change. IDs should not.</h2></div>
+  <div class="tag-cloud">
+    <span>app:claims-portal</span><span>repo:github:contoso/claims</span><span>service:claims-api</span><span>model:provider:model-x</span><span>agent:claims-assistant</span><span>mcp:claims-records</span><span>deployment:prod-east</span><span>team:claims-platform</span><span>control:BC-IAM-001</span>
+  </div>
+</section>
+
+    </main>
+
+    
+  </div>
+
+  <dialog id="searchDialog">
+    <form method="dialog" class="search-panel">
+      <div class="search-head">
+        <strong>Search the architecture</strong>
+        <button value="close" aria-label="Close search">Close</button>
+      </div>
+      <input id="searchInput" type="search" placeholder="Try: evidence, taxonomy, agent, Crosslink…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
