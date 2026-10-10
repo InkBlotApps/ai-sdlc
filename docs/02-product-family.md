@@ -24,6 +24,7 @@ The current and candidate product family, responsibilities, naming, and family a
 | **Blueprint** | Intended architecture | Architect | Architecture contract | Candidate |
 | **Seal** | Security posture / hardening | Protect | Security control set | Candidate |
 | **Reclaim** | Retirement / deprecation | Retire | Lifecycle action | Candidate |
+| **Primer** | Fleet rollout / desired-state reconciliation | Prepare | Desired state / rollout wave | Candidate |
 
 ### Naming direction
 
@@ -1435,3 +1436,45 @@ design context
 The family can still connect those concepts to Batch, Proof, Stamp, and other canonical entities behind the scenes.
 
 > **Speak locally. Govern consistently.**
+
+---
+
+# 111. Primer — Fleet Rollout and Desired State
+
+## Role
+
+A primer prepares the surface before the base coat.
+
+**Primer** prepares and keeps an organization's repositories ready for governed delivery. It onboards repositories to the family, pins approved product versions, and rolls changes out through reviewable pull requests.
+
+> **Primer — Prepare**
+
+Primer is customer-facing: every adopting organization needs to manage its own fleet of governed repositories, not only the family maintainers.
+
+## Hybrid architecture
+
+| Layer | Owns | Mechanism |
+|---|---|---|
+| Customer control repo | Desired state: pins, sync order, rollout waves, targeting, policies | Git-native artifacts changed only by approved pull requests |
+| Primer app | Reconciliation and rollout execution | GitHub App with durable workflows that opens pull requests against repository lock files |
+| Primer operational DB | In-flight execution only: wave progress, retries, schedules, PR status | Separate datastore; not a system of record for intent, inventory, or evidence |
+
+Intent stays reviewable and auditable in Git. Execution state stays out of Git history. Apart from in-flight jobs, the operational DB is rebuildable from Git, GitHub, and Batchbook.
+
+## Boundaries
+
+```text
+Primer     desired state   which version each repository should run
+Batchbook  observed state  which version each Batch actually runs
+Snitch     drift           where desired and observed state diverge
+Binder     contracts       manifest and lock-file schemas Primer writes
+Proof      evidence        completed rollout outcomes
+```
+
+- Primer owns its own **rollout targeting**. Stencil remains **policy targeting**.
+- Product repositories own their content. Primer distributes versions and never edits product-owned guidance.
+
+## Sequencing
+
+- **v0:** explicit repository lists, central pins, PR-based rollout, dogfooded on the family's own repositories as the first Batches.
+- **Later:** target repositories through Batchbook queries.
