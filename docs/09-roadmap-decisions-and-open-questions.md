@@ -18,6 +18,7 @@ Use this table to capture decisions as the family evolves.
 | 2026-09-26 | Treat compliance as profiles + mappings | Avoids framework-specific product sprawl | Candidate |
 | 2026-09-26 | Treat Snitch output as observations, not truth | Allows reconciliation from multiple systems | Candidate |
 | 2026-09-26 | Treat Batchbook as a graph-backed catalog, not a flat CMDB | Relationships are essential for impact, governance, and AI inventory | Preferred |
+| 2026-10-09 | Add **Primer** as the customer-facing fleet rollout product with a hybrid architecture (Git desired state, app + operational DB for execution) | Keeps intent reviewable in Git while scaling rollout; separates desired (Primer), observed (Batchbook), and drift (Snitch) | Preferred |
 
 ---
 

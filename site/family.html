@@ -32,6 +32,7 @@
 <tr><td><strong>Blueprint</strong></td><td>Intended architecture</td><td>Architect</td><td>Architecture contract</td><td>Candidate</td></tr>
 <tr><td><strong>Seal</strong></td><td>Security posture / hardening</td><td>Protect</td><td>Security control set</td><td>Candidate</td></tr>
 <tr><td><strong>Reclaim</strong></td><td>Retirement / deprecation</td><td>Retire</td><td>Lifecycle action</td><td>Candidate</td></tr>
+<tr><td><strong>Primer</strong></td><td>Fleet rollout / desired-state reconciliation</td><td>Prepare</td><td>Desired state / rollout wave</td><td>Candidate</td></tr>
 </tbody></table></div>
 <h3 id='naming-direction'>Naming direction</h3>
 <p>The current family works well when names remain short, concrete, industrial, and related to coatings/materials rather than generic enterprise software terms.</p>
@@ -1131,5 +1132,30 @@ audit
 inventory
 design context</code></pre>
 <p>The family can still connect those concepts to Batch, Proof, Stamp, and other canonical entities behind the scenes.</p>
-<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote></article></main></div>
+<blockquote><strong>Speak locally. Govern consistently.</strong></blockquote>
+<hr>
+<h1 id='111-primer-fleet-rollout-and-desired-state'>111. Primer — Fleet Rollout and Desired State</h1>
+<h2 id='primer-role'>Role</h2>
+<p>A primer prepares the surface before the base coat.</p>
+<p><strong>Primer</strong> prepares and keeps an organization's repositories ready for governed delivery. It onboards repositories to the family, pins approved product versions, and rolls changes out through reviewable pull requests.</p>
+<blockquote><strong>Primer — Prepare</strong></blockquote>
+<p>Primer is customer-facing: every adopting organization needs to manage its own fleet of governed repositories, not only the family maintainers.</p>
+<h2 id='primer-hybrid-architecture'>Hybrid architecture</h2>
+<div class='table-wrap'><table><thead><tr><th>Layer</th><th>Owns</th><th>Mechanism</th></tr></thead><tbody>
+<tr><td>Customer control repo</td><td>Desired state: pins, sync order, rollout waves, targeting, policies</td><td>Git-native artifacts changed only by approved pull requests</td></tr>
+<tr><td>Primer app</td><td>Reconciliation and rollout execution</td><td>GitHub App with durable workflows that opens pull requests against repository lock files</td></tr>
+<tr><td>Primer operational DB</td><td>In-flight execution only: wave progress, retries, schedules, PR status</td><td>Separate datastore; not a system of record for intent, inventory, or evidence</td></tr>
+</tbody></table></div>
+<p>Intent stays reviewable and auditable in Git. Execution state stays out of Git history. Apart from in-flight jobs, the operational DB is rebuildable from Git, GitHub, and Batchbook.</p>
+<h2 id='primer-boundaries'>Boundaries</h2>
+<pre><code>Primer     desired state   which version each repository should run
+Batchbook  observed state  which version each Batch actually runs
+Snitch     drift           where desired and observed state diverge
+Binder     contracts       manifest and lock-file schemas Primer writes
+Proof      evidence        completed rollout outcomes</code></pre>
+<ul><li>- Primer owns its own <strong>rollout targeting</strong>. Stencil remains <strong>policy targeting</strong>.</li>
+<li>- Product repositories own their content. Primer distributes versions and never edits product-owned guidance.</li></ul>
+<h2 id='primer-sequencing'>Sequencing</h2>
+<ul><li>- <strong>v0:</strong> explicit repository lists, central pins, PR-based rollout, dogfooded on the family's own repositories as the first Batches.</li>
+<li>- <strong>Later:</strong> target repositories through Batchbook queries.</li></ul></article></main></div>
 <dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>
