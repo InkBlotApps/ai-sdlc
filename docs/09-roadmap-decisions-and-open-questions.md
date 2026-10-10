@@ -19,6 +19,8 @@ Use this table to capture decisions as the family evolves.
 | 2026-09-26 | Treat Snitch output as observations, not truth | Allows reconciliation from multiple systems | Candidate |
 | 2026-09-26 | Treat Batchbook as a graph-backed catalog, not a flat CMDB | Relationships are essential for impact, governance, and AI inventory | Preferred |
 | 2026-10-09 | Add **Primer** as the customer-facing fleet rollout product with a hybrid architecture (Git desired state, app + operational DB for execution) | Keeps intent reviewable in Git while scaling rollout; separates desired (Primer), observed (Batchbook), and drift (Snitch) | Preferred |
+| 2026-10-09 | Bring SchemaJeli into the family as **Grain**, the data-schema governance sibling | Data structure and naming need a durable owner alongside engineering (BaseCoat) and design (Sheen); Binder keeps platform contract schemas | Preferred |
+| 2026-10-09 | Define internal **API** and **MCP** spec repositories with a shared identity model and an integrated graph in Batchbook | Every product is API-first; one contract source avoids inconsistent auth and duplicated schemas | Preferred |
 
 ---
 

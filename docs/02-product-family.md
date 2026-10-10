@@ -25,6 +25,7 @@ The current and candidate product family, responsibilities, naming, and family a
 | **Seal** | Security posture / hardening | Protect | Security control set | Candidate |
 | **Reclaim** | Retirement / deprecation | Retire | Lifecycle action | Candidate |
 | **Primer** | Fleet rollout / desired-state reconciliation | Prepare | Desired state / rollout wave | Candidate |
+| **Grain** | Data-schema and naming-convention governance (formerly SchemaJeli) | Structure | Schema element / naming rule | Existing |
 
 ### Naming direction
 
@@ -1478,3 +1479,49 @@ Proof      evidence        completed rollout outcomes
 
 - **v0:** explicit repository lists, central pins, PR-based rollout, dogfooded on the family's own repositories as the first Batches.
 - **Later:** target repositories through Batchbook queries.
+
+---
+
+# 112. Grain — Data-Schema Governance
+
+## Role
+
+The grain of a material is the underlying structure every finish follows.
+
+**Grain** (formerly SchemaJeli) governs data schemas and naming conventions. It is the **data surface** sibling: BaseCoat governs engineering, Sheen governs design, and Grain governs data structure.
+
+> **Grain — Structure**
+
+Grain is an existing application: a database metadata repository with style guides and naming rules, Entra ID authentication, and a REST API.
+
+## Boundaries
+
+| Boundary | Owner |
+|---|---|
+| Customer data schemas, database metadata, naming conventions and style guides | Grain |
+| The platform's own contract schemas, entity ID formats, relationship vocabulary | Binder |
+| Which applications exist and how databases relate to them | Batchbook |
+| Conformance checks of schemas against naming rules | Adhesion, using Grain's rules |
+
+---
+
+# 113. Platform Interfaces — API, MCP, and Identity
+
+Every product is **API-first** and participates in one integrated graph, API, and MCP surface. These are internal platform components, not family products.
+
+| Component | Owns |
+|---|---|
+| **Binder** | Stable IDs, shared schemas, relationship vocabulary, principal and tenant context |
+| **API spec** | Product API contracts and the platform API, including bounded graph queries |
+| **MCP spec** | Curated tools and resources mapped to API operations, with side-effect classes |
+| **Products** | Domain behavior, authoritative data, resource-level authorization |
+| **Batchbook** | The integrated graph projection, with source and freshness for every fact |
+
+## Principles
+
+- **Internal does not mean unauthenticated.** One identity model covers humans, workloads, and agents, with tenant, subject, and delegation context.
+- **Products enforce resource-level authorization.** Gateways are not the only enforcement point.
+- **API-first does not require a web service per product.** Git-native products can expose capabilities through adapters.
+- **MCP is a task interface, not an API mirror.** Tools declare whether they read, propose, or execute; execution requires server-enforced approval.
+- **No token passthrough.** MCP servers obtain audience-bound downstream credentials.
+- **The graph is read-only and bounded.** Writes go to the owning product; authorization covers nodes, edges, counts, and traversal results.

@@ -33,6 +33,7 @@
 <tr><td><strong>Seal</strong></td><td>Security posture / hardening</td><td>Protect</td><td>Security control set</td><td>Candidate</td></tr>
 <tr><td><strong>Reclaim</strong></td><td>Retirement / deprecation</td><td>Retire</td><td>Lifecycle action</td><td>Candidate</td></tr>
 <tr><td><strong>Primer</strong></td><td>Fleet rollout / desired-state reconciliation</td><td>Prepare</td><td>Desired state / rollout wave</td><td>Candidate</td></tr>
+<tr><td><strong>Grain</strong></td><td>Data-schema and naming-convention governance (formerly SchemaJeli)</td><td>Structure</td><td>Schema element / naming rule</td><td>Existing</td></tr>
 </tbody></table></div>
 <h3 id='naming-direction'>Naming direction</h3>
 <p>The current family works well when names remain short, concrete, industrial, and related to coatings/materials rather than generic enterprise software terms.</p>
@@ -1157,5 +1158,36 @@ Proof      evidence        completed rollout outcomes</code></pre>
 <li>- Product repositories own their content. Primer distributes versions and never edits product-owned guidance.</li></ul>
 <h2 id='primer-sequencing'>Sequencing</h2>
 <ul><li>- <strong>v0:</strong> explicit repository lists, central pins, PR-based rollout, dogfooded on the family's own repositories as the first Batches.</li>
-<li>- <strong>Later:</strong> target repositories through Batchbook queries.</li></ul></article></main></div>
+<li>- <strong>Later:</strong> target repositories through Batchbook queries.</li></ul>
+<hr>
+<h1 id='112-grain-data-schema-governance'>112. Grain — Data-Schema Governance</h1>
+<h2 id='grain-role'>Role</h2>
+<p>The grain of a material is the underlying structure every finish follows.</p>
+<p><strong>Grain</strong> (formerly SchemaJeli) governs data schemas and naming conventions. It is the <strong>data surface</strong> sibling: BaseCoat governs engineering, Sheen governs design, and Grain governs data structure.</p>
+<blockquote><strong>Grain — Structure</strong></blockquote>
+<p>Grain is an existing application: a database metadata repository with style guides and naming rules, Entra ID authentication, and a REST API.</p>
+<h2 id='grain-boundaries'>Boundaries</h2>
+<div class='table-wrap'><table><thead><tr><th>Boundary</th><th>Owner</th></tr></thead><tbody>
+<tr><td>Customer data schemas, database metadata, naming conventions and style guides</td><td>Grain</td></tr>
+<tr><td>The platform's own contract schemas, entity ID formats, relationship vocabulary</td><td>Binder</td></tr>
+<tr><td>Which applications exist and how databases relate to them</td><td>Batchbook</td></tr>
+<tr><td>Conformance checks of schemas against naming rules</td><td>Adhesion, using Grain's rules</td></tr>
+</tbody></table></div>
+<hr>
+<h1 id='113-platform-interfaces-api-mcp-and-identity'>113. Platform Interfaces — API, MCP, and Identity</h1>
+<p>Every product is <strong>API-first</strong> and participates in one integrated graph, API, and MCP surface. These are internal platform components, not family products.</p>
+<div class='table-wrap'><table><thead><tr><th>Component</th><th>Owns</th></tr></thead><tbody>
+<tr><td><strong>Binder</strong></td><td>Stable IDs, shared schemas, relationship vocabulary, principal and tenant context</td></tr>
+<tr><td><strong>API spec</strong></td><td>Product API contracts and the platform API, including bounded graph queries</td></tr>
+<tr><td><strong>MCP spec</strong></td><td>Curated tools and resources mapped to API operations, with side-effect classes</td></tr>
+<tr><td><strong>Products</strong></td><td>Domain behavior, authoritative data, resource-level authorization</td></tr>
+<tr><td><strong>Batchbook</strong></td><td>The integrated graph projection, with source and freshness for every fact</td></tr>
+</tbody></table></div>
+<h2 id='platform-interface-principles'>Principles</h2>
+<ul><li>- <strong>Internal does not mean unauthenticated.</strong> One identity model covers humans, workloads, and agents, with tenant, subject, and delegation context.</li>
+<li>- <strong>Products enforce resource-level authorization.</strong> Gateways are not the only enforcement point.</li>
+<li>- <strong>API-first does not require a web service per product.</strong> Git-native products can expose capabilities through adapters.</li>
+<li>- <strong>MCP is a task interface, not an API mirror.</strong> Tools declare whether they read, propose, or execute; execution requires server-enforced approval.</li>
+<li>- <strong>No token passthrough.</strong> MCP servers obtain audience-bound downstream credentials.</li>
+<li>- <strong>The graph is read-only and bounded.</strong> Writes go to the owning product; authorization covers nodes, edges, counts, and traversal results.</li></ul></article></main></div>
 <dialog id="searchDialog"><form method="dialog" class="search-panel"><div class="search-head"><strong>Search</strong><button value="close">Close</button></div><input id="searchInput" type="search" placeholder="Search governance, Batchbook, Proof, BaseCoat, Sheen…"><div id="searchResults" class="search-results"></div></form></dialog><script src="app.js"></script></body></html>
