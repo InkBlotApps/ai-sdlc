@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SDLC Governance Platform — Architecture Overview</title>
+<style>
+  :root {
+    --paper: #f5f5f0;
+    --paper-2: #ecece8;
+    --ink: #2d3142;
+    --ink-strong: #111111;
+    --muted: #4f5d75;
+    --soft: #5a6580;
+    --rule: rgba(45,49,66,0.12);
+    --rule-solid: #bfc0c0;
+    --accent: #c0392b;
+    --accent-tint: rgba(192,57,43,0.08);
+    --link: #2e5aa8;
+    --font-title: "Instrument Serif", Georgia, serif;
+    --font-node-name: "Geist", "Inter", system-ui, sans-serif;
+    --font-sublabel: "Geist", "Inter", system-ui, sans-serif;
+    --font-eyebrow: "Geist Mono", "SF Mono", "Cascadia Code", monospace;
+    --font-arrow-label: "Geist", "Inter", system-ui, sans-serif;
+    --font-callout: "Instrument Serif", Georgia, serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-node-name);
+    line-height: 1.5;
+    padding: 2rem;
+  }
+  .diagram-header {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+  }
+  .diagram-header h1 {
+    font-family: var(--font-title);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .diagram-header p {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .diagram-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+  svg { display: block; margin: 0 auto; }
+  .legend-item { fill: var(--muted); }
+  .zone-label { fill: var(--soft); }
+  .node-name { fill: var(--ink); }
+  .node-sublabel { fill: var(--muted); }
+  .arrow-label { fill: var(--muted); }
+  .connector { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+  .connector-accent { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+  .connector-link { fill: none; stroke: var(--link); stroke-width: 1.2; }
+  .connector-dashed { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 3; }
+  .zone-rect { fill: rgba(45,49,66,0.02); stroke: rgba(45,49,66,0.10); stroke-width: 0.8; }
+  .node-rect { rx: 6; }
+  .node-fill { fill: var(--paper); stroke: var(--rule-solid); stroke-width: 1; }
+  .node-accent { fill: var(--accent-tint); stroke: var(--accent); stroke-width: 1.5; }
+</style>
+</head>
+<body>
+<div class="diagram-header">
+  <h1>AI SDLC Governance Platform — Architecture Overview</h1>
+  <p>Product family architecture with shared infrastructure and integration layers</p>
+</div>
+<div class="diagram-container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 900" role="img" aria-labelledby="platform-arch-title platform-arch-desc">
+  <title id="platform-arch-title">AI SDLC Governance Platform Architecture</title>
+  <desc id="platform-arch-desc">Five-tier architecture showing presentation layer at top, API layer, product family layer with BaseCoat Sheen Adhesion Batchbook and Proof, shared infrastructure with Binder Graph DB Identity and CI/CD, and data integration layer at bottom connecting to GitHub GitLab Azure DevOps and cloud providers.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="var(--muted)"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="var(--accent)"/>
+    </marker>
+    <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="var(--link)"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="900" fill="var(--paper)"/>
+
+  <!-- Zone: Presentation Layer -->
+  <rect class="zone-rect" x="40" y="30" width="1020" height="130" rx="8"/>
+  <text class="zone-label" x="55" y="50" font-size="7" font-family="var(--font-eyebrow)" letter-spacing="0.14em">PRESENTATION LAYER</text>
+
+  <!-- Presentation nodes -->
+  <rect class="node-rect node-fill" x="80" y="65" width="170" height="70"/>
+  <text class="node-name" x="165" y="95" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">Static Site</text>
+  <text class="node-sublabel" x="165" y="110" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Docs &amp; Research</text>
+
+  <rect class="node-rect node-fill" x="280" y="65" width="170" height="70"/>
+  <text class="node-name" x="365" y="95" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">Admin Dashboard</text>
+  <text class="node-sublabel" x="365" y="110" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Catalog &amp; Controls</text>
+
+  <rect class="node-rect node-fill" x="480" y="65" width="170" height="70"/>
+  <text class="node-name" x="565" y="95" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">Agent UI</text>
+  <text class="node-sublabel" x="565" y="110" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Bounded Authority</text>
+
+  <rect class="node-rect node-fill" x="680" y="65" width="170" height="70"/>
+  <text class="node-name" x="765" y="95" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">MCP Surface</text>
+  <text class="node-sublabel" x="765" y="110" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Tools &amp; Resources</text>
+
+  <!-- Zone: API Layer -->
+  <rect class="zone-rect" x="40" y="180" width="1020" height="80" rx="8"/>
+  <text class="zone-label" x="55" y="200" font-size="7" font-family="var(--font-eyebrow)" letter-spacing="0.14em">API LAYER</text>
+
+  <rect class="node-rect node-fill" x="100" y="210" width="900" height="40"/>
+  <text class="node-name" x="550" y="228" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">REST / GraphQL API</text>
+  <text class="node-sublabel" x="550" y="242" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Bounded Graph Queries · Resource-level Auth · Identity (humans, workloads, agents)</text>
+
+  <!-- Zone: Product Layer -->
+  <rect class="zone-rect" x="40" y="280" width="1020" height="220" rx="8"/>
+  <text class="zone-label" x="55" y="300" font-size="7" font-family="var(--font-eyebrow)" letter-spacing="0.14em">PRODUCT FAMILY</text>
+
+  <!-- BaseCoat - accent node -->
+  <rect class="node-rect node-accent" x="80" y="320" width="130" height="160"/>
+  <text class="node-name" x="145" y="355" text-anchor="middle" font-size="11" font-family="var(--font-node-name)" font-weight="600">BaseCoat</text>
+  <text class="node-sublabel" x="145" y="372" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Engineering</text>
+  <text class="node-sublabel" x="145" y="384" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Governance</text>
+  <line x1="100" y1="395" x2="190" y2="395" stroke="var(--rule)" stroke-width="0.5"/>
+  <text class="node-sublabel" x="145" y="410" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Agents · Skills</text>
+  <text class="node-sublabel" x="145" y="422" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Instructions · Prompts</text>
+  <text class="node-sublabel" x="145" y="434" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Guardrails</text>
+  <text class="node-sublabel" x="145" y="446" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Visibility</text>
+
+  <!-- Sheen -->
+  <rect class="node-rect node-fill" x="240" y="320" width="130" height="160"/>
+  <text class="node-name" x="305" y="355" text-anchor="middle" font-size="11" font-family="var(--font-node-name)" font-weight="600">Sheen</text>
+  <text class="node-sublabel" x="305" y="372" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Design Governance</text>
+  <line x1="260" y1="385" x2="350" y2="385" stroke="var(--rule)" stroke-width="0.5"/>
+  <text class="node-sublabel" x="305" y="400" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Design Tokens</text>
+  <text class="node-sublabel" x="305" y="412" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">6 Pillars</text>
+  <text class="node-sublabel" x="305" y="424" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Conformance</text>
+  <text class="node-sublabel" x="305" y="436" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Accessibility</text>
+
+  <!-- Adhesion -->
+  <rect class="node-rect node-fill" x="400" y="320" width="130" height="160"/>
+  <text class="node-name" x="465" y="355" text-anchor="middle" font-size="11" font-family="var(--font-node-name)" font-weight="600">Adhesion</text>
+  <text class="node-sublabel" x="465" y="372" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Testing &amp; Validation</text>
+  <line x1="420" y1="385" x2="510" y2="385" stroke="var(--rule)" stroke-width="0.5"/>
+  <text class="node-sublabel" x="465" y="400" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Test Registry</text>
+  <text class="node-sublabel" x="465" y="412" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">AI Evals</text>
+  <text class="node-sublabel" x="465" y="424" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Guardrail Checks</text>
+  <text class="node-sublabel" x="465" y="436" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Drift Detection</text>
+
+  <!-- Batchbook - accent node -->
+  <rect class="node-rect node-accent" x="560" y="320" width="130" height="160"/>
+  <text class="node-name" x="625" y="355" text-anchor="middle" font-size="11" font-family="var(--font-node-name)" font-weight="600">Batchbook</text>
+  <text class="node-sublabel" x="625" y="372" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Enterprise Catalog</text>
+  <line x1="580" y1="385" x2="670" y2="385" stroke="var(--rule)" stroke-width="0.5"/>
+  <text class="node-sublabel" x="625" y="400" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Graph-backed</text>
+  <text class="node-sublabel" x="625" y="412" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Swatches</text>
+  <text class="node-sublabel" x="625" y="424" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Decks &amp; Palettes</text>
+  <text class="node-sublabel" x="625" y="436" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Auto-discovery</text>
+
+  <!-- Proof -->
+  <rect class="node-rect node-fill" x="720" y="320" width="130" height="160"/>
+  <text class="node-name" x="785" y="355" text-anchor="middle" font-size="11" font-family="var(--font-node-name)" font-weight="600">Proof</text>
+  <text class="node-sublabel" x="785" y="372" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Evidence &amp; Provenance</text>
+  <line x1="740" y1="385" x2="830" y2="385" stroke="var(--rule)" stroke-width="0.5"/>
+  <text class="node-sublabel" x="785" y="400" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Evidence Store</text>
+  <text class="node-sublabel" x="785" y="412" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Stamps &amp; CoA</text>
+  <text class="node-sublabel" x="785" y="424" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Traceability</text>
+  <text class="node-sublabel" x="785" y="436" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Attestations</text>
+
+  <!-- Zone: Shared Infrastructure -->
+  <rect class="zone-rect" x="40" y="520" width="1020" height="120" rx="8"/>
+  <text class="zone-label" x="55" y="540" font-size="7" font-family="var(--font-eyebrow)" letter-spacing="0.14em">SHARED INFRASTRUCTURE</text>
+
+  <rect class="node-rect node-fill" x="80" y="560" width="170" height="60"/>
+  <text class="node-name" x="165" y="585" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">Binder</text>
+  <text class="node-sublabel" x="165" y="600" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Contracts &amp; Schemas</text>
+
+  <rect class="node-rect node-fill" x="280" y="560" width="170" height="60"/>
+  <text class="node-name" x="365" y="585" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">Graph DB</text>
+  <text class="node-sublabel" x="365" y="600" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">Neo4j / PostgreSQL</text>
+
+  <rect class="node-rect node-fill" x="480" y="560" width="170" height="60"/>
+  <text class="node-name" x="565" y="585" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">Identity</text>
+  <text class="node-sublabel" x="565" y="600" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">OIDC · Workload Auth</text>
+
+  <rect class="node-rect node-fill" x="680" y="560" width="170" height="60"/>
+  <text class="node-name" x="765" y="585" text-anchor="middle" font-size="10" font-family="var(--font-node-name)">CI/CD Runtime</text>
+  <text class="node-sublabel" x="765" y="600" text-anchor="middle" font-size="8" font-family="var(--font-sublabel)">GitHub Actions</text>
+
+  <!-- Zone: Data & Integration -->
+  <rect class="zone-rect" x="40" y="660" width="1020" height="120" rx="8"/>
+  <text class="zone-label" x="55" y="680" font-size="7" font-family="var(--font-eyebrow)" letter-spacing="0.14em">DATA &amp; INTEGRATION</text>
+
+  <rect class="node-rect node-fill" x="80" y="700" width="130" height="50"/>
+  <text class="node-name" x="145" y="720" text-anchor="middle" font-size="9" font-family="var(--font-node-name)">GitHub API</text>
+  <text class="node-sublabel" x="145" y="735" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Primary</text>
+
+  <rect class="node-rect node-fill" x="240" y="700" width="130" height="50"/>
+  <text class="node-name" x="305" y="720" text-anchor="middle" font-size="9" font-family="var(--font-node-name)">GitLab API</text>
+
+  <rect class="node-rect node-fill" x="400" y="700" width="130" height="50"/>
+  <text class="node-name" x="465" y="720" text-anchor="middle" font-size="9" font-family="var(--font-node-name)">Azure DevOps</text>
+
+  <rect class="node-rect node-fill" x="560" y="700" width="130" height="50"/>
+  <text class="node-name" x="625" y="720" text-anchor="middle" font-size="9" font-family="var(--font-node-name)">Cloud APIs</text>
+  <text class="node-sublabel" x="625" y="735" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">AWS · GCP · Azure</text>
+
+  <rect class="node-rect node-fill" x="720" y="700" width="130" height="50"/>
+  <text class="node-name" x="785" y="720" text-anchor="middle" font-size="9" font-family="var(--font-node-name)">ITSM</text>
+  <text class="node-sublabel" x="785" y="735" text-anchor="middle" font-size="7" font-family="var(--font-sublabel)">Jira · ServiceNow</text>
+
+  <!-- Connectors: Presentation to API -->
+  <line class="connector" x1="165" y1="135" x2="165" y2="180" marker-end="url(#arrow)"/>
+  <line class="connector" x1="365" y1="135" x2="365" y2="180" marker-end="url(#arrow)"/>
+  <line class="connector" x1="565" y1="135" x2="565" y2="180" marker-end="url(#arrow)"/>
+  <line class="connector" x1="765" y1="135" x2="765" y2="180" marker-end="url(#arrow)"/>
+
+  <!-- Connectors: API to Product Layer -->
+  <line class="connector-accent" x1="550" y1="250" x2="145" y2="320" marker-end="url(#arrow-accent)"/>
+  <line class="connector" x1="550" y1="250" x2="305" y2="320" marker-end="url(#arrow)"/>
+  <line class="connector" x1="550" y1="250" x2="465" y2="320" marker-end="url(#arrow)"/>
+  <line class="connector-accent" x1="550" y1="250" x2="625" y2="320" marker-end="url(#arrow-accent)"/>
+  <line class="connector" x1="550" y1="250" x2="785" y2="320" marker-end="url(#arrow)"/>
+
+  <!-- Connectors: Product to Infrastructure -->
+  <line class="connector" x1="145" y1="480" x2="165" y2="560" marker-end="url(#arrow)"/>
+  <line class="connector" x1="305" y1="480" x2="365" y2="560" marker-end="url(#arrow)"/>
+  <line class="connector" x1="465" y1="480" x2="365" y2="560" marker-end="url(#arrow)"/>
+  <line class="connector" x1="625" y1="480" x2="365" y2="560" marker-end="url(#arrow)"/>
+  <line class="connector" x1="785" y1="480" x2="565" y2="560" marker-end="url(#arrow)"/>
+
+  <!-- Connectors: Infrastructure to Data -->
+  <line class="connector-link" x1="165" y1="620" x2="145" y2="700" marker-end="url(#arrow-link)"/>
+  <line class="connector-link" x1="365" y1="620" x2="305" y2="700" marker-end="url(#arrow-link)"/>
+  <line class="connector-link" x1="565" y1="620" x2="465" y2="700" marker-end="url(#arrow-link)"/>
+  <line class="connector-link" x1="765" y1="620" x2="625" y2="700" marker-end="url(#arrow-link)"/>
+  <line class="connector-link" x1="765" y1="620" x2="785" y2="700" marker-end="url(#arrow-link)"/>
+
+  <!-- Legend -->
+  <line x1="40" y1="810" x2="1060" y2="810" stroke="var(--rule)" stroke-width="0.8"/>
+  <text x="40" y="828" fill="var(--muted)" font-size="8" font-family="var(--font-eyebrow)" letter-spacing="0.14em">LEGEND</text>
+  <rect x="80" y="835" width="12" height="12" rx="2" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="100" y="845" fill="var(--muted)" font-size="8" font-family="var(--font-sublabel)">Core product (MVP)</text>
+  <rect x="240" y="835" width="12" height="12" rx="2" fill="var(--paper)" stroke="var(--rule-solid)" stroke-width="1"/>
+  <text x="260" y="845" fill="var(--muted)" font-size="8" font-family="var(--font-sublabel)">Supporting product</text>
+  <line x1="400" y1="841" x2="430" y2="841" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="440" y="845" fill="var(--muted)" font-size="8" font-family="var(--font-sublabel)">Data flow</text>
+  <line x1="540" y1="841" x2="570" y2="841" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow-accent)"/>
+  <text x="580" y="845" fill="var(--muted)" font-size="8" font-family="var(--font-sublabel)">Governance path</text>
+  <line x1="710" y1="841" x2="740" y2="841" stroke="var(--link)" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+  <text x="750" y="845" fill="var(--muted)" font-size="8" font-family="var(--font-sublabel)">External integration</text>
+
+</svg>
+</div>
+</body>
+</html>
