@@ -1,6 +1,10 @@
-# AI SDLC Governance
+# AI SDLC Governance Platform
 
-Research and working architecture for an enterprise-scale governance model for AI-assisted software development.
+> **Governance is the system that makes organizational intent operable.**
+
+Research and working architecture for an enterprise-scale governance model for AI-assisted software development. A **product family** — not a single monolith — with shared contracts, proportional enforcement, and a graph-based system of record.
+
+![Platform Architecture](docs/architecture/diagrams/platform-architecture.html)
 
 The published HTML site is the navigable view. The Markdown under [`docs/`](docs/) preserves the underlying research, architecture, naming, governance model, deployment thinking, taxonomy, evidence model, and historical context.
 
